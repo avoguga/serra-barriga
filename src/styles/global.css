@@ -1,0 +1,41 @@
+/* reset  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100vh;
+}
+
+body, p, a, ul, li {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* base styles */
+
+body {
+  overflow-x: hidden;
+}
+
+/* small tablet styles  */
+@media screen and (min-width: 620px) {
+  
+}
+
+/* large tablets & laptop styles  */
+@media screen and (min-width: 960px) {
+  
+}
+
+/* desktop styles  */
+@media screen and (min-width: 1200px) {
+  
+}
