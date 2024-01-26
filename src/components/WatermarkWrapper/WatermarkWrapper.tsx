@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import watermarkImage from '../../assets/marcadaguaverdeescuro.png';
+import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 
 const WatermarkDiv = styled.div`
   position: relative;
@@ -11,10 +11,11 @@ const WatermarkDiv = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(${watermarkImage});
+    background-image: url(${WatermarkImage});
     background-size: 180% auto;
     background-position: top center;
     background-repeat: no-repeat;
+    pointer-events: none;
   }
 `;
 
