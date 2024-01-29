@@ -3,6 +3,7 @@ import { Icons } from '../../helpers/icons';
 
 const Button = styled.button`
   display: flex;
+  width: 130px;
   flex-direction: column;
   background-color: transparent;
   color: white;
@@ -21,8 +22,8 @@ const Button = styled.button`
   }
 
   svg {
-    width: 51px;
-    height: 51px;
+    width: 45px;
+    height: 45px;
     background-color: red;
   }
 `;
@@ -30,15 +31,16 @@ const Button = styled.button`
 interface HomeButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
+  iconType: keyof typeof Icons;
   onClick?: () => void;
 }
 
-const QrCode = Icons['Scan'];
+const HomeButton = ({ children, onClick, iconType }: HomeButtonProps) => {
+  const ButtonIcon = Icons[iconType];
 
-const HomeButton = ({ children, onClick }: HomeButtonProps) => {
   return (
     <Button onClick={onClick}>
-      <QrCode />
+      <ButtonIcon />
       {children}
     </Button>
   );
