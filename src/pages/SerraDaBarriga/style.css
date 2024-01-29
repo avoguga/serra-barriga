@@ -1,0 +1,25 @@
+:root{
+    --bg-color: #B21522;
+    --text-color: #fff;
+}
+
+body {
+    background: var(--bg-color) ;
+    background-image: url('../../assets/marca-dagua-palmeira.png');
+    background-size: 190%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+p {
+    color: var(--text-color);
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+.logoStyle {
+    width: 40%;
+}
