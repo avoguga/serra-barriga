@@ -25,6 +25,7 @@ const QRCode = () => {
             onResult={(result, error) => {
               if (result) {
                 console.log(result.getText());
+                alert(result.getText());
                 return;
               }
               console.info(error);
