@@ -10,7 +10,7 @@ import FloatingButtonBar from '../../components/FloatingContainer';
 
 const Selfie = Icons['Selfie'];
 
-const SelfieContainer = styled.button`
+export const SelfieContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
