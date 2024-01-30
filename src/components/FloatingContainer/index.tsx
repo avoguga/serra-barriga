@@ -3,7 +3,7 @@ import { Icons } from '../../helpers/icons';
 import { useNavigate } from 'react-router-dom';
 
 interface FloatingButtonBarProps {
-  isVisible: boolean;
+  isVisible?: boolean;
   onClickLeftArrow?: () => void;
   onClickScan?: () => void;
   onClickHome?: () => void;
@@ -36,7 +36,7 @@ const ScanIcon = Icons['Scan'];
 const HomeIcon = Icons['Home'];
 
 const FloatingButtonBar = ({
-  isVisible,
+  isVisible = true,
   onClickLeftArrow,
   onClickScan,
   onClickHome,

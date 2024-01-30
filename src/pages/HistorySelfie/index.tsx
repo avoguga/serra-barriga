@@ -46,7 +46,7 @@ const ImageContainer = styled.div`
 const HistorySelfie = () => {
   return (
     <WatermarkWrapper>
-      <FloatingButtonBar isVisible={true} />
+      <FloatingButtonBar />
 
       <div
         style={{
