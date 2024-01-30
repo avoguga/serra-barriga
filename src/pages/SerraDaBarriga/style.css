@@ -4,17 +4,8 @@
     --square-color: black;
 }
 
-body {
-    display: flex;
-    background: var(--bg-color) ;
-    background-image: url('../../assets/marca-dagua-palmeira.png');
-    background-size: 190%;
-    background-position: center;
-    background-repeat: no-repeat;
-
-}
-
 .container {
+    background: var(--bg-color) ;
     display: flex;
     flex-direction: column;
     align-items: center;

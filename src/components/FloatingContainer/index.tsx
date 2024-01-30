@@ -7,9 +7,14 @@ interface FloatingButtonBarProps {
   onClickLeftArrow?: () => void;
   onClickScan?: () => void;
   onClickHome?: () => void;
+  backgroundColor?: string;
 }
 
-const FloatingBar = styled.div`
+interface FloatingBarProps {
+  backgroundColor?: string;
+}
+
+const FloatingBar = styled.div<FloatingBarProps>`
   width: 220px;
   height: 64px;
   display: flex;
@@ -17,7 +22,7 @@ const FloatingBar = styled.div`
   top: 0px;
   left: 0px;
   z-index: 1000;
-  background-color: #586617;
+  background-color: ${(props) => props.backgroundColor || '#586617'};
   border-radius: 0px 0px 57px 0px;
 `;
 
@@ -40,6 +45,7 @@ const FloatingButtonBar = ({
   onClickLeftArrow,
   onClickScan,
   onClickHome,
+  backgroundColor,
 }: FloatingButtonBarProps) => {
   const navigate = useNavigate();
 
@@ -52,7 +58,7 @@ const FloatingButtonBar = ({
   const handleHomeClick = onClickHome ? onClickHome : () => navigate('/');
 
   return (
-    <FloatingBar>
+    <FloatingBar backgroundColor={backgroundColor}>
       <Button
         style={{
           marginLeft: '25px',
