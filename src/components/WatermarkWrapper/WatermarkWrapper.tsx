@@ -3,7 +3,7 @@ import watermarkImage from '../../assets/marcadaguaverdeescuro.png';
 
 interface WatermarkWrapperProps {
   watermark?: boolean;
-  watermarkImage: string;
+  watermarkImage?: string;
   children: React.ReactNode;
 }
 
