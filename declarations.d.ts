@@ -8,3 +8,5 @@ declare module '*.svg' {
 }
 
 declare module 'facefilter';
+
+declare module 'react-qr-reader';

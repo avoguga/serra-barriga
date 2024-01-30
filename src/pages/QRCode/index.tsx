@@ -29,7 +29,7 @@ const QRCode = () => {
               }
               console.info(error);
             }}
-            constraints={{}}
+            constraints={{ facingMode: 'environment' }}
             containerStyle={{
               width: '100%',
               height: '100%',
