@@ -6,6 +6,7 @@ import HistorySelfie from '../pages/HistorySelfie';
 import Personalities from '../pages/Personalities';
 import TakeHome from '../pages/TakeHome';
 import About from '../pages/About';
+import SerraDaBarriga from '../pages/SerraDaBarriga';
 import Videos from '../pages/Videos';
 import Images from '../pages/Images';
 import Audios from '../pages/Audios';
@@ -74,6 +75,11 @@ export const router = createBrowserRouter([
   {
     path: '/about',
     element: <About />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/SerraDaBarriga',
+    element: <SerraDaBarriga />,
     errorElement: <ErrorPage />,
   },
 ]);
