@@ -13,6 +13,7 @@ import Audios from '../pages/Audios';
 import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
+import AppCanvas from '../pages/HistorySelfie/Teste/AppCanvas';
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,13 @@ export const router = createBrowserRouter([
     path: '/selfie',
     element: <HistorySelfie />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/selfie:filterName',
+        element: <AppCanvas />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
   {
     path: '/personalities',

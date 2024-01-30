@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import watermarkImage from '../../assets/marcadaguaverdeescuro.png';
 
 interface WatermarkWrapperProps {
