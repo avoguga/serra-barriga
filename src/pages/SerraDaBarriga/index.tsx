@@ -39,7 +39,7 @@ const SerraDaBarriga = () => {
       <button><img src={setaDireita}/></button>
       </div>
       <div className='title'>VÍDEOS</div>
-      <video src={video} height="170px" controls className='video'></video>
+      <iframe src="https://www.youtube.com/embed/USLC-TsQdnI" title="Memórias de luta na Serra da Barriga" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen className='video'></iframe>
       <div className="btnSeta">
       <button><img src={setaEsquerda}/></button>
       <button><img src={setaDireita}/></button>
