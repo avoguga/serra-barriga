@@ -1,7 +1,13 @@
 import styled from 'styled-components';
-import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
+import watermarkImage from '../../assets/marcadaguaverdeescuro.png';
 
-const WatermarkDiv = styled.div`
+interface WatermarkWrapperProps {
+  watermark?: boolean;
+  watermarkImage: string;
+  children: React.ReactNode;
+}
+
+const WatermarkDiv = styled.div<WatermarkWrapperProps>`
   position: relative;
 
   &:after {
@@ -11,7 +17,7 @@ const WatermarkDiv = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(${WatermarkImage});
+    background-image: url(${(props) => props.watermarkImage});
     background-size: 180% auto;
     background-position: top center;
     background-repeat: no-repeat;
@@ -19,14 +25,15 @@ const WatermarkDiv = styled.div`
   }
 `;
 
-interface WatermarkWrapperProps {
-  watermark?: boolean;
-  children: React.ReactNode;
-}
-
-const WatermarkWrapper = ({ children, watermark }: WatermarkWrapperProps) => {
+const WatermarkWrapper = ({
+  children,
+  watermark,
+  watermarkImage,
+}: WatermarkWrapperProps) => {
   if (watermark) {
-    return <WatermarkDiv>{children}</WatermarkDiv>;
+    return (
+      <WatermarkDiv watermarkImage={watermarkImage}>{children}</WatermarkDiv>
+    );
   }
   return <>{children}</>;
 };
