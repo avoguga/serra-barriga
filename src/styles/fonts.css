@@ -112,10 +112,18 @@
 
 @font-face {
   font-family: 'FuturaPTHeavy';
-  src: url('/assets/FuturaPTHeavy.woff') format('opentype');
+  src: url('src/assets/FuturaPTHeavy.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Futuraaa';
+  src: url('src/assets/futura-pt.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
 
 @font-face {
   font-family: 'FuturaPTHeavyOblique';

@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import HomeButton from '../../components/HomeButton';
 import styled from 'styled-components';
 import tiktok from '../../assets/icons/app serra + tiktok.svg';
+import { Link } from 'react-router-dom';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -16,87 +17,91 @@ const TakeHome = () => {
   const navigate = useNavigate();
 
   return (
-    <WatermarkWrapper watermark={true}>
-      <div
-        style={{
-          backgroundColor: '#8AA61E',
-          height: '100vh',
-        }}
-      >
-        <img
-          src={tiktok}
-          alt="tiktok"
+    <>
+      <Outlet />
+      <WatermarkWrapper watermark={true}>
+        <div
           style={{
-            width: '100%',
-            height: '102px',
-            marginTop: '118px',
-            marginBottom: '67px',
+            backgroundColor: '#8AA61E',
+            height: '100vh',
           }}
-        />
-
-        <ButtonContainer>
-          <h2
+        >
+          <img
+            src={tiktok}
+            alt="tiktok"
             style={{
-              font: 'normal normal 500 22px/30px FuturaPTHeavy',
-              letterSpacing: '0px',
-              color: '#FFFFFF',
+              width: '100%',
+              height: '102px',
+              marginTop: '118px',
+              marginBottom: '67px',
             }}
-          >
-            CONTEÚDO EXCLUSIVO
-          </h2>
+          />
 
-          <HomeButton
-            iconType="Scan"
-            onClick={() => {
-              navigate('/qrcode');
-            }}
-          >
-            VÍDEOS
-          </HomeButton>
-          <HomeButton
-            iconType="Info"
-            onClick={() => {
-              navigate('/selfie');
-            }}
-          >
-            IMAGENS
-          </HomeButton>
-          <HomeButton
-            iconType="Info"
-            onClick={() => {
-              navigate('/personalities');
-            }}
-          >
-            ÁUDIOS
-          </HomeButton>
-          <HomeButton
-            iconType="Expo"
-            onClick={() => {
-              navigate('/takehome');
-            }}
-          >
-            EXPOSIÇÃO VIRTUAL
-          </HomeButton>
-          <HomeButton
-            iconType="Info"
-            onClick={() => {
-              navigate('/qrcode');
-            }}
-          >
-            SERRA DA BARRIGA
-          </HomeButton>
-          <HomeButton
-            iconType="Icon360"
-            onClick={() => {
-              window.location.href =
-                'https://kuula.co/share/collection/79KY4?logo=1&info=1&fs=1&vr=0&zoom=1&gyro=0&thumbs=-1&inst=0&keys=0';
-            }}
-          >
-            PASSEIO 360º
-          </HomeButton>
-        </ButtonContainer>
-      </div>
-    </WatermarkWrapper>
+          <ButtonContainer>
+            <h2
+              style={{
+                font: 'normal normal 500 22px/30px',
+                fontFamily: 'FuturaPTHeavy',
+                letterSpacing: '0px',
+                color: '#FFFFFF',
+              }}
+            >
+              CONTEÚDO EXCLUSIVO
+            </h2>
+
+            <HomeButton
+              iconType="Info"
+              onClick={() => {
+                navigate('/takehome/videos');
+              }}
+            >
+              VÍDEOS
+            </HomeButton>
+            <HomeButton
+              iconType="Img"
+              onClick={() => {
+                navigate('/takehome/images');
+              }}
+            >
+              IMAGENS
+            </HomeButton>
+            <HomeButton
+              iconType="Audio"
+              onClick={() => {
+                navigate('/takehome/audios');
+              }}
+            >
+              ÁUDIOS
+            </HomeButton>
+            <HomeButton
+              iconType="Expo"
+              onClick={() => {
+                navigate('/takehome/virtual-expo');
+              }}
+            >
+              EXPOSIÇÃO VIRTUAL
+            </HomeButton>
+            <HomeButton
+              iconType="MontanhaSerra"
+              onClick={() => {
+                navigate('/takehome/serra-da-barriga');
+              }}
+            >
+              SERRA DA BARRIGA
+            </HomeButton>
+            <HomeButton
+              iconType="Icon360"
+              onClick={() => {
+                window.location.href =
+                  'https://kuula.co/share/collection/79KY4?logo=1&info=1&fs=1&vr=0&zoom=1&gyro=0&thumbs=-1&inst=0&keys=0';
+              }}
+            >
+              PASSEIO 360º
+            </HomeButton>
+          </ButtonContainer>
+        </div>
+      </WatermarkWrapper>
+    </>
   );
 };
 
