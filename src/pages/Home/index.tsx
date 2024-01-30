@@ -1,4 +1,5 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
+import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import tiktok from '../../assets/icons/app serra + tiktok.svg';
 import aaa from '../../assets/icons/desenho mão segurando celular.svg';
 import HomeButton from '../../components/HomeButton';
@@ -43,7 +44,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <WatermarkWrapper watermark={true}>
+    <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <div
         style={{
           backgroundColor: '#67781B',
