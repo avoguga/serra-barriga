@@ -24,7 +24,6 @@ const Button = styled.button`
   svg {
     width: 45px;
     height: 45px;
-    background-color: red;
   }
 `;
 

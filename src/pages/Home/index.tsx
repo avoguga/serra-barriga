@@ -1,5 +1,6 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import tiktok from '../../assets/serratiktok.svg';
+import tiktok from '../../assets/Icons/app serra + tiktok.svg';
+import aaa from '../../assets/Icons/desenho mão segurando celular.svg';
 import HomeButton from '../../components/HomeButton';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +11,32 @@ const ButtonContainer = styled.div`
   gap: 50px;
   justify-content: center;
   margin: 0 10px;
+`;
+
+const BottomContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #20aa9a;
+  width: 360px;
+  height: 134px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 90px;
+`;
+
+const TextContainer = styled.div`
+  max-width: 250px;
+  color: #fff;
+  font-family: 'Futura PT', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font: normal normal normal 16px/22px Futura PT;
+    letter-spacing: 0px;
+  }
 `;
 
 const Home = () => {
@@ -35,7 +62,7 @@ const Home = () => {
         />
         <ButtonContainer>
           <HomeButton
-            iconType="Info"
+            iconType="Scan"
             onClick={() => {
               navigate('/qrcode');
             }}
@@ -43,7 +70,7 @@ const Home = () => {
             LER QRCODE
           </HomeButton>
           <HomeButton
-            iconType="Info"
+            iconType="Selfie"
             onClick={() => {
               navigate('/selfie');
             }}
@@ -51,7 +78,7 @@ const Home = () => {
             SELFIE HISTÓRICA
           </HomeButton>
           <HomeButton
-            iconType="Info"
+            iconType="PersonalityIcon"
             onClick={() => {
               navigate('/personalities');
             }}
@@ -59,7 +86,7 @@ const Home = () => {
             PERSONALIDADES
           </HomeButton>
           <HomeButton
-            iconType="Info"
+            iconType="Home"
             onClick={() => {
               navigate('/takehome');
             }}
@@ -67,12 +94,12 @@ const Home = () => {
             LEVE PARA CASA
           </HomeButton>
           <HomeButton
-            iconType="Info"
+            iconType="MontanhaSerra"
             onClick={() => {
               navigate('/qrcode');
             }}
           >
-            SSERRA DA BARRIGA
+            SERRA DA BARRIGA
           </HomeButton>
           <HomeButton
             iconType="Info"
@@ -82,6 +109,15 @@ const Home = () => {
           >
             SOBRE O APP
           </HomeButton>
+          <BottomContainer>
+            <img src={aaa} alt="aaa" width={104} height={212} />
+            <TextContainer>
+              <p>
+                Aponte a câmera do celular para o símbolo e tenha uma
+                experiência ampliada.
+              </p>
+            </TextContainer>
+          </BottomContainer>
         </ButtonContainer>
       </div>
     </WatermarkWrapper>
