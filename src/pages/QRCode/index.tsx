@@ -22,7 +22,7 @@ const QRCode = () => {
         </HeaderContainer>
         <CameraContainer>
           <QrReader
-            onResult={(result, error) => {
+            onResult={(result: any, error: Error) => {
               if (result) {
                 console.log(result.getText());
                 alert(result.getText());
