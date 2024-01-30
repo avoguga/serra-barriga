@@ -1,6 +1,6 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import tiktok from '../../assets/Icons/app serra + tiktok.svg';
-import aaa from '../../assets/Icons/desenho mão segurando celular.svg';
+import tiktok from '../../assets/icons/app serra + tiktok.svg';
+import aaa from '../../assets/icons/desenho mão segurando celular.svg';
 import HomeButton from '../../components/HomeButton';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import HomeButton from '../../components/HomeButton';
 import styled from 'styled-components';
-import tiktok from '../../assets/Icons/app serra + tiktok.svg';
+import tiktok from '../../assets/icons/app serra + tiktok.svg';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const TakeHome = () => {
         <ButtonContainer>
           <h2
             style={{
-              font: 'normal normal 500 22px/30px Futura PT',
+              font: 'normal normal 500 22px/30px FuturaPTHeavy',
               letterSpacing: '0px',
               color: '#FFFFFF',
             }}
