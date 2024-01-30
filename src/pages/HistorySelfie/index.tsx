@@ -13,8 +13,8 @@ const HistorySelfie = () => {
           alignItems: 'center',
         }}
       >
-        {/* <AppCanvas /> */}
-        <Video />
+        <AppCanvas />
+        {/* <Video /> */}
       </div>
     </div>
   );

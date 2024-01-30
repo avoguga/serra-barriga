@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 import { JEELIZFACEFILTER, NN_DEFAULT } from 'facefilter';
 
 function AppCanvas() {
-  const jeelizRef = useRef(null);
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const jeelizRef = useRef<any>(null);
 
   useEffect(() => {
     if (jeelizRef.current) initJeeliz();
@@ -151,7 +151,9 @@ function AppCanvas() {
       },
       isKeepRunningOnWinFocusLost: true,
     });
-    videoRef.current.srcObject = jeelizRef.current.captureStream(30);
+    if (videoRef.current && jeelizRef.current) {
+      videoRef.current.srcObject = jeelizRef.current.captureStream(30);
+    }
   };
 
   return (
