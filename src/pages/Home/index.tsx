@@ -97,7 +97,7 @@ const Home = () => {
           <HomeButton
             iconType="MontanhaSerra"
             onClick={() => {
-              navigate('/qrcode');
+              navigate('/serra-da-barriga');
             }}
           >
             SERRA DA BARRIGA

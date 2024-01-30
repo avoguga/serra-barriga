@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/SerraDaBarriga',
+    path: '/serra-da-barriga',
     element: <SerraDaBarriga />,
     errorElement: <ErrorPage />,
   },
