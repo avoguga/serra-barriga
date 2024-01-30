@@ -4,6 +4,8 @@ import HomeButton from '../../components/HomeButton';
 import styled from 'styled-components';
 import tiktok from '../../assets/icons/app serra + tiktok.svg';
 import { Link } from 'react-router-dom';
+import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
+import WatermarkImageBottom from '../../assets/marcamontanhaparafundoclao.png';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -19,14 +21,17 @@ const TakeHome = () => {
   return (
     <>
       <Outlet />
-      <WatermarkWrapper watermark={true}>
+      <WatermarkWrapper watermark watermarkImage={WatermarkImage}>
         <div
           style={{
             backgroundColor: '#8AA61E',
-            height: '100vh',
+            height: '123vh',
           }}
         >
           <img
+            onClick={() => {
+              navigate('/');
+            }}
             src={tiktok}
             alt="tiktok"
             style={{
@@ -98,6 +103,7 @@ const TakeHome = () => {
             >
               PASSEIO 360º
             </HomeButton>
+            <img src={WatermarkImageBottom} width={531} height={255} />
           </ButtonContainer>
         </div>
       </WatermarkWrapper>

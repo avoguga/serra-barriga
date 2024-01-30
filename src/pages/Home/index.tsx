@@ -23,20 +23,20 @@ const BottomContainer = styled.div`
   height: 134px;
   padding: 20px;
   box-sizing: border-box;
+  margin-top: 20px;
   border-radius: 90px;
 `;
 
 const TextContainer = styled.div`
   max-width: 250px;
   color: #fff;
-  font-family: 'Futura PT', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-
   p {
-    font: normal normal normal 16px/22px Futura PT;
+    font: normal normal normal 16px/22px FuturaPTHeavy;
     letter-spacing: 0px;
+    margin-left: 10px;
   }
 `;
 
@@ -48,7 +48,7 @@ const Home = () => {
       <div
         style={{
           backgroundColor: '#67781B',
-          height: '100vh',
+          height: '109vh',
         }}
       >
         <img
