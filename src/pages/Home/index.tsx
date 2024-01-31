@@ -1,10 +1,10 @@
-import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import tiktok from '../../assets/icons/app serra + tiktok.svg';
 import aaa from '../../assets/icons/desenho mão segurando celular.svg';
+import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 
 const ButtonContainer = styled.div`
   display: flex;
