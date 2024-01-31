@@ -1,8 +1,8 @@
 // Arrow.tsx
 import React from 'react';
 import styled from 'styled-components';
-import RightArrowSvg from '../../assets/setadireita.svg';
-import LeftArrowSvg from '../../assets/setaesquerda.svg';
+import RightArrowSvg from '../../assets/icons/seta direita.svg';
+import LeftArrowSvg from '../../assets/icons/seta esquerda.svg';
 
 interface ArrowProps {
   direction: 'left' | 'right';
@@ -26,7 +26,7 @@ const Arrow: React.FC<ArrowProps> = ({ direction, onClick, isActive }) => {
       <img
         src={imgSrc}
         alt={`Seta ${direction}`}
-        style={{ width: '41px', height: '35px', opacity: isActive ? 1 : 0.2 }}
+        style={{ width: '40px', height: '45px', opacity: isActive ? 1 : 0.2 }}
       />
     </ArrowButton>
   );

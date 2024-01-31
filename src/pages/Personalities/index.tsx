@@ -4,13 +4,15 @@ import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import { PersonalityType, personalities } from '../../types/personalitiesData';
 import Arrow from '../../components/ArrowButton';
 import { useState } from 'react';
+import FloatingButtonBar from '../../components/FloatingContainer';
 
 const PageContainer = styled.div`
   display: flex;
   background: #b21522;
   height: 100vh;
   justify-content: center;
-  align-items: baseline;
+  align-items:  baseline;
+  
 `;
 
 const PageHeader = styled.div`
@@ -18,34 +20,36 @@ const PageHeader = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  height: 69px;
-  background: rgba(0, 0, 0, 0.3);
-  width: 262px;
+  height:60px;
+  background: #8c111b;
+  width: 70%;
   border-radius: 35px;
 
-  font-family: 'Kumbh Sans', sans-serif;
   text-transform: uppercase;
   color: #ffffff;
 
-  font-size: 15px;
-  margin-top: 5px;
+  margin-top: 8px;
   padding: 0 20px;
-  margin-left: 50px;
+  
+
+
 `;
 const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  font-family: 'FuturaPTDemiOblique', sans-serif;
+  font-size: 13px;
+  opacity: 1;
 `;
 
 const PersonalitiesGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 400px;
-
-  padding: 20px;
-  gap: 15px;
+gap: 10px;
+ padding: 10px;
 `;
 
 const PersonalityCard = styled.div`
@@ -58,7 +62,7 @@ const PersonalityCard = styled.div`
   font-size: 14px;
   height: auto;
   overflow: hidden;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 
   img {
     width: 180px;
@@ -72,12 +76,18 @@ const ArrowContainer = styled.div`
   display: flex;
 
   flex-direction: row;
-  top: 660px;
+ 
   left: 0;
   justify-content: space-between;
-  width: 340px;
+  width: 95%;
   margin-left: 10px;
 `;
+
+const MainContainer = styled.div `
+display: flex;
+flex-direction: column;
+align-items: center;
+`
 
 const Personalities = () => {
   const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
@@ -92,14 +102,15 @@ const Personalities = () => {
   };
   return (
     <PageContainer>
-      <div>
+      <FloatingButtonBar  backgroundColor="#8C111B" />
+      <MainContainer>
         <img
           src={appSerra}
           alt="app Serra da Barriga"
           style={{
             width: '100%',
-            height: '102px',
-            marginTop: '65px',
+            height: '90px',
+            marginTop: '110px',
           }}
         />
         <PageHeader>
@@ -112,7 +123,7 @@ const Personalities = () => {
                 height: '55px',
               }}
             />
-            <h3>Personalidades</h3>
+            <h3>PERSONALIDADES</h3>
           </HeaderContent>
         </PageHeader>
 
@@ -136,7 +147,7 @@ const Personalities = () => {
             isActive={activeArrow === 'right'}
           />
         </ArrowContainer>
-      </div>
+      </MainContainer>
     </PageContainer>
   );
 };
