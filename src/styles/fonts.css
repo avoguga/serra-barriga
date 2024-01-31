@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'FuturaPTBold';
+  src: url('/assets/fonts/Futura/FuturaPTBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTBoldOblique';
+  src: url('/assets/fonts/Futura/FuturaPTBoldOblique.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTBook';
+  src: url('/assets/fonts/Futura/FuturaPTBook.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTBookOblique';
+  src: url('/assets/fonts/Futura/FuturaPTBookOblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondBold';
+  src: url('/assets/fonts/Futura/FuturaPTCondBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondBoldOblique';
+  src: url('/assets/fonts/Futura/FuturaPTCondBoldOblique.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondBook';
+  src: url('/assets/fonts/Futura/FuturaPTCondBook.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondBookOblique';
+  src: url('/assets/fonts/Futura/FuturaPTCondBookOblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondExtraBold';
+  src: url('/assets/fonts/Futura/FuturaPTCondExtraBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondExtraBoldOblique';
+  src: url('/assets/fonts/Futura/FuturaPTCondExtraBoldOblique.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondMedium';
+  src: url('/assets/fonts/Futura/FuturaPTCondMedium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTCondMediumOblique';
+  src: url('/assets/fonts/Futura/FuturaPTCondMediumOblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTDemi';
+  src: url('/assets/fonts/Futura/FuturaPTDemi.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTDemiOblique';
+  src: url('/assets/fonts/Futura/FuturaPTDemiOblique.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTExtraBold';
+  src: url('/assets/fonts/Futura/FuturaPTExtraBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTExtraBoldOblique';
+  src: url('/assets/fonts/Futura/FuturaPTExtraBoldOblique.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTHeavy';
+  src: url('src/assets/FuturaPTHeavy.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPT';
+  src: url('src/assets/futura-pt.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'FuturaPTHeavyOblique';
+  src: url('/assets/fonts/Futura/FuturaPTHeavyOblique.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTLight';
+  src: url('/assets/fonts/Futura/FuturaPTLight.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTLightOblique';
+  src: url('/assets/fonts/Futura/FuturaPTLightOblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'FuturaPTMedium';
+  src: url('/assets/fonts/Futura/FuturaPTMedium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaPTMediumOblique';
+  src: url('/assets/fonts/Futura/FuturaPTMediumOblique.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
