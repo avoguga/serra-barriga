@@ -20,7 +20,7 @@ const ArrowButton = styled.button`
   justify-content: center;
 `;
 
-const LowArrow: React.FC<ArrowProps> = ({ onClick, isActive }) => {
+const LowArrow: React.FC<ArrowProps> = ({ onClick }) => {
   return (
     <ArrowButton onClick={onClick}>
       <img
