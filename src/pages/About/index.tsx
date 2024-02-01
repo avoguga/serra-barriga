@@ -47,11 +47,11 @@ const View = styled.div`
   span {
     font-size: 16px;
   }
-  `;
-  
-  const Content = styled.div`
-    width: 80%;
-  `;
+`;
+
+const Content = styled.div`
+  width: 80%;
+`;
 
 const Footer = styled.footer`
   max-width: 90%;
@@ -64,7 +64,6 @@ const Footer = styled.footer`
   }
 }
 `;
-
 
 const About = () => {
   const version = packageJson.version;
