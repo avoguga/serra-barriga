@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 // Components
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
+import LowArrow from '../../components/LowArrowButton';
 
 // Assets
 import WatermarkImage from '../../assets/background-red.png';
@@ -18,6 +19,13 @@ import logoIphan from '../../assets/icons/logo-iphan.svg';
 // Others
 import packageJson from '../../../package.json';
 
+const Nav = styled.nav`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 50px 25px;
+`;
+
 const View = styled.div`
   font-family: 'Futura PT', sans-serif;
   color: #ffffff;
@@ -30,7 +38,7 @@ const View = styled.div`
   flex-wrap: nowrap;
   h1 {
     font-size: 17px;
-    margin: 60px 0 0 0; 
+    margin: 60px 0 0 0;
   }
   p {
     margin: 0 0 80px;
@@ -41,7 +49,12 @@ const View = styled.div`
   }
 `;
 
+const Content = styled.div`
+  width: 80%;
+`;
+
 const Footer = styled.footer`
+  max-width: 90%;
   margin: 90px 0;
   display: flex;
   flex-direction: column;
@@ -52,16 +65,15 @@ const Footer = styled.footer`
 }
 `;
 
-const Content = styled.div`
-  width: 80%;
-`;
-
 const About = () => {
   const version = packageJson.version;
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <View>
+        <Nav>
+          <LowArrow onClick={() => window.history.back()} isActive={true} />
+        </Nav>
         <Content>
           <img
             src={appSerra}
@@ -135,7 +147,7 @@ const About = () => {
             style={{
               width: '70%',
               height: '70%',
-              margin: '0 0 100px '
+              margin: '0 0 100px ',
             }}
           />
           <span>
