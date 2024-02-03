@@ -47,38 +47,36 @@ export const router = createBrowserRouter([
     path: '/takehome',
     element: <TakeHome />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '/takehome/videos',
-        element: <Videos />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: '/takehome/images',
-        element: <Images />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: '/takehome/audios',
-        element: <Audios />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: '/takehome/virtual-expo',
-        element: <VirtualExpo />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: '/takehome/serra-da-barriga',
-        element: <SerraBarriga2 />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: '/takehome/tour-360',
-        element: <Tour360 />,
-        errorElement: <ErrorPage />,
-      },
-    ],
+  },
+  {
+    path: '/takehome/videos',
+    element: <Videos />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/takehome/images',
+    element: <Images />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/takehome/audios',
+    element: <Audios />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/takehome/virtual-expo',
+    element: <VirtualExpo />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/takehome/serra-da-barriga',
+    element: <SerraBarriga2 />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/takehome/tour-360',
+    element: <Tour360 />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/about',
