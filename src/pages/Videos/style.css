@@ -1,0 +1,15 @@
+.background {
+    display: flex;
+    background-color: #d46900;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.appImg {
+    width: 100%;
+    height: 102px;
+    margin-top: 10%;
+    margin-bottom: 6%;
+}
+
