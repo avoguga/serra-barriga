@@ -1,14 +1,23 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import styled from 'styled-components';
 import tiktok from '../../assets/icons/app serra.svg';
+import logo from '../../assets/app_serra.svg';
+import HomeButton from '../../components/HomeButton';
+import imagem from '../../assets/icons/imagem - branco.svg';
+import './styles.css';
+import { Color } from 'three';
 
 const Images = () => {
   return (
+
     <WatermarkWrapper>
       <div
         style={{
-          backgroundColor: '#8AA61E',
-          height: '100vh',
+          backgroundColor: '#D66B00',
+          height: '160vh',
+          alignItems: 'center',
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
         <img
@@ -21,8 +30,50 @@ const Images = () => {
             marginBottom: '67px',
           }}
         />
+        <div className='galeria'>
+          <img src={imagem} alt="" />
+          <h2>
+            GALERIA DE IMAGENS
+         </h2>
+        </div>
+     
+        <div className='fotos'>
+          <div className='foto'
+          style={{
+            background: '#F48306'
+          }}></div>
+          <div className='foto'
+          style={{
+            background: '#009289'
+          }}></div>
+          <div className='foto'
+          style={{
+            background: '#FFBF00'
+          }}></div>
+          <div className='foto'
+          style={{
+            background: '#3D4B09'
+          }}></div>
+          <div className='foto'
+          style={{
+            background: '#009289'
+          }}></div>
+          <div className='foto'
+          style={{
+            background: '#F48306'
+          }}></div>
+          <div className='foto'
+          style={{
+            background: '#3D4B09'
+          }}></div>
+          <div className='foto'
+          style={{
+            background: '#FFBF00'
+          }}></div>
       </div>
+      </div>    
     </WatermarkWrapper>
+    
   );
 };
 
