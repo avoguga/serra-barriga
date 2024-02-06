@@ -1,8 +1,5 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import styled from 'styled-components';
 import tiktok from '../../assets/icons/app serra.svg';
-import logo from '../../assets/app_serra.svg';
-import HomeButton from '../../components/HomeButton';
 import imagem from '../../assets/icons/imagem - branco.svg';
 import useNavigate from 'react-router-dom';
 import './styles.css';
