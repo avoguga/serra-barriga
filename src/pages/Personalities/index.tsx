@@ -45,17 +45,21 @@ const Personalities = () => {
             <h3>PERSONALIDADES</h3>
           </HeaderContent>
         </PageHeader>
-
         <Carousel
           leftArrowActive={hasPrevPage}
           rightArrowActive={hasNextPage}
           onClickNextPage={nextPage}
           onClickPreviousPage={prevPage}
-          renderItems={currentItems.map((personality: PersonalityType) => (
-            <PersonalityCard key={personality.name}>
-              <img src={personality.image} alt={personality.name} />
-            </PersonalityCard>
-          ))}
+          renderItems={currentItems
+            .filter(
+              (value, index, self) =>
+                index === self.findIndex((t) => t.name === value.name)
+            )
+            .map((personality: PersonalityType) => (
+              <PersonalityCard key={personality.name}>
+                <img src={personality.image} alt={personality.name} />
+              </PersonalityCard>
+            ))}
         />
       </MainContainer>
     </PageContainer>

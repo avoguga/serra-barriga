@@ -4,6 +4,7 @@ export const PageContainer = styled.div`
   display: flex;
   background: #b21522;
   justify-content: center;
+  min-height: 100vh;
 `;
 
 export const PageHeader = styled.div`

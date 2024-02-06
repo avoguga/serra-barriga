@@ -9,10 +9,6 @@ const useCarousel = <T>({ items, itemHeight }: IUseCarouselProps<T>) => {
   const endIndex = startIndex + itemsPerPage;
   const currentItems = items.slice(startIndex, endIndex);
 
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  const hasNextPage = currentPage < totalPages - 1;
-  const hasPrevPage = currentPage > 0;
-
   const updateItemsPerPage = () => {
     const availableHeight = window.innerHeight - itemHeight;
     const itemsCount = Math.floor(availableHeight / itemHeight);
@@ -27,6 +23,10 @@ const useCarousel = <T>({ items, itemHeight }: IUseCarouselProps<T>) => {
   const prevPage = () => {
     if (hasPrevPage) setCurrentPage(currentPage - 1);
   };
+
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const hasNextPage = currentPage < totalPages - 1;
+  const hasPrevPage = currentPage > 0;
 
   useEffect(() => {
     updateItemsPerPage();
