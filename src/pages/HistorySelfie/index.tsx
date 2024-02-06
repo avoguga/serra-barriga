@@ -15,9 +15,10 @@ export const SelfieContainer = styled.button`
   align-items: center;
   justify-content: center;
   background: #768e19 0% 0% no-repeat padding-box;
-  width: 270px;
+  width: 180px;
   height: 70px;
   border-radius: 35px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   svg {
     width: 45px;
