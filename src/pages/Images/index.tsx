@@ -4,13 +4,16 @@ import tiktok from '../../assets/icons/app serra.svg';
 import logo from '../../assets/app_serra.svg';
 import HomeButton from '../../components/HomeButton';
 import imagem from '../../assets/icons/imagem - branco.svg';
+import useNavigate from 'react-router-dom';
 import './styles.css';
+// seta from '../../serra-barriga/src/assets/seta voltar e abaixo - branco.svg';
 import { Color } from 'three';
 
 const Images = () => {
   return (
 
     <WatermarkWrapper>
+      
       <div
         style={{
           backgroundColor: '#D66B00',
@@ -20,6 +23,11 @@ const Images = () => {
           flexDirection: 'column'
         }}
       >
+        <div id='voltar' className='back'>
+          <a href="serra-barriga\src\pages\TakeHome\index.tsx">
+            <img src="" alt="" />
+          </a>
+        </div>
         <img
           src={tiktok}
           alt="tiktok"
