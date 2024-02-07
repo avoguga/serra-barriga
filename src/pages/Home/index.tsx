@@ -123,8 +123,19 @@ const Home = () => {
           >
             SERRA DA BARRIGA
           </HomeButton>
-          <HomeButton iconType="Info" onClick={toggleFullScreen}>
+          <HomeButton iconType="Info" onClick={() => {
+              navigate('/about');
+              toggleFullScreen
+            }}
+          >
             SOBRE O APP
+          </HomeButton>
+          <HomeButton iconType="Info" onClick={() => {
+              navigate('/atalaia-de-acaiuba');
+              toggleFullScreen
+            }}
+          >
+            TEMPORÁRIO - Atalaia Acaiuba
           </HomeButton>
           <BottomContainer>
             <img src={aaa} alt="aaa" width={104} height={212} />
