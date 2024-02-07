@@ -14,6 +14,7 @@ import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
 import AppCanvas from '../pages/HistorySelfie/Teste/AppCanvas';
+import AtalaiaView from '../pages/AtalaiaAcaiuba';
 
 export const router = createBrowserRouter([
   {
@@ -88,4 +89,9 @@ export const router = createBrowserRouter([
     element: <SerraDaBarriga />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/atalaia-de-acaiuba',
+    element: <AtalaiaView />,
+    errorElement: <ErrorPage />,
+  }
 ]);
