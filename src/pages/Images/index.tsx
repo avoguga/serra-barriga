@@ -1,15 +1,12 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import styled from 'styled-components';
 import tiktok from '../../assets/icons/app serra.svg';
-import logo from '../../assets/app_serra.svg';
-import HomeButton from '../../components/HomeButton';
 import imagem from '../../assets/icons/imagem - branco.svg';
-import useNavigate from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
-// seta from '../../serra-barriga/src/assets/seta voltar e abaixo - branco.svg';
-import { Color } from 'three';
+import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
 const Images = () => {
+  const navigate = useNavigate();
   return (
 
     <WatermarkWrapper>
@@ -23,19 +20,20 @@ const Images = () => {
           flexDirection: 'column'
         }}
       >
-        <div id='voltar' className='back'>
-          <a href="serra-barriga\src\pages\TakeHome\index.tsx">
-            <img src="" alt="" />
-          </a>
-        </div>
+        <button className='back' 
+        onClick={() => {
+          navigate('/takehome');
+        }}>
+            <img src={seta} alt="" />
+        </button>
         <img
           src={tiktok}
           alt="tiktok"
           style={{
             width: '100%',
             height: '102px',
-            marginTop: '118px',
-            marginBottom: '67px',
+            marginTop: '140px',
+            marginBottom: '30px',
           }}
         />
         <div className='galeria'>

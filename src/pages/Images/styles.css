@@ -1,18 +1,25 @@
 :root{
     --bg-color: #D66B00;
     --text-color: #fff;
-    --square-color: rgba(0, 0, 0, 0.1);
+    --square-color: rgba(0, 0, 0, 0.3);
 }
 .back{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--square-color);
     border-radius: 30px;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     align-self: self-start;
     margin-top: -100px; /* altura que está do topo */
     top: 10px; /* altura que vai parar antes do topo */
     left: 10px;
     position: sticky;
+}
+.back img{
+    width: 17px;
+    color: #fff;
 }
 .galeria {
     font-family: Futura, "Trebuchet MS", Arial, sans-serif; 
