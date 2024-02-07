@@ -4,6 +4,7 @@ import { SelfieContainer } from '../HistorySelfie';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useNavigate } from 'react-router-dom';
 import Video from '../../assets/icons/video.svg';
+import teste_video from '../../assets/teste_video.mp4';
 import './style.css';
 
 const Videos = () => {
@@ -14,7 +15,7 @@ const Videos = () => {
       <div className="background">
       <button className='back' 
         onClick={() => {
-          navigate('/takehome');
+          navigate('/takehome/videos');
         }}>
             <img src={seta} alt="" />
         </button>
@@ -34,15 +35,16 @@ const Videos = () => {
           <p className='text-video'>VÍDEOS</p>
         </SelfieContainer>
 
-        <div className='video-containers'>
-          <span className='video1'/>
-          <p className='text-video-obj'>Vídeo 1</p>
-          <span className='video2'/>
-          <p className='text-video-obj'>Vídeo 2</p>
-          <span className='video3'/>
-          <p className='text-video-obj'>Vídeo 3</p>
+        <div className="video-container">
+            <p className='video-title'>Título do vídeo 1</p>
+            <video className='video-player' src={teste_video} controls></video>
         </div>
 
+        <div className='video-info'>
+            <p>Interpretação: Nome aqui</p>
+            <p>Texto: Nome aqui</p>
+            <p>Trilha: Nome aqui</p>
+        </div>
       </div>
     </WatermarkWrapper>
   );

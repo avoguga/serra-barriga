@@ -35,11 +35,26 @@ const Videos = () => {
         </SelfieContainer>
 
         <div className='video-containers'>
-          <span className='video1'/>
+          <button 
+          className='video1' 
+          onClick={() => {
+            navigate('/takehome/videos/video-play');
+          }}
+          />
           <p className='text-video-obj'>Vídeo 1</p>
-          <span className='video2'/>
+          <button 
+          className='video2'
+          onClick={() => {
+            navigate('/takehome/videos/video-play');
+          }}
+          />
           <p className='text-video-obj'>Vídeo 2</p>
-          <span className='video3'/>
+          <button 
+          className='video3'
+          onClick={() => {
+            navigate('/takehome/videos/video-play');
+          }}
+          />
           <p className='text-video-obj'>Vídeo 3</p>
         </div>
 
