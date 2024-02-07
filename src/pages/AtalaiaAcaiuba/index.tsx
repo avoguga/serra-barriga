@@ -14,6 +14,14 @@ const View = styled.div`
         font-size: 18px;
     }
 `
+
+const AgroupItens = styled.div`
+    width: 381px;
+    height: 367px;
+    background-color: #95B420;
+    border-radius: 58px;
+    opacity: 1;
+`
 const AtalaiaView = () => {
     return (
         <View>
@@ -29,6 +37,7 @@ const AtalaiaView = () => {
         />
             <h1>Atalaia Acaiuba</h1>
             <h3>Mirante de acaiuba - lider palmarino</h3>
+            <AgroupItens></AgroupItens>
         </View>
     );
 }
