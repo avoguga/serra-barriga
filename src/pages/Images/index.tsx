@@ -1,11 +1,12 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import tiktok from '../../assets/icons/app serra.svg';
 import imagem from '../../assets/icons/imagem - branco.svg';
-import useNavigate from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
 const Images = () => {
+  const navigate = useNavigate();
   return (
 
     <WatermarkWrapper>
@@ -19,9 +20,12 @@ const Images = () => {
           flexDirection: 'column'
         }}
       >
-        <div id='voltar' className='back'>
+        <button className='back' 
+        onClick={() => {
+          navigate('/takehome');
+        }}>
             <img src={seta} alt="" />
-        </div>
+        </button>
         <img
           src={tiktok}
           alt="tiktok"
