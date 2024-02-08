@@ -11,7 +11,8 @@ import AboutButton from '../../components/AboutButton';
 const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  row-gap: 30px;
+  column-gap: 50px;
   justify-content: center;
   margin: 0 10px;
 `;
@@ -25,7 +26,7 @@ const BottomContainer = styled.div`
   height: 134px;
   padding: 20px;
   box-sizing: border-box;
-  margin-top: 20px;
+  margin-top: 30px;
   border-radius: 90px;
 `;
 
@@ -86,8 +87,8 @@ const Home = () => {
           style={{
             width: '200px',
             height: '70px',
-            marginTop: '25px',
-            marginBottom: '37px',
+            marginTop: '50px',
+            marginBottom: '60px',
           }}
         />
 
