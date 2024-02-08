@@ -15,6 +15,7 @@ import LeftArrow from '../assets/icons/set esquerda.svg?react';
 import BottomArrow from '../assets/icons/seta baixo.svg?react';
 import Arqueologia from '../assets/icons/arqueologia.svg?react';
 import View360 from '../assets/icons/360 view - branco.svg?react';
+import Video from '../assets/icons/video.svg?react';
 
 export const Icons = {
   Scan,
@@ -34,4 +35,5 @@ export const Icons = {
   BottomArrow,
   Arqueologia,
   View360,
+  Video,
 };
