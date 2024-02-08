@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'FuturaPTBold';
   src: url('/assets/fonts/Futura/FuturaPTBold.otf') format('opentype');
   font-weight: bold;
@@ -80,7 +80,7 @@
   src: url('/assets/fonts/Futura/FuturaPTCondMediumOblique.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
-}
+} */
 
 @font-face {
   font-family: 'FuturaPTDemi';
@@ -88,7 +88,7 @@
   font-weight: bold;
   font-style: normal;
 }
-
+/* 
 @font-face {
   font-family: 'FuturaPTDemiOblique';
   src: url('/assets/fonts/Futura/FuturaPTDemiOblique.otf') format('opentype');
@@ -108,7 +108,7 @@
   src: url('/assets/fonts/Futura/FuturaPTExtraBoldOblique.otf') format('opentype');
   font-weight: bold;
   font-style: italic;
-}
+} */
 
 @font-face {
   font-family: 'FuturaPTHeavy';
@@ -124,7 +124,7 @@
   font-style: normal;
 }
 
-
+/* 
 @font-face {
   font-family: 'FuturaPTHeavyOblique';
   src: url('/assets/fonts/Futura/FuturaPTHeavyOblique.otf') format('opentype');
@@ -158,7 +158,7 @@
   src: url('/assets/fonts/Futura/FuturaPTMediumOblique.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
-}
+} */
 
 
 /* all texts to has the font-family FuturaPT */
