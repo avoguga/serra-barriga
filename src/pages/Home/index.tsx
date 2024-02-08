@@ -43,32 +43,32 @@ const TextContainer = styled.div`
   }
 `;
 
-export const enterFullScreen = () => {
-  const doc: any = window.document;
-  const docEl: any = doc.documentElement;
+// export const enterFullScreen = () => {
+//   const doc: any = window.document;
+//   const docEl: any = doc.documentElement;
 
-  const requestFullScreen =
-    docEl.requestFullscreen ||
-    docEl.mozRequestFullScreen ||
-    docEl.webkitRequestFullScreen ||
-    docEl.msRequestFullscreen;
+//   const requestFullScreen =
+//     docEl.requestFullscreen ||
+//     docEl.mozRequestFullScreen ||
+//     docEl.webkitRequestFullScreen ||
+//     docEl.msRequestFullscreen;
 
-  if (
-    !doc.fullscreenElement &&
-    !doc.mozFullScreenElement &&
-    !doc.webkitFullscreenElement &&
-    !doc.msFullscreenElement
-  ) {
-    requestFullScreen.call(docEl);
-  }
-};
+//   if (
+//     !doc.fullscreenElement &&
+//     !doc.mozFullScreenElement &&
+//     !doc.webkitFullscreenElement &&
+//     !doc.msFullscreenElement
+//   ) {
+//     requestFullScreen.call(docEl);
+//   }
+// };
 
 const Home = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    enterFullScreen();
-  }, []);
+  // useEffect(() => {
+  //   enterFullScreen();
+  // }, []);
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>

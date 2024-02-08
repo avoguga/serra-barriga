@@ -138,7 +138,7 @@ const VirtualExpo = () => {
         <ModelsContainer>
           <model-viewer
             ar
-            ar-modes="webxr"
+            // ar-modes="webxr"
             // ar-placement="wall"
             camera-controls
             touch-action="pan-y"
@@ -181,7 +181,7 @@ const VirtualExpo = () => {
           ></model-viewer> */}
 
           <model-viewer
-            ar-modes="scene-viewer"
+            // ar-modes="scene-viewer"
             style={{
               width: '146px',
               height: '146px',

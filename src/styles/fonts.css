@@ -82,12 +82,12 @@
   font-style: italic;
 } */
 
-@font-face {
+/* @font-face {
   font-family: 'FuturaPTDemi';
   src: url('src/assets/fonts/FuturaWolf/FuturaPTDemi.woff') format('woff');
   font-weight: bold;
   font-style: normal;
-}
+} */
 /* 
 @font-face {
   font-family: 'FuturaPTDemiOblique';

@@ -5,12 +5,12 @@ import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import { CameraContainer, Container, HeaderContainer } from './styles';
-import { enterFullScreen } from '../Home';
+// import { enterFullScreen } from '../Home';
 import { useEffect } from 'react';
 
 const QRCode = () => {
   useEffect(() => {
-    enterFullScreen();
+    // enterFullScreen();
   }, []);
 
   const navigate = useNavigate();
