@@ -28,7 +28,6 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  font-family: 'FuturaPT';
 
   &:focus {
     outline: none;
