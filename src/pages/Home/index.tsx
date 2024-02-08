@@ -5,6 +5,7 @@ import aaa from '../../assets/icons/desenho mão segurando celular.svg';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
+import { useEffect } from 'react';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -42,6 +43,26 @@ const TextContainer = styled.div`
 
 const Home = () => {
   const navigate = useNavigate();
+
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((e) => {
+        console.error(`Falha ao ativar o modo tela cheia: ${e.message}`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch((e) => {
+          console.error(`Falha ao sair do modo tela cheia: ${e.message}`);
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      toggleFullScreen();
+    }, 1000);
+  }, []);
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
@@ -102,13 +123,19 @@ const Home = () => {
           >
             SERRA DA BARRIGA
           </HomeButton>
-          <HomeButton
-            iconType="Info"
-            onClick={() => {
+          <HomeButton iconType="Info" onClick={() => {
               navigate('/about');
+              toggleFullScreen
             }}
           >
             SOBRE O APP
+          </HomeButton>
+          <HomeButton iconType="Info" onClick={() => {
+              navigate('/atalaia-de-acaiuba');
+              toggleFullScreen
+            }}
+          >
+            TEMPORÁRIO - Atalaia Acaiuba
           </HomeButton>
           <BottomContainer>
             <img src={aaa} alt="aaa" width={104} height={212} />

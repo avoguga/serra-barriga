@@ -19,6 +19,7 @@
     ]
   },
   "dependencies": {
+    "@google/model-viewer": "^3.4.0",
     "@react-three/fiber": "^8.15.15",
     "@yudiel/react-qr-scanner": "^1.2.6",
     "facefilter": "^3.3.6",

@@ -15,6 +15,7 @@ import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
 import AppCanvas from '../pages/HistorySelfie/Teste/AppCanvas';
 import VideoPlay from '../pages/VideoPlay';
+import AtalaiaView from '../pages/AtalaiaAcaiuba';
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,11 @@ export const router = createBrowserRouter([
   {
     path: '/takehome/videos/video-play',
     element: <VideoPlay />,
+    errorElement: <ErrorPage />,
+  },
+ {
+    path: '/atalaia-de-acaiuba',
+    element: <AtalaiaView />,
     errorElement: <ErrorPage />,
   }
 ]);
