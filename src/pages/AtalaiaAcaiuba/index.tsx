@@ -1,45 +1,119 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import atalaia from '../../assets/images/atalaia-de-acaiuba.png';
-import FloatingButtonBar from "../../components/FloatingContainer";
+import FloatingButtonBar from '../../components/FloatingContainer';
+import HomeButton from '../../components/HomeButton';
 
 const View = styled.div`
-    background-color: #8AA61E;
-    font-family: 'Futura PT', sans-serif;
-    color: #ffffff;
-    h1 {
-        font-size: 34px;
-      }
-    h3 {
-        font-size: 18px;
-    }
-`
+  background-color: #8aa61e;
+  font-family: 'Futura PT', sans-serif;
+  color: #ffffff;
+  h1 {
+    font-size: 34px;
+  }
+  p {
+    font-size: 18px;
+  }
+`;
 
-const AgroupItens = styled.div`
-    width: 381px;
-    height: 367px;
-    background-color: #95B420;
-    border-radius: 58px;
-    opacity: 1;
-`
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const AgroupTexts = styled.div`
+  margin: 20px 0 30px 0;
+  text-align: center;
+`;
+
+const AgroupButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  width: 381px;
+  max-width: 90%;
+  height: 367px;
+  background-color: #95b420;
+  border-radius: 58px;
+  opacity: 1;
+  margin: 0 0 40px 0;
+`;
+
 const AtalaiaView = () => {
-    return (
-        <View>
-        <FloatingButtonBar />
+  const navigate = useNavigate();
+  return (
+    <View>
+      <FloatingButtonBar />
+      <Content>
         <img
-            src={atalaia}
-            alt="Logo do aplicativo Serra da Barriga"
-            style={{
-              width: '350px',
-              height: '232px',
-              margin: '125px 0 0',
-            }}
+          src={atalaia}
+          alt="Logo do aplicativo Serra da Barriga"
+          style={{
+            width: '350px',
+            height: '232px',
+            margin: '100px 0 0 0',
+          }}
         />
-            <h1>Atalaia Acaiuba</h1>
-            <h3>Mirante de acaiuba - lider palmarino</h3>
-            <AgroupItens></AgroupItens>
-        </View>
-    );
-}
+        <AgroupTexts>
+          <h1>Atalaia de Acaiuba</h1>
+          <p>Mirante de acaiuba - lider palmarino</p>
+        </AgroupTexts>
+        <AgroupButtons>
+          <HomeButton
+            iconType="Info"
+            onClick={() => {
+              navigate('/#');
+            }}
+          >
+            INFORMAÇÕES
+          </HomeButton>
+          <HomeButton
+            iconType="Location"
+            onClick={() => {
+              navigate('/#');
+            }}
+          >
+            LOCALIZAÇÃO
+          </HomeButton>
+          <HomeButton
+            iconType="Video"
+            onClick={() => {
+              navigate('/#');
+            }}
+          >
+            VÍDEOS
+          </HomeButton>
+          <HomeButton
+            iconType="Img"
+            onClick={() => {
+              navigate('/#');
+            }}
+          >
+            IMAGENS
+          </HomeButton>
+          <HomeButton
+            iconType="Audio"
+            onClick={() => {
+              navigate('/#');
+            }}
+          >
+            ÁUDIOS
+          </HomeButton>
+          <HomeButton
+            iconType="Selfie"
+            onClick={() => {
+              navigate('/#');
+            }}
+          >
+            SELFIE HISTÓRICA
+          </HomeButton>
+        </AgroupButtons>
+      </Content>
+    </View>
+  );
+};
 
 export default AtalaiaView;
