@@ -1,108 +1,27 @@
-import styled from 'styled-components';
 import appSerra from '../../assets/app serra.svg';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
-import { PersonalityType, personalities } from '../../types/personalitiesData';
-import Arrow from '../../components/ArrowButton';
-import { useState } from 'react';
+import Carousel from '../../components/Carousel';
+import useCarousel from '../../components/Carousel/hooks/useCarousel';
 import FloatingButtonBar from '../../components/FloatingContainer';
-
-const PageContainer = styled.div`
-  display: flex;
-  background: #b21522;
-  height: 100vh;
-  justify-content: center;
-  align-items:  baseline;
-  
-`;
-
-const PageHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height:60px;
-  background: #8c111b;
-  width: 70%;
-  border-radius: 35px;
-
-  text-transform: uppercase;
-  color: #ffffff;
-
-  margin-top: 8px;
-  padding: 0 20px;
-  
-
-
-`;
-const HeaderContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  font-family: 'FuturaPTDemiOblique', sans-serif;
-  font-size: 13px;
-  opacity: 1;
-`;
-
-const PersonalitiesGrid = styled.section`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 400px;
-gap: 10px;
- padding: 10px;
-`;
-
-const PersonalityCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-family: 'Kumbh Sans', sans-serif;
-  color: #ffffff;
-  font-size: 14px;
-  height: auto;
-  overflow: hidden;
-  margin-bottom: 2px;
-
-  img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    object-position: center;
-  }
-`;
-
-const ArrowContainer = styled.div`
-  display: flex;
-
-  flex-direction: row;
- 
-  left: 0;
-  justify-content: space-between;
-  width: 95%;
-  margin-left: 10px;
-`;
-
-const MainContainer = styled.div `
-display: flex;
-flex-direction: column;
-align-items: center;
-`
+import { PersonalityType, personalities } from '../../types/personalitiesData';
+import {
+  HeaderContent,
+  MainContainer,
+  PageContainer,
+  PageHeader,
+  PersonalityCard,
+} from './styles';
 
 const Personalities = () => {
-  const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
-  const handleLeftClick = () => {
-    console.log('Clicou na seta esquerda');
-    setActiveArrow('left');
-  };
+  const { currentItems, hasNextPage, hasPrevPage, nextPage, prevPage } =
+    useCarousel<PersonalityType>({
+      itemHeight: 128,
+      items: personalities,
+    });
 
-  const handleRightClick = () => {
-    console.log('Clicou na seta direita');
-    setActiveArrow('right');
-  };
   return (
     <PageContainer>
-      <FloatingButtonBar  backgroundColor="#8C111B" />
+      <FloatingButtonBar backgroundColor="#8C111B" />
       <MainContainer>
         <img
           src={appSerra}
@@ -110,7 +29,7 @@ const Personalities = () => {
           style={{
             width: '100%',
             height: '90px',
-            marginTop: '110px',
+            marginTop: 24,
           }}
         />
         <PageHeader>
@@ -126,27 +45,22 @@ const Personalities = () => {
             <h3>PERSONALIDADES</h3>
           </HeaderContent>
         </PageHeader>
-
-        <PersonalitiesGrid>
-          {personalities.map((personality: PersonalityType) => (
-            <PersonalityCard key={personality.name}>
-              <img src={personality.image} alt={personality.name} />
-            </PersonalityCard>
-          ))}
-        </PersonalitiesGrid>
-
-        <ArrowContainer>
-          <Arrow
-            direction="left"
-            onClick={handleLeftClick}
-            isActive={activeArrow === 'left'}
-          />
-          <Arrow
-            direction="right"
-            onClick={handleRightClick}
-            isActive={activeArrow === 'right'}
-          />
-        </ArrowContainer>
+        <Carousel
+          leftArrowActive={hasPrevPage}
+          rightArrowActive={hasNextPage}
+          onClickNextPage={nextPage}
+          onClickPreviousPage={prevPage}
+          renderItems={currentItems
+            .filter(
+              (value, index, self) =>
+                index === self.findIndex((t) => t.name === value.name)
+            )
+            .map((personality: PersonalityType) => (
+              <PersonalityCard key={personality.name}>
+                <img src={personality.image} alt={personality.name} />
+              </PersonalityCard>
+            ))}
+        />
       </MainContainer>
     </PageContainer>
   );
