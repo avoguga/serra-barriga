@@ -16,6 +16,7 @@ import Tour360 from '../pages/Tour360';
 import AppCanvas from '../pages/HistorySelfie/Teste/AppCanvas';
 import VideoPlay from '../pages/VideoPlay';
 import AtalaiaView from '../pages/AtalaiaAcaiuba';
+import Agenda from '../pages/Agenda';
 
 export const router = createBrowserRouter([
   {
@@ -95,9 +96,14 @@ export const router = createBrowserRouter([
     element: <VideoPlay />,
     errorElement: <ErrorPage />,
   },
- {
+  {
     path: '/atalaia-de-acaiuba',
     element: <AtalaiaView />,
     errorElement: <ErrorPage />,
-  }
+  },
+  {
+    path: '/agenda',
+    element: <Agenda />,
+    errorElement: <ErrorPage />,
+  },
 ]);

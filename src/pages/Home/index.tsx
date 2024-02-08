@@ -136,13 +136,16 @@ const Home = () => {
           <HomeButton
             iconType="Info"
             onClick={() => {
-              navigate('/about');
-              // toggleFullScreen;
+              navigate('/agenda');
             }}
           >
             AGENDA
           </HomeButton>
-          <BottomContainer>
+          <BottomContainer
+            onClick={() => {
+              navigate('/qrcode');
+            }}
+          >
             <img src={aaa} alt="aaa" width={104} height={212} />
             <TextContainer>
               <p>
