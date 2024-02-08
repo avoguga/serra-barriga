@@ -1,10 +1,9 @@
 :root{
-    --bg-color: #D66B00;
     --text-color: #fff;
     --square-color: rgba(0, 0, 0, 0.3);
 }
 .fundo{
-    background: var(--bg-color);
+    background: #D66B00;
     height: 160vh;
     align-items: center;
     display: flex;

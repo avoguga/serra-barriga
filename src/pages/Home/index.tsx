@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import tiktok from '../../assets/icons/app serra + tiktok.svg';
+import Logo from '../../assets/logo.png';
 import aaa from '../../assets/icons/desenho mão segurando celular.svg';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import { useEffect } from 'react';
+import AboutButton from '../../components/AboutButton';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -41,47 +42,55 @@ const TextContainer = styled.div`
   }
 `;
 
+export const enterFullScreen = () => {
+  const doc: any = window.document;
+  const docEl: any = doc.documentElement;
+
+  const requestFullScreen =
+    docEl.requestFullscreen ||
+    docEl.mozRequestFullScreen ||
+    docEl.webkitRequestFullScreen ||
+    docEl.msRequestFullscreen;
+
+  if (
+    !doc.fullscreenElement &&
+    !doc.mozFullScreenElement &&
+    !doc.webkitFullscreenElement &&
+    !doc.msFullscreenElement
+  ) {
+    requestFullScreen.call(docEl);
+  }
+};
+
 const Home = () => {
   const navigate = useNavigate();
 
-  // const toggleFullScreen = () => {
-  //   if (!document.fullscreenElement) {
-  //     document.documentElement.requestFullscreen().catch((e) => {
-  //       console.error(`Falha ao ativar o modo tela cheia: ${e.message}`);
-  //     });
-  //   } else {
-  //     if (document.exitFullscreen) {
-  //       document.exitFullscreen().catch((e) => {
-  //         console.error(`Falha ao sair do modo tela cheia: ${e.message}`);
-  //       });
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     toggleFullScreen();
-  //   }, 1000);
-  // }, []);
+  useEffect(() => {
+    enterFullScreen();
+  }, []);
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <div
         style={{
           backgroundColor: '#67781B',
-          height: '109vh',
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         <img
-          src={tiktok}
-          alt="tiktok"
+          src={Logo}
+          alt="Logo"
           style={{
-            width: '100%',
-            height: '102px',
-            marginTop: '118px',
-            marginBottom: '67px',
+            width: '200px',
+            height: '70px',
+            marginTop: '25px',
+            marginBottom: '37px',
           }}
         />
+
         <ButtonContainer>
           <HomeButton
             iconType="Scan"
@@ -130,7 +139,7 @@ const Home = () => {
               // toggleFullScreen;
             }}
           >
-            SOBRE O APP
+            AGENDA
           </HomeButton>
           <BottomContainer>
             <img src={aaa} alt="aaa" width={104} height={212} />
@@ -141,6 +150,16 @@ const Home = () => {
               </p>
             </TextContainer>
           </BottomContainer>
+
+          <AboutButton
+            iconType="Info"
+            onClick={() => {
+              navigate('/about');
+              // toggleFullScreen;
+            }}
+          >
+            SOBRE O APP
+          </AboutButton>
         </ButtonContainer>
       </div>
     </WatermarkWrapper>

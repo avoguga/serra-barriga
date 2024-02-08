@@ -61,17 +61,18 @@ SelfieContainer {
     margin-bottom: 0px;
 }
 
-.back {
+.back-video-route {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #B75C01;
+    background-color: var(--square-color);
     border-radius: 30px;
     width: 55px;
     height: 55px;
     align-self: self-start;
-    top: 7%; /* altura que vai parar antes do topo */
-    left: 5%;
+    margin-top: -100px; /* altura que está do topo */
+    top: 10px; /* altura que vai parar antes do topo */
+    left: 10px;
     position: sticky;
 }
 
