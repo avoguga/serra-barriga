@@ -36,7 +36,7 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   p {
-    font: normal normal normal 16px/22px FuturaPTHeavy;
+    font: normal normal normal 16px/22px;
     letter-spacing: 0px;
     margin-left: 10px;
   }
