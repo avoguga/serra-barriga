@@ -17,6 +17,7 @@ import AppCanvas from '../pages/HistorySelfie/Teste/AppCanvas';
 import VideoPlay from '../pages/VideoPlay';
 import AtalaiaView from '../pages/AtalaiaAcaiuba';
 import Agenda from '../pages/Agenda';
+import PersonalityPage from '../pages/Personality';
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,13 @@ export const router = createBrowserRouter([
     path: '/personalities',
     element: <Personalities />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: ':personalityName', // A rota para o componente Mundo como sub-rota de personalities
+        element: <PersonalityPage />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
   {
     path: '/takehome',
