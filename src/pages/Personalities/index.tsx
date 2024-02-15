@@ -3,7 +3,7 @@ import { useNavigate, useOutlet } from 'react-router-dom';
 import styled from 'styled-components';
 import appSerra from '../../assets/app_serra.svg';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
-import { PersonalityType, personalities } from '../../types/personalitiesData';
+import { PersonalityType, personalities } from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
 import FloatingButtonBar from '../../components/FloatingContainer';
 
