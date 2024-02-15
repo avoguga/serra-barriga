@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FloatingButtonBar from '../../components/FloatingContainer';
 import appSerra from '../../assets/icons/app serra.svg';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
-import { personalities } from '../../types/personalitiesData';
+import { personalities } from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
 
 const Container = styled.div`
