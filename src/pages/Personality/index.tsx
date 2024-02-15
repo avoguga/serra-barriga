@@ -5,14 +5,17 @@ import FloatingButtonBar from '../../components/FloatingContainer';
 import appSerra from '../../assets/icons/app serra.svg';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import { personalities } from '../../types/personalitiesData';
+import Arrow from '../../components/ArrowButton';
 
 const Container = styled.div`
   display: flex;
   background: #b21522;
-  height: 150vh;
+  height: 200vh;
   justify-content: baseline;
   align-items: center;
   flex-direction: column;
+  max-width: 485px;
+
 `;
 
 const PageHeader = styled.div`
@@ -63,11 +66,12 @@ const Description = styled.p`
   color: #ffffff;
   text-align: left;
   font-family: 'FuturaPTBook', sans-serif;
-  font-size: 19px;
+  font-size: 15px;
   max-width: 80%;
   opacity: 1;
   margin-top: 15px;
   cursor: pointer;
+  justify-content: center;
 `;
 
 const ReadMoreButton = styled.button`
@@ -80,11 +84,79 @@ const ReadMoreButton = styled.button`
   font-family: 'FuturaPTBold', sans-serif;
 `;
 
+const ScrollContainer = styled.div`
+   overflow-x: auto; 
+  padding: 20px; 
+  width: 100vw; 
+
+  &::-webkit-scrollbar {
+    display: none; 
+  }
+`;
+const InnerScrollContainer = styled.div`
+  display: flex;
+  gap: 10px; 
+`;
+const PhotoBox = styled.div`
+ flex-shrink: 0;
+  width: 08.43rem; 
+  height:8.5rem; 
+  background-color: ${(props) => props.color || '#EEE'}; 
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+`;
+const SubTitleContainer = styled.div`
+
+font-family: 'FuturaPTDemi', sans-serif;
+    color: #ffffff;
+    font-size:10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-top: 50px;
+
+`;
+
+const VideoBox = styled.div`
+  width: 18.3rem; 
+  height:11rem; 
+  background-color: ${(props) => props.color || '#EEE'}; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  
+`;
+
+const ArrowContainer = styled.div`
+  display: flex;
+
+  flex-direction: row;
+
+  left: 0;
+  justify-content: space-between;
+  width: 95%;
+
+`;
+
+
 const PersonalityPage = () => {
   const { personalityName } = useParams<{ personalityName: string }>();
   const personality = personalities.find((p) => p.name === personalityName);
-
   const [isExpanded, setIsExpanded] = useState(false);
+  const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
+  const handleLeftClick = () => {
+    console.log('Clicou na seta esquerda');
+    setActiveArrow('left');
+  };
+
+  const handleRightClick = () => {
+    console.log('Clicou na seta direita');
+    setActiveArrow('right');
+  };
+
 
   const toggleIsExpanded = () => {
     setIsExpanded(!isExpanded);
@@ -133,6 +205,59 @@ const PersonalityPage = () => {
         ) : (
           <p>Personalidade não encontrada.</p>
         )}
+         <SubTitleContainer>
+            <h2>FOTOS</h2>
+            </SubTitleContainer>
+        <ScrollContainer>
+         
+         <InnerScrollContainer>
+         <PhotoBox color="#F48306"> {/* Conteúdo da foto 1 */} </PhotoBox>
+        <PhotoBox color="#D6C75C"> {/* Conteúdo da foto 2 */} </PhotoBox>
+        <PhotoBox color="#93B293"> {/* Conteúdo da foto 2 */} </PhotoBox>
+      
+
+         </InnerScrollContainer>
+       
+         <ArrowContainer>
+          <Arrow
+            direction="left"
+            onClick={handleLeftClick}
+            isActive={activeArrow === 'left'}
+          />
+          <Arrow
+            direction="right"
+            onClick={handleRightClick}
+            isActive={activeArrow === 'right'}
+          />
+        </ArrowContainer>
+        
+          
+         
+         
+
+        
+        </ScrollContainer>
+        <SubTitleContainer>
+            <h2>VIDEOS</h2>
+            </SubTitleContainer>
+         
+        
+       
+        <VideoBox color="#FFF"> {/* Conteúdo do vídeo */} </VideoBox>
+        <ArrowContainer>
+          <Arrow
+            direction="left"
+            onClick={handleLeftClick}
+            isActive={activeArrow === 'left'}
+          />
+          <Arrow
+            direction="right"
+            onClick={handleRightClick}
+            isActive={activeArrow === 'right'}
+          />
+        </ArrowContainer>
+        
+        
       </MainContainer>
     </Container>
   );
