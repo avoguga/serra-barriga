@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'FuturaPTBold';
   src: url('/assets/fonts/Futura/FuturaPTBold.otf') format('opentype');
   font-weight: bold;
@@ -80,15 +80,15 @@
   src: url('/assets/fonts/Futura/FuturaPTCondMediumOblique.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: 'FuturaPTDemi';
-  src: url('/assets/fonts/Futura/FuturaPTDemi.otf') format('opentype');
+  src: url('src/assets/fonts/FuturaWolf/FuturaPTDemi.woff') format('woff');
   font-weight: bold;
   font-style: normal;
-}
-
+} */
+/* 
 @font-face {
   font-family: 'FuturaPTDemiOblique';
   src: url('/assets/fonts/Futura/FuturaPTDemiOblique.otf') format('opentype');
@@ -108,23 +108,23 @@
   src: url('/assets/fonts/Futura/FuturaPTExtraBoldOblique.otf') format('opentype');
   font-weight: bold;
   font-style: italic;
-}
+} */
 
 @font-face {
   font-family: 'FuturaPTHeavy';
-  src: url('src/assets/FuturaPTHeavy.woff') format('woff');
+  src: url('src/assets/fonts/FuturaWolf/FuturaPTHeavy.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'FuturaPT';
-  src: url('src/assets/futura-pt.woff') format('woff');
+  src: url('src/assets/fonts/FuturaWolf/futura-pt.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
-
+/* 
 @font-face {
   font-family: 'FuturaPTHeavyOblique';
   src: url('/assets/fonts/Futura/FuturaPTHeavyOblique.otf') format('opentype');
@@ -158,4 +158,11 @@
   src: url('/assets/fonts/Futura/FuturaPTMediumOblique.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
+} */
+
+
+/* all texts to has the font-family FuturaPT */
+
+body, h1, h2, h3, h4, h5, h6, p, a, span, div, input, button, select, option, label, textarea {
+  font-family: 'FuturaPTDemi', sans-serif;
 }
