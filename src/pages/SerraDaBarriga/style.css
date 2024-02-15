@@ -1,10 +1,11 @@
 :root{
+    --bg-color: #B21522;
     --text-color: #fff;
     --square-color: black;
 }
 
 .container {
-    background: #B21522 ;
+    background: var(--bg-color) ;
     display: flex;
     flex-direction: column;
     align-items: center;

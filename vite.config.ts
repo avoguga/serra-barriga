@@ -10,5 +10,4 @@ export default defineConfig({
       include: '**/*.svg?react',
     }),
   ],
-  assetsInclude: ['**/*.glb'],
 });

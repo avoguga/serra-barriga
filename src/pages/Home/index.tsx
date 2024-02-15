@@ -1,18 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import Logo from '../../assets/logo.png';
-import aaa from '../../assets/icons/desenho mão segurando celular.svg';
-import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
-import HomeButton from '../../components/HomeButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import { useEffect } from 'react';
-import AboutButton from '../../components/AboutButton';
+import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
+import tiktok from '../../assets/icons/app serra + tiktok.svg';
+import aaa from '../../assets/icons/desenho mão segurando celular.svg';
+import HomeButton from '../../components/HomeButton';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  row-gap: 30px;
-  column-gap: 50px;
+  gap: 50px;
   justify-content: center;
   margin: 0 10px;
 `;
@@ -26,7 +23,7 @@ const BottomContainer = styled.div`
   height: 134px;
   padding: 20px;
   box-sizing: border-box;
-  margin-top: 30px;
+  margin-top: 20px;
   border-radius: 90px;
 `;
 
@@ -37,61 +34,33 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   p {
-    font: normal normal normal 16px/22px;
+    font: normal normal normal 16px/22px FuturaPTHeavy;
     letter-spacing: 0px;
     margin-left: 10px;
   }
 `;
 
-// export const enterFullScreen = () => {
-//   const doc: any = window.document;
-//   const docEl: any = doc.documentElement;
-
-//   const requestFullScreen =
-//     docEl.requestFullscreen ||
-//     docEl.mozRequestFullScreen ||
-//     docEl.webkitRequestFullScreen ||
-//     docEl.msRequestFullscreen;
-
-//   if (
-//     !doc.fullscreenElement &&
-//     !doc.mozFullScreenElement &&
-//     !doc.webkitFullscreenElement &&
-//     !doc.msFullscreenElement
-//   ) {
-//     requestFullScreen.call(docEl);
-//   }
-// };
-
 const Home = () => {
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   enterFullScreen();
-  // }, []);
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <div
         style={{
           backgroundColor: '#67781B',
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          height: '109vh',
         }}
       >
         <img
-          src={Logo}
-          alt="Logo"
+          src={tiktok}
+          alt="tiktok"
           style={{
-            width: '200px',
-            height: '70px',
-            marginTop: '50px',
-            marginBottom: '60px',
+            width: '100%',
+            height: '102px',
+            marginTop: '118px',
+            marginBottom: '67px',
           }}
         />
-
         <ButtonContainer>
           <HomeButton
             iconType="Scan"
@@ -136,16 +105,12 @@ const Home = () => {
           <HomeButton
             iconType="Info"
             onClick={() => {
-              navigate('/agenda');
+              navigate('/about');
             }}
           >
-            AGENDA
+            SOBRE O APP
           </HomeButton>
-          <BottomContainer
-            onClick={() => {
-              navigate('/qrcode');
-            }}
-          >
+          <BottomContainer>
             <img src={aaa} alt="aaa" width={104} height={212} />
             <TextContainer>
               <p>
@@ -154,16 +119,6 @@ const Home = () => {
               </p>
             </TextContainer>
           </BottomContainer>
-
-          <AboutButton
-            iconType="Info"
-            onClick={() => {
-              navigate('/about');
-              // toggleFullScreen;
-            }}
-          >
-            SOBRE O APP
-          </AboutButton>
         </ButtonContainer>
       </div>
     </WatermarkWrapper>

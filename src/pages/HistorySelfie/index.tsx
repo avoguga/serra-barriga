@@ -7,20 +7,17 @@ import styled from 'styled-components';
 import Iansa from '../../assets/iansã.png';
 import { useNavigate } from 'react-router-dom';
 import FloatingButtonBar from '../../components/FloatingContainer';
-import AppCanvas from './Teste/AppCanvas';
 
-const Selfiee = Icons['Selfie'];
+const Selfie = Icons['Selfie'];
 
 export const SelfieContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   background: #768e19 0% 0% no-repeat padding-box;
-  width: 180px;
+  width: 270px;
   height: 70px;
   border-radius: 35px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   svg {
     width: 45px;
@@ -71,7 +68,7 @@ const HistorySelfie = () => {
           }}
         />
         <SelfieContainer>
-          <Selfiee />
+          <Selfie />
           <p>SELFIE HISTÓRICA</p>
         </SelfieContainer>
         <br />
@@ -91,9 +88,8 @@ const HistorySelfie = () => {
           <img src={Iansa} alt="Iansã" width={300} height={350} />
         </ImageContainer>
         <ImageContainer>
-          <img src={Iansa} alt="Iansã;" width={300} height={350} />
+          <img src={Iansa} alt="Iansã" width={300} height={350} />
         </ImageContainer>
-        {/* <AppCanvas /> */}
       </div>
     </WatermarkWrapper>
   );

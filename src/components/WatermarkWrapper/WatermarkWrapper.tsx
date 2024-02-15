@@ -4,6 +4,7 @@ interface WatermarkWrapperProps {
   watermark?: boolean;
   watermarkImage?: string;
   children: React.ReactNode;
+  topWatermarkImage?: string;
   bottomWatermarkImage?: string;
 }
 
@@ -43,11 +44,13 @@ const WatermarkWrapper = ({
   children,
   watermark,
   watermarkImage,
+  topWatermarkImage,
   bottomWatermarkImage,
 }: WatermarkWrapperProps) => {
   if (watermark) {
     return (
       <WatermarkDiv
+        topWatermarkImage={topWatermarkImage}
         bottomWatermarkImage={bottomWatermarkImage}
         watermarkImage={watermarkImage}
       >

@@ -2,10 +2,9 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import HomeButton from '../../components/HomeButton';
 import styled from 'styled-components';
-import tiktok from '../../assets/logo.png';
+import tiktok from '../../assets/icons/app serra + tiktok.svg';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import WatermarkImageBottom from '../../assets/marcamontanhaparafundoclao.png';
-import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -13,21 +12,6 @@ const ButtonContainer = styled.div`
   gap: 50px;
   justify-content: center;
   margin: 0 10px;
-`;
-
-export const BackButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--square-color);
-  border-radius: 50%;
-  width: 55px;
-  height: 55px;
-  position: fixed; // Alterado de absolute para fixed
-  top: 7%;
-  left: 5%;
-  z-index: 10;
-  cursor: pointer;
 `;
 
 const TakeHome = () => {
@@ -39,20 +23,10 @@ const TakeHome = () => {
       <WatermarkWrapper watermark watermarkImage={WatermarkImage}>
         <div
           style={{
-            backgroundColor: '#D66B00',
-            height: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            backgroundColor: '#8AA61E',
+            height: '100%',
           }}
         >
-          <BackButton
-            onClick={() => {
-              navigate('/');
-            }}
-          >
-            <img src={seta} alt="" />
-          </BackButton>
           <img
             onClick={() => {
               navigate('/');
@@ -60,17 +34,18 @@ const TakeHome = () => {
             src={tiktok}
             alt="tiktok"
             style={{
-              width: '200px',
-              height: '70px',
-              marginTop: '50px',
-              marginBottom: '60px',
+              width: '100%',
+              height: '102px',
+              marginTop: '118px',
+              marginBottom: '67px',
             }}
           />
 
           <ButtonContainer>
             <h2
               style={{
-                font: 'normal normal 500 22px/30px FuturaPTHeavy',
+                font: 'normal normal 500 22px/30px',
+                fontFamily: 'FuturaPTHeavy',
                 letterSpacing: '0px',
                 color: '#FFFFFF',
               }}

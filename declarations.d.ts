@@ -8,16 +8,3 @@ declare module '*.svg' {
 }
 
 declare module 'facefilter';
-
-declare module 'react-qr-reader';
-
-declare namespace JSX {
-  interface IntrinsicElements {
-    'model-viewer': any; // Use `any` para permitir qualquer propriedade. Você pode especificar props mais precisas conforme necessário.
-  }
-}
-
-declare module '*.glb' {
-  const src: string;
-  export default src;
-}
