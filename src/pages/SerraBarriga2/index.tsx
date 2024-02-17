@@ -170,7 +170,8 @@ const Video = styled.iframe`
     height: 170px; 
 
     @media (min-width: 700px) {
-      height: 400px;
+      height: 510px;
+      width: 80%;
     }
 `;
 
