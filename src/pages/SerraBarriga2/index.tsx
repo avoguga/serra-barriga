@@ -76,13 +76,13 @@ const Mapa = styled.div`
     height: 110px;
     width: 110px;
     border-radius: 60px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 
     @media (min-width: 700px) {
       height: 210px;
       width: 210px;
       border-radius: 120px;
-      margin-bottom: 60px;
+      margin-bottom: 70px;
     }
 `;
 
@@ -94,13 +94,13 @@ const MapaBtn = styled.button`
     height: 110px;
     width: 110px;
     border-radius: 60px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 
     @media (min-width: 700px) {
       height: 210px;
       width: 210px;
       border-radius: 120px;
-      margin-bottom: 60px;
+      margin-bottom: 70px;
     }
 `;
 
