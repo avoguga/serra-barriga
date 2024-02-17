@@ -51,6 +51,7 @@ const Text = styled.div`
     line-height: 2.1;
     font-size: 13px;
     font-weight: 100;
+    margin-bottom: 45px;
 
     @media (min-width: 700px) {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
