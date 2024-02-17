@@ -51,7 +51,16 @@ const Text = styled.div`
     line-height: 2.1;
     font-size: 13px;
     font-weight: 100;
-`;
+
+    @media (min-width: 700px) {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        transform: translateY(20px);
+        line-height: 2.1;
+        font-size: 20px;
+        font-weight: 100;
+    }
+`
+;
 
 const LogoStyle = styled.img`
     width: 40%;
@@ -68,6 +77,13 @@ const Mapa = styled.div`
     width: 110px;
     border-radius: 60px;
     margin-bottom: 30px;
+
+    @media (min-width: 700px) {
+      height: 210px;
+      width: 210px;
+      border-radius: 120px;
+      margin-bottom: 60px;
+    }
 `;
 
 const MapaBtn = styled.button`
@@ -79,6 +95,13 @@ const MapaBtn = styled.button`
     width: 110px;
     border-radius: 60px;
     margin-bottom: 30px;
+
+    @media (min-width: 700px) {
+      height: 210px;
+      width: 210px;
+      border-radius: 120px;
+      margin-bottom: 60px;
+    }
 `;
 
 const MapaImg = styled.img`
@@ -86,6 +109,13 @@ const MapaImg = styled.img`
     width: 110px;
     padding: 30px;
     transform: translateY(-5px);
+
+    @media (min-width: 700px) {
+      height: 210px;
+      width: 210px;
+      padding: 60px;
+      transform: translateY(-10px)
+    }
 `;
 
 const MapaTexto = styled.p`
@@ -93,6 +123,11 @@ const MapaTexto = styled.p`
     transform: translateY(-25px);
     font-size: 15px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    @media (min-width: 700px) {
+      transform: translateY(-50px);
+      font-size: 20px;
+    }
 `;
 
 const Title = styled.div`
@@ -103,6 +138,11 @@ const Title = styled.div`
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-bottom: 14px;
+
+    @media (min-width: 700px) {
+        font-size: 22px;
+        margin-bottom: 14px;
+    } 
 `;
 
 const Carrossel = styled.div`
@@ -119,11 +159,19 @@ const CarrosselImg = styled.img`
 const BtnSeta = styled.div`
     display: flex;
     gap: 280px;
+
+    @media (min-width: 700px) {
+      gap: 780px;
+    }
 `;
 
 const Video = styled.iframe`
     background-color: var(--square-color);
     height: 170px; 
+
+    @media (min-width: 700px) {
+      height: 400px;
+    }
 `;
 
 const SerraDaBarriga2 = () => {
