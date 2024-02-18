@@ -12,11 +12,9 @@ export const SelfieContainer = styled.button`
   align-items: center;
   justify-content: center;
   background: #768e19 0% 0% no-repeat padding-box;
-  width: 180px;
-  height: 70px;
+  width: 220px;
+  height: 60px;
   border-radius: 35px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   svg {
     width: 45px;
@@ -25,7 +23,8 @@ export const SelfieContainer = styled.button`
 
   p {
     text-align: center;
-    font: normal normal normal 18px/23px FuturaPTHeavy;
+    font-size: 16px;
+    font-weight: bold;
     letter-spacing: 0px;
     color: #ffffff;
   }
@@ -75,7 +74,8 @@ const HistorySelfie = () => {
           style={{
             width: '300px',
             textAlign: 'justify',
-            font: 'normal normal normal 18px/25px FuturaPTHeavy',
+            fontSize: '18px',
+            fontWeight: 'normal',
             letterSpacing: '0px',
             color: '#FFFFFF',
           }}
