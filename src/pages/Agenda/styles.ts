@@ -1,11 +1,10 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
 
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #009289;
-  height: 110vh;
+  height: 100%;
   justify-content: baseline;
   align-items: center;
   padding: 7rem 1rem;
@@ -25,7 +24,6 @@ export const PageHeader = styled.div`
   color: #ffffff;
 
   padding: 0 20px;
- 
 `;
 export const HeaderContent = styled.div`
   display: flex;
@@ -41,20 +39,18 @@ export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 `;
 
 export const SelectContainer = styled.div`
- position: relative;
+  position: relative;
   width: 215px;
   height: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 0;
-  
-  gap: 10px;
 
+  gap: 10px;
 
   > h2 {
     font-family: 'Futura PT', sans-serif;
@@ -66,58 +62,46 @@ export const SelectContainer = styled.div`
 `;
 
 export const MonthSelector = styled.select`
-   width: 100%;
+  width: 100%;
   height: 2.503rem;
   padding: 0.5rem 2.5rem 0.5rem 1rem;
   border: 2px solid transparent;
   border-radius: 0;
 
-  
-
-  
-  color: #026E67;
+  color: #026e67;
   font-size: 1rem;
   cursor: pointer;
   font-weight: bold;
 
-
-
   &:focus {
-
-    border-color:#707070;
+    border-color: #707070;
   }
- 
+
   option {
-  color: #3F3F3F;
-  font-size: 1rem;
-  font-weight: bold;
-  border-bottom: 1px solid #707070; // Bordas entre as opções
-    padding: 0.5rem; 
- }
-  
+    color: #3f3f3f;
+    font-size: 1rem;
+    font-weight: bold;
+    border-bottom: 1px solid #707070; // Bordas entre as opções
+    padding: 0.5rem;
+  }
 `;
 
 export const MonthContainer = styled.div`
-display: flex;
-margin-top: 2rem;
-width: 100%;
-height: 100%;
-
-  
+  display: flex;
+  margin-top: 2rem;
+  width: 100%;
+  height: 100%;
 `;
 
 export const EventContainer = styled.div`
   display: flex;
-background-color: black,;
   flex-direction: row;
   overflow-x: auto;
   overflow-y: hidden;
   margin: 11rem -1rem 0 3.65rem;
   gap: 25px;
- height: 13rem;
- 
+  height: 13rem;
 
- 
   &::-webkit-scrollbar {
     display: none;
   }
@@ -132,7 +116,7 @@ export const EventCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
- 
+
   min-width: 75%;
   height: 10rem;
 `;
@@ -159,7 +143,6 @@ export const MoreButton = styled.button`
   width: 75%;
   transition: background-color 0.3s ease;
   justify-content: center;
- 
 `;
 export const ButtonCard = styled.div`
   display: flex;
@@ -173,4 +156,5 @@ export const ArrowContainer = styled.div`
   left: 0;
   justify-content: space-between;
   width: 95%;
+  margin-bottom: 100px;
 `;

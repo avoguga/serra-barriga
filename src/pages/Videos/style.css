@@ -26,9 +26,10 @@ SelfieContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 640px;
+    height: 100%;
     width: 70%;
     margin-top: 6%;
+    background-color: #d46900;
 }
 
 .video1 {

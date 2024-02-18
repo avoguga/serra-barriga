@@ -26,7 +26,16 @@ const Videos = () => {
   const navigate = useNavigate();
   return (
     <WatermarkWrapper>
-      <div className="background">
+      <div
+        style={{
+          display: 'flex',
+          height: '100%',
+          backgroundColor: '#d46900',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyItems: 'center',
+        }}
+      >
         <BackButton
           onClick={() => {
             navigate('/takehome');
@@ -41,7 +50,7 @@ const Videos = () => {
           style={{
             width: '200px',
             height: '70px',
-            marginTop: '10px',
+            marginTop: '50px',
             marginBottom: '30px',
           }}
         />
