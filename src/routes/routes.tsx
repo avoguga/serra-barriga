@@ -17,6 +17,7 @@ import VideoPlay from '../pages/VideoPlay';
 import AtalaiaView from '../pages/AtalaiaAcaiuba';
 import Agenda from '../pages/Agenda';
 import PersonalityPage from '../pages/Personality';
+import Maps from '../pages/Maps';
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +105,11 @@ export const router = createBrowserRouter([
   {
     path: '/agenda',
     element: <Agenda />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/maps',
+    element: <Maps />,
     errorElement: <ErrorPage />,
   },
 ]);

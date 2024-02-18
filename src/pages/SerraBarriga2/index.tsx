@@ -12,172 +12,173 @@ import mapa from '../../assets/mapa - branco.svg';
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import styled from 'styled-components';
+import { BackButton } from '../TakeHome';
 
 const ContainerGeral = styled.div`
-    background: #D66B00 ;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background: #d66b00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const BackBtn = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #753D00;
-    border-radius: 30px;
-    width: 45px;
-    height: 45px;
-    align-self: self-start;
-    margin-top: -40px; /* altura que está do topo */
-    top: 50px; /* altura que vai parar antes do topo */
-    left: 25px;
-    position: sticky;
-    margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #753d00;
+  border-radius: 30px;
+  width: 45px;
+  height: 45px;
+  align-self: self-start;
+  margin-top: -40px; /* altura que está do topo */
+  top: 50px; /* altura que vai parar antes do topo */
+  left: 25px;
+  position: sticky;
+  margin-bottom: 50px;
 `;
 
 const SetaVoltar = styled.img`
-    height: 23px;
-    width: 23px;
-    transform: translateX(-2px);
-`
+  /* height: 23px;
+  width: 23px;
+  transform: translateX(-2px); */
+`;
 
 const Text = styled.div`
-    color: white;
-    margin: 16%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+  margin: 16%;
+  transform: translateY(20px);
+  line-height: 2.1;
+  font-size: 13px;
+  font-weight: 100;
+  margin-bottom: 45px;
+
+  @media (min-width: 700px) {
     transform: translateY(20px);
     line-height: 2.1;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: 100;
-    margin-bottom: 45px;
-
-    @media (min-width: 700px) {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        transform: translateY(20px);
-        line-height: 2.1;
-        font-size: 20px;
-        font-weight: 100;
-    }
-`
-;
-
+  }
+`;
 const LogoStyle = styled.img`
-    width: 40%;
-    transform: translateY(60px);
-    margin-bottom: 28px;
+  width: 200px;
+  height: 70px;
+  margin-bottom: 20px;
+  margin-top: -10px;
 `;
 
 const Mapa = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #586617;
-    height: 110px;
-    width: 110px;
-    border-radius: 60px;
-    margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #586617;
+  height: 110px;
+  width: 110px;
+  border-radius: 60px;
+  margin-bottom: 35px;
 
-    @media (min-width: 700px) {
-      height: 210px;
-      width: 210px;
-      border-radius: 120px;
-      margin-bottom: 70px;
-    }
+  @media (min-width: 700px) {
+    height: 210px;
+    width: 210px;
+    border-radius: 120px;
+    margin-bottom: 70px;
+  }
 `;
 
 const MapaBtn = styled.button`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #586617;
-    height: 110px;
-    width: 110px;
-    border-radius: 60px;
-    margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #586617;
+  height: 110px;
+  width: 110px;
+  border-radius: 60px;
+  margin-bottom: 35px;
 
-    @media (min-width: 700px) {
-      height: 210px;
-      width: 210px;
-      border-radius: 120px;
-      margin-bottom: 70px;
-    }
+  @media (min-width: 700px) {
+    height: 210px;
+    width: 210px;
+    border-radius: 120px;
+    margin-bottom: 70px;
+  }
 `;
 
 const MapaImg = styled.img`
-    height: 110px;
-    width: 110px;
-    padding: 30px;
-    transform: translateY(-5px);
+  height: 110px;
+  width: 110px;
+  padding: 30px;
+  transform: translateY(-5px);
 
-    @media (min-width: 700px) {
-      height: 210px;
-      width: 210px;
-      padding: 60px;
-      transform: translateY(-10px)
-    }
+  @media (min-width: 700px) {
+    height: 210px;
+    width: 210px;
+    padding: 60px;
+    transform: translateY(-10px);
+  }
 `;
 
 const MapaTexto = styled.p`
-    color: white;
-    transform: translateY(-25px);
-    font-size: 15px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+  transform: translateY(-25px);
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-    @media (min-width: 700px) {
-      transform: translateY(-50px);
-      font-size: 20px;
-    }
+  @media (min-width: 700px) {
+    transform: translateY(-50px);
+    font-size: 20px;
+  }
 `;
 
 const Title = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-size: 15px;
-    color: white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 15px;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-bottom: 14px;
 
-    @media (min-width: 700px) {
-        font-size: 22px;
-        margin-bottom: 14px;
-    } 
+  @media (min-width: 700px) {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
 `;
 
 const Carrossel = styled.div`
-    display: flex;
-    flex-direction: row;
-    overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow-x: auto;
+  margin-left: 140px;
 `;
 
 const CarrosselImg = styled.img`
-    width: 50%;
-    display: block;
+  width: 50%;
+  display: block;
 `;
 
 const BtnSeta = styled.div`
-    display: flex;
-    gap: 280px;
+  display: flex;
+  gap: 280px;
 
-    @media (min-width: 700px) {
-      gap: 780px;
-    }
+  @media (min-width: 700px) {
+    gap: 780px;
+  }
 `;
 
 const Video = styled.iframe`
-    background-color: var(--square-color);
-    height: 170px; 
+  background-color: var(--square-color);
+  height: 170px;
 
-    @media (min-width: 700px) {
-      height: 510px;
-      width: 80%;
-    }
+  @media (min-width: 700px) {
+    height: 510px;
+    width: 80%;
+  }
 `;
 
 const SerraDaBarriga2 = () => {
-  
   const images = [
     { src: teste1 },
     { src: teste2 },
@@ -190,62 +191,89 @@ const SerraDaBarriga2 = () => {
   const navigate = useNavigate();
 
   return (
-      <ContainerGeral>
-      <BackBtn
+    <ContainerGeral>
+      <BackButton
+        onClick={() => {
+          navigate('/takehome');
+        }}
+      >
+        <SetaVoltar src={seta} alt="" />
+      </BackButton>
+
+      <LogoStyle src={logo} className="logoStyle" />
+      <Text>
+        <strong>Serra da Barriga</strong> está localizada no atual município de
+        União dos Palmares, no estado de Alagoas. À época do Quilombo dos
+        Palmares, fazia parte da Capitania de Pernambuco. Foi tombada pelo
+        Instituto do Patrimônio Histórico e Artístico Nacional em 1986.
+      </Text>
+      <Mapa>
+        <MapaBtn
           onClick={() => {
-            navigate('/takehome');
+            navigate('/maps');
           }}
         >
-        <SetaVoltar src={seta} alt=""/>
-      </BackBtn>
-        <LogoStyle src={logo} className="logoStyle" />
-        <Text>
-          <strong>Serra da Barriga</strong> está localizada no atual município
-          de União dos Palmares, no estado de Alagoas. À época do Quilombo dos
-          Palmares, fazia parte da Capitania de Pernambuco. Foi tombada pelo
-          Instituto do Patrimônio Histórico e Artístico Nacional em 1986.
-        </Text>
-        <Mapa>
-          <MapaBtn 
-          onClick={() => {
-            navigate('/takehome');
+          <MapaImg src={mapa} alt="" />
+          <MapaTexto className="mapa-text">MAPA</MapaTexto>
+        </MapaBtn>
+      </Mapa>
+      <Title>FOTOS</Title>
+      <Carrossel>
+        {/* {images.map((image, index) => (
+          <CarrosselImg key={index} src={image.src} />
+        ))} */}
+
+        <div
+          className="foto"
+          style={{
+            background: '#3D4B09',
+            marginLeft: '140px',
           }}
-          >
-            <MapaImg src={mapa} alt=""/>
-            <MapaTexto className='mapa-text'>MAPA</MapaTexto> 
-          </MapaBtn>
-        </Mapa>
-        <Title>FOTOS</Title>
-        <Carrossel>
-          {images.map((image, index) => (
-            <CarrosselImg key={index} src={image.src} />
-          ))}
-        </Carrossel>
-        <BtnSeta>
-          <button>
-            <img src={setaEsquerda} />
-          </button>
-          <button>
-            <img src={setaDireita} />
-          </button>
-        </BtnSeta>
-        <Title>VÍDEOS</Title>
-        <Video
-          src="https://www.youtube.com/embed/USLC-TsQdnI"
-          title="Memórias de luta na Serra da Barriga"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></Video>
-        <BtnSeta>
-          <button>
-            <img src={setaEsquerda} />
-          </button>
-          <button>
-            <img src={setaDireita} />
-          </button>
-        </BtnSeta>
-      </ContainerGeral>
+        ></div>
+        <div
+          className="foto"
+          style={{
+            background: '#009289',
+          }}
+        ></div>
+        <div
+          className="foto"
+          style={{
+            background: '#F48306',
+          }}
+        ></div>
+        <div
+          className="foto"
+          style={{
+            background: '#FFBF00',
+          }}
+        ></div>
+      </Carrossel>
+      <BtnSeta>
+        <button>
+          <img src={setaEsquerda} />
+        </button>
+        <button>
+          <img src={setaDireita} />
+        </button>
+      </BtnSeta>
+      <Title>VÍDEOS</Title>
+      <Video
+        src="https://www.youtube.com/embed/USLC-TsQdnI"
+        title="Memórias de luta na Serra da Barriga"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></Video>
+      <BtnSeta>
+        <button>
+          <img src={setaEsquerda} />
+        </button>
+        <button>
+          <img src={setaDireita} />
+        </button>
+      </BtnSeta>
+    </ContainerGeral>
   );
 };
 
