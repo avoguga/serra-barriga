@@ -1,5 +1,5 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import tiktok from '../../assets/icons/app serra.svg';
+import logo from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import styled from 'styled-components';
 import Iansa from '../../assets/iansã.png';
@@ -56,12 +56,12 @@ const HistorySelfie = () => {
         }}
       >
         <img
-          src={tiktok}
-          alt="tiktok"
+          src={logo}
+          alt="logo serra da barriga"
           style={{
-            width: '100%',
-            height: '102px',
-            marginTop: '110px',
+            width: '200px',
+            height: '70px',
+            marginTop: '100px',
             marginBottom: '30px',
           }}
         />
