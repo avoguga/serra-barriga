@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useOutlet } from 'react-router-dom';
 import styled from 'styled-components';
-import appSerra from '../../assets/app_serra.svg';
+import logo from '../../assets/logo.png';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import {
   PersonalityType,
@@ -117,12 +117,13 @@ const Personalities = () => {
       <FloatingButtonBar backgroundColor="#8C111B" />
       <MainContainer>
         <img
-          src={appSerra}
-          alt="app Serra da Barriga"
+          src={logo}
+          alt="logo serra da barriga"
           style={{
-            width: '100%',
-            height: '90px',
-            marginTop: '110px',
+            width: '200px',
+            height: '70px',
+            marginTop: '100px',
+            marginBottom: '30px',
           }}
         />
         <PageHeader>
