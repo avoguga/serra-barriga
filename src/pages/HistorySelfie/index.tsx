@@ -1,13 +1,9 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-// import AppCanvas from './Teste/AppCanvas';
-// import Video from './Teste/Video';
 import tiktok from '../../assets/icons/app serra.svg';
 import { Icons } from '../../helpers/icons';
 import styled from 'styled-components';
 import Iansa from '../../assets/iansã.png';
-import { useNavigate } from 'react-router-dom';
 import FloatingButtonBar from '../../components/FloatingContainer';
-import AppCanvas from './Teste/AppCanvas';
 
 const Selfiee = Icons['Selfie'];
 
@@ -87,13 +83,22 @@ const HistorySelfie = () => {
           Escolha um personagem da história e tire uma selfie na serra da
           barriga
         </p>
-        <ImageContainer>
+        <ImageContainer
+          onClick={() =>
+            (window.location.href =
+              'https://www.instagram.com/ar/966915324853206/?ch=NzZmOWJkMDU5MzJmMTQ4MTI3ZmZhMTIwODNiYTllZDc%3D')
+          }
+        >
           <img src={Iansa} alt="Iansã" width={300} height={350} />
         </ImageContainer>
-        <ImageContainer>
+        <ImageContainer
+          onClick={() =>
+            (window.location.href =
+              'https://www.instagram.com/ar/966915324853206/?ch=NzZmOWJkMDU5MzJmMTQ4MTI3ZmZhMTIwODNiYTllZDc%3D')
+          }
+        >
           <img src={Iansa} alt="Iansã;" width={300} height={350} />
         </ImageContainer>
-        {/* <AppCanvas /> */}
       </div>
     </WatermarkWrapper>
   );

@@ -31,7 +31,7 @@ const QRCode = () => {
             onResult={(result: any, error: Error) => {
               if (result) {
                 console.log(result.getText());
-                alert(result.getText());
+                window.open(result.getText(), '_blank');
                 return;
               }
               console.info(error);
