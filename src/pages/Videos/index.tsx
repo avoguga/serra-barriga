@@ -1,5 +1,5 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import tiktok from '../../assets/icons/app serra.svg';
+import logo from '../../assets/logo.png';
 import { SelfieContainer } from '../HistorySelfie';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +35,16 @@ const Videos = () => {
           <img src={seta} alt="" />
         </BackButton>
 
-        <img src={tiktok} alt="tiktok" className="appImg" />
+        <img
+          src={logo}
+          alt="logo serra da barriga"
+          style={{
+            width: '200px',
+            height: '70px',
+            marginTop: '10px',
+            marginBottom: '30px',
+          }}
+        />
 
         <SelfieContainer
           style={{

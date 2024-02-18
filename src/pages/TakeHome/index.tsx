@@ -129,7 +129,11 @@ const TakeHome = () => {
             </HomeButton>
             <img
               src={WatermarkImageBottom}
-              style={{ maxWidth: '100%', height: 'auto' }}
+              style={{
+                maxWidth: '100vw',
+                height: 'auto',
+                backgroundColor: '#D66B00',
+              }}
             />
           </ButtonContainer>
         </div>

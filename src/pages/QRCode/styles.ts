@@ -13,8 +13,10 @@ export const Container = styled.div`
 
 export const HeaderContainer = styled.header`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100vw;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const CameraContainer = styled.div`

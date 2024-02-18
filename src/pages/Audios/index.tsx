@@ -2,7 +2,7 @@ import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper
 import styled from 'styled-components';
 import imagem from '../../assets/icons/audio.svg';
 import { useNavigate } from 'react-router-dom';
-import tiktok from '../../assets/icons/app serra.svg';
+import logo from '../../assets/logo.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import './styles.css';
 
@@ -20,12 +20,12 @@ const Audios = () => {
           <img src={seta} alt="" />
         </button>
         <img
-          src={tiktok}
-          alt="tiktok"
+          src={logo}
+          alt="logo serra da barriga"
           style={{
-            width: '100%',
-            height: '102px',
-            marginTop: '140px',
+            width: '200px',
+            height: '70px',
+            marginTop: '95px',
             marginBottom: '30px',
           }}
         />

@@ -1,12 +1,14 @@
 import { QrReader } from 'react-qr-reader';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/app_serra.svg';
+import logo from '../../assets/logo.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import { CameraContainer, Container, HeaderContainer } from './styles';
 // import { enterFullScreen } from '../Home';
 import { useEffect } from 'react';
+import { BackButton } from '../TakeHome';
+import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
 const QRCode = () => {
   useEffect(() => {
@@ -18,12 +20,23 @@ const QRCode = () => {
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark>
       <Container>
         <HeaderContainer>
-          <HomeButton iconType="LeftArrow" onClick={() => navigate('/')} />
+          {/* <HomeButton iconType="LeftArrow" onClick={() => navigate('/')} /> */}
+          <BackButton
+            onClick={() => {
+              navigate('/takehome');
+            }}
+          >
+            <img src={seta} alt="" />
+          </BackButton>
           <img
             src={logo}
             alt="logo serra da barriga"
-            width={120}
-            height={120}
+            style={{
+              width: '200px',
+              height: '70px',
+              marginTop: '50px',
+              marginBottom: '30px',
+            }}
           />
         </HeaderContainer>
         <CameraContainer>

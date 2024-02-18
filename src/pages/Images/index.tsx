@@ -47,7 +47,7 @@ const Images = () => {
           style={{
             width: '200px',
             height: '70px',
-            marginTop: '100px',
+            marginTop: '50px',
             marginBottom: '30px',
           }}
         />
