@@ -23,7 +23,7 @@ const QRCode = () => {
           {/* <HomeButton iconType="LeftArrow" onClick={() => navigate('/')} /> */}
           <BackButton
             onClick={() => {
-              navigate('/takehome');
+              navigate('/');
             }}
           >
             <img src={seta} alt="" />
