@@ -1,4 +1,4 @@
-import { ArrowContainer } from '../../../../pages/Personalities/styles';
+import { ArrowContainer } from '../../../../pages/Personalities';
 import Arrow from '../../../ArrowButton';
 import { IArrow } from './types';
 

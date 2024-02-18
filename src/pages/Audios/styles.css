@@ -30,20 +30,37 @@
 .title{
     font-size: xx-small;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 100px;
     background: var(--square-color);
     box-sizing: 100%;
-    width: 100%;
+    width: 90%;
     border-radius: 30px;
     padding: .5rem;
     padding-left: 1rem;
 
 }
+
+.audios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .audio{
-    width: ;
+    width: 100vw;
     margin-top: 20px;
     /* Exemplo de estilos adicionais */
-    background-color: var(--square-color);
+    background-color: #753D00;
     padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+audio::-webkit-media-controls-panel {
+    background-color: 	#753D00;
+  }
+
+  .aaaaa {
+    color: #fff;
+    font-size: 12px;
+    text-align: left;
+    font-weight: 300;
+  }

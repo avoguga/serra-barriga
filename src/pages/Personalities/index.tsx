@@ -3,7 +3,10 @@ import { useNavigate, useOutlet } from 'react-router-dom';
 import styled from 'styled-components';
 import appSerra from '../../assets/app_serra.svg';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
-import { PersonalityType, personalities } from '../../helpers/personalitiesData';
+import {
+  PersonalityType,
+  personalities,
+} from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
 import FloatingButtonBar from '../../components/FloatingContainer';
 
@@ -70,7 +73,7 @@ const PersonalityCard = styled.div`
   }
 `;
 
-const ArrowContainer = styled.div`
+export const ArrowContainer = styled.div`
   display: flex;
 
   flex-direction: row;
@@ -83,6 +86,7 @@ const ArrowContainer = styled.div`
 
 const MainContainer = styled.div`
   display: flex;
+  background-color: #b21522;
   flex-direction: column;
   align-items: center;
 `;
