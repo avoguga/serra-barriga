@@ -38,6 +38,18 @@ export const agenda: MesAgenda[] = [
       // Eventos de Abril
     ],
   },
+  {
+    mes: 'Maio',
+    eventos: [
+      // Eventos de Maio
+    ],
+  },
+  {
+    mes: 'Junho',
+    eventos: [
+      // Eventos de Junho
+    ],
+  },
 ];
 
 export const getEventosPorMes = (mesSelecionado: string): Evento[] => {

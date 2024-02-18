@@ -15,8 +15,9 @@ import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
 import VideoPlay from '../pages/VideoPlay';
 import AtalaiaView from '../pages/AtalaiaAcaiuba';
-import Agenda from '../pages/Agenda';
 import PersonalityPage from '../pages/Personality';
+import Agenda from '../pages/Agenda';
+import EventDetails from '../pages/EventDetails'
 import Maps from '../pages/Maps';
 
 export const router = createBrowserRouter([
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: ':personalityName', // A rota para o componente Mundo como sub-rota de personalities
+        path: ':personalityName', 
         element: <PersonalityPage />,
         errorElement: <ErrorPage />,
       },
@@ -106,6 +107,13 @@ export const router = createBrowserRouter([
     path: '/agenda',
     element: <Agenda />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: ':eventId', 
+        element: <EventDetails />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
   {
     path: '/maps',
