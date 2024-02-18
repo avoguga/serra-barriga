@@ -86,6 +86,7 @@ export const ArrowContainer = styled.div`
 
 const MainContainer = styled.div`
   display: flex;
+  background-color: #b21522;
   flex-direction: column;
   align-items: center;
 `;
