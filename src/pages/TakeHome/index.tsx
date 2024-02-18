@@ -70,7 +70,7 @@ const TakeHome = () => {
           <ButtonContainer>
             <h2
               style={{
-                font: 'normal normal 500 22px/30px FuturaPTHeavy',
+                font: 'normal normal 500 22px/30px ',
                 letterSpacing: '0px',
                 color: '#FFFFFF',
               }}
