@@ -13,12 +13,12 @@ import Audios from '../pages/Audios';
 import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
-import AppCanvas from '../pages/HistorySelfie/Teste/AppCanvas';
 import VideoPlay from '../pages/VideoPlay';
 import AtalaiaView from '../pages/AtalaiaAcaiuba';
 import PersonalityPage from '../pages/Personality';
 import Agenda from '../pages/Agenda';
 import EventDetails from '../pages/EventDetails'
+import Maps from '../pages/Maps';
 
 export const router = createBrowserRouter([
   {
@@ -35,13 +35,6 @@ export const router = createBrowserRouter([
     path: '/selfie',
     element: <HistorySelfie />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '/selfie:filterName',
-        element: <AppCanvas />,
-        errorElement: <ErrorPage />,
-      },
-    ],
   },
   {
     path: '/personalities',
@@ -121,5 +114,10 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
     ],
+  },
+  {
+    path: '/maps',
+    element: <Maps />,
+    errorElement: <ErrorPage />,
   },
 ]);

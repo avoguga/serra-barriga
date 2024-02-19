@@ -1,13 +1,9 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-// import AppCanvas from './Teste/AppCanvas';
-// import Video from './Teste/Video';
-import tiktok from '../../assets/icons/app serra.svg';
+import logo from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import styled from 'styled-components';
 import Iansa from '../../assets/iansã.png';
-import { useNavigate } from 'react-router-dom';
 import FloatingButtonBar from '../../components/FloatingContainer';
-import AppCanvas from './Teste/AppCanvas';
 
 const Selfiee = Icons['Selfie'];
 
@@ -16,11 +12,9 @@ export const SelfieContainer = styled.button`
   align-items: center;
   justify-content: center;
   background: #768e19 0% 0% no-repeat padding-box;
-  width: 180px;
-  height: 70px;
+  width: 220px;
+  height: 60px;
   border-radius: 35px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   svg {
     width: 45px;
@@ -29,7 +23,8 @@ export const SelfieContainer = styled.button`
 
   p {
     text-align: center;
-    font: normal normal normal 18px/23px FuturaPTHeavy;
+    font-size: 16px;
+    font-weight: bold;
     letter-spacing: 0px;
     color: #ffffff;
   }
@@ -61,12 +56,12 @@ const HistorySelfie = () => {
         }}
       >
         <img
-          src={tiktok}
-          alt="tiktok"
+          src={logo}
+          alt="logo serra da barriga"
           style={{
-            width: '100%',
-            height: '102px',
-            marginTop: '110px',
+            width: '200px',
+            height: '70px',
+            marginTop: '100px',
             marginBottom: '30px',
           }}
         />
@@ -79,7 +74,8 @@ const HistorySelfie = () => {
           style={{
             width: '300px',
             textAlign: 'justify',
-            font: 'normal normal normal 18px/25px FuturaPTHeavy',
+            fontSize: '18px',
+            fontWeight: 'normal',
             letterSpacing: '0px',
             color: '#FFFFFF',
           }}
@@ -87,13 +83,22 @@ const HistorySelfie = () => {
           Escolha um personagem da história e tire uma selfie na serra da
           barriga
         </p>
-        <ImageContainer>
+        <ImageContainer
+          onClick={() =>
+            (window.location.href =
+              'https://www.instagram.com/ar/966915324853206/?ch=NzZmOWJkMDU5MzJmMTQ4MTI3ZmZhMTIwODNiYTllZDc%3D')
+          }
+        >
           <img src={Iansa} alt="Iansã" width={300} height={350} />
         </ImageContainer>
-        <ImageContainer>
+        <ImageContainer
+          onClick={() =>
+            (window.location.href =
+              'https://www.instagram.com/ar/966915324853206/?ch=NzZmOWJkMDU5MzJmMTQ4MTI3ZmZhMTIwODNiYTllZDc%3D')
+          }
+        >
           <img src={Iansa} alt="Iansã;" width={300} height={350} />
         </ImageContainer>
-        {/* <AppCanvas /> */}
       </div>
     </WatermarkWrapper>
   );

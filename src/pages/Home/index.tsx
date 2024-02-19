@@ -12,9 +12,9 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   row-gap: 30px;
+  background-color: #67781b;
   column-gap: 50px;
   justify-content: center;
-  margin: 0 10px;
 `;
 
 const BottomContainer = styled.div`
@@ -161,6 +161,7 @@ const Home = () => {
               navigate('/about');
               // toggleFullScreen;
             }}
+            customStyle={{ marginBottom: '20px' }}
           >
             SOBRE O APP
           </AboutButton>

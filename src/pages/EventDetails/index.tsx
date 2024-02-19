@@ -29,10 +29,9 @@ const EventDetails = () => {
           </h2>{' '}
         </C.DataHoraEvento>
         <C.DescricaoEvento>{evento.descricao.pt}</C.DescricaoEvento>
-<C.TituloSecaoEvento>ACAIUBA´S LOOKOUT </C.TituloSecaoEvento>
-       
-          <C.DescricaoEvento>{evento.descricao.en}</C.DescricaoEvento>
-        
+        <C.TituloSecaoEvento>ACAIUBA´S LOOKOUT </C.TituloSecaoEvento>
+
+        <C.DescricaoEvento>{evento.descricao.en}</C.DescricaoEvento>
       </C.DetalhesContainer>
     </C.Container>
   );

@@ -106,7 +106,7 @@ const VirtualExpo = () => {
         />
         <BackButton
           onClick={() => {
-            navigate('/');
+            navigate(-1);
           }}
         >
           <img src={seta} alt="" />

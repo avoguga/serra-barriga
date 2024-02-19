@@ -44,13 +44,19 @@ interface AboutButtonProps
   children?: React.ReactNode;
   iconType: keyof typeof Icons;
   onClick?: () => void;
+  customStyle?: React.CSSProperties;
 }
 
-const AboutButton = ({ children, onClick, iconType }: AboutButtonProps) => {
+const AboutButton = ({
+  children,
+  onClick,
+  iconType,
+  customStyle,
+}: AboutButtonProps) => {
   const ButtonIcon = Icons[iconType];
 
   return (
-    <BackgroundDiv>
+    <BackgroundDiv style={customStyle}>
       <Button onClick={onClick}>
         <ButtonIcon />
         {children}

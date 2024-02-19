@@ -1,26 +1,59 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import tiktok from '../../assets/icons/app serra.svg';
+import logo from '../../assets/logo.png';
 import { SelfieContainer } from '../HistorySelfie';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useNavigate } from 'react-router-dom';
 import Video from '../../assets/icons/video.svg';
 import './style.css';
+import styled from 'styled-components';
+
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--square-color);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  position: fixed; // Alterado de absolute para fixed
+  top: 7%;
+  left: 5%;
+  z-index: 10;
+  cursor: pointer;
+`;
 
 const Videos = () => {
   const navigate = useNavigate();
   return (
     <WatermarkWrapper>
-      <div className="background">
-        <button
-          className="back-video-route"
+      <div
+        style={{
+          display: 'flex',
+          height: '100%',
+          backgroundColor: '#d46900',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyItems: 'center',
+        }}
+      >
+        <BackButton
           onClick={() => {
             navigate('/takehome');
           }}
         >
           <img src={seta} alt="" />
-        </button>
+        </BackButton>
 
-        <img src={tiktok} alt="tiktok" className="appImg" />
+        <img
+          src={logo}
+          alt="logo serra da barriga"
+          style={{
+            width: '200px',
+            height: '70px',
+            marginTop: '50px',
+            marginBottom: '30px',
+          }}
+        />
 
         <SelfieContainer
           style={{

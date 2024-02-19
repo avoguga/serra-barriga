@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import FloatingButtonBar from '../../components/FloatingContainer';
-import appSerra from '../../assets/icons/app serra.svg';
+import logo from '../../assets/logo.png';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import { personalities } from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
@@ -15,7 +15,6 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   max-width: 485px;
-
 `;
 
 const PageHeader = styled.div`
@@ -85,49 +84,45 @@ const ReadMoreButton = styled.button`
 `;
 
 const ScrollContainer = styled.div`
-   overflow-x: auto; 
-  padding: 20px; 
-  width: 100vw; 
+  overflow-x: auto;
+  padding: 20px;
+  width: 100vw;
 
   &::-webkit-scrollbar {
-    display: none; 
+    display: none;
   }
 `;
 const InnerScrollContainer = styled.div`
   display: flex;
-  gap: 10px; 
+  gap: 10px;
 `;
 const PhotoBox = styled.div`
- flex-shrink: 0;
-  width: 08.43rem; 
-  height:8.5rem; 
-  background-color: ${(props) => props.color || '#EEE'}; 
+  flex-shrink: 0;
+  width: 08.43rem;
+  height: 8.5rem;
+  background-color: ${(props) => props.color || '#EEE'};
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
 `;
 const SubTitleContainer = styled.div`
-
-font-family: 'FuturaPTDemi', sans-serif;
-    color: #ffffff;
-    font-size:10px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-margin-top: 50px;
-
+  font-family: 'FuturaPTDemi', sans-serif;
+  color: #ffffff;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
 `;
 
 const VideoBox = styled.div`
-  width: 18.3rem; 
-  height:11rem; 
-  background-color: ${(props) => props.color || '#EEE'}; 
+  width: 18.3rem;
+  height: 11rem;
+  background-color: ${(props) => props.color || '#EEE'};
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  
 `;
 
 const ArrowContainer = styled.div`
@@ -138,9 +133,7 @@ const ArrowContainer = styled.div`
   left: 0;
   justify-content: space-between;
   width: 95%;
-
 `;
-
 
 const PersonalityPage = () => {
   const { personalityName } = useParams<{ personalityName: string }>();
@@ -157,7 +150,6 @@ const PersonalityPage = () => {
     setActiveArrow('right');
   };
 
-
   const toggleIsExpanded = () => {
     setIsExpanded(!isExpanded);
   };
@@ -168,12 +160,13 @@ const PersonalityPage = () => {
 
       <MainContainer>
         <img
-          src={appSerra}
-          alt="app Serra da Barriga"
+          src={logo}
+          alt="logo serra da barriga"
           style={{
-            width: '100%',
-            height: '90px',
-            marginTop: '110px',
+            width: '200px',
+            height: '70px',
+            marginTop: '100px',
+            marginBottom: '30px',
           }}
         />
         <PageHeader>
@@ -205,44 +198,33 @@ const PersonalityPage = () => {
         ) : (
           <p>Personalidade não encontrada.</p>
         )}
-         <SubTitleContainer>
-            <h2>FOTOS</h2>
-            </SubTitleContainer>
+        <SubTitleContainer>
+          <h2>FOTOS</h2>
+        </SubTitleContainer>
         <ScrollContainer>
-         
-         <InnerScrollContainer>
-         <PhotoBox color="#F48306"> {/* Conteúdo da foto 1 */} </PhotoBox>
-        <PhotoBox color="#D6C75C"> {/* Conteúdo da foto 2 */} </PhotoBox>
-        <PhotoBox color="#93B293"> {/* Conteúdo da foto 2 */} </PhotoBox>
-      
+          <InnerScrollContainer>
+            <PhotoBox color="#F48306"> {/* Conteúdo da foto 1 */} </PhotoBox>
+            <PhotoBox color="#D6C75C"> {/* Conteúdo da foto 2 */} </PhotoBox>
+            <PhotoBox color="#93B293"> {/* Conteúdo da foto 2 */} </PhotoBox>
+          </InnerScrollContainer>
 
-         </InnerScrollContainer>
-       
-         <ArrowContainer>
-          <Arrow
-            direction="left"
-            onClick={handleLeftClick}
-            isActive={activeArrow === 'left'}
-          />
-          <Arrow
-            direction="right"
-            onClick={handleRightClick}
-            isActive={activeArrow === 'right'}
-          />
-        </ArrowContainer>
-        
-          
-         
-         
-
-        
+          <ArrowContainer>
+            <Arrow
+              direction="left"
+              onClick={handleLeftClick}
+              isActive={activeArrow === 'left'}
+            />
+            <Arrow
+              direction="right"
+              onClick={handleRightClick}
+              isActive={activeArrow === 'right'}
+            />
+          </ArrowContainer>
         </ScrollContainer>
         <SubTitleContainer>
-            <h2>VIDEOS</h2>
-            </SubTitleContainer>
-         
-        
-       
+          <h2>VIDEOS</h2>
+        </SubTitleContainer>
+
         <VideoBox color="#FFF"> {/* Conteúdo do vídeo */} </VideoBox>
         <ArrowContainer>
           <Arrow
@@ -256,8 +238,6 @@ const PersonalityPage = () => {
             isActive={activeArrow === 'right'}
           />
         </ArrowContainer>
-        
-        
       </MainContainer>
     </Container>
   );

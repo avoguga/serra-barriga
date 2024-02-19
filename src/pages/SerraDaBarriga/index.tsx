@@ -1,5 +1,5 @@
 import './style.css/';
-import logo from '../../assets/app_serra.svg';
+import logo from '../../assets/logo.png';
 import setaEsquerda from '../../assets/set_esquerda.svg';
 import setaDireita from '../../assets/set_direita.svg';
 import teste1 from '../../assets/iansã.png';
@@ -26,7 +26,16 @@ const SerraDaBarriga = () => {
     <WatermarkWrapper watermark watermarkImage={WatermarkImage}>
       <FloatingButtonBar backgroundColor="#8C111B" />
       <div className="container">
-        <img src={logo} className="logoStyle" />
+        <img
+          src={logo}
+          alt="logo serra da barriga"
+          style={{
+            width: '200px',
+            height: '70px',
+            marginTop: '100px',
+            marginBottom: '30px',
+          }}
+        />
         <div className="text">
           <strong>Serra da Barriga</strong> está localizada no atual município
           de União dos Palmares, no estado de Alagoas. À época do Quilombo dos
