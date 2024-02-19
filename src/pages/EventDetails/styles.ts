@@ -38,13 +38,25 @@ export const TituloSecaoEvento = styled.h3`
   margin-top: 45px;
   font-style: italic;
   margin-bottom: 25px;
-  width: 100%;
+  width: 90%;
+  opacity: 0.89;
+  font-weight: 100;
+
 `;
 export const DescricaoEvento = styled.p`
-  font-size: 20px;
+  font-size: 19px;
   color: #ffffff;
-  font-family: 'FuturaPT', sans-serif;
-  text-align: justify;
+  font-family: 'FuturaPTHeavy', sans-serif;
+  font-weight: 100;
+text-align: left;
+  opacity: 0.9;
+  width: 90%;
+
+  >span {
+  font-style: italic;
+
+  }
+  
 `;
 
 export const DataHoraEvento = styled.div`
@@ -53,7 +65,7 @@ export const DataHoraEvento = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 290px;
+  width: 20rem;
   height: 75px;
   border: 1px solid #ffffff;
   color: #ffffff;

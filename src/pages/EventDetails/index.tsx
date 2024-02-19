@@ -31,7 +31,9 @@ const EventDetails = () => {
         <C.DescricaoEvento>{evento.descricao.pt}</C.DescricaoEvento>
         <C.TituloSecaoEvento>ACAIUBA´S LOOKOUT </C.TituloSecaoEvento>
 
-        <C.DescricaoEvento>{evento.descricao.en}</C.DescricaoEvento>
+        <C.DescricaoEvento>
+          <span>{evento.descricao.en}</span>
+        </C.DescricaoEvento>
       </C.DetalhesContainer>
     </C.Container>
   );
