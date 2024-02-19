@@ -7,7 +7,7 @@ import LowArrow from '../../components/LowArrowButton';
 
 // Assets
 import WatermarkImage from '../../assets/background-red.png';
-import appSerra from '../../assets/icons/app serra.svg';
+import appSerra from '../../assets/logo.png';
 import logoPalmares from '../../assets/icons/logo-palmares.svg';
 import logoTikTok from '../../assets/icons/logo-tiktok.svg';
 import logoAnajo from '../../assets/icons/logo-anajo.svg';
@@ -62,7 +62,6 @@ const Footer = styled.footer`
   span {
     margin: 20px 0;
   }
-}
 `;
 
 const About = () => {
@@ -79,9 +78,9 @@ const About = () => {
             src={appSerra}
             alt="Logo do aplicativo Serra da Barriga"
             style={{
-              width: '165px',
-              height: '101px',
-              margin: '140px 0 100px',
+              width: '200px',
+              height: '70px',
+              margin: '140px 0 50px',
             }}
           />
           <p>

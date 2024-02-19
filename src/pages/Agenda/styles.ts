@@ -7,6 +7,9 @@ export const PageContainer = styled.div`
 
   max-height: 135vh;
 
+
+  
+
   justify-content: baseline;
   align-items: center;
   padding: 10rem 1rem;
