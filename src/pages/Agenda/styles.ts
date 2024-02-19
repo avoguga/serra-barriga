@@ -5,10 +5,10 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #009289;
-  height: 110vh;
+  max-height: 135vh;
   justify-content: baseline;
   align-items: center;
-  padding: 7rem 1rem;
+ padding: 10rem 1rem;
 `;
 
 export const PageHeader = styled.div`
@@ -16,7 +16,7 @@ export const PageHeader = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  height: 5rem;
+
   background: #026660;
   width: 100%;
   border-radius: 35px;
@@ -134,7 +134,7 @@ export const EventCard = styled.div`
   justify-content: space-around;
  
   min-width: 75%;
-  height: 10rem;
+  max-height: 12rem;
 `;
 
 export const EventTitle = styled.h4`

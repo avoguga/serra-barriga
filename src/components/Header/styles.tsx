@@ -10,7 +10,7 @@ export const PageHeader = styled.div`
   background: #026660;
   width: 100%;
   border-radius: 35px;
-
+opacity: 0.78;
   text-transform: uppercase;
   color: #ffffff;
 
@@ -20,11 +20,14 @@ export const PageHeader = styled.div`
 export const HeaderContent = styled.div`
   display: flex;
   align-items: center;
+  width: 170px;
+  
+ 
   justify-content: center;
   gap: 13px;
-  font-family: 'Futura PT', sans-serif;
+  font-family: 'FuturaPTDemi', sans-serif;
   font-size: 14px;
-  opacity: 1;
+
 `;
 
 export const MainContainer = styled.div`

@@ -14,7 +14,7 @@ import joaozinhoDaGomeiaImage from '../assets/joaozinho-da-gomeia.webp';
 import lupicinioRodriguesImage from '../assets/lupicinio-rodrigues.webp';
 
 export const personalities: PersonalityType[] = [
-  {
+  { 
     name: 'Mãe Neide',
     image: maeNeideImage,
     description: {
