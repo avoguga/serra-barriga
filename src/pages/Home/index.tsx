@@ -5,8 +5,9 @@ import aaa from '../../assets/icons/desenho mão segurando celular.svg';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AboutButton from '../../components/AboutButton';
+import CustomAlert from '../../components/CustomAlert';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -63,15 +64,33 @@ const TextContainer = styled.div`
 //   }
 // };
 
+const isSamsungInternet = (): boolean => {
+  return /SamsungBrowser/.test(navigator.userAgent);
+};
+
+
 const Home = () => {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   enterFullScreen();
-  // }, []);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+
+  useEffect(() => {
+    if (isSamsungInternet()) {
+      setAlertMessage("Detectamos que você está usando o navegador Samsung Internet. Para uma melhor experiência, recomendamos o uso de outro navegador, como Google Chrome ou Safari.");
+      setShowAlert(true);
+    }
+  }, []);
 
   return (
+<>
+{showAlert && (
+        <CustomAlert show={showAlert} onClose={() => setShowAlert(false)}>
+          {alertMessage}
+        </CustomAlert>
+      )}
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
+          
       <div
         style={{
           backgroundColor: '#67781B',
@@ -168,6 +187,7 @@ const Home = () => {
         </ButtonContainer>
       </div>
     </WatermarkWrapper>
+    </>
   );
 };
 
