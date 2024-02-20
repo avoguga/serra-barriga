@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import info from '../../assets/icons/infobranco.svg';
-import atalaia from '../../assets/images/atalaia-de-acaiuba.png';
-import FloatingButtonBar from '../../components/FloatingContainer';
+import info from '../../../assets/icons/infobranco.svg';
+import atalaia from '../../../assets/images/atalaia-de-acaiuba.png';
+import Sidebar from '../Sidebar';
+import AboutButton from '../../../components/AboutButton';
+import LowArrow from '../../../components/LowArrowButton';
 
 const View = styled.div`
   background-color: #8aa61e;
@@ -21,6 +23,19 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+const Nav = styled.nav`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 50px 25px;
+`;
+
+const NavFotter = styled.nav`
+  position: fixed;
+  width: 100%;
+  bottom: 0;`
+  ;
 
 const AgroupTexts = styled.div`
   margin: 20px 0 30px 0;
@@ -59,7 +74,12 @@ const AtalaiaInfoView = () => {
   const navigate = useNavigate();
   return (
     <View>
-      <FloatingButtonBar />
+      <Nav>
+          <LowArrow onClick={() => window.history.back()} isActive={true} />
+      </Nav>
+      <NavFotter>
+      <Sidebar />
+      </NavFotter>
       <Content>
         <img
           src={atalaia}
