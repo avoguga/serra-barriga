@@ -73,7 +73,7 @@ const AtalaiaView = () => {
           <HomeButton
             iconType="Location"
             onClick={() => {
-              navigate('/#');
+              navigate('/atalaia-de-acaiuba/location');
             }}
           >
             LOCALIZAÇÃO

@@ -20,6 +20,7 @@ import Agenda from '../pages/Agenda';
 import EventDetails from '../pages/EventDetails'
 import Maps from '../pages/Maps';
 import AtalaiaInfoView from '../pages/Atalaia/AtalaiaAcaiubaInfo';
+import AtalaiaLocView from '../pages/Atalaia/AtalaiaLoc';
 
 export const router = createBrowserRouter([
   {
@@ -107,6 +108,11 @@ export const router = createBrowserRouter([
   {
     path: '/atalaia-de-acaiuba/info',
     element: <AtalaiaInfoView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/atalaia-de-acaiuba/location',
+    element: <AtalaiaLocView />,
     errorElement: <ErrorPage />,
   },
   {
