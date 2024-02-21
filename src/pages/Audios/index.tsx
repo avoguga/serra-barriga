@@ -1,12 +1,15 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import styled from 'styled-components';
+
 import imagem from '../../assets/icons/audio.svg';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import './styles.css';
+import AudioPlayer from '../../components/AudioPlayer';
 
 const Audios = () => {
+ 
+ 
   const navigate = useNavigate();
   return (
     <WatermarkWrapper>
@@ -41,11 +44,10 @@ const Audios = () => {
           className="audios"
         >
           <div id="title" className="title">
-            <h2>Título do Audio</h2>
+            <p>Título do Audio</p>
           </div>
-          <audio controls className="audio">
-            <source src="https://www.computerhope.com/jargon/m/example.mp3" />
-          </audio>
+
+        <AudioPlayer/>
           <div
             style={{
               display: 'flex',
@@ -56,24 +58,16 @@ const Audios = () => {
               marginRight: '200px',
             }}
           >
-            <h3 className="aaaaa">Interpretação: Nome aqui</h3>
-            <h3 className="aaaaa">Texto: Nome aqui</h3>
-            <h3 className="aaaaa">Trilha: Nome aqui</h3>
-          </div>
-        </section>
-        <section
-          style={{
-            marginBottom: '20px',
-          }}
-          id="audios"
-          className="audios"
-        >
+            <p className="aaaaa">Interpretação: Nome aqui</p>
+            <p className="aaaaa">Texto: Nome aqui</p>
+            <p className="aaaaa">Trilha: Nome aqui</p>
+          </div> <br />
+
           <div id="title" className="title">
-            <h2>Título do Audio</h2>
+            <p>Título do Audio</p>
           </div>
-          <audio controls className="audio">
-            <source src="https://www.computerhope.com/jargon/m/example.mp3" />
-          </audio>
+
+        <AudioPlayer/>
           <div
             style={{
               display: 'flex',
@@ -84,24 +78,15 @@ const Audios = () => {
               marginRight: '200px',
             }}
           >
-            <h3 className="aaaaa">Interpretação: Nome aqui</h3>
-            <h3 className="aaaaa">Texto: Nome aqui</h3>
-            <h3 className="aaaaa">Trilha: Nome aqui</h3>
-          </div>
-        </section>
-        <section
-          style={{
-            marginBottom: '20px',
-          }}
-          id="audios"
-          className="audios"
-        >
+            <p className="aaaaa">Interpretação: Nome aqui</p>
+            <p className="aaaaa">Texto: Nome aqui</p>
+            <p className="aaaaa">Trilha: Nome aqui</p>
+          </div> <br />
           <div id="title" className="title">
-            <h2>Título do Audio</h2>
+            <p>Título do Audio</p>
           </div>
-          <audio controls className="audio">
-            <source src="https://www.computerhope.com/jargon/m/example.mp3" />
-          </audio>
+
+        <AudioPlayer/>
           <div
             style={{
               display: 'flex',
@@ -112,11 +97,12 @@ const Audios = () => {
               marginRight: '200px',
             }}
           >
-            <h3 className="aaaaa">Interpretação: Nome aqui</h3>
-            <h3 className="aaaaa">Texto: Nome aqui</h3>
-            <h3 className="aaaaa">Trilha: Nome aqui</h3>
+            <p className="aaaaa">Interpretação: Nome aqui</p>
+            <p className="aaaaa">Texto: Nome aqui</p>
+            <p className="aaaaa">Trilha: Nome aqui</p>
           </div>
         </section>
+      
       </div>
     </WatermarkWrapper>
   );
