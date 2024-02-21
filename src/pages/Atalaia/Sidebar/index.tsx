@@ -37,7 +37,7 @@ const Sidebar = () => {
       <HomeButton
         iconType="Video"
         onClick={() => {
-          navigate('/#');
+          navigate('/atalaia-de-acaiuba/videos');
         }}
       />
       <HomeButton

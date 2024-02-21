@@ -81,7 +81,7 @@ const AtalaiaView = () => {
           <HomeButton
             iconType="Video"
             onClick={() => {
-              navigate('/#');
+              navigate('/atalaia-de-acaiuba/videos');
             }}
           >
             VÍDEOS
