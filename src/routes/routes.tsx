@@ -23,6 +23,7 @@ import AtalaiaInfoView from '../pages/Atalaia/Information';
 import AtalaiaLocView from '../pages/Atalaia/Location';
 import AtalaiaVideosView from '../pages/Atalaia/Videos';
 import AtalaiaVideosPlayView from '../pages/Atalaia/PlayVideos';
+import AtalaiaImgView from '../pages/Atalaia/Img';
 
 export const router = createBrowserRouter([
   {
@@ -125,6 +126,11 @@ export const router = createBrowserRouter([
   {
     path: '/atalaia-de-acaiuba/videos/playvideos',
     element: <AtalaiaVideosPlayView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/atalaia-de-acaiuba/images',
+    element: <AtalaiaImgView />,
     errorElement: <ErrorPage />,
   },
   {

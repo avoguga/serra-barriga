@@ -43,7 +43,7 @@ const Sidebar = () => {
       <HomeButton
         iconType="Img"
         onClick={() => {
-          navigate('/#');
+          navigate('/atalaia-de-acaiuba/images');
         }}
       />
       <HomeButton
