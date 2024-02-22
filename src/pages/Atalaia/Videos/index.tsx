@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import videos from '../../../assets/icons/video.svg';
+import poster from '../../../assets/images/video-poster.png'
 import atalaia from '../../../assets/images/atalaia-de-acaiuba.png';
 import Sidebar from '../Sidebar';
-import AboutButton from '../../../components/AboutButton';
 import LowArrow from '../../../components/LowArrowButton';
 
 const View = styled.div`
@@ -60,7 +60,6 @@ const AgroupVideo = styled.div`
   max-width: 60%;
   margin: 0 0 40px 0;
   p {
-    max-width: 80%;
     margin: 30px 0;
     text-align: left;
     letter-spacing: 0px;
@@ -120,11 +119,41 @@ const AtalaiaVideosView = () => {
                 },
               });
             }}
-            poster="#"
+            poster={poster}
           ></video>
-          <p>Descrição:</p>
-          <video></video>
-          <p>Descrição:</p>
+          <p>Descrição: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis saepe sequi.</p>
+          <video
+            onClick={() => {
+              navigate('/atalaia-de-acaiuba/videos/playvideos', {
+                state: {
+                  videoUrl:
+                    'https://www.youtube.com/embed/SdsKKXy57hw',
+                  videoTitle: 'Phaxe',
+                  interpretacao: 'Universo',
+                  texto: 'Universo',
+                  trilha: 'Phaxe',
+                },
+              });
+            }}
+            poster={poster}
+          ></video>
+          <p>Descrição: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis saepe sequi.</p>
+          <video
+            onClick={() => {
+              navigate('/atalaia-de-acaiuba/videos/playvideos', {
+                state: {
+                  videoUrl:
+                    'https://www.youtube.com/embed/gdsUKphmB3Y',
+                  videoTitle: 'NFL',
+                  interpretacao: 'Snoop',
+                  texto: 'Kendrick',
+                  trilha: 'Pepsi',
+                },
+              });
+            }}
+            poster={poster}
+          ></video>
+          <p>Descrição: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis saepe sequi.</p>
         </AgroupVideo>
       </Content>
     </View>

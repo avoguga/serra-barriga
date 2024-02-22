@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import info from '../../../assets/icons/infobranco.svg';
 import atalaia from '../../../assets/images/atalaia-de-acaiuba.png';
 import Sidebar from '../Sidebar';
-import AboutButton from '../../../components/AboutButton';
 import LowArrow from '../../../components/LowArrowButton';
 
 const View = styled.div`
