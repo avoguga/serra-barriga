@@ -74,7 +74,7 @@ const AtalaiaVideosView = () => {
   return (
     <View>
       <Nav>
-        <LowArrow onClick={() => window.history.back()} isActive={true} />
+        <LowArrow onClick={() => navigate('/atalaia-de-acaiuba')} isActive={true} />
       </Nav>
       <NavFotter>
         <Sidebar />

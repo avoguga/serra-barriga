@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import atalaia from '../../../assets/images/atalaia-de-acaiuba.png';
-import FloatingButtonBar from '../../../components/FloatingContainer';
-import HomeButton from '../../../components/HomeButton';
+import atalaia from '../../assets/images/atalaia-de-acaiuba.png';
+import FloatingButtonBar from '../../components/FloatingContainer';
+import HomeButton from '../../components/HomeButton';
 
 const View = styled.div`
   background-color: #8aa61e;
@@ -89,7 +89,7 @@ const AtalaiaView = () => {
           <HomeButton
             iconType="Img"
             onClick={() => {
-              navigate('/#');
+              navigate('/atalaia-de-acaiuba/images');
             }}
           >
             IMAGENS

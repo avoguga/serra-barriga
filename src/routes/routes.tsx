@@ -14,7 +14,7 @@ import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
 import VideoPlay from '../pages/VideoPlay';
-import AtalaiaView from '../pages/Atalaia/Home';
+import AtalaiaView from '../pages/Atalaia';
 import PersonalityPage from '../pages/Personality';
 import Agenda from '../pages/Agenda';
 import EventDetails from '../pages/EventDetails'
