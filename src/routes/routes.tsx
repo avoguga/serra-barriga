@@ -14,11 +14,16 @@ import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
 import VideoPlay from '../pages/VideoPlay';
-import AtalaiaView from '../pages/AtalaiaAcaiuba';
+import AtalaiaView from '../pages/Atalaia';
 import PersonalityPage from '../pages/Personality';
 import Agenda from '../pages/Agenda';
 import EventDetails from '../pages/EventDetails'
 import Maps from '../pages/Maps';
+import AtalaiaInfoView from '../pages/Atalaia/Information';
+import AtalaiaLocView from '../pages/Atalaia/Location';
+import AtalaiaVideosView from '../pages/Atalaia/Videos';
+import AtalaiaVideosPlayView from '../pages/Atalaia/PlayVideos';
+import AtalaiaImgView from '../pages/Atalaia/Img';
 
 export const router = createBrowserRouter([
   {
@@ -101,6 +106,31 @@ export const router = createBrowserRouter([
   {
     path: '/atalaia-de-acaiuba',
     element: <AtalaiaView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/atalaia-de-acaiuba/info',
+    element: <AtalaiaInfoView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/atalaia-de-acaiuba/location',
+    element: <AtalaiaLocView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/atalaia-de-acaiuba/videos',
+    element: <AtalaiaVideosView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/atalaia-de-acaiuba/videos/playvideos',
+    element: <AtalaiaVideosPlayView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/atalaia-de-acaiuba/images',
+    element: <AtalaiaImgView />,
     errorElement: <ErrorPage />,
   },
   {

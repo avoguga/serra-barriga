@@ -1,16 +1,16 @@
 import React from 'react';
-import { useParams,  } from 'react-router-dom';
-import { agenda,  } from '../../helpers/agenda'; 
+import { useParams } from 'react-router-dom';
+import { agenda } from '../../helpers/agenda';
 
-import * as C from './styles'
+import * as C from './styles';
 import Header from '../../components/Header';
 
 const EventDetails = () => {
   const { eventId } = useParams();
-  
+
   const evento = agenda
-    .flatMap(mesAgenda => mesAgenda.eventos)
-    .find(e => e.id.toString() === eventId);
+    .flatMap((mesAgenda) => mesAgenda.eventos)
+    .find((e) => e.id.toString() === eventId);
 
   if (!evento) {
     return <div>Evento não encontrado</div>;
@@ -18,18 +18,24 @@ const EventDetails = () => {
 
   return (
     <C.Container>
-    <Header/>
+      <Header />
       <C.DetalhesContainer>
-      <C.TituloEvento>{evento.titulo}</C.TituloEvento>
-    
-      <C.DataHoraEvento> <h2>{evento.data} às {evento.hora}</h2> </C.DataHoraEvento>
-      <C.DescricaoEvento>{evento.descricao}</C.DescricaoEvento>
-      
-      
-    
-    </C.DetalhesContainer>
+        <C.TituloEvento>{evento.titulo}</C.TituloEvento>
+
+        <C.DataHoraEvento>
+          {' '}
+          <h2>
+            {evento.data} às {evento.hora}
+          </h2>{' '}
+        </C.DataHoraEvento>
+        <C.DescricaoEvento>{evento.descricao.pt}</C.DescricaoEvento>
+        <C.TituloSecaoEvento>ACAIUBA´S LOOKOUT </C.TituloSecaoEvento>
+
+        <C.DescricaoEvento>
+          <span>{evento.descricao.en}</span>
+        </C.DescricaoEvento>
+      </C.DetalhesContainer>
     </C.Container>
-  
   );
 };
 
