@@ -1,66 +1,58 @@
-:root{
-    --text-color: #fff;
-    --square-color: rgba(0, 0, 0, 0.3);
+:root {
+  --text-color: #fff;
+  --square-color: rgba(0, 0, 0, 0.3);
 }
-.fundo{
-    background: #D66B00;
-    height: 160vh;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+.fundo {
+  background: #d66b00;
+  height: 160vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
-.back{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--square-color);
-    border-radius: 30px;
-    width: 55px;
-    height: 55px;
-    align-self: self-start;
-    margin-top: -100px; /* altura que está do topo */
-    top: 10px; /* altura que vai parar antes do topo */
-    left: 10px;
-    position: sticky;
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--square-color);
+  border-radius: 30px;
+  width: 55px;
+  height: 55px;
+  align-self: self-start;
+  margin-top: -100px; /* altura que está do topo */
+  top: 10px; /* altura que vai parar antes do topo */
+  left: 10px;
+  position: sticky;
 }
-.back img{
-    width: 17px;
-    color: #fff;
+.back img {
+  width: 17px;
+  color: #fff;
 }
-.title{
-    font-size: xx-small;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--square-color);
-    box-sizing: 100%;
-    width: 90%;
-    border-radius: 30px;
-    padding: .5rem;
-    padding-left: 1rem;
+.title {
+ 
+  font-family: 'FuturaPT', sans-serif;
+  background: var(--square-color);
+  color: #E7EBE0;
+  font-weight: 300;
+  box-sizing: 100%;
+  width: 100%;
+  border-radius: 30px;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  opacity: 0.80;
 
 }
 
 .audios {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.audio{
-    width: 100vw;
-    margin-top: 20px;
-    /* Exemplo de estilos adicionais */
-    background-color: #753D00;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+.aaaaa {
+  font-family: 'FuturaPt', sans-serif;
+  color: #E7EBE0;
+  font-size: 13px;
+  opacity: 0.80;
+
 }
-
-audio::-webkit-media-controls-panel {
-    background-color: 	#753D00;
-  }
-
-  .aaaaa {
-    color: #fff;
-    font-size: 12px;
-    text-align: left;
-    font-weight: 300;
-  }
