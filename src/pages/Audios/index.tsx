@@ -6,6 +6,7 @@ import logo from '../../assets/logo.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import './styles.css';
 import AudioPlayer from '../../components/AudioPlayer';
+import BtnDownArrow from '../../components/ScrollButton';
 
 const Audios = () => {
  
@@ -14,6 +15,7 @@ const Audios = () => {
   return (
     <WatermarkWrapper>
       <div className="fundo">
+        <BtnDownArrow/>
         <button
           className="back"
           onClick={() => {

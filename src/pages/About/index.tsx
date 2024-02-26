@@ -18,6 +18,7 @@ import logoIphan from '../../assets/icons/logo-iphan.svg';
 
 // Others
 import packageJson from '../../../package.json';
+import BtnDownArrow from '../../components/ScrollButton';
 
 const Nav = styled.nav`
   position: absolute;
@@ -74,6 +75,7 @@ const About = () => {
           <LowArrow onClick={() => window.history.back()} isActive={true} />
         </Nav>
         <Content>
+        <BtnDownArrow/>
           <img
             src={appSerra}
             alt="Logo do aplicativo Serra da Barriga"

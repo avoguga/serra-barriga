@@ -4,6 +4,7 @@ import { Icons } from '../../helpers/icons';
 import styled from 'styled-components';
 import Iansa from '../../assets/iansã.png';
 import FloatingButtonBar from '../../components/FloatingContainer';
+import BtnDownArrow from '../../components/ScrollButton';
 
 const Selfiee = Icons['Selfie'];
 
@@ -45,7 +46,7 @@ const HistorySelfie = () => {
   return (
     <WatermarkWrapper>
       <FloatingButtonBar />
-
+      <BtnDownArrow/>
       <div
         style={{
           backgroundColor: '#8AA61E',
