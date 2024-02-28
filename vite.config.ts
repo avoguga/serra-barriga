@@ -11,9 +11,4 @@ export default defineConfig({
     }),
   ],
   assetsInclude: ['**/*.glb'],
-  build: {
-    rollupOptions: {
-      external: ['@teachablemachine/image', 'react-icons/fa'],
-    },
-  },
 });
