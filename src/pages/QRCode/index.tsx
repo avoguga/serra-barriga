@@ -39,7 +39,7 @@ const QRCode = () => {
     if (!model || webcam) return;
 
     async function setupWebcam() {
-      const newWebcam = new tmImage.Webcam();
+      const newWebcam = new tmImage.Webcam({ facingMode: 'environment' }); // Select rear camera
       await newWebcam.setup();
       await newWebcam.play();
       setWebcam(newWebcam); // Configura o estado da webcam
