@@ -18,14 +18,16 @@ interface Prediction {
 const QRCode = () => {
   const navigate = useNavigate();
   const webcamRef = useRef<HTMLDivElement>(null);
-  const URL = "https://teachablemachine.withgoogle.com/models/07fghDy7n/";
+  const URL = 'https://teachablemachine.withgoogle.com/models/07fghDy7n/';
+  // @ts-ignore
   const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null);
+  // @ts-ignore
   const [webcam, setWebcam] = useState<tmImage.Webcam | null>(null); // Estado para a webcam
 
   useEffect(() => {
     async function loadModel() {
-      const modelURL = URL + "model.json";
-      const metadataURL = URL + "metadata.json";
+      const modelURL = URL + 'model.json';
+      const metadataURL = URL + 'metadata.json';
       const loadedModel = await tmImage.load(modelURL, metadataURL);
       setModel(loadedModel);
     }
@@ -46,13 +48,14 @@ const QRCode = () => {
         webcamRef.current.appendChild(newWebcam.canvas);
         newWebcam.canvas.style.width = '100%'; // Definindo largura de 100% para preencher o contêiner
         newWebcam.canvas.style.height = '100%';
-        newWebcam.canvas.style.borderRadius = '30px'; 
-    
+        newWebcam.canvas.style.borderRadius = '30px';
       }
 
       const loop = async () => {
         newWebcam.update();
-        const prediction = await model.predict(newWebcam.canvas) as Prediction[];
+        const prediction = (await model.predict(
+          newWebcam.canvas
+        )) as Prediction[];
         handlePrediction(prediction);
         requestAnimationFrame(loop);
       };
@@ -70,12 +73,16 @@ const QRCode = () => {
   const handlePrediction = (predictions: Prediction[]) => {
     predictions.forEach(({ className, probability }) => {
       if (probability > 0.8) {
-        console.log(`Classe prevista: ${className}, Probabilidade: ${probability}`);
-  
+        console.log(
+          `Classe prevista: ${className}, Probabilidade: ${probability}`
+        );
+
         const espacoData = getEspacoData(className);
-  
+
         if (espacoData) {
-          console.log(`Navegando para ${espacoData.title}: ${espacoData.description}`);
+          console.log(
+            `Navegando para ${espacoData.title}: ${espacoData.description}`
+          );
           navigate(espacoData.path);
         } else {
           console.log(`Nenhum dado encontrado para ${className}`);
@@ -91,9 +98,18 @@ const QRCode = () => {
           <BackButton onClick={() => navigate('/')}>
             <img src={seta} alt="Seta voltar" />
           </BackButton>
-          <img src={logo} alt="Logo" style={{ width: '200px', height: '70px', marginTop: '50px', marginBottom: '30px' }} />
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              width: '200px',
+              height: '70px',
+              marginTop: '50px',
+              marginBottom: '30px',
+            }}
+          />
         </HeaderContainer>
-        <CameraContainer ref={webcamRef} ></CameraContainer>
+        <CameraContainer ref={webcamRef}></CameraContainer>
       </Container>
     </WatermarkWrapper>
   );

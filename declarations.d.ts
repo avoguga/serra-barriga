@@ -11,6 +11,10 @@ declare module 'facefilter';
 
 declare module 'react-qr-reader';
 
+declare module 'react-icons/fa';
+
+declare module '@teachablemachine/image';
+
 declare namespace JSX {
   interface IntrinsicElements {
     'model-viewer': any; // Use `any` para permitir qualquer propriedade. Você pode especificar props mais precisas conforme necessário.
