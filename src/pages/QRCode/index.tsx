@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';
 import logo from '../../assets/logo.png';
@@ -21,6 +21,7 @@ const QRCode = () => {
   const URL = "https://teachablemachine.withgoogle.com/models/07fghDy7n/";
   const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null);
   const [webcam, setWebcam] = useState<tmImage.Webcam | null>(null); // Estado para a webcam
+  const [cameraActive, setCameraActive] = useState(true); // Estado para controlar a atividade da câmera
 
   useEffect(() => {
     async function loadModel() {
@@ -31,43 +32,9 @@ const QRCode = () => {
     }
 
     loadModel();
-  }, [URL]); // Carrega o modelo apenas uma vez quando a URL muda
+  }, [URL]);
 
-  useEffect(() => {
-    if (!model || webcam) return;
-
-    async function setupWebcam() {
-      const newWebcam = new tmImage.Webcam();
-      await newWebcam.setup();
-      await newWebcam.play();
-      setWebcam(newWebcam); // Configura o estado da webcam
-
-      if (webcamRef.current) {
-        webcamRef.current.appendChild(newWebcam.canvas);
-        newWebcam.canvas.style.width = '100%'; // Definindo largura de 100% para preencher o contêiner
-        newWebcam.canvas.style.height = '100%';
-        newWebcam.canvas.style.borderRadius = '30px'; 
-    
-      }
-
-      const loop = async () => {
-        newWebcam.update();
-        const prediction = await model.predict(newWebcam.canvas) as Prediction[];
-        handlePrediction(prediction);
-        requestAnimationFrame(loop);
-      };
-
-      loop();
-    }
-
-    setupWebcam();
-
-    return () => {
-      webcam?.stop();
-    };
-  }, [model, webcam]); // Configura a webcam apenas uma vez quando o modelo e a webcam são definidos
-
-  const handlePrediction = (predictions: Prediction[]) => {
+  const handlePrediction = useCallback((predictions: Prediction[]) => {
     predictions.forEach(({ className, probability }) => {
       if (probability > 0.8) {
         console.log(`Classe prevista: ${className}, Probabilidade: ${probability}`);
@@ -77,12 +44,55 @@ const QRCode = () => {
         if (espacoData) {
           console.log(`Navegando para ${espacoData.title}: ${espacoData.description}`);
           navigate(espacoData.path);
-        } else {
-          console.log(`Nenhum dado encontrado para ${className}`);
+          setCameraActive(false); // Desativa a câmera se a condição for atendida
         }
       }
     });
-  };
+  }, [navigate]);
+
+  useEffect(() => {
+    if (!cameraActive) return; // Interrompe a configuração da webcam se a câmera não estiver ativa
+
+    let isComponentMounted = true;
+  
+    async function setupWebcam() {
+      if (!model || !cameraActive) return;
+      const newWebcam = new tmImage.Webcam();
+      await newWebcam.setup({facingMode: "environment"});
+      await newWebcam.play();
+     
+      setWebcam(newWebcam);
+  
+      if (webcamRef.current) {
+        webcamRef.current.appendChild(newWebcam.canvas);
+        newWebcam.canvas.style.position = 'absolute';
+        newWebcam.canvas.style.width = '100%';
+        newWebcam.canvas.style.height = '100%';
+        newWebcam.canvas.style.objectFit = 'cover'; // Isso garante que o vídeo cubra toda a área sem distorcer
+        newWebcam.canvas.style.top = '0';
+        newWebcam.canvas.style.left = '0';
+      }
+      const loop = async () => {
+        if (!isComponentMounted || !model || !cameraActive) return;
+
+        newWebcam.update();
+        const prediction = await model.predict(newWebcam.canvas) as Prediction[];
+        handlePrediction(prediction);
+        if (cameraActive) requestAnimationFrame(loop);
+      };
+  
+      loop();
+    }
+  
+    if (model && cameraActive) {
+      setupWebcam();
+    }
+  
+    return () => {
+      isComponentMounted = false;
+      webcam?.stop();
+    };
+  }, [model, cameraActive, handlePrediction]);
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark>
@@ -93,7 +103,7 @@ const QRCode = () => {
           </BackButton>
           <img src={logo} alt="Logo" style={{ width: '200px', height: '70px', marginTop: '50px', marginBottom: '30px' }} />
         </HeaderContainer>
-        <CameraContainer ref={webcamRef} ></CameraContainer>
+        <CameraContainer ref={webcamRef}></CameraContainer>
       </Container>
     </WatermarkWrapper>
   );
