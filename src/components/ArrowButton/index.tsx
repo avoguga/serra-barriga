@@ -8,6 +8,7 @@ interface ArrowProps {
   direction: 'left' | 'right';
   onClick: () => void;
   isActive: boolean;
+  
 }
 
 const ArrowButton = styled.button`

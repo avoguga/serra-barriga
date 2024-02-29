@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useOutlet } from 'react-router-dom';
-import styled from 'styled-components';
+
 import logo from '../../assets/logo.png';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import {
@@ -9,87 +9,9 @@ import {
 } from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
 import FloatingButtonBar from '../../components/FloatingContainer';
+import * as C from './styles';
 
-const PageContainer = styled.div`
-  display: flex;
-  background: #b21522;
-  height: 100vh;
-  justify-content: center;
-  align-items: baseline;
-`;
 
-const PageHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  height: 60px;
-  background: #8c111b;
-  width: 70%;
-  border-radius: 35px;
-
-  text-transform: uppercase;
-  color: #ffffff;
-
-  margin-top: 8px;
-
-  padding: 0 20px;
-`;
-const HeaderContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  font-family: 'FuturaPTDemiOblique', sans-serif;
-  font-size: 13px;
-  opacity: 1;
-`;
-
-const PersonalitiesGrid = styled.section`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 400px;
-  gap: 5px;
-  padding: 10px;
-`;
-
-const PersonalityCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-family: 'Kumbh Sans', sans-serif;
-  color: #ffffff;
-  font-size: 14px;
-  height: auto;
-  overflow: hidden;
-  margin-bottom: 2px;
-
-  img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    object-position: center;
-  }
-`;
-
-export const ArrowContainer = styled.div`
-  display: flex;
-
-  flex-direction: row;
-
-  left: 0;
-  justify-content: space-between;
-  width: 95%;
-  margin-left: 10px;
-`;
-
-const MainContainer = styled.div`
-  display: flex;
-  background-color: #b21522;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const Personalities = () => {
   const navigate = useNavigate();
@@ -113,9 +35,9 @@ const Personalities = () => {
   }
 
   return (
-    <PageContainer>
+    <C.PageContainer>
       <FloatingButtonBar backgroundColor="#8C111B" />
-      <MainContainer>
+      <C.MainContainer>
         <img
           src={logo}
           alt="logo serra da barriga"
@@ -126,8 +48,8 @@ const Personalities = () => {
             marginBottom: '30px',
           }}
         />
-        <PageHeader>
-          <HeaderContent>
+        <C.PageHeader>
+          <C.HeaderContent>
             <img
               src={PersonalitiesSvg}
               alt="personalitieIcon"
@@ -137,22 +59,22 @@ const Personalities = () => {
               }}
             />
             <h3>PERSONALIDADES</h3>
-          </HeaderContent>
-        </PageHeader>
+          </C.HeaderContent>
+        </C.PageHeader>
 
-        <PersonalitiesGrid>
+        <C.PersonalitiesGrid>
           {personalities.map((personality: PersonalityType) => (
-            <PersonalityCard key={personality.name}>
+            <C.PersonalityCard key={personality.name}>
               <img
                 src={personality.image}
                 alt={personality.name}
                 onClick={() => goToPersonality(personality.name)}
               />
-            </PersonalityCard>
+            </C.PersonalityCard>
           ))}
-        </PersonalitiesGrid>
+        </C.PersonalitiesGrid>
 
-        <ArrowContainer>
+        <C.ArrowContainer>
           <Arrow
             direction="left"
             onClick={handleLeftClick}
@@ -163,9 +85,9 @@ const Personalities = () => {
             onClick={handleRightClick}
             isActive={activeArrow === 'right'}
           />
-        </ArrowContainer>
-      </MainContainer>
-    </PageContainer>
+        </C.ArrowContainer>
+      </C.MainContainer>
+    </C.PageContainer>
   );
 };
 
