@@ -21,6 +21,8 @@ export const HeaderContainer = styled.header`
 
 export const CameraContainer = styled.div`
   background-color: #fff;
+  position: relative;
+  overflow: hidden;
   width: 90vw;
   border-radius: 30px;
   height: 100%;

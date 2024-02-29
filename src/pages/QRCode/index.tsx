@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';
 import logo from '../../assets/logo.png';
@@ -23,6 +23,7 @@ const QRCode = () => {
   const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null);
   // @ts-ignore
   const [webcam, setWebcam] = useState<tmImage.Webcam | null>(null); // Estado para a webcam
+  const [cameraActive, setCameraActive] = useState(true); // Estado para controlar a atividade da câmera
 
   useEffect(() => {
     async function loadModel() {
@@ -33,64 +34,74 @@ const QRCode = () => {
     }
 
     loadModel();
-  }, [URL]); // Carrega o modelo apenas uma vez quando a URL muda
+  }, [URL]);
+
+  const handlePrediction = useCallback((predictions: Prediction[]) => {
+    predictions.forEach(({ className, probability }) => {
+      if (probability > 0.8) {
+        console.log(`Classe prevista: ${className}, Probabilidade: ${probability}`);
+  
+        const espacoData = getEspacoData(className);
+  
+        if (espacoData) {
+          console.log(`Navegando para ${espacoData.title}: ${espacoData.description}`);
+          navigate(espacoData.path);
+          setCameraActive(false); // Desativa a câmera se a condição for atendida
+        }
+      }
+    });
+  }, [navigate]);
 
   useEffect(() => {
-    if (!model || webcam) return;
+    if (!cameraActive) return; // Interrompe a configuração da webcam se a câmera não estiver ativa
 
+    let isComponentMounted = true;
+  
     async function setupWebcam() {
-      const newWebcam = new tmImage.Webcam(200, 200, true); // os argumentos são width, height, flip
-      // Configura para usar a câmera traseira
-      await newWebcam.setup({ facingMode: 'environment' });
+      if (!model || !cameraActive) return;
+      const newWebcam = new tmImage.Webcam();
+      await newWebcam.setup({facingMode: "environment"});
       await newWebcam.play();
-      setWebcam(newWebcam); // Configura o estado da webcam
-
+     
+      setWebcam(newWebcam);
+  
       if (webcamRef.current) {
         webcamRef.current.appendChild(newWebcam.canvas);
-        newWebcam.canvas.style.width = '100%'; // Definindo largura de 100% para preencher o contêiner
+        newWebcam.canvas.style.position = 'absolute';
+        newWebcam.canvas.style.width = '100%';
         newWebcam.canvas.style.height = '100%';
-        newWebcam.canvas.style.borderRadius = '30px';
+        newWebcam.canvas.style.objectFit = 'cover'; // Isso garante que o vídeo cubra toda a área sem distorcer
+        newWebcam.canvas.style.top = '0';
+        newWebcam.canvas.style.left = '0';
       }
-
       const loop = async () => {
+        if (!isComponentMounted || !model || !cameraActive) return;
+
         newWebcam.update();
         const prediction = (await model.predict(
           newWebcam.canvas
         )) as Prediction[];
         handlePrediction(prediction);
-        requestAnimationFrame(loop);
+        if (cameraActive) requestAnimationFrame(loop);
       };
-
+  
       loop();
     }
-
-    setupWebcam();
-
+  
+    if (model && cameraActive) {
+      setupWebcam();
+    }
+  
     return () => {
+      isComponentMounted = false;
       webcam?.stop();
     };
-  }, [model, webcam]); // Configura a webcam apenas uma vez quando o modelo e a webcam são definidos
 
-  const handlePrediction = (predictions: Prediction[]) => {
-    predictions.forEach(({ className, probability }) => {
-      if (probability > 0.8) {
-        console.log(
-          `Classe prevista: ${className}, Probabilidade: ${probability}`
-        );
+  }, [model, cameraActive, handlePrediction]);
 
-        const espacoData = getEspacoData(className);
+ 
 
-        if (espacoData) {
-          console.log(
-            `Navegando para ${espacoData.title}: ${espacoData.description}`
-          );
-          navigate(espacoData.path);
-        } else {
-          console.log(`Nenhum dado encontrado para ${className}`);
-        }
-      }
-    });
-  };
+
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark>
