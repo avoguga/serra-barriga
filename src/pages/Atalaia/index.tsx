@@ -50,7 +50,7 @@ const AtalaiaView = () => {
       <Content>
         <img
           src={atalaia}
-          alt="Logo do aplicativo Serra da Barriga"
+          alt="Ilustração do mirante de acaiuba"
           style={{
             width: '350px',
             height: '232px',
@@ -65,7 +65,7 @@ const AtalaiaView = () => {
           <HomeButton
             iconType="Info"
             onClick={() => {
-              navigate('/#');
+              navigate('/atalaia-de-acaiuba/info');
             }}
           >
             INFORMAÇÕES
@@ -73,7 +73,7 @@ const AtalaiaView = () => {
           <HomeButton
             iconType="Location"
             onClick={() => {
-              navigate('/#');
+              navigate('/atalaia-de-acaiuba/location');
             }}
           >
             LOCALIZAÇÃO
@@ -81,7 +81,7 @@ const AtalaiaView = () => {
           <HomeButton
             iconType="Video"
             onClick={() => {
-              navigate('/#');
+              navigate('/atalaia-de-acaiuba/videos');
             }}
           >
             VÍDEOS
@@ -89,7 +89,7 @@ const AtalaiaView = () => {
           <HomeButton
             iconType="Img"
             onClick={() => {
-              navigate('/#');
+              navigate('/atalaia-de-acaiuba/images');
             }}
           >
             IMAGENS

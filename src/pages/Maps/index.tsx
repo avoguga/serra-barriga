@@ -5,15 +5,18 @@ import tiktok from '../../assets/logo.png';
 import mapa from '../../assets/mapa.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import { Icons } from '../../helpers/icons';
+//import { Icons } from '../../helpers/icons';
+import LocIcon from '../../assets/icons/localização.svg';
+import Pointer from '../../assets/icons/dedo clicando - branco.svg';
+import BtnDownArrow from '../../components/ScrollButton';
 
-const HomeIcon = Icons['Arqueologia'];
+//const HomeIcon = Icons['Arqueologia'];
 
 const ButtonContainer = styled.div`
   display: flex;
   background-color: #67781b;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 20px;
   justify-content: center;
   margin: 0 10px;
 `;
@@ -66,8 +69,8 @@ const items = [
 const Maps = () => {
   const navigate = useNavigate();
 
-  const getBackgroundColor = (index: any) => {
-    const colors = ['#67781B', '#586617'];
+  const getBackgroundColor = (index) => {
+    const colors = ['#586617', '#67781B'];
     return colors[index % colors.length];
   };
 
@@ -106,12 +109,14 @@ const Maps = () => {
           />
 
           <ButtonContainer>
-            <HomeIcon
+            <img
+              src ={LocIcon}
               style={{
-                width: '40px',
-                height: '40px',
-                marginRight: '-35px',
-                marginTop: '-5px',
+                width: '30px',
+                height: '30px',
+                marginRight: '-10px',
+                marginTop: '2px',
+
               }}
             />
             <h2
@@ -119,6 +124,7 @@ const Maps = () => {
                 font: 'normal normal 500 22px/30px ',
                 letterSpacing: '0px',
                 color: '#FFFFFF',
+                fontSize: '30px'
               }}
             >
               Mapa
@@ -137,6 +143,16 @@ const Maps = () => {
                 marginBottom: '50px',
               }}
             />
+            <img
+              src={Pointer}
+              style={{
+                width: '65px',
+                height: '65px',
+                marginTop: '-140px',
+                marginBottom: '-10px'
+              }}
+            />
+            <BtnDownArrow/>
           </ButtonContainer>
           <div
             style={{
@@ -146,6 +162,7 @@ const Maps = () => {
               justifyContent: 'center',
               width: '100%',
               backgroundColor: '#67781B',
+              marginTop: '-30px'
             }}
           >
             {items.map((item, index) => (
