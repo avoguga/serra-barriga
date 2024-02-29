@@ -18,15 +18,17 @@ interface Prediction {
 const QRCode = () => {
   const navigate = useNavigate();
   const webcamRef = useRef<HTMLDivElement>(null);
-  const URL = "https://teachablemachine.withgoogle.com/models/07fghDy7n/";
+  const URL = 'https://teachablemachine.withgoogle.com/models/07fghDy7n/';
+  // @ts-ignore
   const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null);
+  // @ts-ignore
   const [webcam, setWebcam] = useState<tmImage.Webcam | null>(null); // Estado para a webcam
   const [cameraActive, setCameraActive] = useState(true); // Estado para controlar a atividade da câmera
 
   useEffect(() => {
     async function loadModel() {
-      const modelURL = URL + "model.json";
-      const metadataURL = URL + "metadata.json";
+      const modelURL = URL + 'model.json';
+      const metadataURL = URL + 'metadata.json';
       const loadedModel = await tmImage.load(modelURL, metadataURL);
       setModel(loadedModel);
     }
@@ -76,7 +78,9 @@ const QRCode = () => {
         if (!isComponentMounted || !model || !cameraActive) return;
 
         newWebcam.update();
-        const prediction = await model.predict(newWebcam.canvas) as Prediction[];
+        const prediction = (await model.predict(
+          newWebcam.canvas
+        )) as Prediction[];
         handlePrediction(prediction);
         if (cameraActive) requestAnimationFrame(loop);
       };
@@ -92,7 +96,12 @@ const QRCode = () => {
       isComponentMounted = false;
       webcam?.stop();
     };
+
   }, [model, cameraActive, handlePrediction]);
+
+ 
+
+
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark>
@@ -101,7 +110,16 @@ const QRCode = () => {
           <BackButton onClick={() => navigate('/')}>
             <img src={seta} alt="Seta voltar" />
           </BackButton>
-          <img src={logo} alt="Logo" style={{ width: '200px', height: '70px', marginTop: '50px', marginBottom: '30px' }} />
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              width: '200px',
+              height: '70px',
+              marginTop: '50px',
+              marginBottom: '30px',
+            }}
+          />
         </HeaderContainer>
         <CameraContainer ref={webcamRef}></CameraContainer>
       </Container>
