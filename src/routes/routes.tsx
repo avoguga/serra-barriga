@@ -19,6 +19,7 @@ import PersonalityPage from '../pages/Personality';
 import Agenda from '../pages/Agenda';
 import EventDetails from '../pages/EventDetails'
 import Maps from '../pages/Maps';
+import HistoricalFigurePage from '../pages/HistoricalFigurePage';
 
 export const router = createBrowserRouter([
   {
@@ -118,6 +119,11 @@ export const router = createBrowserRouter([
   {
     path: '/maps',
     element: <Maps />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/historical-figure/:figureName', 
+    element: <HistoricalFigurePage />,
     errorElement: <ErrorPage />,
   },
 ]);
