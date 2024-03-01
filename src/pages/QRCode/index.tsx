@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';
 import logo from '../../assets/logo.png';
@@ -15,137 +15,124 @@ interface Prediction {
   probability: number;
 }
 
+// Definição simplificada do tipo para o modelo da Teachable Machine
+interface TeachableMachineModel {
+  predict: (input: HTMLImageElement) => Promise<Prediction[]>;
+}
+
 const QRCode = () => {
   const navigate = useNavigate();
   const webcamRef = useRef<HTMLDivElement>(null);
-  const URL = 'https://teachablemachine.withgoogle.com/models/07fghDy7n/';
-  const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null);
-  const [webcam, setWebcam] = useState<tmImage.Webcam | null>(null); // Estado para a webcam
-  const [isLoading, setIsLoading] = useState(true); // Novo estado para controle de carregamento
-  const [cameraActive, setCameraActive] = useState(true); // Estado para controlar a atividade da câmera
-
-  useEffect(() => {
-    const constraints = { video: true };
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   
-    navigator.mediaDevices.getUserMedia(constraints)
-      .then((stream) => {
-        // Encontrar o elemento de vídeo no DOM
-        const videoElement = webcamRef.current?.querySelector('video');
-        if (videoElement) {
-          videoElement.srcObject = stream;
-          videoElement.play();
-        }
-      })
-      .catch((error) => {
-        console.error('Erro ao acessar a câmera:', error);
-      });
-  }, []);
-
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        
-        const video = document.querySelector('video');
-        if (video) {
-          video.srcObject = stream;
-        }
-      })
-      .catch(err => {
-        console.error("Erro ao acessar a câmera: ", err);
-      });
-  }, []);
+  const URL = ' https://teachablemachine.withgoogle.com/models/07fghDy7n/';
+  const [model, setModel] = useState<TeachableMachineModel | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadModel() {
-      const modelURL = URL + 'model.json';
-      const metadataURL = URL + 'metadata.json';
-      const loadedModel = await tmImage.load(modelURL, metadataURL);
-      setModel(loadedModel);
+      try {
+        const modelURL = URL + 'model.json';
+        const metadataURL = URL + 'metadata.json';
+        const loadedModel = await tmImage.load(modelURL, metadataURL) as TeachableMachineModel;
+        setModel(loadedModel);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Erro ao carregar o modelo:', error);
+        setIsLoading(false);
+      }
     }
-
     loadModel();
   }, [URL]);
 
-  const handlePrediction = useCallback(
-    (predictions: Prediction[]) => {
-      predictions.forEach(({ className, probability }) => {
-        if (probability > 0.8) {
-          console.log(`Classe prevista: ${className}, Probabilidade: ${probability}`);
-
-          const espacoData = getEspacoData(className);
-
-          if (espacoData) {
-            console.log(`Navegando para ${espacoData.title}: ${espacoData.description}`);
-            navigate(espacoData.path);
-            setCameraActive(false); // Desativa a câmera se a condição for atendida
-            setIsLoading(false); // Desativa o loading
-          }
-        }
-      });
-    },
-    [navigate]
-  );
-
   useEffect(() => {
-    if (!cameraActive) return;
+    (async () => {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        console.error('Navegador não suporta acesso à câmera');
+        setIsLoading(false);
+        return;
+      }
 
-    let isComponentMounted = true;
-    setIsLoading(true); // Iniciar o carregamento
-
-    async function setupWebcam() {
-      if (!model || !cameraActive) return;
-      const newWebcam = new tmImage.Webcam();
       try {
-        await newWebcam.setup({ facingMode: 'environment' }); // Preferência pela câmera frontal
-        await newWebcam.play();
-        setWebcam(newWebcam);
-
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
         if (webcamRef.current) {
-          webcamRef.current.appendChild(newWebcam.canvas);
-          newWebcam.canvas.style.position = 'absolute';
-          newWebcam.canvas.style.width = '100%';
-          newWebcam.canvas.style.height = '100%';
-          newWebcam.canvas.style.objectFit = 'cover';
-          newWebcam.canvas.style.top = '0';
-          newWebcam.canvas.style.left = '0';
           const videoElement = document.createElement('video');
+          videoElement.srcObject = stream;
+          videoElement.autoplay = true;
+          videoElement.muted = true; // Necessário para reprodução automática
+          videoElement.setAttribute('playsinline', 'true'); // Evita interrupções em iOS
           videoElement.style.width = '100%';
           videoElement.style.height = '100%';
-          videoElement.playsInline = true;
-          videoElement.autoplay = true;
-          videoElement.muted = true; // Necessário para autoplay em alguns navegadores
-       
+          videoElement.style.objectFit = 'cover'; // Garante que o vídeo cubra o espaço disponível
+          videoElement.onloadedmetadata = () => {
+            videoElement.play();
+          };
           webcamRef.current.appendChild(videoElement);
+          videoRef.current = videoElement;
         }
-
-        setIsLoading(false); // Finaliza o carregamento quando a câmera está pronta
-
-        const loop = async () => {
-          if (!isComponentMounted || !model || !cameraActive) return;
-
-          newWebcam.update();
-          const prediction = await model.predict(newWebcam.canvas) as Prediction[];
-          handlePrediction(prediction);
-          if (cameraActive) requestAnimationFrame(loop);
-        };
-
-        loop();
+        setIsLoading(false);
       } catch (error) {
-        console.error('Erro ao configurar a webcam:', error);
-        setIsLoading(false); // Finaliza o carregamento se houver um erro
+        console.error('Erro ao acessar a câmera:', error);
+        setIsLoading(false);
       }
-    }
+    })();
+  }, []);
 
-    if (model && cameraActive) {
-      setupWebcam();
-    }
-
-    return () => {
-      isComponentMounted = false;
-      webcam?.stop();
+  useEffect(() => {
+    const captureImage = () => {
+      if (videoRef.current) {
+        const canvas = document.createElement('canvas');
+        canvas.width = videoRef.current.videoWidth;
+        canvas.height = videoRef.current.videoHeight;
+        const ctx = canvas.getContext('2d');
+  
+        if (ctx) {
+          ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+          const image = new Image();
+          image.src = canvas.toDataURL('image/png');
+          return image;
+        } else {
+          throw new Error('Contexto do canvas não está disponível');
+        }
+      }
+      return null;
     };
-  }, [model, cameraActive, handlePrediction, webcam]);
-
+  
+    const predict = async () => {
+      let shouldContinue = true;
+      while (shouldContinue) {
+        const image = captureImage();
+        if (image && model) {
+          try {
+            const prediction = await model.predict(image);
+            const highProbPrediction = prediction.sort((a, b) => b.probability - a.probability)[0];
+            if (highProbPrediction.probability > 0.5) {
+              const espacoData = getEspacoData(highProbPrediction.className);
+              if (espacoData) {
+                navigate(espacoData.path);
+                shouldContinue = false; // Para interromper o loop
+              }
+            }
+          } catch (error) {
+            console.error('Erro ao fazer a predição:', error);
+          }
+        }
+        await new Promise(resolve => setTimeout(resolve, 700));
+      }
+    };
+  
+    if (model && videoRef.current) {
+      predict().catch(console.error);
+    }
+  
+    return () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        const stream = videoRef.current.srcObject as MediaStream;
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+      }
+    };
+  }, [model, navigate]);
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark>
       <Container>
@@ -155,7 +142,7 @@ const QRCode = () => {
           </BackButton>
           <img src={logo} alt="Logo" style={{ width: '200px', height: '70px', marginTop: '50px', marginBottom: '30px' }} />
         </HeaderContainer>
-        {isLoading && <div style={{ textAlign: 'center', fontFamily: 'FuturaPT' , fontSize: '18px' }}>Carregando a câmera, aguarde um momento...</div>}
+        {isLoading && <div style={{ textAlign: 'center', fontSize: '18px' }}>Carregando a câmera, aguarde um momento...</div>}
         <CameraContainer ref={webcamRef}></CameraContainer>
       </Container>
     </WatermarkWrapper>
