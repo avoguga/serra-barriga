@@ -1,6 +1,12 @@
-import { ArrowContainer } from '../../../../pages/Personalities';
+
 import Arrow from '../../../ArrowButton';
 import { IArrow } from './types';
+import styled from 'styled-components';
+
+
+const ArrowContainer = styled.div`
+
+`;
 
 const CarouselArrow: React.FC<IArrow> = ({
   onClickNextPage,

@@ -69,7 +69,7 @@ const items = [
 const Maps = () => {
   const navigate = useNavigate();
 
-  const getBackgroundColor = (index) => {
+  const getBackgroundColor = (index: number) => {
     const colors = ['#586617', '#67781B'];
     return colors[index % colors.length];
   };
