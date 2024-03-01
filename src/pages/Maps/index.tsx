@@ -69,7 +69,7 @@ const items = [
 const Maps = () => {
   const navigate = useNavigate();
 
-  const getBackgroundColor = (index: any) => {
+  const getBackgroundColor = (index: number) => {
     const colors = ['#586617', '#67781B'];
     return colors[index % colors.length];
   };
@@ -110,12 +110,13 @@ const Maps = () => {
 
           <ButtonContainer>
             <img
-              src={LocIcon}
+              src ={LocIcon}
               style={{
                 width: '30px',
                 height: '30px',
                 marginRight: '-10px',
                 marginTop: '2px',
+
               }}
             />
             <h2
@@ -123,7 +124,7 @@ const Maps = () => {
                 font: 'normal normal 500 22px/30px ',
                 letterSpacing: '0px',
                 color: '#FFFFFF',
-                fontSize: '30px',
+                fontSize: '30px'
               }}
             >
               Mapa
@@ -148,10 +149,10 @@ const Maps = () => {
                 width: '65px',
                 height: '65px',
                 marginTop: '-140px',
-                marginBottom: '-10px',
+                marginBottom: '-10px'
               }}
             />
-            <BtnDownArrow />
+            <BtnDownArrow/>
           </ButtonContainer>
           <div
             style={{
@@ -161,7 +162,7 @@ const Maps = () => {
               justifyContent: 'center',
               width: '100%',
               backgroundColor: '#67781B',
-              marginTop: '-30px',
+              marginTop: '-30px'
             }}
           >
             {items.map((item, index) => (
