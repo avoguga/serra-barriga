@@ -144,7 +144,7 @@ const QRCode = () => {
       isComponentMounted = false;
       webcam?.stop();
     };
-  }, [model, cameraActive, handlePrediction]);
+  }, [model, cameraActive, handlePrediction, webcam]);
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark>
