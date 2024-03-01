@@ -19,11 +19,11 @@ const QRCode = () => {
   const navigate = useNavigate();
   const webcamRef = useRef<HTMLDivElement>(null);
   const URL = 'https://teachablemachine.withgoogle.com/models/07fghDy7n/';
-  const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null);
+const [model, setModel] = useState<tmImage.CustomMobileNet | null>(null);
   const [webcam, setWebcam] = useState<tmImage.Webcam | null>(null); // Estado para a webcam
   const [isLoading, setIsLoading] = useState(true); // Novo estado para controle de carregamento
   const [cameraActive, setCameraActive] = useState(true); // Estado para controlar a atividade da câmera
-
+  
   useEffect(() => {
     const constraints = { video: true };
   
@@ -134,6 +134,21 @@ const QRCode = () => {
         console.error('Erro ao configurar a webcam:', error);
         setIsLoading(false); // Finaliza o carregamento se houver um erro
       }
+
+       const loop = async () => {
+          if (!isComponentMounted || !model || !cameraActive) return;
+
+          newWebcam.update();
+          const prediction = await model.predict(newWebcam.canvas) as Prediction[];
+          handlePrediction(prediction);
+          if (cameraActive) requestAnimationFrame(loop);
+        };
+
+        loop();
+      } catch (error) {
+        console.error('Erro ao configurar a webcam:', error);
+        setIsLoading(false); // Finaliza o carregamento se houver um erro
+      }
     }
 
     if (model && cameraActive) {
@@ -146,6 +161,10 @@ const QRCode = () => {
     };
   }, [model, cameraActive, handlePrediction]);
 
+ 
+
+
+
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark>
       <Container>
@@ -153,7 +172,16 @@ const QRCode = () => {
           <BackButton onClick={() => navigate('/')}>
             <img src={seta} alt="Seta voltar" />
           </BackButton>
-          <img src={logo} alt="Logo" style={{ width: '200px', height: '70px', marginTop: '50px', marginBottom: '30px' }} />
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              width: '200px',
+              height: '70px',
+              marginTop: '50px',
+              marginBottom: '30px',
+            }}
+          />
         </HeaderContainer>
         {isLoading && <div style={{ textAlign: 'center', fontFamily: 'FuturaPT' , fontSize: '18px' }}>Carregando a câmera, aguarde um momento...</div>}
         <CameraContainer ref={webcamRef}></CameraContainer>
