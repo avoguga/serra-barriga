@@ -33,8 +33,8 @@ const QRCode: React.FC = () => {
 
   useEffect(() => {
     const loadModelAndCamera = async () => {
-      const modelURL = 'https://teachablemachine.withgoogle.com/models/oLkgb4n05/model.json';
-      const metadataURL = 'https://teachablemachine.withgoogle.com/models/oLkgb4n05/metadata.json';
+      const modelURL = 'https://teachablemachine.withgoogle.com/models/mtOLTcvXQ/model.json';
+      const metadataURL = 'https://teachablemachine.withgoogle.com/models/mtOLTcvXQ/metadata.json';
       try {
         const loadedModel = await tmImage.load(modelURL, metadataURL) as TeachableMachineModel;
         setModel(loadedModel);
