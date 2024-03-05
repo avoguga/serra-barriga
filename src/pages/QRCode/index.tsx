@@ -75,7 +75,7 @@ const QRCode: React.FC = () => {
         const prediction = await model.predict(image);
         const highProbPrediction = prediction.sort((a, b) => b.probability - a.probability)[0];
   
-        if (highProbPrediction.probability > 0.8) {
+        if (highProbPrediction.probability > 0.9) {
           const espacoData = getEspacoData(highProbPrediction.className);
           if (espacoData) {
             clearInterval(interval); // Interrompe o intervalo de previsão

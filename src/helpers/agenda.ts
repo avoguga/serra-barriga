@@ -39,6 +39,26 @@ export const agenda: MesAgenda[] = [
         data: '25/03',
         hora: '10h',
       },
+      {
+        id: 3,
+        titulo: 'Visita guiada à trilha ecológica',
+        descricao: {
+          pt: 'Descrição aqui',
+          en: 'Description here',
+        },
+        data: '25/03',
+        hora: '10h',
+      },
+      {
+        id: 4,
+        titulo: 'Visita guiada à trilha ecológica',
+        descricao: {
+          pt: 'Descrição aqui',
+          en: 'Description here',
+        },
+        data: '25/03',
+        hora: '10h',
+      },
     ],
   },
   {

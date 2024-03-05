@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useOutlet, useNavigate, Outlet } from 'react-router-dom';
+import ArrowDownIcon from '../../assets/icons/seta baixo.svg'
 
 import {
   agenda,
@@ -9,26 +10,27 @@ import {
 } from '../../helpers/agenda';
 
 import FloatingButtonBar from '../../components/FloatingContainer';
-import Arrow from '../../components/ArrowButton';
+
 import * as C from './styles';
 import Header from '../../components/Header';
 
 const Agenda = () => {
   const navigate = useNavigate();
   const outlet = useOutlet();
+  const eventContainerRef = useRef<HTMLDivElement>(null);
 
   const [mesSelecionado, setMesSelecionado] = useState<string>(agenda[0].mes);
   const [eventos, setEventos] = useState<Evento[]>([]);
-  const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
+  const [isActive, setIsActive] = useState(false);
+  
 
-  const handleLeftClick = () => {
-    console.log('Clicou na seta esquerda');
-    setActiveArrow('left');
-  };
-
-  const handleRightClick = () => {
-    console.log('Clicou na seta direita');
-    setActiveArrow('right');
+  
+  const handleDownClick = () => {
+    
+    setIsActive(!isActive)
+    if(eventContainerRef.current) {
+      eventContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   useEffect(() => {
@@ -62,7 +64,7 @@ const Agenda = () => {
           </C.MonthSelector>
         </C.MonthContainer>
       </C.SelectContainer>
-      <C.EventContainer>
+      <C.EventContainer ref={eventContainerRef}>
         {eventos.map((event) => (
           <C.EventCard key={event.id}>
             <C.EventTitle>{event.titulo}</C.EventTitle>
@@ -77,16 +79,10 @@ const Agenda = () => {
         ))}
       </C.EventContainer>
       <C.ArrowContainer>
-        <Arrow
-          direction="left"
-          onClick={handleLeftClick}
-          isActive={activeArrow === 'left'}
-        />
-        <Arrow
-          direction="right"
-          onClick={handleRightClick}
-          isActive={activeArrow === 'right'}
-        />
+        <div onClick={handleDownClick} >
+        <img src={ArrowDownIcon} alt="seta"  width={30} height={41}  />
+
+        </div>
       </C.ArrowContainer>
       <Outlet />
     </C.PageContainer>
