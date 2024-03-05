@@ -5,10 +5,7 @@ export const PageContainer = styled.div`
   flex-direction: column;
   background: #009289;
 
-  max-height: 135vh;
-
-
-  
+  height: 165vh;
 
   justify-content: baseline;
   align-items: center;
@@ -99,12 +96,13 @@ export const MonthContainer = styled.div`
 
 export const EventContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  overflow-y: hidden;
-  margin: 11rem -1rem 0 3.65rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  margin: 10rem 4rem 0 4rem;
   gap: 25px;
   height: 13rem;
+  overflow-y: visible;
 
   &::-webkit-scrollbar {
     display: none;
@@ -153,12 +151,11 @@ export const ButtonCard = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const ArrowContainer = styled.div`
-  display: flex;
-
-  flex-direction: row;
-  left: 0;
-  justify-content: space-between;
-  width: 95%;
-  margin-bottom: 100px;
+export const ArrowContainer = styled.aside`
+  display: inline-block;
+  align-items: baseline;
+  margin-bottom: 55px;
+  cursor: pointer;
+  margin-left: 18rem;
+  color: #035f59;
 `;

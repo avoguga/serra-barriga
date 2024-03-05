@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   max-height: 250vh;
   align-items: center;
-  padding: 7rem 1rem;
+  padding: 7rem 0rem;
 `;
 
 export const DetalhesContainer = styled.div`
@@ -41,22 +41,19 @@ export const TituloSecaoEvento = styled.h3`
   width: 90%;
   opacity: 0.89;
   font-weight: 100;
-
 `;
 export const DescricaoEvento = styled.p`
   font-size: 19px;
   color: #ffffff;
   font-family: 'FuturaPTHeavy', sans-serif;
   font-weight: 100;
-text-align: left;
+  text-align: left;
   opacity: 0.9;
   width: 90%;
 
-  >span {
-  font-style: italic;
-
+  > span {
+    font-style: italic;
   }
-  
 `;
 
 export const DataHoraEvento = styled.div`
