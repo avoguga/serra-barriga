@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
   display: flex;
   background: #b21522;
-  height: 150vh;
+  height: 180vh;
   justify-content: center;
   align-items: baseline;
 `;
