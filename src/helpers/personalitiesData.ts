@@ -14,6 +14,38 @@ import joao3 from '../assets/images/Fotos das personalidades/Joãozinho da Gomei
 import lupinicio1 from '../assets/images/Fotos das personalidades/Lupicinio Rodrigues/Foto - Evandro Teixeira (2).webp';
 import lupinicio2 from '../assets/images/Fotos das personalidades/Lupicinio Rodrigues/Foto retirada da internet (3).webp';
 import lupinicio3 from '../assets/images/Fotos das personalidades/Lupicinio Rodrigues/Foto retirada da internet (4).webp';
+
+import abdias1 from '../assets/images/Fotos das personalidades/Abdias Nascimento/Foto - Acervo Abdias Nascimento - Ipeafro.webp';
+import abdias2 from '../assets/images/Fotos das personalidades/Abdias Nascimento/Foto - Ricardo Stuckert - Pr.webp';
+import abdias3 from '../assets/images/Fotos das personalidades/Abdias Nascimento/Foto - Senado Federal (2).webp';
+
+import chica1 from '../assets/images/Fotos das personalidades/Carolina de Jesus/foto-retirada-da-internet-1.webp';
+import chica2 from '../assets/images/Fotos das personalidades/Carolina de Jesus/foto-retirada-da-internet-2.webp';
+import chica3 from '../assets/images/Fotos das personalidades/Carolina de Jesus/imagem-ims-acervo-uh-folhapress.webp';
+
+import helcias1 from '../assets/images/Fotos das personalidades/Helcias Pereira/Acervo APNS (2).webp';
+import helcias2 from '../assets/images/Fotos das personalidades/Helcias Pereira/Acervo Vamos Subir a Serra.webp';
+import helcias3 from '../assets/images/Fotos das personalidades/Helcias Pereira/Foto de Aprigio Vilanova (2).webp';
+
+import biu1 from '../assets/images/Fotos das personalidades/Mãe Biu de Xambá/Foto Arquivo Nação Xambá (2)_3.webp';
+import biu2 from '../assets/images/Fotos das personalidades/Mãe Biu de Xambá/Foto retirada da internet (2)_2_11zon.webp';
+import biu3 from '../assets/images/Fotos das personalidades/Mãe Biu de Xambá/Imagem de Beto Figueiroa_1_11zon.webp';
+
+import mirian1 from '../assets/images/Fotos das personalidades/Mãe Mírian/Foto Edilson Omena (2)_1_11zon.webp';
+import mirian2 from '../assets/images/Fotos das personalidades/Mãe Mírian/Foto de Aprigio Vilanova (2)_2_11zon.webp';
+import mirian3 from '../assets/images/Fotos das personalidades/Mãe Mírian/Foto retirada da internet (2)_3_11zon.webp';
+
+import camisa1 from '../assets/images/Fotos das personalidades/Mestre Camisa/Foto Acervo Pessoal (2)_2_11zon.webp';
+import camisa2 from '../assets/images/Fotos das personalidades/Mestre Camisa/Foto Fabio Rossi (2)_1_11zon.webp';
+import camisa3 from '../assets/images/Fotos das personalidades/Mestre Camisa/Foto retirada da internet (2)_4_11zon.webp';
+
+import claudio1 from '../assets/images/Fotos das personalidades/Mestre Cláudio/Acervo Vamos Subir a Serra.webp';
+import claudio2 from '../assets/images/Fotos das personalidades/Mestre Cláudio/Acervo Vamos Subir a Serra.webp';
+import claudio3 from '../assets/images/Fotos das personalidades/Mestre Cláudio/Acervo Vamos Subir a Serra.webp';
+
+import zezito1 from '../assets/images/Fotos das personalidades/Zezito Araújo/Acervo Vamos Subir a Serra_11zon.webp';
+import zezito2 from '../assets/images/Fotos das personalidades/Zezito Araújo/Foto - Rovena Rosa.webp';
+import zezito3 from '../assets/images/Fotos das personalidades/Zezito Araújo/Foto retirada da internet.webp';
 export type PersonalityType = {
   name: string;
   image: string;
@@ -82,7 +114,7 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Abdias Nascimento.',
       en: 'Descriptive text in English for Abdias Nascimento.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [abdias1, abdias2, abdias3],
   },
   {
     name: 'Chica Xavier',
@@ -91,7 +123,7 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Chica Xavier.',
       en: 'Descriptive text in English for Chica Xavier.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [chica1, chica2, chica3],
   },
   {
     name: 'Helcias Pereira',
@@ -100,7 +132,7 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Helcias Pereira.',
       en: 'Descriptive text in English for Helcias Pereira.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [helcias1, helcias2, helcias3],
   },
   {
     name: 'Mãe Biu de Xambá',
@@ -109,7 +141,7 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mãe Biu de Xambá.',
       en: 'Descriptive text in English for Mãe Biu de Xambá.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [biu1, biu2, biu3],
   },
 
   {
@@ -119,7 +151,7 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mãe Mírian.',
       en: 'Descriptive text in English for Mãe Mírian.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [mirian1, mirian2, mirian3],
   },
   {
     name: 'Mestre Camisa',
@@ -128,7 +160,7 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mestre Camisa.',
       en: 'Descriptive text in English for Mestre Camisa.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [camisa1, camisa2, camisa3],
   },
   {
     name: 'Mestre Cláudio',
@@ -137,7 +169,7 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mestre Cláudio.',
       en: 'Descriptive text in English for Mestre Cláudio.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [claudio1, claudio2, claudio3],
   },
   {
     name: 'Zezito Araújo',
@@ -146,6 +178,6 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Zezito Araújo.',
       en: 'Descriptive text in English for Zezito Araújo.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [zezito1, zezito2, zezito3],
   },
 ];
