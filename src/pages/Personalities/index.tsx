@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { useNavigate, useOutlet } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
@@ -7,7 +7,7 @@ import {
   PersonalityType,
   personalities,
 } from '../../helpers/personalitiesData';
-import Arrow from '../../components/ArrowButton';
+
 import FloatingButtonBar from '../../components/FloatingContainer';
 import * as C from './styles';
 
@@ -16,16 +16,10 @@ import * as C from './styles';
 const Personalities = () => {
   const navigate = useNavigate();
   const outlet = useOutlet();
-  const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
-  const handleLeftClick = () => {
-    console.log('Clicou na seta esquerda');
-    setActiveArrow('left');
-  };
+ 
+  
 
-  const handleRightClick = () => {
-    console.log('Clicou na seta direita');
-    setActiveArrow('right');
-  };
+
 
   const goToPersonality = (personalityName: string) => {
     navigate(`/personalities/${personalityName}`);
@@ -74,18 +68,7 @@ const Personalities = () => {
           ))}
         </C.PersonalitiesGrid>
 
-        <C.ArrowContainer>
-          <Arrow
-            direction="left"
-            onClick={handleLeftClick}
-            isActive={activeArrow === 'left'}
-          />
-          <Arrow
-            direction="right"
-            onClick={handleRightClick}
-            isActive={activeArrow === 'right'}
-          />
-        </C.ArrowContainer>
+    
       </C.MainContainer>
     </C.PageContainer>
   );

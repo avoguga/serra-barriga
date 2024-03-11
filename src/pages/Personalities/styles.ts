@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PageContainer = styled.div`
   display: flex;
   background: #b21522;
-  height: 100vh;
+  height: 150vh;
   justify-content: center;
   align-items: baseline;
 `;
@@ -39,7 +39,7 @@ export const PersonalitiesGrid = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: 400px;
-  gap: 5px;
+  gap: 18px;
   padding: 10px;
 `;
 
@@ -52,12 +52,12 @@ export const PersonalityCard = styled.div`
   color: #ffffff;
   font-size: 14px;
   height: auto;
-  overflow: hidden;
+  overflow: visible;
   margin-bottom: 2px;
 
   img {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+
     object-fit: contain;
     object-position: center;
   }

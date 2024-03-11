@@ -25,13 +25,21 @@ export type PersonalityType = {
 };
 
 // Importe as imagens usando a sintaxe ES6. Ajuste os caminhos conforme necessário.
-import maeNeideImage from '../assets/mae-neide.webp';
-import carolinaDeJesusImage from '../assets/carolina-de-jesus_1.webp';
-import joaozinhoDaGomeiaImage from '../assets/joaozinho-da-gomeia.webp';
-import lupicinioRodriguesImage from '../assets/lupicinio-rodrigues.webp';
+import maeNeideImage from '../assets/icons/icones-personalidades/icones_Mae Neide.webp';
+import carolinaDeJesusImage from '../assets/icons/icones-personalidades/icones_Carolina .webp';
+import joaozinhoDaGomeiaImage from '../assets/icons/icones-personalidades/icones_Joãozinho .webp';
+import lupicinioRodriguesImage from '../assets/icons/icones-personalidades/icones_Lupicínio .webp';
+import abdiasImage from '../assets/icons/icones-personalidades/icones_Abdias .webp';
+import ChicaImage from '../assets/icons/icones-personalidades/icones_Chica.webp';
+import helciasImage from '../assets/icons/icones-personalidades/icones_Helcias .webp';
+import maeBiuImage from '../assets/icons/icones-personalidades/icones_Mãe Biu .webp';
+import maeMirianImage from '../assets/icons/icones-personalidades/icones_Mae Mírian.webp';
+import mestreCamisaImage from '../assets/icons/icones-personalidades/icones_Mestre Camisa.webp';
+import mestreClaudioImage from '../assets/icons/icones-personalidades/icones_Mestre Cláudio.webp';
+import zezitoImage from '../assets/icons/icones-personalidades/icones_Zezito.webp';
 
 export const personalities: PersonalityType[] = [
-  { 
+  {
     name: 'Mãe Neide',
     image: maeNeideImage,
     description: {
@@ -64,6 +72,79 @@ export const personalities: PersonalityType[] = [
     description: {
       pt: 'Texto descritivo em Português para Lupicínio Rodrigues.',
       en: 'Descriptive text in English for Lupicínio Rodrigues.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+  {
+    name: 'Abdias Nascimento',
+    image: abdiasImage,
+    description: {
+      pt: 'Texto descritivo em Português para Abdias Nascimento.',
+      en: 'Descriptive text in English for Abdias Nascimento.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+  {
+    name: 'Chica Xavier',
+    image: ChicaImage,
+    description: {
+      pt: 'Texto descritivo em Português para Chica Xavier.',
+      en: 'Descriptive text in English for Chica Xavier.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+  {
+    name: 'Helcias Pereira',
+    image: helciasImage,
+    description: {
+      pt: 'Texto descritivo em Português para Helcias Pereira.',
+      en: 'Descriptive text in English for Helcias Pereira.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+  {
+    name: 'Mãe Biu de Xambá',
+    image: maeBiuImage,
+    description: {
+      pt: 'Texto descritivo em Português para Mãe Biu de Xambá.',
+      en: 'Descriptive text in English for Mãe Biu de Xambá.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+
+  {
+    name: 'Mãe Mírian',
+    image: maeMirianImage,
+    description: {
+      pt: 'Texto descritivo em Português para Mãe Mírian.',
+      en: 'Descriptive text in English for Mãe Mírian.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+  {
+    name: 'Mestre Camisa',
+    image: mestreCamisaImage,
+    description: {
+      pt: 'Texto descritivo em Português para Mestre Camisa.',
+      en: 'Descriptive text in English for Mestre Camisa.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+  {
+    name: 'Mestre Cláudio',
+    image: mestreClaudioImage,
+    description: {
+      pt: 'Texto descritivo em Português para Mestre Cláudio.',
+      en: 'Descriptive text in English for Mestre Cláudio.',
+    },
+    photos: [lupinicio1, lupinicio2, lupinicio3],
+  },
+  {
+    name: 'Zezito Araújo',
+    image: zezitoImage,
+    description: {
+      pt: 'Texto descritivo em Português para Zezito Araújo.',
+      en: 'Descriptive text in English for Zezito Araújo.',
     },
     photos: [lupinicio1, lupinicio2, lupinicio3],
   },
