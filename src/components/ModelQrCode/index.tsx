@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import * as tmImage from '@teachablemachine/image';
+import * as tmImage from '@teachablemachine/image/';
 
 const ModelComponent: React.FC = () => {
   const webcamRef = useRef<HTMLDivElement>(null);   

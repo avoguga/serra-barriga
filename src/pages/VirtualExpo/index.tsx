@@ -21,7 +21,7 @@ const ExpoContainer = styled.div`
   color: var(--text-color);
   background: rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  border-radius: 230px;
+  border-radius: 230px; 
   display: flex;
   justify-content: center;
   align-items: center;
