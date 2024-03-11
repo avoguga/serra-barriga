@@ -1,12 +1,16 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
+
 import styled from 'styled-components';
 import tiktok from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import '@google/model-viewer';
 import Astro from '../../assets/Astronaut.glb';
-import Horse from '../../assets/Horse.glb';
-import Robot from '../../assets/RobotExpressive.glb';
-import Coffe from '../../assets/ToyCar.glb';
+
+import obj1 from '../../assets/Objeto_01-b.glb';
+import obj2 from '../../assets/Objeto_02-b.glb';
+import obj3 from '../../assets/Objeto_03-b.glb';
+
+
 import { BackButton } from '../TakeHome';
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
@@ -48,8 +52,8 @@ const ExpoInfoContainer = styled.div`
   margin-bottom: 25px;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  width: 377px;
-  height: 236px;
+  width: 337px;
+  height: 296px;
 
   div > svg {
     width: 100px;
@@ -64,13 +68,18 @@ const ExpoText = styled.p`
 `;
 
 const ModelsContainer = styled.div`
-  display: flex; // Itens dispostos em linha
-  gap: 50px; // Espaço entre os itens
-  overflow-x: auto; // Habilita o scroll horizontal
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+
+  overflow-y: auto;
   padding: 1rem;
-  margin: 20px 0; // Adiciona margem acima e abaixo do contêiner, se necessário
+  margin: 25px 0; // Adiciona margem acima e abaixo do contêiner, se necessário
   -ms-overflow-style: none; // Esconde scrollbar no IE e Edge
   scrollbar-width: none; // Esconde scrollbar no Firefox
+
+  
+  height: 200px;
 
   &::-webkit-scrollbar {
     display: none; // Esconde scrollbar no WebKit (Safari, Chrome, etc)
@@ -81,6 +90,9 @@ const VirtualExpo = () => {
   const ExpoIcon = Icons['Expo'];
   const ArqIcon = Icons['Arqueologia'];
   const navigate = useNavigate();
+  
+
+ 
 
   return (
     <WatermarkWrapper>
@@ -136,7 +148,58 @@ const VirtualExpo = () => {
         </ExpoInfoContainer>
 
         <ModelsContainer>
+        
+
           <model-viewer
+            ar
+            // ar-modes="webxr"
+            // ar-placement="wall"
+        
+            camera-controls
+            touch-action="pan-y"
+            src={obj1}
+            alt="A 3D model of an astronaut"
+            style={{
+              width: '166px',
+              height: '146px',
+              backgroundColor: '#EB7400',
+              borderRadius: '50%',
+              
+            }}
+          ></model-viewer>
+          <model-viewer
+          
+            ar
+            // ar-modes="webxr"
+            // ar-placement="wall"
+            camera-controls
+            touch-action="pan-y"
+            src={obj2}
+            alt="A 3D model of an astronaut"
+            style={{
+              width: '166px',
+              height: '146px',
+              backgroundColor: '#EB7400',
+              borderRadius: '50%',
+            }}
+          ></model-viewer>
+
+          <model-viewer
+            ar
+            // ar-modes="webxr"
+            // ar-placement="wall"
+            camera-controls
+            src={obj3}
+            alt="A 3D model of an astronaut"
+            touch-action="pan-y"
+            style={{
+              width: '166px',
+              height: '146px',
+              backgroundColor: '#EB7400',
+              borderRadius: '50%',
+            }}
+          ></model-viewer>
+           <model-viewer
             ar
             // ar-modes="webxr"
             // ar-placement="wall"
@@ -145,55 +208,14 @@ const VirtualExpo = () => {
             src={Astro}
             alt="A 3D model of an astronaut"
             style={{
-              width: '146px',
+              width: '166px',
               height: '146px',
               backgroundColor: '#EB7400',
               borderRadius: '50%',
             }}
           ></model-viewer>
+          
 
-          {/* <model-viewer
-            style={{
-              width: '146px',
-              height: '146px',
-              backgroundColor: '#EB7400',
-              borderRadius: '50%',
-            }}
-            ar
-            camera-controls
-            touch-action="pan-y"
-            src={Horse}
-            alt="A 3D model of an astronaut"
-          ></model-viewer> */}
-
-          {/* <model-viewer
-            style={{
-              width: '146px',
-              height: '146px',
-              backgroundColor: '#EB7400',
-              borderRadius: '50%',
-            }}
-            ar
-            camera-controls
-            touch-action="pan-y"
-            src={Coffe}
-            alt="A 3D model of an astronaut"
-          ></model-viewer> */}
-
-          <model-viewer
-            // ar-modes="scene-viewer"
-            style={{
-              width: '146px',
-              height: '146px',
-              backgroundColor: '#EB7400',
-              borderRadius: '50%',
-            }}
-            ar
-            camera-controls
-            touch-action="pan-y"
-            src={Robot}
-            alt="A 3D model of an astronaut"
-          ></model-viewer>
         </ModelsContainer>
       </div>
     </WatermarkWrapper>
