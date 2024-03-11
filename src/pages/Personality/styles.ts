@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   background: #b21522;
-  height: 200vh;
+  height: 235vh;
   justify-content: baseline;
   align-items: center;
   flex-direction: column;
@@ -41,8 +41,8 @@ export const MainContainer = styled.div`
 `;
 
 export const PersonalityImage = styled.img`
-  max-width: 65%;
-  border-radius: 10px;
+  width: 80%;
+
   margin-top: 30px;
   cursor: pointer;
 `;
@@ -55,16 +55,23 @@ export const Title = styled.h1`
   margin-top: 15px;
 `;
 
-export const Description = styled.p`
+export const Description = styled.div`
+  background-color: #c7222f;
   color: #ffffff;
-  text-align: left;
-  font-family: 'FuturaPTBook', sans-serif;
+
+  font-family: 'FuturaPT', sans-serif;
   font-size: 15px;
   max-width: 80%;
   opacity: 1;
-  margin-top: 15px;
+  text-align: center;
+  text-justify: distribute;
+  width: 125vw;
+  height: 360px;
   cursor: pointer;
   justify-content: center;
+  border-radius: 0px 0px 108px 108px;
+  padding: 20px; /* Added padding for inner spacing */
+  margin: 0px 0;
 `;
 
 export const ReadMoreButton = styled.button`
@@ -74,6 +81,9 @@ export const ReadMoreButton = styled.button`
   cursor: pointer;
   margin-top: 10px;
   text-decoration: underline;
+
+  justify-content: center;
+  align-items: center;
   font-family: 'FuturaPTBold', sans-serif;
 `;
 

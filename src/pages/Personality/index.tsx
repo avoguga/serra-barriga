@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,  } from 'react';
 import { useParams } from 'react-router-dom';
 import FloatingButtonBar from '../../components/FloatingContainer';
 import logo from '../../assets/logo.png';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import { personalities,  } from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
+
 
 
 import * as C from './styles'
@@ -18,6 +19,10 @@ const PersonalityPage = () => {
 const [rightArrowActive, setRightArrowActive] = useState(false);
 const [fullScreenImage, setFullScreenImage] = useState('');
 
+
+  
+  
+
   const toggleIsExpanded = () => {
     setIsExpanded(!isExpanded);
   };
@@ -25,6 +30,7 @@ const [fullScreenImage, setFullScreenImage] = useState('');
 
   const openFullScreenImage = (imageSrc: string) => {
     setFullScreenImage(imageSrc);
+   
   };
 
   const closeFullScreenImage = () => {
@@ -85,19 +91,26 @@ const [fullScreenImage, setFullScreenImage] = useState('');
               alt={personality.name}
               onClick={() => openFullScreenImage(personality.image)}
             />
-            <C.Title>{personality.name}</C.Title>
+            
             <C.Description onClick={toggleIsExpanded}>
+            <C.Title>{personality.name}</C.Title>
+
+              
               {isExpanded
                 ? personality.description.pt
-                : `${personality.description.pt.substring(0, 400)}...`}
-            </C.Description>
-            <C.ReadMoreButton onClick={toggleIsExpanded}>
+                : `${personality.description.pt.substring(0, 400)}...`} <br />
+                <C.ReadMoreButton onClick={toggleIsExpanded}>
               {isExpanded ? 'LEIA MENOS' : 'LEIA MAIS'}
             </C.ReadMoreButton>
+                
+            </C.Description>
+            
+            
           </>
         ) : (
           <p>Personalidade não encontrada.</p>
         )}
+       
         <C.SubTitleContainer>
           <h2>FOTOS</h2>
         </C.SubTitleContainer>
