@@ -142,10 +142,11 @@ export const VideoBox = styled.div`
 export const ArrowContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 5px;
+  gap: 120px;
   left: 0;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
+  color: #fff;
 `;
 
 export const FullScreenImageContainer = styled.div`
