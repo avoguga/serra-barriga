@@ -150,7 +150,7 @@ const handleRightClick = () => {
       alt={fullScreenImage.description} 
       background={fullScreenImage.background} 
       description={fullScreenImage.description}
-      onClose={() => closeFullScreenImage}
+     
     />
   </div>
 )}
