@@ -5,10 +5,11 @@ import logo from '../../assets/logo.png';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import { personalities,  } from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
-
-
+import OpenImage from '../../components/OpenImage';
 
 import * as C from './styles'
+import { FullScreenImage } from '../../helpers/OpenImage';
+
 
 
 const PersonalityPage = () => {
@@ -17,44 +18,48 @@ const PersonalityPage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [leftArrowActive, setLeftArrowActive] = useState(false);
 const [rightArrowActive, setRightArrowActive] = useState(false);
-const [fullScreenImage, setFullScreenImage] = useState('');
+const [fullScreenImage, setFullScreenImage] = useState<FullScreenImage | null>(null);
+
+
 
 
   
-  
+const scrollContainerRef = React.createRef<HTMLDivElement>();
+
+const handleLeftClick = () => {
+  if (scrollContainerRef.current) {
+    scrollContainerRef.current.scrollLeft -= 100;
+    setLeftArrowActive(true); 
+    setRightArrowActive(false)
+  }
+};
+
+const handleRightClick = () => {
+  if (scrollContainerRef.current) {
+    scrollContainerRef.current.scrollLeft += 100;
+    setLeftArrowActive(false); 
+  setRightArrowActive(true);
+  }
+};
 
   const toggleIsExpanded = () => {
     setIsExpanded(!isExpanded);
   };
 
 
-  const openFullScreenImage = (imageSrc: string) => {
-    setFullScreenImage(imageSrc);
-   
+  const openFullScreenImage = (src: string, description = `${personalityName}`, background = '') => {
+    setFullScreenImage({ src, description, background });
   };
 
   const closeFullScreenImage = () => {
-    setFullScreenImage('');
+    setFullScreenImage(null);
   };
 
 
-  const scrollContainerRef = React.createRef<HTMLDivElement>();
+  
 
-  const handleLeftClick = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft -= 100;
-      setLeftArrowActive(true); 
-      setRightArrowActive(false)
-    }
-  };
 
-  const handleRightClick = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += 100;
-      setLeftArrowActive(false); 
-    setRightArrowActive(true);
-    }
-  };
+
 
   return (
     <C.Container>
@@ -139,10 +144,16 @@ const [fullScreenImage, setFullScreenImage] = useState('');
       </C.MainContainer>
 
       {fullScreenImage && (
-        <C.FullScreenImageContainer onClick={closeFullScreenImage}>
-          <C.FullScreenImage src={fullScreenImage} alt="Imagem em tela cheia" />
-        </C.FullScreenImageContainer>
-      )}
+  <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: '#7B0A14', zIndex: 1000 }} onClick={closeFullScreenImage}>
+    <OpenImage 
+      src={fullScreenImage.src} 
+      alt={fullScreenImage.description} 
+      background={fullScreenImage.background} 
+      description={fullScreenImage.description}
+      onClose={() => closeFullScreenImage}
+    />
+  </div>
+)}
     </C.Container>
   );
 };

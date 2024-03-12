@@ -1,10 +1,23 @@
+import React, { useState } from 'react';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import tiktok from '../../assets/logo.png';
 import imagem from '../../assets/icons/imagem - branco.svg';
+import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
-import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import styled from 'styled-components';
+import OpenImage from '../../components/OpenImage';
+
+import oxiras1 from '../../assets/images/takeHomeImages/Apresentações artísticas de orixás em evento do VSS. Foto de Aprigio Vilanova (3).webp';
+import oxiras2 from '../../assets/images/takeHomeImages/Apresentações artísticas de orixás em evento do VSS. Foto de Aprigio Vilanova (4).webp';
+import acuiaba from '../../assets/images/takeHomeImages/ATALAIA DO ACAIUBA.webp';
+import toculo from '../../assets/images/takeHomeImages/ATALAIA DO TOCULO.webp';
+import batucaje from '../../assets/images/takeHomeImages/BATUCAJÉ.webp';
+import ocas from '../../assets/images/takeHomeImages/OCAS INDÍGENAS.webp';
+import onjo1 from '../../assets/images/takeHomeImages/ONJÓ CRUZAMBÊ. Desenho pedro franca.webp';
+import onjo2 from '../../assets/images/takeHomeImages/ONJÓ DE FARINHA.webp';
+import oxile from '../../assets/images/takeHomeImages/OXILE DAS ERVAS.webp';
+import restaurante from '../../assets/images/takeHomeImages/RESTAURANTE KÚUKU-WAANA. Foto de Aprigio Vilanova.webp';
 
 export const BackButton = styled.button`
   display: flex;
@@ -14,7 +27,7 @@ export const BackButton = styled.button`
   border-radius: 50%;
   width: 55px;
   height: 55px;
-  position: fixed; // Alterado de absolute para fixed
+  position: fixed;
   top: 7%;
   left: 5%;
   z-index: 10;
@@ -22,7 +35,30 @@ export const BackButton = styled.button`
 `;
 
 const Images = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [imageDescription, setImageDescription] = useState<string>('');
   const navigate = useNavigate();
+
+  // Suponha que este seja o seu array de imagens
+  const images = [
+    { src: oxiras1, description: 'Apresentações artísticas de orixás em evento do VSS. ' },
+    { src: oxiras2, description: 'Apresentações artísticas de orixás em evento do VSS. ' },
+    { src: acuiaba, description: 'ATALAIA DO ACAIUBA' },
+    { src: toculo, description: 'ATALAIA DO TOCULO' },
+    { src: batucaje, description: 'BATUCAJÉ' },
+    { src: ocas, description: 'OCAS INDÍGENAS' },
+    { src: onjo1, description: 'ONJÓ CRUZAMBÊ' },
+    { src: onjo2, description: 'ONJÓ DE FARINHA' },
+    { src: oxile, description: 'OXILE DAS ERVAS' },
+    { src: restaurante, description: 'RESTAURANTE KÚUKU-WAANA' },
+  ];
+
+  const openFullScreenImage = (src: string, description: string): void => {
+    setSelectedImage(src);
+    setImageDescription(description);
+  };
+ 
+
   return (
     <WatermarkWrapper>
       <div
@@ -34,12 +70,8 @@ const Images = () => {
           flexDirection: 'column',
         }}
       >
-        <BackButton
-          onClick={() => {
-            navigate('/takehome');
-          }}
-        >
-          <img src={seta} alt="" />
+        <BackButton onClick={() => navigate('/takehome')}>
+          <img src={seta} alt="Seta Voltar" />
         </BackButton>
         <img
           src={tiktok}
@@ -52,60 +84,35 @@ const Images = () => {
           }}
         />
         <div className="galeria">
-          <img src={imagem} alt="" />
+          <img src={imagem} alt="Galeria ícone" />
           <h2>GALERIA DE IMAGENS</h2>
         </div>
 
         <div className="fotos">
-          <div
-            className="foto"
-            style={{
-              background: '#F48306',
-            }}
-          ></div>
-          <div
-            className="foto"
-            style={{
-              background: '#009289',
-            }}
-          ></div>
-          <div
-            className="foto"
-            style={{
-              background: '#FFBF00',
-            }}
-          ></div>
-          <div
-            className="foto"
-            style={{
-              background: '#3D4B09',
-            }}
-          ></div>
-          <div
-            className="foto"
-            style={{
-              background: '#009289',
-            }}
-          ></div>
-          <div
-            className="foto"
-            style={{
-              background: '#F48306',
-            }}
-          ></div>
-          <div
-            className="foto"
-            style={{
-              background: '#3D4B09',
-            }}
-          ></div>
-          <div
-            className="foto"
-            style={{
-              background: '#FFBF00',
-            }}
-          ></div>
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="foto"
+              onClick={() => openFullScreenImage(image.src, image.description)}
+            >
+              <img
+                src={image.src}
+                alt={`Foto ${index + 1}`}
+                style={{ margin: '0px', width: '140px', height: '140px' }}
+              />
+            </div>
+          ))}
         </div>
+        {selectedImage && (
+          <OpenImage
+            src={selectedImage}
+            alt="Imagem selecionada"
+            background="#D66B00"
+            description={imageDescription}
+            onClose={() => setSelectedImage(null)}
+            
+          />
+        )}
       </div>
     </WatermarkWrapper>
   );
