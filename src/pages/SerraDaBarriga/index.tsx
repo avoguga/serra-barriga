@@ -2,13 +2,7 @@ import './style.css/';
 import logo from '../../assets/logo.png';
 import setaEsquerda from '../../assets/set_esquerda.svg';
 import setaDireita from '../../assets/set_direita.svg';
-import foto1 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (1).webp';
-import foto2 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (2).webp';
-import foto3 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (3).webp';
-import foto4 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (4).webp';
-import foto5 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova.webp';
-import foto6 from '../../assets/images/serra fotos/Serra da Barriga (3).webp';
-import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
+
 
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
@@ -17,13 +11,13 @@ import { useState } from 'react';
 
 const SerraDaBarriga = () => {
   const images = [
-    { src: foto1 },
-    { src: foto2 },
-    { src: foto3 },
-    { src: foto4 },
-    { src: foto5 },
-    { src: foto6 },
-    { src: foto7 },
+    { src: 'sdsds' },
+    { src: 'ss' },
+    { src: 'sdsss' },
+    { src: 'sasdsds' },
+    { src: 'sasdsds' },
+
+   
 
   ];
   const [isExpanded, setIsExpanded] = useState(false);
@@ -69,6 +63,7 @@ const SerraDaBarriga = () => {
               width: '200px',
               height: '70px',
               marginTop: '100px',
+              
             }}
           />
           <div className="text">
@@ -88,26 +83,27 @@ const SerraDaBarriga = () => {
 
 
         <h4>FOTOS</h4>
-
+ 
 
         <div className="carrosel-container">
           <div className="carrosel">
-            {images.map((image, index) => (
-              <img loading='lazy' key={index} src={image.src} className="image" />
-            ))}
-          </div>
-          <div className='arrow-container'>
+          {images.map((image, index) => image.src && (
+            <img key={index} src={image.src} className="image" />
+            
+          ))}
+        </div>
+          
+        </div>
+        <div className='arrow-container'>
 
         
-        <button>
-              <img src={setaEsquerda} />
-            </button>
-            <button>
-              <img src={setaDireita} />
-            </button>
-            </div>
-        </div>
-
+<button>
+      <img src={setaEsquerda} />
+    </button>
+    <button>
+      <img src={setaDireita} />
+    </button>
+    </div>
         <h4 >VÍDEOS</h4>
         <iframe
           src="https://www.youtube.com/embed/USLC-TsQdnI"
