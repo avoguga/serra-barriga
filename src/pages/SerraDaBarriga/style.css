@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: end;
-    max-height: 150vh;
+    max-height: 300vh;
     >h4 {
         font-size: 15px;
         color: var(--text-color);
@@ -28,6 +28,7 @@
     
     background-color: #C60D1C;
     display: flex;
+   
     flex-direction: column;
  height: auto;
     align-items: center;
@@ -89,22 +90,31 @@ button img {
     }
 
 .carrosel-container {
-    position: relative;
-    width: 100%; /* ou a largura que você desejar para o carrossel */
+ width: 100%;
+    
+    height: 10vh;
+   
+ 
+    overflow-x: auto; /* Ativa a rolagem horizontal */
+    display: flex; /* Usa flexbox para alinhar os blocos */
+    scroll-snap-type: x mandatory;
+    
 }
 
 .carrosel {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto; /* permite a rolagem manual */
+    flex: 0 0 auto; /* Não permite que os itens do carrossel encolham ou cresçam */
+    display: flex; /* Usa flexbox para alinhar os blocos */
+    scroll-snap-align: start; /* Opcional: alinha os blocos com o snap */
+    width: 150vw;
 }
 
+
 .image {
-    width: 35%; /* ajuste conforme necessário */
     margin: 0 10px; /* cria espaço entre as imagens */
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    background: yellow; /* sombra para as imagens */
-    color: yellow;
+   width: 100vw;
+    /* sombra para as imagens */
+    background: green;
+height: 10vh;
 }
 
 .arrow-container{
