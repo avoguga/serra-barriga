@@ -88,7 +88,7 @@ const SerraDaBarriga = () => {
 
 
         <h4>FOTOS</h4>
-
+ 
 
         <div className="carrosel-container">
           <div className="carrosel">
