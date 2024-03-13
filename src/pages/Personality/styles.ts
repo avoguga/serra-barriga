@@ -63,17 +63,22 @@ export const Description = styled.div`
   font-size: 15px;
   max-width: 80%;
   opacity: 1;
-  text-align: center;
-  text-justify: distribute;
+  text-align: left;
+
   width: 125vw;
   height: 360px;
   cursor: pointer;
   justify-content: center;
-  border-radius: 0px 0px 108px 108px;
+  border-radius: 0px 0px 90px 90px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
   padding: 20px; /* Added padding for inner spacing */
   margin: 0px 0;
 `;
-
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export const ReadMoreButton = styled.button`
   background-color: transparent;
   color: #e5dfae;
@@ -81,7 +86,7 @@ export const ReadMoreButton = styled.button`
   cursor: pointer;
   margin-top: 10px;
   text-decoration: underline;
-
+  text-align: center;
   justify-content: center;
   align-items: center;
   font-family: 'FuturaPTBold', sans-serif;
