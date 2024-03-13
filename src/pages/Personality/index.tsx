@@ -47,7 +47,7 @@ const handleRightClick = () => {
   };
 
 
-  const openFullScreenImage = (src: string, description = `${personalityName}`, background = '') => {
+  const openFullScreenImage = (src: string, description = `${personalityName}`, background = '#8C111B') => {
     setFullScreenImage({ src, description, background });
   };
 
@@ -144,15 +144,16 @@ const handleRightClick = () => {
       </C.MainContainer>
 
       {fullScreenImage && (
-  <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: '#7B0A14', zIndex: 1000 }} onClick={closeFullScreenImage}>
+  
     <OpenImage 
       src={fullScreenImage.src} 
       alt={fullScreenImage.description} 
-      background={fullScreenImage.background} 
+      background='#8C111B' 
       description={fullScreenImage.description}
-      onClose={() => closeFullScreenImage}
+      onClose={closeFullScreenImage}
+     
     />
-  </div>
+
 )}
     </C.Container>
   );

@@ -7,7 +7,7 @@ interface OpenImageProps {
     alt: string;
     background: string;
     description: string;
-    onClose: () => void; 
+    onClose?: () => void; 
   }
 
 const OpenImage: React.FC <OpenImageProps> = ({src,alt,background,description, onClose}) => {
