@@ -1,26 +1,34 @@
 import './style.css/';
 import logo from '../../assets/logo.png';
-import setaEsquerda from '../../assets/set_esquerda.svg';
-import setaDireita from '../../assets/set_direita.svg';
 
-
+import footer from '../../assets/icons/logo parque - verde.svg'
+import teste from '../../assets/lupicinio-rodrigues.webp'
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import FloatingButtonBar from '../../components/FloatingContainer';
 import { useState } from 'react';
+import OpenImage from '../../components/OpenImage';
+import { FullScreenImage } from '../../helpers/OpenImage';
+import React from 'react';
+import Arrow from '../../components/ArrowButton';
 
 const SerraDaBarriga = () => {
   const images = [
-    { src: 'sdsds' },
-    { src: 'ss' },
-    { src: 'sdsss' },
-    { src: 'sasdsds' },
-    { src: 'sasdsds' },
+    { src: teste },
+    { src: ' imagem ' },
+    { src: ' imagem ' },
+    { src: ' imagem ' },
+    { src: ' imagem ' },
 
    
 
   ];
+  const [fullScreenImage, setFullScreenImage] = useState<FullScreenImage | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [leftArrowActive, setLeftArrowActive] = useState(false);
+  const [rightArrowActive, setRightArrowActive] = useState(false);
+
+
   const fullText = `Serra da Barriga está localizada no atual município de União dos Palmares, no estado de Alagoas. À época do Quilombo dos Palmares, fazia parte da Capitania de Pernambuco.  
 
   A Serra da Barriga, em União dos Palmares-AL, começou a construir-se em 1630, durante o período de lutas contra os holandeses e a economia canavieira.
@@ -51,6 +59,31 @@ const SerraDaBarriga = () => {
     ? paragraphs
     : paragraphs.slice(0, previewParagraphCount);
 
+    const openFullScreenImage = (src: string, description = 'descrição da imagem', background = '#8C111B') => {
+      setFullScreenImage({ src, description, background });
+    };
+  
+    const closeFullScreenImage = () => {
+      setFullScreenImage(null);
+    };
+
+    const scrollContainerRef = React.createRef<HTMLDivElement>();
+
+    const handleLeftClick = () => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft -= 100;
+        setLeftArrowActive(true); 
+        setRightArrowActive(false)
+      }
+    };
+    
+    const handleRightClick = () => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft += 100;
+        setLeftArrowActive(false); 
+      setRightArrowActive(true);
+      }
+    };
   return (
     <WatermarkWrapper watermark watermarkImage={WatermarkImage}>
       <FloatingButtonBar backgroundColor="#8C111B" />
@@ -85,25 +118,27 @@ const SerraDaBarriga = () => {
         <h4>FOTOS</h4>
  
 
-        <div className="carrosel-container">
+        <div className="carrosel-container" ref={scrollContainerRef}>
           <div className="carrosel">
           {images.map((image, index) => image.src && (
-            <img key={index} src={image.src} className="image" />
+            <img key={index} 
+            src={image.src} 
+            className="image" 
+            onClick={() => openFullScreenImage(image.src)}
+            
+            
+            />
             
           ))}
         </div>
-          
+       
         </div>
         <div className='arrow-container'>
 
         
-<button>
-      <img src={setaEsquerda} />
-    </button>
-    <button>
-      <img src={setaDireita} />
-    </button>
-    </div>
+<Arrow direction="left" onClick={handleLeftClick} isActive={leftArrowActive} />
+  <Arrow direction="right" onClick={handleRightClick} isActive={rightArrowActive} />
+</div>
         <h4 >VÍDEOS</h4>
         <iframe
           src="https://www.youtube.com/embed/USLC-TsQdnI"
@@ -117,15 +152,27 @@ const SerraDaBarriga = () => {
         </iframe>
         <div className='arrow-container'>
 
+        <Arrow direction="left" onClick={handleLeftClick} isActive={false} />
+          <Arrow direction="right" onClick={handleRightClick} isActive={false} />
         
-        <button>
-              <img src={setaEsquerda} />
-            </button>
-            <button>
-              <img src={setaDireita} />
-            </button>
             </div>
+          
+            <img className='footer' src={footer} />
+            {fullScreenImage && (
+  
+  <OpenImage 
+    src={fullScreenImage.src} 
+    alt={fullScreenImage.description} 
+    background='#8C111B' 
+    description={fullScreenImage.description}
+    onClose={closeFullScreenImage}
+   
+  />
+
+)}
+            
       </div>
+     
     </WatermarkWrapper>
   );
 };

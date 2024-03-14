@@ -24,6 +24,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const StyledImage = styled.img`
+  background-color: green;
   max-width: 90%;
   max-height: 80vh; // Ajuste conforme necessário
 `;
@@ -34,7 +35,7 @@ export const Description = styled.div`
   font-size: 16px;
   align-items: flex-start; // Alinha os itens ao início do contêiner no eixo transversal
   justify-content: flex-start; // Alinha os itens ao início do contêiner no eixo principal
-
+  background-color: transparent;
   padding: 20px 0 0 20px; // Ajuste o preenchimento conforme necessário
   width: 100%; // Assumindo que você quer que o Description ocupe toda a largura disponível
 `;

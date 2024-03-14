@@ -1,6 +1,6 @@
 import FloatingButtonBar from '../FloatingContainer';
 import appSerra from '../../assets/logo.png';
-import AgendaSvg from '../../assets/icons/audio.svg';
+import AgendaSvg from '../../assets/icons/agenda.svg';
 
 import * as C from './styles';
 

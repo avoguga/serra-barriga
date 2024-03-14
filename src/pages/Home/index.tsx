@@ -153,7 +153,7 @@ const Home = () => {
             SERRA DA BARRIGA
           </HomeButton>
           <HomeButton
-            iconType="Info"
+            iconType="Agenda"
             onClick={() => {
               navigate('/agenda');
             }}

@@ -3,6 +3,8 @@ import PersonalityIcon from '../assets/icons/personalidade - branco.svg?react';
 import Home from '../assets/icons/home-leve pra casa - branco.svg?react';
 import Selfie from '../assets/icons/selfie - branco.svg?react';
 import Info from '../assets/icons/infobranco.svg?react';
+import Agenda from '../assets/icons/agenda.svg?react';
+
 import MontanhaSerra from '../assets/icons/montanha serra - branco.svg?react';
 import Icon360 from '../assets/icons/360 - branco.svg?react';
 import Img from '../assets/icons/imagem - branco.svg?react';
@@ -23,6 +25,7 @@ export const Icons = {
   Home,
   Selfie,
   Info,
+  Agenda,
   MontanhaSerra,
   Img,
   Icon360,
