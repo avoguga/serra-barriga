@@ -8,7 +8,6 @@ import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 //import { Icons } from '../../helpers/icons';
 import LocIcon from '../../assets/icons/localização.svg';
-import Pointer from '../../assets/icons/dedo clicando - branco.svg';
 import BtnDownArrow from '../../components/ScrollButton';
 
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
@@ -39,14 +38,6 @@ export const BackButton = styled.button`
   cursor: pointer;
 `;
 
-const Item = styled.p<{ bgColor: string }>`
-  background-color: ${(props) => props.bgColor};
-  color: white;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  margin: 0;
-`;
 
 const LocationButton = styled.button<{ x: number; y: number }>`
   position: absolute;
@@ -103,12 +94,12 @@ const locationMappings: { [key: string]: { x: number; y: number } } = {
   'ESPAÇO AQUALTUNE': { x: 275, y: 204 },
   'OCAS INDÍGENAS': { x: 225, y: 201 },
   'ESPAÇO CAÁ-PUÊRA': { x: 250, y: 315 },
-  'BATUCAJÉ': { x: 380, y: 234 },
-  'ATALAIA DO ACAIUBA': { x: 380, y: 234 },
-  'ONJÓ DE FARINHA': { x: 380, y: 234 },
-  'ESPAÇO ZUMBI': { x: 380, y: 234 },
-  'ATALAIA DO TOCULO': { x: 380, y: 234 },
-  'RESTAURANTE KÚUKU-WAANA': { x: 380, y: 234 },
+  'BATUCAJÉ': { x: 175, y: 257 },
+  'ATALAIA DO ACAIUBA': { x: 122, y: 263 },
+  'ONJÓ DE FARINHA': { x: 210, y: 108 },
+  'ESPAÇO ZUMBI': { x: 237, y: 100 },
+  'ATALAIA DO TOCULO': { x: 181, y: 306 },
+  'RESTAURANTE KÚUKU-WAANA': { x: 170, y: 380 },
 
 
   
@@ -135,12 +126,7 @@ const Maps: React.FC = () => {
     setSelectedLocation(locationInfo);
   };
 
-  //Função para obter a cor de fundo para a lista de locais
-  const getBackgroundColor = (index: number) => {
-    const colors = ['#586617', '#67781B'];
-    return colors[index % colors.length];
-  };
-
+  
   return (
     <>
       <Outlet />
@@ -187,6 +173,8 @@ const Maps: React.FC = () => {
               height: '30px',
               marginRight: '-10px',
               marginTop: '2px',
+              fill:'#FFF',
+            
             }} />
             <h2 style={{
               font: 'normal normal 500 22px/30px ',
@@ -200,7 +188,7 @@ const Maps: React.FC = () => {
             <TransformWrapper>
               <TransformComponent>
                 {/* Imagem do Mapa e Botões de Localização */}
-                <div style={{ position: 'relative' }}>
+                <div style={{ position: 'relative', width:'100vw', display:'flex', alignItems:'center' }}>
                   <img src={mapa} alt="mapa" style={{ width: '450px', height: '520px' }} />
                   
                   {/* Botões dos Locais */}
@@ -237,32 +225,13 @@ const Maps: React.FC = () => {
             </TransformWrapper>
 
             {/* Ícone de dica e Botão de Rolagem para Baixo */}
-            <img src={Pointer} alt="Clique" style={{
-              width: '65px',
-              height: '65px',
-              marginTop: '-140px',
-              marginBottom: '-10px'
-            }} />
+           
             <BtnDownArrow/>
           </ButtonContainer>
 
-          {/* Lista de Locais */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            backgroundColor: '#67781B',
-            marginTop: '-30px'
-          }}>
-            {items.map((item, index) => (
-              <Item key={index} bgColor={getBackgroundColor(index)}>
-                {index + 1} - {item}
-              </Item>
-            ))}
+        
           </div>
-        </div>
+        
       </WatermarkWrapper>
     </>
   );
