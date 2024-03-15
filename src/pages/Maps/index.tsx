@@ -221,7 +221,7 @@ const Maps: React.FC = () => {
                     </div>
                   )}
                 </div>
-              </TransformComponent>
+              </TransformComponent> 
             </TransformWrapper>
 
             {/* Ícone de dica e Botão de Rolagem para Baixo */}
