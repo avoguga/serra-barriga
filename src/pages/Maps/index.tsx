@@ -44,7 +44,7 @@ const LocationButton = styled.button<{ x: number; y: number }>`
   transform: translate(-50%, -50%); // Centraliza o botão em suas coordenadas
   top: ${(props) => props.y}px;
   left: ${(props) => props.x}px;
-  background-color: rgba(255, 0, 0, 0.5); // Cor vermelha semi-transparente para visibilidade
+  background-color: transparent; // Cor vermelha semi-transparente para visibilidade
   border: none;
   cursor: pointer;
   width: 20px; // Largura do marcador
@@ -52,6 +52,38 @@ const LocationButton = styled.button<{ x: number; y: number }>`
   border-radius: 50%;
   z-index: 10;
 `;
+
+const Tooltip = styled.div <{ x: number; y: number }> `
+  position: absolute;
+  left: ${props => props.x}px;
+  top: ${props => props.y}px;
+  transform: translate(-50%, -100%); // Isso vai posicionar o tooltip acima do marcador
+  padding: 8px 16px;
+  background: #FFFFFF; // Fundo amarelo claro como na imagem
+  color: #67781B; // Cor do texto verde-escuro
+  font-family: 'FuturaPTDemi', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px; // Borda arredondada
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); // Sombra leve para destacar
+  white-space: nowrap; // Evitar quebra de linha
+  z-index: 20;
+  
+  &:after { // Criar um triângulo na parte de baixo do tooltip
+    content: '';
+    position: absolute;
+    bottom: -5px; // Posicionar logo abaixo do tooltip
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #FFFFFF ;
+    z-index: -1; 
+  }
+`;
+
 
 
 const items = [
@@ -63,7 +95,7 @@ const items = [
   'ESPAÇO QUILOMBO',
   'ATALAIA DE ACAIENE',
   'ESPAÇO GANGA-ZUMBA',
-  'LAGOA ENCANTADA DOS NEGROS',
+  
   'ESPAÇO AQUALTUNE',
   'OCAS INDÍGENAS',
   'ESPAÇO CAÁ-PUÊRA',
@@ -73,6 +105,9 @@ const items = [
   'ESPAÇO ZUMBI',
   'ATALAIA DO TOCULO',
   'RESTAURANTE KÚUKU-WAANA',
+  'LAGOAS ENCATADA DOS NEGROS',
+  'ESTÁTUA GANGA-ZUMBA E ZUMBI',
+  'BANHEIROS'
 ];
 
 interface LocationInfo {
@@ -83,24 +118,26 @@ interface LocationInfo {
 
 const locationMappings: { [key: string]: { x: number; y: number } } = {
   'ENTRADA': { x: 185, y: 460 },
-  'OXILE DAS ERVAS': { x: 345, y: 461 },
-  'ONJÓ CRUZAMBÊ': { x: 380, y: 448 },
+  'ONJÓ CRUZAMBÊ': { x: 345, y: 461 },
+  'OXILE DAS ERVAS': { x: 380, y: 448 },
   'ESPAÇO ACOTIRENE': { x: 400, y: 405 },
   'MUXIMA DE PALMARES': { x: 342, y: 373 },
   'ESPAÇO QUILOMBO': { x: 287, y: 403 },
   'ESPAÇO GANGA-ZUMBA': { x: 344, y: 292 },
   'ATALAIA DE ACAIENE': { x: 380, y: 234 },
-  'LAGOA ENCANTADA DOS NEGROS': { x: 315, y: 254 },
-  'ESPAÇO AQUALTUNE': { x: 275, y: 204 },
-  'OCAS INDÍGENAS': { x: 225, y: 201 },
-  'ESPAÇO CAÁ-PUÊRA': { x: 250, y: 315 },
-  'BATUCAJÉ': { x: 175, y: 257 },
+  'OCAS INDÍGENAS': { x: 315, y: 254 },
+  'ESPAÇO CAÁ-PUÊRA': { x: 275, y: 204 },
+  'BATUCAJÉ': { x: 225, y: 201 },
+  'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 250, y: 315 },
+  'BANHEIROS': { x: 175, y: 257 },
   'ATALAIA DO ACAIUBA': { x: 122, y: 263 },
-  'ONJÓ DE FARINHA': { x: 210, y: 108 },
-  'ESPAÇO ZUMBI': { x: 237, y: 100 },
-  'ATALAIA DO TOCULO': { x: 181, y: 306 },
+  'ONJÓ DE FARINHA': { x: 181, y: 306 },
+  'LAGOAS ENCATADA DOS NEGROS': { x: 210, y: 108 },
   'RESTAURANTE KÚUKU-WAANA': { x: 170, y: 380 },
 
+  'ESPAÇO AQUALTUNE': { x: 237, y: 100 },
+  'ATALAIA DO TOCULO': { x: 127, y: 458 },
+  'ESPAÇO ZUMBI': { x: 127, y: 395 },
 
   
 };
@@ -206,19 +243,9 @@ const Maps: React.FC = () => {
 
                   {/* Tooltip de informações do local selecionado */}
                   {selectedLocation && (
-                    <div style={{
-                      position: 'absolute',
-                      left: selectedLocation.coordinates.x,
-                      top: selectedLocation.coordinates.y,
-                      padding: '5px',
-                      background: 'white',
-                      border: '1px solid black',
-                      borderRadius: '4px',
-                      zIndex: 20,
-                      color:'#000000'
-                    }}>
+                    <Tooltip  x={selectedLocation.coordinates.x} y={selectedLocation.coordinates.y}>
                       {selectedLocation.name}
-                    </div>
+                    </Tooltip>
                   )}
                 </div>
               </TransformComponent> 
