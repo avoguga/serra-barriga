@@ -1,3 +1,4 @@
+
 import { createBrowserRouter } from 'react-router-dom';
 import ErrorPage from '../pages/Error';
 import Home from '../pages/Home';
@@ -8,7 +9,7 @@ import TakeHome from '../pages/TakeHome';
 import About from '../pages/About';
 import SerraDaBarriga from '../pages/SerraDaBarriga';
 import Videos from '../pages/Videos';
-import Images from '../pages/Images';
+
 import Audios from '../pages/Audios';
 import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
@@ -25,6 +26,19 @@ import AtalaiaLocView from '../pages/Atalaia/Location';
 import AtalaiaVideosView from '../pages/Atalaia/Videos';
 import AtalaiaVideosPlayView from '../pages/Atalaia/PlayVideos';
 import AtalaiaImgView from '../pages/Atalaia/Img';
+import { Suspense, lazy, ComponentType } from 'react';
+import GallerySkeleton from '../pages/GallerySkeleton';
+
+const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
+  return new Promise<{ default: T }>(resolve => {
+    setTimeout(() => resolve(importPromise), 3500);
+  });
+};
+
+
+// eslint-disable-next-line react-refresh/only-export-components
+const Images = lazy(() => fakeDelay(import("../pages/Images")));
+
 
 export const router = createBrowserRouter([
   {
@@ -66,7 +80,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/takehome/images',
-    element: <Images />,
+    element: (
+      <Suspense fallback={<div><GallerySkeleton/></div>}>
+        <Images />
+      </Suspense>
+    ),
     errorElement: <ErrorPage />,
   },
   {
