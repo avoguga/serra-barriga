@@ -61,6 +61,7 @@ const Personalities = () => {
             <C.PersonalityCard key={personality.name}>
               <img
                 src={personality.image}
+                loading='lazy'
                 alt={personality.name}
                 onClick={() => goToPersonality(personality.name)}
               />

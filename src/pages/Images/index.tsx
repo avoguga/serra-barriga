@@ -71,16 +71,19 @@ const Images = () => {
         }}
       >
         <BackButton onClick={() => navigate('/takehome')}>
-          <img src={seta} alt="Seta Voltar" />
+          <img src={seta} alt="Seta Voltar"  loading='lazy'/>
         </BackButton>
         <img
           src={tiktok}
           alt="tiktok"
+          loading='lazy'
+
           style={{
             width: '200px',
             height: '70px',
             marginTop: '50px',
             marginBottom: '30px',
+          
           }}
         />
         <div className="galeria">
@@ -98,6 +101,7 @@ const Images = () => {
               <img
                 src={image.src}
                 alt={`Foto ${index + 1}`}
+                loading='lazy'
                 style={{ margin: '0px', width: '140px', height: '140px' }}
               />
             </div>
