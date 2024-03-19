@@ -9,13 +9,14 @@ import Astro from '../../assets/Astronaut.glb';
 import obj1 from '../../assets/Objeto_01-b.glb';
 import obj2 from '../../assets/Objeto_02-b.glb';
 import obj3 from '../../assets/Objeto_03-b.glb';
+import obj4 from '../../assets/Objeto_01-e-6.glb';
 
 import Teste from '../../assets/teste...png';
 
 import { BackButton } from '../TakeHome';
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const ExpoContainer = styled.div`
   font-family: 'FuturaPTHeavy';
@@ -83,48 +84,85 @@ const ModelsContainer = styled.div`
   }
 `;
 
+const LazyLoadPoster = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url(${Teste});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+const ButtonLoad = styled.div`
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+
+  padding: 10px 15px;
+  font-weight: 500;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 100;
+
+  svg {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+
+  white-space: nowrap;
+`;
+
+const LoadingBar = ({ progress }: any) => (
+  <div
+    style={{
+      width: '100%',
+      backgroundColor: '#ccc',
+      borderRadius: '5px',
+      overflow: 'hidden',
+    }}
+  >
+    <div
+      style={{
+        height: '10px',
+        width: `${progress}%`,
+        backgroundColor: '#90caf9',
+        transition: 'width 0.5s ease-in-out',
+      }}
+    />
+  </div>
+);
+
 const VirtualExpo = () => {
   const ExpoIcon = Icons['Expo'];
   const ArqIcon = Icons['Arqueologia'];
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const LazyLoadPoster = styled.div`
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-image: url(${Teste});
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  `;
+  const [progress, setProgress] = useState(0); // Novo estado para o progresso
 
-  const ButtonLoad = styled.div`
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-
-    padding: 10px 15px;
-    font-weight: 500;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.25);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    z-index: 100;
-
-    svg {
-      width: 25px;
-      height: 25px;
-      margin-right: 10px;
-    }
-
-    white-space: nowrap;
-  `;
+  const handleLoadClick = () => {
+    setIsLoading(true);
+    // Substitua este código pelo seu carregamento real e atualização de progresso
+    let fakeProgress = 0;
+    const interval = setInterval(() => {
+      fakeProgress += 10;
+      setProgress(fakeProgress);
+      if (fakeProgress >= 100) {
+        clearInterval(interval);
+        setIsLoading(false); // Finaliza o carregamento
+      }
+    }, 100);
+  };
 
   useEffect(() => {
     const button = document.querySelector('#button-load');
@@ -228,9 +266,26 @@ const VirtualExpo = () => {
                 id="lazy-load-poster"
                 slot="poster"
               ></LazyLoadPoster>
-              <ButtonLoad id="button-load" slot="poster">
-                <Download />
-                Load 3d
+              <ButtonLoad
+                id="button-load"
+                slot="poster"
+                onClick={handleLoadClick}
+              >
+                {isLoading ? (
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100px',
+                      height: '25px',
+                    }}
+                  >
+                    <LoadingBar progress={progress} />
+                  </div>
+                ) : (
+                  <ButtonLoad onClick={handleLoadClick}>
+                    <Download /> Load 3d
+                  </ButtonLoad>
+                )}
               </ButtonLoad>
             </model-viewer>
             <model-viewer
@@ -277,7 +332,7 @@ const VirtualExpo = () => {
               // ar-placement="wall"
               camera-controls
               touch-action="pan-y"
-              src={Astro}
+              src={obj4}
               alt="A 3D model of an astronaut"
               style={{
                 width: '166px',
