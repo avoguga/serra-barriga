@@ -190,7 +190,7 @@ const VirtualExpo = () => {
       <div
         style={{
           backgroundColor: '#D66B00',
-          height: '100vh',
+          maxHeight: '150vh',
           width: '100vw',
           display: 'flex',
           flexDirection: 'column',
