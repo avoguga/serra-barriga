@@ -10,10 +10,12 @@ import obj1 from '../../assets/Objeto_01-b.glb';
 import obj2 from '../../assets/Objeto_02-b.glb';
 import obj3 from '../../assets/Objeto_03-b.glb';
 
+import Teste from '../../assets/teste...png';
 
 import { BackButton } from '../TakeHome';
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
+import { useEffect } from 'react';
 
 const ExpoContainer = styled.div`
   font-family: 'FuturaPTHeavy';
@@ -21,7 +23,7 @@ const ExpoContainer = styled.div`
   color: var(--text-color);
   background: rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  border-radius: 230px; 
+  border-radius: 230px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,18 +70,13 @@ const ExpoText = styled.p`
 `;
 
 const ModelsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  display: flex;
+  flex-direction: column;
 
-  overflow-y: auto;
   padding: 1rem;
   margin: 25px 0; // Adiciona margem acima e abaixo do contêiner, se necessário
   -ms-overflow-style: none; // Esconde scrollbar no IE e Edge
   scrollbar-width: none; // Esconde scrollbar no Firefox
-
-  
-  height: 200px;
 
   &::-webkit-scrollbar {
     display: none; // Esconde scrollbar no WebKit (Safari, Chrome, etc)
@@ -90,9 +87,65 @@ const VirtualExpo = () => {
   const ExpoIcon = Icons['Expo'];
   const ArqIcon = Icons['Arqueologia'];
   const navigate = useNavigate();
-  
 
- 
+  const LazyLoadPoster = styled.div`
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(${Teste});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  `;
+
+  const ButtonLoad = styled.div`
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+
+    padding: 10px 15px;
+    font-weight: 500;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    z-index: 100;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
+    }
+
+    white-space: nowrap;
+  `;
+
+  useEffect(() => {
+    const button = document.querySelector('#button-load');
+    const handleLoadClick = () => {
+      // @ts-ignore
+      document.querySelector('#lazy-load').dismissPoster();
+    };
+
+    if (button) {
+      button.addEventListener('click', handleLoadClick);
+    }
+
+    // Cleanup function
+    return () => {
+      if (button) {
+        button.removeEventListener('click', handleLoadClick);
+      }
+    };
+  }, []);
+
+  const Download = Icons['DownloadWhite'];
 
   return (
     <WatermarkWrapper>
@@ -148,74 +201,92 @@ const VirtualExpo = () => {
         </ExpoInfoContainer>
 
         <ModelsContainer>
-        
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              id="lazy-load"
+              reveal="manual"
+              camera-controls
+              touch-action="pan-y"
+              src={obj1}
+              alt="A 3D model of an astronaut"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            >
+              <LazyLoadPoster
+                id="lazy-load-poster"
+                slot="poster"
+              ></LazyLoadPoster>
+              <ButtonLoad id="button-load" slot="poster">
+                <Download />
+                Load 3d
+              </ButtonLoad>
+            </model-viewer>
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              touch-action="pan-y"
+              src={obj2}
+              alt="A 3D model of an astronaut"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+          </div>
 
-          <model-viewer
-            ar
-            // ar-modes="webxr"
-            // ar-placement="wall"
-        
-            camera-controls
-            touch-action="pan-y"
-            src={obj1}
-            alt="A 3D model of an astronaut"
+          <div
             style={{
-              width: '166px',
-              height: '146px',
-              backgroundColor: '#EB7400',
-              borderRadius: '50%',
-              
+              display: 'flex',
+              justifyContent: 'center',
             }}
-          ></model-viewer>
-          <model-viewer
-          
-            ar
-            // ar-modes="webxr"
-            // ar-placement="wall"
-            camera-controls
-            touch-action="pan-y"
-            src={obj2}
-            alt="A 3D model of an astronaut"
-            style={{
-              width: '166px',
-              height: '146px',
-              backgroundColor: '#EB7400',
-              borderRadius: '50%',
-            }}
-          ></model-viewer>
-
-          <model-viewer
-            ar
-            // ar-modes="webxr"
-            // ar-placement="wall"
-            camera-controls
-            src={obj3}
-            alt="A 3D model of an astronaut"
-            touch-action="pan-y"
-            style={{
-              width: '166px',
-              height: '146px',
-              backgroundColor: '#EB7400',
-              borderRadius: '50%',
-            }}
-          ></model-viewer>
-           <model-viewer
-            ar
-            // ar-modes="webxr"
-            // ar-placement="wall"
-            camera-controls
-            touch-action="pan-y"
-            src={Astro}
-            alt="A 3D model of an astronaut"
-            style={{
-              width: '166px',
-              height: '146px',
-              backgroundColor: '#EB7400',
-              borderRadius: '50%',
-            }}
-          ></model-viewer>
-          
-
+          >
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              src={obj3}
+              alt="A 3D model of an astronaut"
+              touch-action="pan-y"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              touch-action="pan-y"
+              src={Astro}
+              alt="A 3D model of an astronaut"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+          </div>
         </ModelsContainer>
       </div>
     </WatermarkWrapper>
