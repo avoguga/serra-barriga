@@ -102,7 +102,7 @@ const Images = () => {
                 src={image.src}
                 alt={`Foto ${index + 1}`}
                 loading='lazy'
-                style={{ margin: '0px', width: '140px', height: '140px' }}
+                style={{ margin: '0px', width: '140px', height: '140px' , objectFit:'cover'}}
               />
             </div>
           ))}
