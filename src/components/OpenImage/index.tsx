@@ -18,6 +18,7 @@ const OpenImage: React.FC <OpenImageProps> = ({src,alt,background,description, o
         onClick={onClose}
               src={iconX}
               alt="iconX"
+              loading='lazy'
               style={{
                 width: '28px',
                 height: 'auto',
