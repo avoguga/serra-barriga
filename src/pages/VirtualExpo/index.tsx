@@ -190,7 +190,7 @@ const VirtualExpo = () => {
       <div
         style={{
           backgroundColor: '#D66B00',
-          maxHeight: '150vh',
+          height: '100%',
           width: '100vw',
           display: 'flex',
           flexDirection: 'column',
@@ -243,6 +243,7 @@ const VirtualExpo = () => {
             style={{
               display: 'flex',
               justifyContent: 'center',
+              flexDirection:'column'
             }}
           >
             <model-viewer
@@ -309,6 +310,7 @@ const VirtualExpo = () => {
             style={{
               display: 'flex',
               justifyContent: 'center',
+              flexDirection:'column'
             }}
           >
             <model-viewer
@@ -326,6 +328,122 @@ const VirtualExpo = () => {
                 borderRadius: '50%',
               }}
             ></model-viewer>
+            
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              touch-action="pan-y"
+              src={obj4}
+              alt="A 3D model of an astronaut"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection:'column'
+            }}
+          >
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              src={obj3}
+              alt="A 3D model of an astronaut"
+              touch-action="pan-y"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+            
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              touch-action="pan-y"
+              src={obj4}
+              alt="A 3D model of an astronaut"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+          </div><div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection:'column'
+            }}
+          >
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              src={obj3}
+              alt="A 3D model of an astronaut"
+              touch-action="pan-y"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+            
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              touch-action="pan-y"
+              src={obj4}
+              alt="A 3D model of an astronaut"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+          </div><div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection:'column'
+            }}
+          >
+            <model-viewer
+              ar
+              // ar-modes="webxr"
+              // ar-placement="wall"
+              camera-controls
+              src={obj3}
+              alt="A 3D model of an astronaut"
+              touch-action="pan-y"
+              style={{
+                width: '166px',
+                height: '146px',
+                backgroundColor: '#EB7400',
+                borderRadius: '50%',
+              }}
+            ></model-viewer>
+            
             <model-viewer
               ar
               // ar-modes="webxr"

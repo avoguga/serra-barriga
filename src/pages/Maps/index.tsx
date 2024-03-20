@@ -3,7 +3,7 @@ import { useState } from 'react';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import styled from 'styled-components';
 import tiktok from '../../assets/logo.png';
-import mapa from '../../assets/Mapa Serra da Barriga -  novo-03.png';
+import mapa from '../../assets/Mapa Serra da Barriga -  novo-03.webp';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 //import { Icons } from '../../helpers/icons';
@@ -40,7 +40,7 @@ export const BackButton = styled.button`
 
 
 const LocationButton = styled.button<{ x: number; y: number }>`
-  position: absolute;
+  position: fixed;
   transform: translate(-50%, -50%); // Centraliza o botão em suas coordenadas
   top: ${(props) => props.y}px;
   left: ${(props) => props.x}px;
@@ -57,7 +57,7 @@ const Tooltip = styled.div <{ x: number; y: number }> `
   position: absolute;
   left: ${props => props.x}px;
   top: ${props => props.y}px;
-  transform: translate(-50%, -100%); // Isso vai posicionar o tooltip acima do marcador
+  transform: translate(-50%, -150%); // Isso vai posicionar o tooltip acima do marcador
   padding: 8px 16px;
   background: #FFFFFF; // Fundo amarelo claro como na imagem
   color: #67781B; // Cor do texto verde-escuro
@@ -117,27 +117,27 @@ interface LocationInfo {
 }
 
 const locationMappings: { [key: string]: { x: number; y: number } } = {
-  'ENTRADA': { x: 185, y: 460 },
-  'ONJÓ CRUZAMBÊ': { x: 345, y: 461 },
-  'OXILE DAS ERVAS': { x: 380, y: 448 },
-  'ESPAÇO ACOTIRENE': { x: 400, y: 405 },
-  'MUXIMA DE PALMARES': { x: 342, y: 373 },
-  'ESPAÇO QUILOMBO': { x: 287, y: 403 },
-  'ESPAÇO GANGA-ZUMBA': { x: 344, y: 292 },
-  'ATALAIA DE ACAIENE': { x: 380, y: 234 },
-  'OCAS INDÍGENAS': { x: 315, y: 254 },
-  'ESPAÇO CAÁ-PUÊRA': { x: 275, y: 204 },
-  'BATUCAJÉ': { x: 225, y: 201 },
-  'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 250, y: 315 },
-  'BANHEIROS': { x: 175, y: 257 },
-  'ATALAIA DO ACAIUBA': { x: 122, y: 263 },
-  'ONJÓ DE FARINHA': { x: 181, y: 306 },
-  'LAGOAS ENCATADA DOS NEGROS': { x: 210, y: 108 },
-  'RESTAURANTE KÚUKU-WAANA': { x: 170, y: 380 },
+  'ENTRADA': { x: 155, y: 460 },
+  'ONJÓ CRUZAMBÊ': { x: 315, y: 461 },
+  'OXILE DAS ERVAS': { x: 350, y: 448 },
+  'ESPAÇO ACOTIRENE': { x: 370, y: 405 },
+  'MUXIMA DE PALMARES': { x: 312, y: 373 },
+  'ESPAÇO QUILOMBO': { x: 257, y: 403 },
+  'ESPAÇO GANGA-ZUMBA': { x: 314, y: 292 },
+  'ATALAIA DE ACAIENE': { x: 350, y: 234 },
+  'OCAS INDÍGENAS': { x: 285, y: 254 },
+  'ESPAÇO CAÁ-PUÊRA': { x: 245, y: 204 },
+  'BATUCAJÉ': { x: 195, y: 201 },
+  'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 220, y: 315 },
+  'BANHEIROS': { x: 145, y: 257 },
+  'ATALAIA DO ACAIUBA': { x: 92, y: 263 },
+  'ONJÓ DE FARINHA': { x: 151, y: 306 },
+  'LAGOAS ENCATADA DOS NEGROS': { x: 180, y: 108 },
+  'RESTAURANTE KÚUKU-WAANA': { x: 140, y: 380 },
 
-  'ESPAÇO AQUALTUNE': { x: 237, y: 100 },
-  'ATALAIA DO TOCULO': { x: 127, y: 458 },
-  'ESPAÇO ZUMBI': { x: 127, y: 395 },
+  'ESPAÇO AQUALTUNE': { x: 207, y: 100 },
+  'ATALAIA DO TOCULO': { x: 97, y: 458 },
+  'ESPAÇO ZUMBI': { x: 97, y: 395 },
 
   
 };
@@ -225,7 +225,7 @@ const Maps: React.FC = () => {
             <TransformWrapper>
               <TransformComponent>
                 {/* Imagem do Mapa e Botões de Localização */}
-                <div style={{ position: 'relative', width:'100vw', display:'flex', alignItems:'center' }}>
+                <div style={{ position: 'relative', width:'100vw', display:'flex', alignItems:'center', justifyContent:'center', marginRight:'30px' }}>
                   <img src={mapa} alt="mapa" style={{ width: '450px', height: '520px' }} />
                   
                   {/* Botões dos Locais */}

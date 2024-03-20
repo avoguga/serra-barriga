@@ -2,7 +2,7 @@ import './style.css/';
 import logo from '../../assets/logo.png';
 
 import footer from '../../assets/icons/logo parque - verde.svg'
-import teste from '../../assets/lupicinio-rodrigues.webp'
+
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import FloatingButtonBar from '../../components/FloatingContainer';
@@ -12,13 +12,23 @@ import { FullScreenImage } from '../../helpers/OpenImage';
 import React from 'react';
 import Arrow from '../../components/ArrowButton';
 
+import foto1 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (1).webp';
+import foto2 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (2).webp';
+import foto3 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (3).webp';
+import foto4 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (4).webp';
+import foto5 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova.webp';
+import foto6 from '../../assets/images/serra fotos/Serra da Barriga (3).webp';
+import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
+
 const SerraDaBarriga = () => {
   const images = [
-    { src: teste },
-    { src: ' imagem ' },
-    { src: ' imagem ' },
-    { src: ' imagem ' },
-    { src: ' imagem ' },
+    { src:  foto1},
+    { src:  foto2},
+    { src:  foto3},
+    { src:  foto4},
+    { src:  foto5},
+    { src:  foto6},
+    { src:  foto7},
 
    
 
@@ -125,6 +135,7 @@ const SerraDaBarriga = () => {
             src={image.src} 
             className="image" 
             onClick={() => openFullScreenImage(image.src)}
+           
             
             
             />
