@@ -9,6 +9,17 @@ import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import styled from 'styled-components';
 import { BackButton } from '../TakeHome';
 import { useState } from 'react';
+import React from 'react';
+
+import foto1 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (1).webp';
+import foto2 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (2).webp';
+import foto3 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (3).webp';
+import foto4 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (4).webp';
+import foto5 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova.webp';
+import foto6 from '../../assets/images/serra fotos/Serra da Barriga (3).webp';
+import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
+import { FullScreenImage } from '../../helpers/OpenImage';
+import OpenImage from '../../components/OpenImage';
 
 const ContainerGeral = styled.div`
   background: #d66b00;
@@ -46,7 +57,7 @@ const Text = styled.div`
     line-height: 2.1;
     font-size: 20px;
     font-weight: 100;
-    font-family: 'FuturaPT', sans-serif;
+    font-family: 'FuturaPTDemi', sans-serif;
   }
 `;
 const Paragraph = styled.p`
@@ -165,7 +176,7 @@ const Carrossel = styled.div`
   align-items: center;
   flex-direction: row;
   overflow-x: auto;
-  margin-left: 140px;
+  margin-left: 30px;
 `;
 
 
@@ -187,10 +198,33 @@ const Video = styled.iframe`
     width: 80%;
   }
 `;
+const CarrosselContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 100vw;
+  &::-webkit-scrollbar {
+    display: none; // Isso pode ajudar a esconder a scrollbar em navegadores que suportam
+  }
+  gap: 10px; /* Espaço entre as imagens */
+  padding: 0 20px; /* Ajuste conforme necessário para espaçamento interno */
+  margin-right: 20px; /* Espaço extra no final do carrossel */
+`;
+
 
 const SerraDaBarriga2 = () => {
+  const images = [
+    { src: foto1, description: "Foto de Aprigio Vilanova " },
+    { src: foto2, description: "Foto de Aprigio Vilanova " },
+    { src: foto3, description: "Foto de Aprigio Vilanova" },
+    { src: foto4, description: "Foto de Aprigio Vilanova " },
+    { src: foto5, description: "Foto de Aprigio Vilanova " },
+    { src: foto6, description: "Foto de Aprigio Vilanova " },
+    { src: foto7, description: "Foto de Aprigio Vilanova " },
+  ];
   
-
+  const [fullScreenImage, setFullScreenImage] = useState<FullScreenImage | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
   const fullText = `Serra da Barriga está localizada no atual município de União dos Palmares, no estado de Alagoas. À época do Quilombo dos Palmares, fazia parte da Capitania de Pernambuco.  
@@ -220,7 +254,29 @@ const SerraDaBarriga2 = () => {
 
  // Define quais parágrafos mostrar com base no estado de expansão
  const textToShow = isExpanded ? paragraphs : paragraphs.slice(0, previewParagraphCount);
+ const scrollContainerRef = React.createRef<HTMLDivElement>();
   
+  
+ const openFullScreenImage = (src: string, description: string, background: string = '#D66B00'): void => {
+  setFullScreenImage({ src, description, background });
+};
+const closeFullScreenImage = () => {
+  setFullScreenImage(null);
+};
+
+const scrollCarrossel = (direction: string) => {
+  if (scrollContainerRef.current) {
+    const { current } = scrollContainerRef;
+    // Adicione um log para verificar se este ponto é alcançado
+    console.log("Scrolling", direction);
+
+    // Pode ajustar este valor conforme necessário
+    const scrollAmount = 200; // Valor fixo para teste
+
+    const newScrollPosition = direction === 'left' ? current.scrollLeft - scrollAmount : current.scrollLeft + scrollAmount;
+    current.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+  }
+};
   return (
     <ContainerGeral>
       <BackButton
@@ -250,7 +306,7 @@ const SerraDaBarriga2 = () => {
           }}
         >
           <MapaImg src={mapa} alt="" />
-          <MapaTexto className="mapa-text">MAPA</MapaTexto>
+          <MapaTexto>MAPA</MapaTexto>
         </MapaBtn>
       </Mapa>
       <Title>FOTOS</Title>
@@ -258,40 +314,25 @@ const SerraDaBarriga2 = () => {
         {/* {images.map((image, index) => (
           <CarrosselImg key={index} src={image.src} />
         ))} */}
-
-        <div
-          className="foto"
-          style={{
-            background: '#3D4B09',
-            marginLeft: '140px',
-          }}
-        ></div>
-        <div
-          className="foto"
-          style={{
-            background: '#009289',
-          }}
-        ></div>
-        <div
-          className="foto"
-          style={{
-            background: '#F48306',
-          }}
-        ></div>
-        <div
-          className="foto"
-          style={{
-            background: '#FFBF00',
-          }}
-        ></div>
+  
+  <CarrosselContainer ref={scrollContainerRef}>
+    {images.map((image, index) => (
+      <img key={index} 
+           src={image.src} 
+           onClick={() => openFullScreenImage(image.src, image.description)}
+           alt={image.description} 
+           style={{ width: '160px', height: '160px' }}
+      />
+    ))}
+  </CarrosselContainer>
       </Carrossel>
       <BtnSeta>
-        <button>
-          <img src={setaEsquerda} />
-        </button>
-        <button>
-          <img src={setaDireita} />
-        </button>
+      <button onClick={() => scrollCarrossel('left')}>
+    <img src={setaEsquerda} alt="Scroll Left" />
+  </button>
+  <button onClick={() => scrollCarrossel('right')}>
+    <img src={setaDireita} alt="Scroll Right" />
+  </button>
       </BtnSeta>
       <Title>VÍDEOS</Title>
       <Video
@@ -302,13 +343,27 @@ const SerraDaBarriga2 = () => {
         allowFullScreen
       ></Video>
       <BtnSeta>
-        <button>
-          <img src={setaEsquerda} />
-        </button>
-        <button>
-          <img src={setaDireita} />
-        </button>
-      </BtnSeta>
+  <button >
+    <img src={setaEsquerda} alt="Scroll Left" />
+  </button>
+  <button >
+    <img src={setaDireita} alt="Scroll Right" />
+  </button>
+</BtnSeta>
+
+      <img  />
+            {fullScreenImage && (
+  
+  <OpenImage 
+    src={fullScreenImage.src} 
+    alt={fullScreenImage.description} 
+    background='#D66B00' 
+    description={fullScreenImage.description}
+    onClose={closeFullScreenImage}
+   
+  />
+
+)}
     </ContainerGeral>
   );
 };
