@@ -48,7 +48,7 @@
  align-items: center;
  flex-direction: column;
  justify-content: center;
-
+font-family: 'FuturaPTBook' , sans-serif;
    
     line-height: 2.1;
     font-size: 13px;
@@ -60,7 +60,7 @@
     border: none;
     padding: 15px;
     margin-top: 18px;
-    
+    font-family: 'FuturaPTBold' ,sans-serif;
     text-decoration: underline;
 }
 
@@ -68,6 +68,9 @@
     margin-bottom: 10px; /* ou qualquer valor que dê o espaço desejado */
   line-height: 1.6; 
   text-align: left;
+font-family: 'FuturaPTBook' , sans-serif;
+opacity: 0.9;
+
 }
 button {
     background-color: transparent;

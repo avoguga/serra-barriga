@@ -126,6 +126,7 @@ export const EventCard = styled.div`
 export const EventTitle = styled.h4`
   color: #3f3f3f;
   margin-bottom: 0.5rem;
+
   font-weight: bold;
 `;
 export const EventDateTime = styled.p`

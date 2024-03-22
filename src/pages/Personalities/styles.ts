@@ -48,7 +48,7 @@ export const PersonalityCard = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'FuturaPT', sans-serif;
   color: #ffffff;
   font-size: 14px;
   height: auto;

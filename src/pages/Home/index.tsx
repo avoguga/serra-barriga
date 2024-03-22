@@ -16,6 +16,11 @@ const ButtonContainer = styled.div`
   background-color: #67781b;
   column-gap: 50px;
   justify-content: center;
+  
+    font-family: 'FuturaPTDemi', sans-serif;
+    font-size: 17px;
+
+
 `;
 
 const BottomContainer = styled.div`
@@ -37,10 +42,12 @@ const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
   p {
-    font: normal normal normal 16px/22px;
+    font: normal normal normal 15px/22px;
     letter-spacing: 0px;
     margin-left: 10px;
+  
   }
 `;
 
@@ -98,6 +105,7 @@ const Home = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+  
         }}
       >
         <img
@@ -134,7 +142,7 @@ const Home = () => {
               navigate('/personalities');
             }}
           >
-            PERSONALIDADES
+            <h4>PERSONALIDADES</h4> 
           </HomeButton>
           <HomeButton
             iconType="Home"

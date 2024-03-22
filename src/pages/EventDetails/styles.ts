@@ -45,7 +45,7 @@ export const TituloSecaoEvento = styled.h3`
 export const DescricaoEvento = styled.p`
   font-size: 19px;
   color: #ffffff;
-  font-family: 'FuturaPTHeavy', sans-serif;
+  font-family: 'FuturaPT', sans-serif;
   font-weight: 100;
   text-align: left;
   opacity: 0.9;
@@ -53,6 +53,7 @@ export const DescricaoEvento = styled.p`
 
   > span {
     font-style: italic;
+    font-family: 'FuturaPT', sans-serif;
   }
 `;
 

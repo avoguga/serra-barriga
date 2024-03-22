@@ -29,7 +29,7 @@ export const HeaderContent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 15px;
-  font-family: 'FuturaPTDemiOblique', sans-serif;
+  font-family: 'FuturaPTDemi', sans-serif;
   font-size: 13px;
   opacity: 1;
 `;
@@ -53,12 +53,13 @@ export const Title = styled.h1`
   font-family: 'FuturaPTBold', sans-serif;
   font-size: 20px;
   margin-top: 15px;
+  margin-bottom: 10px;
 `;
 
 export const Description = styled.div`
   background-color: #c7222f;
   color: #ffffff;
-
+  text-align: center;
   font-family: 'FuturaPT', sans-serif;
   font-size: 15px;
   max-width: 80%;
