@@ -1,126 +1,20 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 
-import styled from 'styled-components';
 import tiktok from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import '@google/model-viewer';
-import Astro from '../../assets/Astronaut.glb';
 
 import obj1 from '../../assets/Objeto_01-b.glb';
 import obj2 from '../../assets/Objeto_02-b.glb';
 import obj3 from '../../assets/Objeto_03-b.glb';
 import obj4 from '../../assets/Objeto_01-e-6.glb';
 
-import Teste from '../../assets/teste...png';
-
 import { BackButton } from '../TakeHome';
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useEffect, useState } from 'react';
 
-const ExpoContainer = styled.div`
-  font-family: 'FuturaPTHeavy';
-  font-size: 12px;
-  color: var(--text-color);
-  background: rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  border-radius: 230px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  width: 310px;
-  height: 80px;
-
-  svg {
-    width: 40px;
-    height: 40px;
-    margin-right: 24px;
-  }
-`;
-
-const ExpoInfoContainer = styled.div`
-  font-family: 'FuturaPTHeavy';
-  font-size: 10px;
-  color: var(--text-color);
-  background: #753d00;
-  padding-bottom: 1rem;
-  border-radius: 38px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  width: 337px;
-  height: 296px;
-
-  div > svg {
-    width: 100px;
-    height: 54px;
-    margin-right: 24px;
-  }
-`;
-
-const ExpoText = styled.p`
-  font-size: 14px;
-  color: #ffffff;
-`;
-
-const ModelsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  padding: 1rem;
-  margin: 25px 0; // Adiciona margem acima e abaixo do contêiner, se necessário
-  -ms-overflow-style: none; // Esconde scrollbar no IE e Edge
-  scrollbar-width: none; // Esconde scrollbar no Firefox
-
-  &::-webkit-scrollbar {
-    display: none; // Esconde scrollbar no WebKit (Safari, Chrome, etc)
-  }
-`;
-
-const LazyLoadPoster = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-image: url(${Teste});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-`;
-
-const ButtonLoad = styled.div`
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-
-  padding: 10px 15px;
-  font-weight: 500;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.25);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  z-index: 100;
-
-  svg {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-  }
-
-  white-space: nowrap;
-`;
+import * as C from './styles';
 
 const LoadingBar = ({ progress }: any) => (
   <div
@@ -147,6 +41,7 @@ const VirtualExpo = () => {
   const ArqIcon = Icons['Arqueologia'];
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const [progress, setProgress] = useState(0); // Novo estado para o progresso
 
@@ -183,13 +78,24 @@ const VirtualExpo = () => {
     };
   }, []);
 
+  const fullText = `A Serra da Barriga possui um patrimônio arqueológico que conta a história de diversos povos que aqui habitavam em tempos passados. A sua passagem por essas terras foi preservada através de diversos vestígios que resistiram ao tempo. \n\n
+   Estudos arqueológicos realizados pelo Núcleo de Ensino e Pesquisa Arqueológico da Universidade Federal de Alagoas, revelaram cachimbos, panelas de barro, ferramentas de pedra lascada e polida, marcas dos pisos de moradias e muito mais. Essas evidências permitem que se aprenda muito sobre a vida cotidiana desses grupos.`
+
+   const paragraphs = fullText.split('\n\n');
+
+  // Defina o número de parágrafos a serem mostrados na prévia
+  const previewParagraphCount = 1; // Ajuste conforme necessário
+
+  // Determina quais parágrafos mostrar com base no estado de expansão
+  const textToShow = isExpanded ? paragraphs : paragraphs.slice(0, previewParagraphCount);
+
   const Download = Icons['DownloadWhite'];
 
   return (
     <WatermarkWrapper>
       <div
         style={{
-          backgroundColor: '#D66B00',
+          backgroundColor: '#67781B',
           height: '100%',
           width: '100vw',
           display: 'flex',
@@ -214,38 +120,40 @@ const VirtualExpo = () => {
         >
           <img src={seta} alt="" />
         </BackButton>
-        <ExpoContainer>
+        <C.ExpoContainer>
           <ExpoIcon />
           <h2>EXPOSIÇÃO VIRTUAL</h2>
-        </ExpoContainer>
+        </C.ExpoContainer>
 
-        <ExpoInfoContainer>
+        <C.ExpoInfoContainer>
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              padding: '0 3rem',
+              marginTop: '2rem',
+              padding: '0 2rem',
               marginBottom: '1rem',
             }}
           >
             <ArqIcon />
-            <h2>ARQUEOLOGIA DA SERRA DA BARRIGA</h2>
+            <h2>ARQUEOLOGIA  DA  SERRA DA BARRIGA</h2>
           </div>
-          <ExpoText>
-            Arqueologia é a ciência que estuda as culturas e os modos de vida
-            das diferentes sociedades humanas - tanto do passado como do
-            presente - a partir da análise de objetos materiais.
-          </ExpoText>
-        </ExpoInfoContainer>
+          {textToShow.map((paragraph, index) => (
+            <C.ExpoText key={index}>
+             {paragraph} 
+            </C.ExpoText>
+          ))}
 
-        <ModelsContainer>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection:'column'
-            }}
-          >
+      
+<C.ReadMoreButton onClick={() => setIsExpanded(!isExpanded)}>
+            {isExpanded ? 'LER MENOS' : 'LER MAIS'}
+          </C.ReadMoreButton>
+      
+        </C.ExpoInfoContainer>
+
+        <C.ModelsContainer>
+          {/* Modelo 1 */}
+          <div>
             <model-viewer
               ar
               // ar-modes="webxr"
@@ -257,17 +165,18 @@ const VirtualExpo = () => {
               src={obj1}
               alt="A 3D model of an astronaut"
               style={{
-                width: '166px',
+                width: '146px',
                 height: '146px',
-                backgroundColor: '#EB7400',
+                backgroundColor: '#859A27',
+
                 borderRadius: '50%',
               }}
             >
-              <LazyLoadPoster
+              <C.LazyLoadPoster
                 id="lazy-load-poster"
                 slot="poster"
-              ></LazyLoadPoster>
-              <ButtonLoad
+              ></C.LazyLoadPoster>
+              <C.ButtonLoad
                 id="button-load"
                 slot="poster"
                 onClick={handleLoadClick}
@@ -283,184 +192,144 @@ const VirtualExpo = () => {
                     <LoadingBar progress={progress} />
                   </div>
                 ) : (
-                  <ButtonLoad onClick={handleLoadClick}>
+                  <C.ButtonLoad onClick={handleLoadClick}>
                     <Download /> Load 3d
-                  </ButtonLoad>
+                  </C.ButtonLoad>
                 )}
-              </ButtonLoad>
+              </C.ButtonLoad>
             </model-viewer>
+          </div>
+
+          {/* Modelo 2 */}
+          <div>
             <model-viewer
               ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
               camera-controls
               touch-action="pan-y"
               src={obj2}
-              alt="A 3D model of an astronaut"
+              alt="Modelo 2"
               style={{
-                width: '166px',
+                width: '146px',
                 height: '146px',
-                backgroundColor: '#EB7400',
+                backgroundColor: '#859A27',
                 borderRadius: '50%',
               }}
-            ></model-viewer>
+            >
+              {/* Elementos internos semelhantes ao modelo 1 */}
+            </model-viewer>
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection:'column'
-            }}
-          >
+          {/* Modelo 3 */}
+          <div>
             <model-viewer
               ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
               camera-controls
+              touch-action="pan-y"
               src={obj3}
-              alt="A 3D model of an astronaut"
-              touch-action="pan-y"
+              alt="Modelo 3"
               style={{
-                width: '166px',
+                width: '146px',
                 height: '146px',
-                backgroundColor: '#EB7400',
+                backgroundColor: '#859A27',
                 borderRadius: '50%',
               }}
-            ></model-viewer>
-            
-            <model-viewer
-              ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
-              camera-controls
-              touch-action="pan-y"
-              src={obj4}
-              alt="A 3D model of an astronaut"
-              style={{
-                width: '166px',
-                height: '146px',
-                backgroundColor: '#EB7400',
-                borderRadius: '50%',
-              }}
-            ></model-viewer>
+            >
+              {/* Elementos internos semelhantes ao modelo 1 */}
+            </model-viewer>
           </div>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection:'column'
-            }}
-          >
+
+          {/* Modelo 4 */}
+          <div>
             <model-viewer
               ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
-              camera-controls
-              src={obj3}
-              alt="A 3D model of an astronaut"
-              touch-action="pan-y"
-              style={{
-                width: '166px',
-                height: '146px',
-                backgroundColor: '#EB7400',
-                borderRadius: '50%',
-              }}
-            ></model-viewer>
-            
-            <model-viewer
-              ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
               camera-controls
               touch-action="pan-y"
               src={obj4}
-              alt="A 3D model of an astronaut"
+              alt="Modelo 4"
               style={{
-                width: '166px',
+                width: '146px',
                 height: '146px',
-                backgroundColor: '#EB7400',
+                backgroundColor: '#859A27',
                 borderRadius: '50%',
               }}
-            ></model-viewer>
-          </div><div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection:'column'
-            }}
-          >
-            <model-viewer
-              ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
-              camera-controls
-              src={obj3}
-              alt="A 3D model of an astronaut"
-              touch-action="pan-y"
-              style={{
-                width: '166px',
-                height: '146px',
-                backgroundColor: '#EB7400',
-                borderRadius: '50%',
-              }}
-            ></model-viewer>
-            
-            <model-viewer
-              ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
-              camera-controls
-              touch-action="pan-y"
-              src={obj4}
-              alt="A 3D model of an astronaut"
-              style={{
-                width: '166px',
-                height: '146px',
-                backgroundColor: '#EB7400',
-                borderRadius: '50%',
-              }}
-            ></model-viewer>
-          </div><div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection:'column'
-            }}
-          >
-            <model-viewer
-              ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
-              camera-controls
-              src={obj3}
-              alt="A 3D model of an astronaut"
-              touch-action="pan-y"
-              style={{
-                width: '166px',
-                height: '146px',
-                backgroundColor: '#EB7400',
-                borderRadius: '50%',
-              }}
-            ></model-viewer>
-            
-            <model-viewer
-              ar
-              // ar-modes="webxr"
-              // ar-placement="wall"
-              camera-controls
-              touch-action="pan-y"
-              src={obj4}
-              alt="A 3D model of an astronaut"
-              style={{
-                width: '166px',
-                height: '146px',
-                backgroundColor: '#EB7400',
-                borderRadius: '50%',
-              }}
-            ></model-viewer>
+            >
+              {/* Elementos internos semelhantes ao modelo 1 */}
+            </model-viewer>
           </div>
-        </ModelsContainer>
+
+          <div>
+            <model-viewer
+              ar
+              camera-controls
+              touch-action="pan-y"
+              src={obj3}
+              alt="Modelo 3"
+              style={{
+                width: '146px',
+                height: '146px',
+                backgroundColor: '#859A27',
+                borderRadius: '50%',
+              }}
+            >
+              {/* Elementos internos semelhantes ao modelo 1 */}
+            </model-viewer>
+          </div>
+
+          {/* Modelo 4 */}
+          <div>
+            <model-viewer
+              ar
+              camera-controls
+              touch-action="pan-y"
+              src={obj4}
+              alt="Modelo 4"
+              style={{
+                width: '146px',
+                height: '146px',
+                backgroundColor: '#859A27',
+                borderRadius: '50%',
+              }}
+            >
+              {/* Elementos internos semelhantes ao modelo 1 */}
+            </model-viewer>
+          </div>
+          <div>
+            <model-viewer
+              ar
+              camera-controls
+              touch-action="pan-y"
+              src={obj3}
+              alt="Modelo 3"
+              style={{
+                width: '146px',
+                height: '146px',
+                backgroundColor: '#859A27',
+                borderRadius: '50%',
+              }}
+            >
+              {/* Elementos internos semelhantes ao modelo 1 */}
+            </model-viewer>
+          </div>
+
+          {/* Modelo 4 */}
+          <div>
+            <model-viewer
+              ar
+              camera-controls
+              touch-action="pan-y"
+              src={obj4}
+              alt="Modelo 4"
+              style={{
+                width: '146px',
+                height: '146px',
+                backgroundColor: '#859A27',
+                borderRadius: '50%',
+              }}
+            >
+              {/* Elementos internos semelhantes ao modelo 1 */}
+            </model-viewer>
+          </div>
+        </C.ModelsContainer>
       </div>
     </WatermarkWrapper>
   );

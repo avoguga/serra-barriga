@@ -1,24 +1,24 @@
-/* @font-face {
+ @font-face {
   font-family: 'FuturaPTBold';
-  src: url('/assets/fonts/Futura/FuturaPTBold.otf') format('opentype');
+  src: url('../assets/fonts/FuturaWolf/FuturaPTBold.woff') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
-
+/*
 @font-face {
   font-family: 'FuturaPTBoldOblique';
   src: url('/assets/fonts/Futura/FuturaPTBoldOblique.otf') format('opentype');
   font-weight: bold;
   font-style: italic;
-}
+} */
 
 @font-face {
   font-family: 'FuturaPTBook';
-  src: url('/assets/fonts/Futura/FuturaPTBook.otf') format('opentype');
+  src: url('../assets/fonts/FuturaWolf/FuturaPTBook.woff') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
-
+/*
 @font-face {
   font-family: 'FuturaPTBookOblique';
   src: url('/assets/fonts/Futura/FuturaPTBookOblique.otf') format('opentype');
@@ -82,12 +82,12 @@
   font-style: italic;
 } */
 
-/* @font-face {
+ @font-face {
   font-family: 'FuturaPTDemi';
-  src: url('src/assets/fonts/FuturaWolf/FuturaPTDemi.woff') format('woff');
+  src: url('../assets/fonts/FuturaWolf/FuturaPTDemi.woff') format('woff');
   font-weight: bold;
   font-style: normal;
-} */
+} 
 /* 
 @font-face {
   font-family: 'FuturaPTDemiOblique';
@@ -112,7 +112,7 @@
 
 @font-face {
   font-family: 'FuturaPTHeavy';
-  src: url('src/assets/fonts/FuturaWolf/FuturaPTHeavy.woff') format('woff');
+  src: url('../assets/fonts/FuturaWolf/FuturaPTHeavy.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }

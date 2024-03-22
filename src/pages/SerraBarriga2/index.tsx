@@ -42,7 +42,7 @@ const Text = styled.div`
   margin-top: 30%;
   transform: translateY(20px);
   line-height: 2.1;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 100;
   margin-bottom: 45px;
   text-align: left;
@@ -50,6 +50,7 @@ const Text = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-family: 'FuturaPTDemi', sans-serif;
  
 
   @media (min-width: 700px) {
