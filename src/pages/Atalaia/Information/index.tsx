@@ -7,10 +7,10 @@ import LowArrow from '../../../components/LowArrowButton';
 
 const View = styled.div`
   background-color: #8aa61e;
-  font-family: 'Futura PT', sans-serif;
+
   color: #ffffff;
   h1 {
-    font-size: 34px;
+    font-size: 31px;
   }
   p {
     font-size: 18px;
@@ -39,17 +39,30 @@ const NavFotter = styled.nav`
 const AgroupTexts = styled.div`
   margin: 20px 0 30px 0;
   text-align: center;
+  >h1 {
+    font-family: 'FuturaPTHeavy' , sans-serif ;
+  }
+  >p {
+    font-family:'FuturaPTBook' , sans-serif  ;
+    opacity: 0.85;
+  }
 `;
 
 const InfoText = styled.div`
   background: #8d094a;
-  width: 329px;
+  width: 300px;
   height: 29px;
-  margin: 0 0 30px 0;
+  margin: 0 0 30px ;
   border-radius: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  >h2 {
+  font-family: 'FuturaPTDemi', sans-serif;
+  letter-spacing: 1px;
+  
+
+  }
 `;
 
 const AgroupText = styled.div`
@@ -62,10 +75,12 @@ const AgroupText = styled.div`
   opacity: 1;
   margin: 0 0 40px 0;
   p {
-    max-width: 80%;
+    max-width: 78%;
     margin: 30px 0;
     text-align: left;
-    letter-spacing: 0px;
+    letter-spacing: 0.5px;
+    font-family: 'FuturaPT' , sans-serif;
+  
   }
 `;
 
@@ -98,8 +113,10 @@ const AtalaiaInfoView = () => {
             src={info}
             alt="ícone de informação"
             style={{
-              width: '15px',
-              height: '15px',
+              width: '20px',
+              height: '20px',
+              marginLeft:'10px'
+             
             }}
           />
           <h2>Informações</h2>

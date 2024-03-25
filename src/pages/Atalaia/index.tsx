@@ -9,7 +9,7 @@ const View = styled.div`
   font-family: 'Futura PT', sans-serif;
   color: #ffffff;
   h1 {
-    font-size: 34px;
+    font-size: 30px;
   }
   p {
     font-size: 18px;
@@ -25,6 +25,15 @@ const Content = styled.div`
 const AgroupTexts = styled.div`
   margin: 20px 0 30px 0;
   text-align: center;
+  >h1 {
+    font-family:  'FuturaPTHeavy', sans-serif;
+
+  }
+   p {
+    font-family: 'FuturaPTBook' , sans-serif;
+    opacity: 0.87;
+    font-size: 17px;
+  }
 `;
 
 const AgroupButtons = styled.div`
