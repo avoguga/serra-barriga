@@ -11,10 +11,11 @@ const Background = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  
   button {
-    max-width: 32px;
-    max-height: 32px;
+    max-width: 25px;
+    max-height: 25px;
   }
 `;
 
@@ -30,6 +31,7 @@ const Sidebar = () => {
       />
       <HomeButton
         iconType="Location"
+      
         onClick={() => {
           navigate('/atalaia-de-acaiuba/location');
         }}

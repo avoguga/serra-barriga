@@ -18,6 +18,13 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'FuturaPTCondMediumOblique';
+  src: url('../assets/fonts/FuturaWolf/FuturaPTCondMediumOblique.woff') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+} 
 /*
 @font-face {
   font-family: 'FuturaPTBookOblique';
@@ -68,19 +75,7 @@
   font-style: italic;
 }
 
-@font-face {
-  font-family: 'FuturaPTCondMedium';
-  src: url('/assets/fonts/Futura/FuturaPTCondMedium.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'FuturaPTCondMediumOblique';
-  src: url('/assets/fonts/Futura/FuturaPTCondMediumOblique.otf') format('opentype');
-  font-weight: normal;
-  font-style: italic;
-} */
+*/
 
  @font-face {
   font-family: 'FuturaPTDemi';

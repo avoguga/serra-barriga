@@ -6,7 +6,7 @@ import HomeButton from '../../components/HomeButton';
 
 const View = styled.div`
   background-color: #8aa61e;
-  font-family: 'Futura PT', sans-serif;
+ 
   color: #ffffff;
   h1 {
     font-size: 34px;
@@ -25,6 +25,7 @@ const Content = styled.div`
 const AgroupTexts = styled.div`
   margin: 20px 0 30px 0;
   text-align: center;
+  font-family: 'FuturaPTHeavy', sans-serif;
 `;
 
 const AgroupButtons = styled.div`
@@ -58,7 +59,7 @@ const AtalaiaView = () => {
           }}
         />
         <AgroupTexts>
-          <h1>Atalaia de Acaiuba</h1>
+          <h1 >Atalaia de Acaiuba</h1>
           <p>Mirante de acaiuba - lider palmarino</p>
         </AgroupTexts>
         <AgroupButtons>

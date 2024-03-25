@@ -1,17 +1,18 @@
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import videos from '../../../assets/icons/video.svg';
+
 import atalaia from '../../../assets/images/atalaia-de-acaiuba.png';
 import Sidebar from '../Sidebar';
-import AboutButton from '../../../components/AboutButton';
+
 import LowArrow from '../../../components/LowArrowButton';
 
 const View = styled.div`
   background-color: #85a01d;
-  font-family: 'Futura PT', sans-serif;
+  
   color: #ffffff;
   h1 {
     font-size: 34px;
+    
   }
   p {
     font-size: 18px;
@@ -39,6 +40,15 @@ const NavFotter = styled.nav`
 const AgroupTexts = styled.div`
   margin: 20px 0 30px 0;
   text-align: center;
+  >h1 {
+  
+    font-family: 'FuturaPTHeavy', sans-serif;
+  }
+  >p {
+    font-family: 'FuturaPTBook', sans-serif;
+    opacity: 0.85;
+
+  }
 `;
 
 const TitleText = styled.div`
@@ -50,7 +60,9 @@ const TitleText = styled.div`
   justify-content: center;
   display: flex;
   p {
-    font-size: 15px;
+    font-family: 'FuturaPTBook' , sans-serif;
+    opacity: 0.87;
+    font-size: 17px;
   }
 `;
 
@@ -59,7 +71,9 @@ const Rodape = styled.div`
   height: 70%;
   margin: 20px 0 150px 0;
   p {
-    font-size: 15px;
+    font-family: 'FuturaPTBook' , sans-serif;
+    opacity: 0.87;
+    font-size: 17px;
   }
 `;
 
@@ -92,7 +106,7 @@ const AtalaiaVideosPlayView = () => {
         <TitleText>
           <p>Título: {videoTitle}</p>
         </TitleText>
-        <iframe src={videoUrl} width="100%" height="242px"></iframe>
+        <iframe src={videoUrl} width="100%"  height="242px"></iframe>
         <Rodape>
           <p>Interpretação: {interpretacao}</p>
           <p>Texto: {texto}</p>

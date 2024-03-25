@@ -11,7 +11,7 @@ const View = styled.div`
   font-family: 'Futura PT', sans-serif;
   color: #ffffff;
   h1 {
-    font-size: 34px;
+    font-size: 30px;
   }
   p {
     font-size: 18px;
@@ -39,17 +39,33 @@ const NavFotter = styled.nav`
 const AgroupTexts = styled.div`
   margin: 20px 0 30px 0;
   text-align: center;
+  h1 {
+  
+    font-family: 'FuturaPTHeavy', sans-serif;
+  }
+  p {
+    font-family: 'FuturaPTBook' , sans-serif;
+    opacity: 0.87;
+    font-size: 17px;
+  }
 `;
 
 const InfoText = styled.div`
   background: #8d094a;
-  width: 329px;
+  width: 280px;
   height: 29px;
-  margin: 0 0 30px 0;
+  margin: 0 0 30px ;
   border-radius: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  h2 {
+margin-right: 35px;
+font-family: 'FuturaPTBook' , sans-serif;
+opacity: 0.90;
+
+  
+  }
 `;
 
 const AgroupVideo = styled.div`
@@ -60,9 +76,12 @@ const AgroupVideo = styled.div`
   max-width: 60%;
   margin: 0 0 40px 0;
   p {
-    margin: 30px 0;
+    margin: 25px 0;
     text-align: left;
     letter-spacing: 0px;
+    font-family: 'FuturaPTBook' , sans-serif;
+opacity: 0.90;
+font-size: 17px;
   }
   video {
     background: #ffffff;
@@ -98,8 +117,9 @@ const AtalaiaVideosView = () => {
             src={videos}
             alt="ícone de videos"
             style={{
-              width: '15px',
-              height: '15px',
+              width: '25px',
+              height: '25px',
+              marginLeft:'10px'
             }}
           />
           <h2>Vídeos</h2>
@@ -121,7 +141,7 @@ const AtalaiaVideosView = () => {
             }}
             poster={poster}
           ></video>
-          <p>Descrição: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis saepe sequi.</p>
+          <p>Descrição</p>
           <video
             onClick={() => {
               navigate('/atalaia-de-acaiuba/videos/playvideos', {
@@ -137,7 +157,7 @@ const AtalaiaVideosView = () => {
             }}
             poster={poster}
           ></video>
-          <p>Descrição: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis saepe sequi.</p>
+          <p>Descrição</p>
           <video
             onClick={() => {
               navigate('/atalaia-de-acaiuba/videos/playvideos', {
@@ -153,7 +173,7 @@ const AtalaiaVideosView = () => {
             }}
             poster={poster}
           ></video>
-          <p>Descrição: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio blanditiis saepe sequi.</p>
+          <p>Descrição</p>
         </AgroupVideo>
       </Content>
     </View>

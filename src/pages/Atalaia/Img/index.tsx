@@ -7,13 +7,17 @@ import LowArrow from '../../../components/LowArrowButton';
 
 const View = styled.div`
   background-color: #8aa61e;
-  font-family: 'Futura PT', sans-serif;
+
   color: #ffffff;
   h1 {
-    font-size: 34px;
+    font-size: 30px;
+    font-family: 'FuturaPTHeavy', sans-serif;
+
   }
   p {
-    font-size: 18px;
+    font-size: 17px;
+    font-family: 'FuturaPTBook' , sans-serif;
+opacity: 0.90;
   }
 `;
 
@@ -42,13 +46,16 @@ const AgroupImgs = styled.div`
 
 const ImgText = styled.div`
   background: #8d094a;
-  width: 329px;
+  width: 300px;
   height: 29px;
   margin: 0 0 30px 0;
   border-radius: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  h3 {
+    margin-right: 35px;
+  }
 `;
 
 const AgroupImg = styled.div`
@@ -58,7 +65,7 @@ const AgroupImg = styled.div`
   justify-content: center;
   margin: 0 0 100px 0;
   image {
-    margin: 3px;
+    margin: 5px;
     width: 133px;
     height: 148px;
     background: #ffffff;
@@ -94,11 +101,12 @@ const AtalaiaImgView = () => {
             src={img}
             alt="ícone de imagens"
             style={{
-              width: '20px',
-              height: '20px',
+              width: '25px',
+              height: '25px',
+              marginLeft:'15px'
             }}
           />
-          <h2>Imagens</h2>
+          <h3>Imagens</h3>
           <div></div>
         </ImgText>
         <AgroupImg>
