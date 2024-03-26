@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import Teste from '../../assets/teste...png';
+
 export const ExpoContainer = styled.div`
   font-family: 'FuturaPTHeavy';
   font-size: 12px;
   color: var(--text-color);
-  background: #404f03;
+  background: #b55a01;
   padding: 1rem;
   border-radius: 230px;
   display: flex;
@@ -27,7 +27,7 @@ export const ExpoInfoContainer = styled.div`
   font-family: 'FuturaPTHeavy';
   font-size: 10px;
   color: var(--text-color);
-  background: #394603;
+  background: #753d00;
   padding-bottom: 1rem;
   border-radius: 38px;
   display: flex;
@@ -79,7 +79,7 @@ export const LazyLoadPoster = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  background-image: url(${Teste});
+
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
