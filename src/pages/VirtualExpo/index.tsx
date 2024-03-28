@@ -214,8 +214,13 @@ const VirtualExpo = () => {
                 loading="eager"
                 camera-controls
                 auto-rotate
-                shadow-intensity="1"
+                camera-orbit="0deg 75deg 105%"
+  max-camera-orbit="600deg 85deg auto"
+  min-camera-orbit="0deg 75deg auto"
+               
                 touch-action="pan-y"
+              
+
                 src={modelo.src}
                 alt={modelo.alt}
                 style={{
