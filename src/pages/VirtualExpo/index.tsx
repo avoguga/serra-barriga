@@ -29,7 +29,6 @@ type Modelo3D = {
   id: number;
   src: string;
   alt: string;
-  
 };
 
 const VirtualExpo = () => {
@@ -37,10 +36,8 @@ const VirtualExpo = () => {
   const ArqIcon = Icons['Arqueologia'];
   const navigate = useNavigate();
 
-
-   
   const [isExpanded, setIsExpanded] = useState(false);
-  const modelos: Modelo3D[] =[
+  const modelos: Modelo3D[] = [
     {
       id: 1,
 
@@ -49,84 +46,72 @@ const VirtualExpo = () => {
     },
     {
       id: 2,
-      
 
       src: obj2,
       alt: 'Modelo',
     },
     {
       id: 3,
-      
 
       src: obj3,
       alt: 'Modelo',
     },
     {
       id: 4,
-      
 
       src: obj4,
       alt: 'Modelo',
     },
     {
       id: 5,
-      
 
       src: obj5,
       alt: 'Modelo',
     },
     {
       id: 6,
-      
 
       src: obj6,
       alt: 'Modelo',
     },
     {
       id: 7,
-      
 
       src: obj7,
       alt: 'Modelo',
     },
     {
       id: 8,
-      
 
       src: obj8,
       alt: 'Modelo',
     },
     {
       id: 9,
-      
 
       src: obj9,
       alt: 'Modelo',
     },
     {
       id: 10,
-      
 
       src: obj10,
       alt: 'Modelo',
     },
     {
       id: 11,
-      
 
       src: obj11,
       alt: 'Modelo',
     },
     {
       id: 12,
-      
 
       src: obj12,
       alt: 'Modelo',
     },
     {
       id: 13,
-      
 
       src: obj13,
       alt: 'Modelo',
@@ -145,10 +130,6 @@ const VirtualExpo = () => {
   const textToShow = isExpanded
     ? paragraphs
     : paragraphs.slice(0, previewParagraphCount);
-
- 
-
-
 
   return (
     <WatermarkWrapper>
@@ -209,32 +190,44 @@ const VirtualExpo = () => {
         <C.ModelsContainer>
           {modelos.map((modelo) => (
             <div key={modelo.id}>
-              <model-viewer
-                ar
-                loading="eager"
-                camera-controls
-                auto-rotate
-                camera-orbit="0deg 75deg 105%"
-  max-camera-orbit="600deg 85deg auto"
-  min-camera-orbit="0deg 75deg auto"
-               
-                touch-action="pan-y"
-              
+              {modelo.id === 1 || modelo.id === 2 ? (
+                <model-viewer
+                  ar
+                  loading="eager"
+                  camera-controls
+                  auto-rotate
+                  camera-orbit="0deg 75deg 105%"
+                  max-camera-orbit="400deg 75deg auto"
+                  min-camera-orbit="0deg 75deg auto"
+                  touch-action="pan-y"
+                  src={modelo.src}
+                  alt={modelo.alt}
+                  style={{
+                    width: '146px',
+                    height: '146px',
+                    backgroundColor: '#EB7400',
 
-                src={modelo.src}
-                alt={modelo.alt}
-                style={{
-                  width: '146px',
-                  height: '146px',
-                  backgroundColor: '#EB7400',
-                  
-               
+                    borderRadius: '50%',
+                  }}
+                ></model-viewer>
+              ) : (
+                <model-viewer
+                  ar
+                  loading="eager"
+                  camera-controls
+                  auto-rotate
+                  touch-action="pan-y"
+                  src={modelo.src}
+                  alt={modelo.alt}
+                  style={{
+                    width: '146px',
+                    height: '146px',
+                    backgroundColor: '#EB7400',
 
-                  borderRadius: '50%',
-                }}
-              >
-               
-              </model-viewer>
+                    borderRadius: '50%',
+                  }}
+                ></model-viewer>
+              )}
             </div>
           ))}
         </C.ModelsContainer>
