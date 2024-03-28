@@ -29,7 +29,7 @@ type Modelo3D = {
   id: number;
   src: string;
   alt: string;
-  isVisible: boolean;
+  
 };
 
 const VirtualExpo = () => {
@@ -40,98 +40,98 @@ const VirtualExpo = () => {
 
    
   const [isExpanded, setIsExpanded] = useState(false);
-  const [modelos, setModelos] = useState<Modelo3D[]>([
+  const modelos: Modelo3D[] =[
     {
       id: 1,
-isVisible:false,
+
       src: obj1,
       alt: 'Modelo',
     },
     {
       id: 2,
-      isVisible:false,
+      
 
       src: obj2,
       alt: 'Modelo',
     },
     {
       id: 3,
-      isVisible:false,
+      
 
       src: obj3,
       alt: 'Modelo',
     },
     {
       id: 4,
-      isVisible:false,
+      
 
       src: obj4,
       alt: 'Modelo',
     },
     {
       id: 5,
-      isVisible:false,
+      
 
       src: obj5,
       alt: 'Modelo',
     },
     {
       id: 6,
-      isVisible:false,
+      
 
       src: obj6,
       alt: 'Modelo',
     },
     {
       id: 7,
-      isVisible:false,
+      
 
       src: obj7,
       alt: 'Modelo',
     },
     {
       id: 8,
-      isVisible:false,
+      
 
       src: obj8,
       alt: 'Modelo',
     },
     {
       id: 9,
-      isVisible:false,
+      
 
       src: obj9,
       alt: 'Modelo',
     },
     {
       id: 10,
-      isVisible:false,
+      
 
       src: obj10,
       alt: 'Modelo',
     },
     {
       id: 11,
-      isVisible:false,
+      
 
       src: obj11,
       alt: 'Modelo',
     },
     {
       id: 12,
-      isVisible:false,
+      
 
       src: obj12,
       alt: 'Modelo',
     },
     {
       id: 13,
-      isVisible:false,
+      
 
       src: obj13,
       alt: 'Modelo',
     },
-  ]);
+  ];
 
   const fullText = `A Serra da Barriga possui um patrimônio arqueológico que conta a história de diversos povos que aqui habitavam em tempos passados. A sua passagem por essas terras foi preservada através de diversos vestígios que resistiram ao tempo. \n\n
    Estudos arqueológicos realizados pelo Núcleo de Ensino e Pesquisa Arqueológico da Universidade Federal de Alagoas, revelaram cachimbos, panelas de barro, ferramentas de pedra lascada e polida, marcas dos pisos de moradias e muito mais. Essas evidências permitem que se aprenda muito sobre a vida cotidiana desses grupos.`;
@@ -148,16 +148,7 @@ isVisible:false,
 
  
 
-  const handleLoadModel =  (id:number) => {
-    setModelos(modelos.map(modelo => {
-      if(modelo.id === id) {
-        return{...modelo, isVisible: !modelo.isVisible};
-      }
-      return modelo;
-    }))
 
-  }
-  
 
   return (
     <WatermarkWrapper>
