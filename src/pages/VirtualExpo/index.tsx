@@ -4,9 +4,9 @@ import tiktok from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import '@google/model-viewer';
 
-import obj2 from '../../assets/modelosOtimizados/Objeto_01-b.glb';
-import obj3 from '../../assets/modelosOtimizados/Objeto_02-b.glb';
-import obj1 from '../../assets/modelosOtimizados/Objeto_03-b.glb';
+import obj1 from '../../assets/modelosOtimizados/Objeto_01-b.glb';
+import obj2 from '../../assets/modelosOtimizados/Objeto_02-b (2).glb';
+import obj3 from '../../assets/modelosOtimizados/Objeto_03-b.glb';
 import obj4 from '../../assets/modelosOtimizados/Objeto_04_4k-c.glb';
 import obj5 from '../../assets/modelosOtimizados/Objeto_05_4k-b.glb';
 import obj6 from '../../assets/modelosOtimizados/Objeto_06_4k-b.glb';
