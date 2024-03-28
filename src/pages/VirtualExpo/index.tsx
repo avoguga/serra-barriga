@@ -220,7 +220,8 @@ isVisible:false,
             <div key={modelo.id}>
               <model-viewer
                 ar
-              
+                camera-controls
+                reveal="interaction"
                 touch-action="pan-y"
                 src={modelo.src}
                 alt={modelo.alt}
@@ -232,41 +233,7 @@ isVisible:false,
                   borderRadius: '50%',
                 }}
               >
-                <div>
-                  <button
-                    style={{
-                  backgroundColor: '#753D00',
-                  
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '100%',
-                      height: '150px',
-                    
-                      borderRadius: '5px',
-                      opacity: '0.97',
-                    }}
-                    onClick={ ()=> handleLoadModel(modelo.id)}
-                  >
-                    {modelo.isVisible ?
-                     <model-viewer
-                     ar
-                
-                     lazy-load
-                     camera-controls
-                     src={modelo.src}
-                     alt={modelo.alt}
-                     style={{
-                       width: '146px',
-                       height: '146px',
-                       backgroundColor: '#EB7400',
-     
-                       borderRadius: '50%',
-                     }}
-                   /> : 'Mostrar Modelo'}
-                
-                  </button>
-                </div>
+               
               </model-viewer>
             </div>
           ))}
