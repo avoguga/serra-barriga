@@ -211,8 +211,10 @@ const VirtualExpo = () => {
             <div key={modelo.id}>
               <model-viewer
                 ar
+                loading="eager"
                 camera-controls
-                reveal="interaction"
+                auto-rotate
+                shadow-intensity="1"
                 touch-action="pan-y"
                 src={modelo.src}
                 alt={modelo.alt}
@@ -220,6 +222,8 @@ const VirtualExpo = () => {
                   width: '146px',
                   height: '146px',
                   backgroundColor: '#EB7400',
+                  
+               
 
                   borderRadius: '50%',
                 }}
