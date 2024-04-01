@@ -2,28 +2,78 @@ import { useEffect, useState, useRef } from 'react';
 import { useOutlet, useNavigate, Outlet } from 'react-router-dom';
 import ArrowDownIcon from '../../assets/icons/seta baixo.svg'
 
-import {
-  agenda,
-  Evento,
-  getEventosPorMes,
-  MesAgenda,
-} from '../../helpers/agenda';
+import axios from 'axios';
+import {format} from 'date-fns'
+
+
 
 import FloatingButtonBar from '../../components/FloatingContainer';
 
 import * as C from './styles';
 import Header from '../../components/Header';
 
+
+interface EventoProps {
+  id: number;
+  Title: string;
+  Month: string;
+  DescriptionPT: string;
+  Data: Date;
+}
+
 const Agenda = () => {
   const navigate = useNavigate();
   const outlet = useOutlet();
   const eventContainerRef = useRef<HTMLDivElement>(null);
 
-  const [mesSelecionado, setMesSelecionado] = useState<string>(agenda[0].mes);
-  const [eventos, setEventos] = useState<Evento[]>([]);
+  const mesAtual = new Date().toLocaleString('en-US', { month: 'long' });
+  const [mesSelecionado, setMesSelecionado] = useState<string>(mesAtual);
+  const [eventos, setEventos] = useState<EventoProps[]>([]);
   const [isActive, setIsActive] = useState(false);
+  const [error, setError] = useState(null);
+  const [eventosFiltrados, setEventosFiltrados] = useState<EventoProps[]>([]);
+
+
   
 
+  useEffect(() => {
+    axios.get("http://localhost:1337/api/agendas")
+      .then(response => {
+     
+        if (Array.isArray(response.data.data)) {
+         
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const eventosMapeados: EventoProps[] = response.data.data.map((evento: any ) => ({
+            id: evento.id,
+            Title: evento.attributes.Title,
+            Month: evento.attributes.Month,
+            DescriptionPT: evento.attributes.DescriptionPT, // Use `DescriptionEN` conforme necessário
+            Data: new Date(evento.attributes.Data), // Certifique-se de converter para um objeto Date, se necessário
+          }));
+          console.log(error);
+          
+          setEventos(eventosMapeados);
+          const eventosDoMesAtual = eventosMapeados.filter(evento => evento.Month.toLowerCase() === mesAtual.toLowerCase());
+          setEventosFiltrados(eventosDoMesAtual);
+          if (eventosDoMesAtual.length > 0 && !mesSelecionado) {
+            setMesSelecionado(eventosDoMesAtual[0].Month);
+          }
+        } else {
+          console.error("Formato de dados inesperado:", response.data);
+        }
+      })
+      .catch(error => {
+        setError((error));
+        console.error("Erro ao buscar eventos:", error);
+      });
+  }, [error, mesAtual, mesSelecionado]);
+
+  useEffect(()=> {
+    const eventosFiltrados = eventos.filter(evento => evento.Month === mesSelecionado);
+     setEventosFiltrados(eventosFiltrados);
+   
+   }, [mesSelecionado, eventos]);
+  
   
   const handleDownClick = () => {
     
@@ -33,9 +83,9 @@ const Agenda = () => {
     }
   };
 
-  useEffect(() => {
-    setEventos(getEventosPorMes(mesSelecionado));
-  }, [mesSelecionado]);
+ // useEffect(() => {
+  //  setEventos(getEventosPorMes(mesSelecionado));
+  //}, [mesSelecionado]);
 
   const goToAgenda = (EventId: number) => {
     navigate(`/agenda/${EventId}`);
@@ -56,28 +106,31 @@ const Agenda = () => {
         <h2>CONFIRA A AGENDA</h2>
         <C.MonthContainer>
           <C.MonthSelector value={mesSelecionado} onChange={handleMonthChange}>
-            {agenda.map((mesAgenda: MesAgenda) => (
-              <option key={mesAgenda.mes} value={mesAgenda.mes}>
-                <span>{mesAgenda.mes}</span>
+            {eventos.map((month) => (
+              <option key={month.id} value={month.Month}>
+                <span>{month.Month}</span>
               </option>
             ))}
           </C.MonthSelector>
         </C.MonthContainer>
       </C.SelectContainer>
       <C.EventContainer ref={eventContainerRef}>
-        {eventos.map((event) => (
-          <C.EventCard key={event.id}>
-            <C.EventTitle>{event.titulo}</C.EventTitle>
-            <C.EventDateTime>{`${event.data} às ${event.hora}`}</C.EventDateTime>
-            <C.ButtonCard>
-              <C.MoreButton onClick={() => goToAgenda(event.id)}>
-                {' '}
-                SAIBA MAIS
-              </C.MoreButton>
-            </C.ButtonCard>
-          </C.EventCard>
-        ))}
-      </C.EventContainer>
+  {eventosFiltrados.length > 0 ? (
+    eventosFiltrados.map((event) => (
+      <C.EventCard key={event.id}>
+        <C.EventTitle>{event.Title}</C.EventTitle>
+        <C.EventDateTime>{format(event.Data, 'dd/MM \'às\' HH\'h\'')}</C.EventDateTime>
+        <C.ButtonCard>
+          <C.MoreButton onClick={() => goToAgenda(event.id)}>
+            SAIBA MAIS
+          </C.MoreButton>
+        </C.ButtonCard>
+      </C.EventCard>
+    ))
+  ) : (
+    <p>Nenhum evento disponível para este mês.</p> 
+  )}
+</C.EventContainer>
       <C.ArrowContainer>
         <div onClick={handleDownClick} >
         <img src={ArrowDownIcon} alt="seta"  width={30} height={41}  />
@@ -90,3 +143,5 @@ const Agenda = () => {
 };
 
 export default Agenda;
+
+

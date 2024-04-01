@@ -32,6 +32,8 @@
     "@tensorflow/tfjs-core": "^4.17.0",
     "@types/react-webcam": "^3.0.0",
     "@yudiel/react-qr-scanner": "^1.2.6",
+    "axios": "^1.6.8",
+    "date-fns": "^3.6.0",
     "facefilter": "^3.3.6",
     "html5-qrcode": "^2.3.8",
     "jest": "^29.7.0",
