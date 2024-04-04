@@ -22,7 +22,7 @@ const Personalities = () => {
 
 
   const goToPersonality = (personalityName: string) => {
-    navigate(`/personalities/${personalityName}`);
+    navigate(`/takehome/personalities/${personalityName}`);
   };
   if (outlet) {
     return <div>{outlet}</div>;

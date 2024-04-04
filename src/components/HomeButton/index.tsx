@@ -3,8 +3,9 @@ import { Icons } from '../../helpers/icons';
 
 const Button = styled.button`
   display: flex;
-  width: 130px;
+  width: 120px;
   flex-direction: column;
+  white-space: nowrap;
   background-color: transparent;
   color: white;
   border: none;
@@ -12,18 +13,18 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
   cursor: pointer;
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 16px;
+ font-family:'FuturaPTDemi';
 
   &:focus {
     outline: none;
   }
 
   svg {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
   }
 `;
 

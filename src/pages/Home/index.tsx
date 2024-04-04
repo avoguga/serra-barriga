@@ -28,8 +28,8 @@ const BottomContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   background-color: #20aa9a;
-  width: 360px;
-  height: 134px;
+  width: 350px;
+  height: 124px;
   padding: 20px;
   box-sizing: border-box;
   margin-top: 30px;
@@ -46,7 +46,9 @@ const TextContainer = styled.div`
   p {
     font: normal normal normal 15px/22px;
     letter-spacing: 0px;
-    margin-left: 10px;
+    margin-left: 13px;
+    font-family: 'FuturaPTDemi', sans-serif;
+    font-weight:bold;
   
   }
 `;
@@ -137,13 +139,13 @@ const Home = () => {
             SELFIE HISTÓRICA
           </HomeButton>
           <HomeButton
-            iconType="PersonalityIcon"
-            onClick={() => {
-              navigate('/personalities');
-            }}
-          >
-            <h4>PERSONALIDADES</h4> 
-          </HomeButton>
+              iconType="Expo"
+              onClick={() => {
+                navigate('/virtual-expo');
+              }}
+            >
+              EXPOSIÇÃO VIRTUAL
+            </HomeButton>
           <HomeButton
             iconType="Home"
             onClick={() => {
@@ -173,7 +175,7 @@ const Home = () => {
               navigate('/qrcode');
             }}
           >
-            <img src={aaa} alt="aaa" width={104} height={212} />
+            <img src={aaa} alt="aaa" width={80}  height={190} />
             <TextContainer>
               <p>
                 Aponte a câmera do celular para o símbolo e tenha uma
@@ -183,12 +185,12 @@ const Home = () => {
           </BottomContainer>
 
           <AboutButton
-            iconType="Info"
+            iconType="InfoRodape"
             onClick={() => {
               navigate('/about');
               // toggleFullScreen;
             }}
-            customStyle={{ marginBottom: '20px' }}
+            customStyle={{ marginBottom: '25px' }}
           >
             SOBRE O APP
           </AboutButton>

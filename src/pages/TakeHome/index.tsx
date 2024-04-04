@@ -87,13 +87,14 @@ const TakeHome = () => {
               VÍDEOS
             </HomeButton>
             <HomeButton
-              iconType="Img"
-              onClick={() => {
-                navigate('/takehome/images');
-              }}
-            >
-              IMAGENS
-            </HomeButton>
+            iconType="PersonalityIcon"
+            onClick={() => {
+              navigate('/takehome/personalities');
+            }}
+          >
+            PERSONALIDADES 
+          </HomeButton>
+
             <HomeButton
               iconType="Audio"
               onClick={() => {
@@ -103,13 +104,14 @@ const TakeHome = () => {
               ÁUDIOS
             </HomeButton>
             <HomeButton
-              iconType="Expo"
+              iconType="Img"
               onClick={() => {
-                navigate('/takehome/virtual-expo');
+                navigate('/takehome/images');
               }}
             >
-              EXPOSIÇÃO VIRTUAL
+              IMAGENS
             </HomeButton>
+
             <HomeButton
               iconType="MontanhaSerra"
               onClick={() => {
