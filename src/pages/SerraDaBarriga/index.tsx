@@ -96,7 +96,7 @@ const SerraDaBarriga = () => {
     };
   return (
     <WatermarkWrapper watermark watermarkImage={WatermarkImage}>
-      <FloatingButtonBar backgroundColor="#8C111B" />
+      <FloatingButtonBar backgroundColor="#8C111B" backBgColor='#560007' />
       <div className="container">
         <div className="text-container">
           <img

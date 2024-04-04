@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/personalities',
+    path: '/takehome/personalities',
     element: <Personalities />,
     errorElement: <ErrorPage />,
     children: [
@@ -93,7 +93,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/takehome/virtual-expo',
+    path: '/virtual-expo',
     element: <VirtualExpo />,
     errorElement: <ErrorPage />,
   },

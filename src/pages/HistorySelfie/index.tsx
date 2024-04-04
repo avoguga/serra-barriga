@@ -61,7 +61,7 @@ opacity: 0.69;
 const HistorySelfie = () => {
   return (
     <WatermarkWrapper>
-      <FloatingButtonBar />
+      <FloatingButtonBar backBgColor='#313A0A' />
       <BtnDownArrow/>
       <div
         style={{

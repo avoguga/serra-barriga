@@ -8,6 +8,8 @@ interface FloatingButtonBarProps {
   onClickScan?: () => void;
   onClickHome?: () => void;
   backgroundColor?: string;
+  backBgColor?: string;
+ 
 }
 
 interface FloatingBarProps {
@@ -35,8 +37,28 @@ const Button = styled.button`
     margin-right: 25px;
   }
 `;
+const BackButton = styled(Button)<{ backBgColor?: string }>`
+   background-color: ${(props) => props.backBgColor || '#003431'};
+  border-radius: 50%; 
+  width: 40px; 
+  height: 40px; 
+  position: relative; 
+  margin-left: 25px; 
+  margin-right: 16px; 
+  margin-top: 10px;
 
-const LeftArrowIcon = Icons['LeftArrow'];
+  svg {
+    width: 40px; // Ajuste de acordo com o tamanho do seu ícone.
+    height: 40px; // Ajuste de acordo com o tamanho do seu ícone.
+    position: absolute; // Se precisar posicionar o ícone precisamente dentro do botão.
+    top: 55%;
+    left: 45%;
+    transform: translate(-50%, -50%); // Centraliza o ícone no botão.
+    color: #ffffff; // Ajuste a cor conforme necessário.
+  }
+`;
+
+const BackArrowIcon = Icons['BackArrow'];
 const ScanIcon = Icons['Scan'];
 const HomeIcon = Icons['Home'];
 
@@ -46,6 +68,7 @@ const FloatingButtonBar = ({
   onClickScan,
   onClickHome,
   backgroundColor,
+  backBgColor,
 }: FloatingButtonBarProps) => {
   const navigate = useNavigate();
 
@@ -58,15 +81,11 @@ const FloatingButtonBar = ({
   const handleHomeClick = onClickHome ? onClickHome : () => navigate('/');
 
   return (
-    <FloatingBar backgroundColor={backgroundColor}>
-      <Button
-        style={{
-          marginLeft: '25px',
-        }}
-        onClick={handleLeftArrowClick}
-      >
-        <LeftArrowIcon />
-      </Button>
+    <FloatingBar backgroundColor={backgroundColor} >
+      
+      <BackButton  backBgColor={backBgColor}  onClick={handleLeftArrowClick} >
+        <BackArrowIcon />
+      </BackButton>
       <Button onClick={handleScanClick}>
         <ScanIcon />
       </Button>

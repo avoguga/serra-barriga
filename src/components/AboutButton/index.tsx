@@ -2,20 +2,31 @@ import styled from 'styled-components';
 import { Icons } from '../../helpers/icons';
 import WatermarkImageBottom from '../../assets/marcamontanhaparafundoclao.png';
 
-const BackgroundDiv = styled.div`
-  position: relative;
-  background-image: url(${WatermarkImageBottom});
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  display: flex;
+
+const BackgroundImg = styled.div`
+position: relative;
+
+
+  width: 100vw;
+  height: 40%; 
+ 
   align-items: center;
-  justify-content: center;
+  background-image: url(${WatermarkImageBottom});
+  background-position: bottom center;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-color: #67781B;
+`
+const ButtonContainer = styled.div`
+  position: absolute; // Isso vai posicionar seu botão em relação ao BackgroundImg.
+  top: 55%; // Centraliza verticalmente em relação ao BackgroundImg.
+  left: 53%; // Centraliza horizontalmente em relação ao BackgroundImg.
+  transform: translate(-50%, -50%); // Ajuste fino para centralizar perfeitamente o botão.
 `;
 
 const Button = styled.button`
   display: flex;
-  width: 130px;
+  width: 10px;
   flex-direction: column;
   background-color: transparent;
   color: white;
@@ -27,15 +38,17 @@ const Button = styled.button`
   gap: 0.5rem;
   cursor: pointer;
   font-size: 16px;
-  font-weight: bold;
+ white-space: nowrap;
+  margin-left: 38px;
+  font-family: 'FuturaPTBook', sans-serif;
 
   &:focus {
     outline: none;
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 42px;
+    height: 42px;
   }
 `;
 
@@ -56,13 +69,21 @@ const AboutButton = ({
   const ButtonIcon = Icons[iconType];
 
   return (
-    <BackgroundDiv style={customStyle}>
-      <Button onClick={onClick}>
-        <ButtonIcon />
-        {children}
-      </Button>
-    </BackgroundDiv>
+    <>
+  <BackgroundImg>
+      <ButtonContainer>
+        <Button onClick={onClick} style={customStyle}>
+          <ButtonIcon />
+          {children}
+        </Button>
+      </ButtonContainer>
+    </BackgroundImg>
+    
+
+    </>
+
   );
+
 };
 
 export default AboutButton;
