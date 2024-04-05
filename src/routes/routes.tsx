@@ -8,7 +8,7 @@ import Personalities from '../pages/Personalities';
 import TakeHome from '../pages/TakeHome';
 import About from '../pages/About';
 import SerraDaBarriga from '../pages/SerraDaBarriga';
-import Videos from '../pages/Videos';
+import VideosAndImages from '../pages/VideosAndImages';
 
 import Audios from '../pages/Audios';
 import VirtualExpo from '../pages/VirtualExpo';
@@ -28,6 +28,7 @@ import AtalaiaVideosPlayView from '../pages/Atalaia/PlayVideos';
 import AtalaiaImgView from '../pages/Atalaia/Img';
 import { Suspense, lazy, ComponentType } from 'react';
 import GallerySkeleton from '../pages/GallerySkeleton';
+import VideoScreen from '../components/VideoScreen';
 
 const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
   return new Promise<{ default: T }>(resolve => {
@@ -74,9 +75,15 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: '/takehome/videos',
-    element: <Videos />,
+    path: '/takehome/videosAndImages',
+    element: <VideosAndImages />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: '/video',
+    element: <VideoScreen  />,
+    errorElement: <ErrorPage />,
+   
   },
   {
     path: '/takehome/images',

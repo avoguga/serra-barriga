@@ -4,13 +4,13 @@ import HomeButton from '../../components/HomeButton';
 import styled from 'styled-components';
 import tiktok from '../../assets/logo.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
-import WatermarkImageBottom from '../../assets/marcamontanhaparafundoclao.png';
+import WatermarkImageBottom from '../../assets/-_marca dagua - montanha - para fundo laranja.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 40px;
   justify-content: center;
   margin: 0 10px;
 `;
@@ -29,6 +29,30 @@ export const BackButton = styled.button`
   z-index: 10;
   cursor: pointer;
 `;
+
+export const BackgroundAbout = styled.div `
+ 
+
+background-color: #D66B00;
+background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+position: relative;
+
+`
+
+const Box = styled.div`
+  position: absolute; 
+  top: 55%; 
+  left: 53%;
+  transform: translate(-50%, -50%); 
+  svg {
+    width: 42px;
+    height: 42px;
+  }
+  font-family: 'FuturaPTBook', sans-serif;
+
+  `;
 
 const TakeHome = () => {
   const navigate = useNavigate();
@@ -79,12 +103,12 @@ const TakeHome = () => {
             </h2>
 
             <HomeButton
-              iconType="Info"
+              iconType="FotosVideos"
               onClick={() => {
-                navigate('/takehome/videos');
+                navigate('/takehome/videosAndImages');
               }}
             >
-              VÍDEOS
+              VÍDEOS E FOTOS
             </HomeButton>
             <HomeButton
             iconType="PersonalityIcon"
@@ -129,14 +153,29 @@ const TakeHome = () => {
             >
               PASSEIO 360º
             </HomeButton>
-            <img
-              src={WatermarkImageBottom}
-              style={{
-                maxWidth: '100vw',
-                height: 'auto',
-                backgroundColor: '#D66B00',
-              }}
-            />
+            <BackgroundAbout>
+
+              <ButtonContainer>
+                <Box>
+
+            <HomeButton 
+            iconType='InfoRodape'
+            onClick={() => {
+              navigate('/about');
+              // toggleFullScreen;
+            }}
+            >
+              <h5> SOBRE O APP</h5>
+              
+            </HomeButton>
+              </Box>
+            <img src={WatermarkImageBottom} alt=""  style={{
+              width:'100vw',
+              height:'20vh'
+            }}/>
+              </ButtonContainer>
+           
+            </BackgroundAbout>
           </ButtonContainer>
         </div>
       </WatermarkWrapper>
