@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import tiktok from '../../assets/logo.png';
-import imagem from '../../assets/icons/imagem - branco.svg';
-import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import { useNavigate } from 'react-router-dom';
+
 import './styles.css';
 import styled from 'styled-components';
 import OpenImage from '../../components/OpenImage';
@@ -37,7 +34,7 @@ export const BackButton = styled.button`
 const Images = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [imageDescription, setImageDescription] = useState<string>('');
-  const navigate = useNavigate();
+  
 
   // Suponha que este seja o seu array de imagens
   const images = [
@@ -70,26 +67,7 @@ const Images = () => {
           flexDirection: 'column',
         }}
       >
-        <BackButton onClick={() => navigate('/takehome')}>
-          <img src={seta} alt="Seta Voltar"  loading='lazy'/>
-        </BackButton>
-        <img
-          src={tiktok}
-          alt="tiktok"
-          loading='lazy'
-
-          style={{
-            width: '200px',
-            height: '70px',
-            marginTop: '50px',
-            marginBottom: '30px',
-          
-          }}
-        />
-        <div className="galeria">
-          <img src={imagem} alt="Galeria ícone" />
-          <h2>GALERIA DE IMAGENS</h2>
-        </div>
+       
 
         <div className="fotos">
           {images.map((image, index) => (

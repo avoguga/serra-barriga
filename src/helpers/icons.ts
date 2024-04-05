@@ -10,6 +10,8 @@ import Agenda from '../assets/icons/agenda.svg?react';
 import MontanhaSerra from '../assets/icons/montanha serra - branco.svg?react';
 import Icon360 from '../assets/icons/360 - branco.svg?react';
 import Img from '../assets/icons/imagem - branco.svg?react';
+import FotosVideos from '../assets/icons/fotos e videos.svg?react';
+
 import Expo from '../assets/icons/exposição virtual.svg?react';
 import Audio from '../assets/icons/audio.svg?react';
 import DownloadWhite from '../assets/icons/baixar - branco.svg?react';
@@ -45,4 +47,5 @@ export const Icons = {
   Video,
   InfoRodape,
   BackArrow,
+  FotosVideos,
 };
