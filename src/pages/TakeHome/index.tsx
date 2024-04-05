@@ -31,7 +31,7 @@ export const BackButton = styled.button`
 `;
 
 export const BackgroundAbout = styled.div `
- 
+ width:100vw;
 
 background-color: #D66B00;
 background-position: bottom center;
@@ -65,6 +65,8 @@ const TakeHome = () => {
           style={{
             backgroundColor: '#D66B00',
             height: '100vh',
+            
+
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
