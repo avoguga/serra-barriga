@@ -3,32 +3,41 @@ import styled from 'styled-components';
 export const Container = styled.div``;
 
 export const PersonalityContainer = styled.div`
-  padding: 25px;
+  padding: 20px;
   height: 100vh;
-  background-color: #ffffff; /* Cor de fundo similar à imagem */
+  background-color: #8aa61e;
   color: white; /* Texto em branco */
   font-family: 'FuturaPT', sans-serif; /* Fonte legível */
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+`;
+export const ContentHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  @media (max-width: 768px) {
-    padding: 10px; /* Menos padding em dispositivos menores */
+  @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    margin-top: 55px;
   }
 `;
 
 export const PersonalityTitle = styled.h1`
-  font-size: 3em; /* Título grande */
-  margin-bottom: 0.5em;
-  font-weight: bold;
-  flex: 1;
+  font-family: 'FuturaPTHeavy', sans-serif;
+  white-space: nowrap;
 
-  /* Espaçamento abaixo do título */
+  font-size: 22px;
+`;
+export const Subtitle = styled.h4`
+  font-family: 'FuturaPTBook', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  color: #e7ebe0;
 `;
 export const PersonalityImage = styled.img`
-  width: 100px; // Largura do ícone
-  height: auto; // Altura automática para manter a proporção
+  width: 260px; // Largura do ícone
+  height: 230px; // Altura automática para manter a proporção
   align-self: center; // Centraliza o ícone na coluna
-  filter: invert(1);
 `;
 export const PersonalityDescription = styled.div`
   display: flex;
@@ -38,7 +47,7 @@ export const PersonalityDescription = styled.div`
   font-size: 1em;
   line-height: 1.6;
   color: white;
-  background-color: #8c111b;
+
   padding: 10px;
 `;
 
@@ -46,7 +55,7 @@ export const DescriptionEn = styled.div`
   font-size: 1em; /* Texto em tamanho padrão */
   line-height: 1.6; /* Espaçamento entre linhas para legibilidade */
   margin-bottom: 1em;
-  background-color: #ffffff;
+
   color: #8c111b;
   margin-left: 15px;
 
@@ -54,6 +63,19 @@ export const DescriptionEn = styled.div`
     margin-bottom: 0; /* Remove o espaço extra no último parágrafo */
   }
 `;
-export const BorderContainer = styled.div`
-  border: 1px solid #d3d3d3;
+export const AgroupButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+
+  width: 381px;
+  max-width: 100%;
+  padding: 15px;
+  height: 347px;
+  background-color: #95b420;
+  border-radius: 58px;
+  opacity: 1;
+  margin: 0 0 0 0;
 `;
