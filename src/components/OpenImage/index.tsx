@@ -24,7 +24,8 @@ const OpenImage: React.FC <OpenImageProps> = ({src,alt,background,description, o
                 height: 'auto',
                marginTop: '100px',
                marginRight:'50px',
-               marginLeft:'30px'
+               marginLeft:'30px',
+               cursor:'pointer'
               }}
             />
 
@@ -36,7 +37,8 @@ const OpenImage: React.FC <OpenImageProps> = ({src,alt,background,description, o
             height: '70px',
             marginTop: '100px',
             marginBottom: '30px',
-            marginRight:'40px'
+            marginRight:'40px',
+        
             
         
           }}
