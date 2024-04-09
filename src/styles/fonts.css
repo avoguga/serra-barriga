@@ -25,14 +25,14 @@
   font-weight: normal;
   font-style: italic;
 } 
-/*
 @font-face {
   font-family: 'FuturaPTBookOblique';
-  src: url('/assets/fonts/Futura/FuturaPTBookOblique.otf') format('opentype');
+  src: url('../assets/fonts/FuturaWolf/FuturaPTBookOblique.woff') format('opentype');
   font-weight: normal;
   font-style: italic;
 }
 
+/*
 @font-face {
   font-family: 'FuturaPTCondBold';
   src: url('/assets/fonts/Futura/FuturaPTCondBold.otf') format('opentype');

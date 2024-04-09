@@ -26,6 +26,7 @@ export interface EspacoData {
   description: {
     pt: string;
     en: string;
+    italic?: string;
   };
 }
 
@@ -112,9 +113,10 @@ const espacos: Record<string, EspacoData> = {
     icon: onjoCruzambe,
     description: {
       pt: 'Este espaço serve de apoio à prática das religiões de matriz africana que aqui se entrelaçam. Neste solo sagrado, Babalaôs, Ialorixás, Ekédes, Ogãs e Abiãs fazem axexês (oferendas) e Orikis (orações) aos eguns (espíritos) que vagam desassossegados pelo sangue derramado. Desde a década de 80, essas atividades acontecem na madrugada do dia 20 de novembro. Em oração, se pede proteção para a Serra e seus visitantes e licença para que a Serra seja visitada.',
-      en: `HOUSE OF THE SACRED
+      en: `
       This place serves as support for diverse religions customs of African origin that are practiced here. On this sacred ground, Babalaôs, Babalorixás, Ialorixás, Ekedes, Ogãs, and Abiãs, make offerings (axexês) and say prayers (orikis) to the spirits (Eguns) that roam the Serra da Barriga, restless by the shedding of blood. Every year since the 1980s, these activities have taken place at dawn on November 20 th. Participants pray and ask for protection and permission so that the Serra da Barriga may be visited by all.
       `,
+      italic: `HOUSE OF THE SACRED`,
     },
   },
   'Espaço Oxile das Ervas': {
@@ -124,10 +126,11 @@ const espacos: Record<string, EspacoData> = {
     icon: oxile,
     description: {
       pt: 'Na cultura dos diversos povos africanos e indígenas, as plantas e raízes eram utilizadas para cura, banhos e oferendas. Este conhecimento da medicina natural, mantido no Quilombo dos Palmares, perdura até hoje nas comunidades indígenas e remanescentes de Quilombo, nas casas religiosas de matriz africana, nas casas de rezadeiras e nas pajelanças. Esta prática se perpetua também através do plantio de ervas nos quintais, nas hortas e nos canteiros das famílias brasileiras.',
-      en: `HERBAL GARDEN
+      en: `
       Plants and roots were used for cures, baths and offerings in the cultures of many African and Amerindian peoples these secrets of natural medicine, held by the Palmarinos, remain today among Native south American Indians and present-day maroon communities, in religious centers of African origin, in the houses of healers and in tribal rituals. These medicinal traditions have been kept ative by Brasilia families through the cultivation of herbs in backyards, gardens and flower pots.
       
       `,
+      italic: `HERBAL GARDEN`,
     },
   },
   'Espaço Muxima de Palmares': {
@@ -137,12 +140,13 @@ const espacos: Record<string, EspacoData> = {
     icon: muxima,
     description: {
       pt: 'Muxima de Palmares é uma homenagem aos Comandantes-em-Chefe que formavam o Conselho Deliberativo do Quilombo dos Palmares: Acaiene, Acaiuba, Acotirene, Amaro, Andalaquituche, Dambrabanga, Ganga-Muíça, Ganga-Zona, Osenga, Subupira, Toculo, Tabocas e seus principais líderes: Aqualtune, Ganga-Zumba e Zumbi, além de Banga, Comoanga e Souza que resistiram depois da morte de Zumbi. Aqui são homenageados também todos os negros e negras, guerreiros e guerreiras que ao longo de quatro séculos lutaram e ainda lutam pela liberdade e pela igualdade racial.',
-      en: `MUXIMA DE PALMARES 
-      THE HEART OF PALMARES
+      en: `
       Muxima de Palmares is a tribute to the military leaders who formed the deliberating counsel of the Quilombo dos Palmares: Acaiene, Acaiuba, Acotirene, Amaro, Andalaquituche, Dambrabanga, Ganga-Muiça, Ganga-Zona, Osenga, Subupira, Toculo, Tabocas and the principal leaders, Aqualtune, Ganga-Zumba and Zumbi. Banga, Camoanga and Souza, who resisted after the death of Zumbi, are also paid homage here, as well as all centuries, forght and still fight for freedom and equal rights.
       
       
       `,
+      italic: `MUXIMA DE PALMARES 
+      THE HEART OF PALMARES`,
     },
   },
   'Espaço Atalaia Acaiene': {
@@ -157,7 +161,7 @@ const espacos: Record<string, EspacoData> = {
       
       O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é dado o nome dos filhos de Ganga Zumba: Acaiuba, Toculo e Acaiene.
       `,
-      en: `ACAIENE’S LOOKOUT
+      en: `
       Overwhelmed by advancing enemy troops, hundreds of warriors began their strategically-planned escape at this location. Fighting a bloody battle, many threw themselves off the cliffs, preferring death to captivity. Zumbi, though wounded, managed to escape with his elite and loyal warriors to a hideout on the Serra Dois Irmãos. Once there, he tried to reorganize the Quilombo by undertaking guerrilla warfare. He went into small towns, villages and farms, thus spreading the legend of his immortality.
       
       Atalaia means ''High Point''
@@ -167,6 +171,7 @@ const espacos: Record<string, EspacoData> = {
       
       
       `,
+      italic: `ACAIENE’S LOOKOUT`,
     },
   },
   'Espaço Ocas indígenas': {
@@ -182,7 +187,7 @@ const espacos: Record<string, EspacoData> = {
       Estima-se que esse quilombo, que teve entre suas lideranças Zumbi dos Palmares, existiu entre o final do século XVI e o fim do século XVII, e recebeu cerca de 20 mil pessoas. O quilombo também abrigou índios e brancos.
       
       `,
-      en: `INDIAN DWELLINGS
+      en: `
       Knowledge of Amerindian culture was essential for the survival of the maroons. Archaeological research has shed light on the presence of Indian groups at the Serra da Barriga, from hundreds of years before the arrival of Europeans in Brazil, until the formation of the Quilombos. Amerindian doméstic life centered around large oblong dwellings, remains of which are still visible-on the site. Many diverse artifacts have been discovered, such as pots, burial urns and pipes made of fired clay, and tools made of stone including axes and scrapers.
       
       The houses on display in Serra da Barriga are very similar to hollow houses - built with wattle and daub walls and vegetation cover. This is because the black people who fled the plantations lived in the forests, where the indigenous natives already lived, and formed mocambos, as the quilombola communities were called at the time.
@@ -192,6 +197,7 @@ const espacos: Record<string, EspacoData> = {
       
       
       `,
+      italic: `INDIAN DWELLINGS`,
     },
   },
   'Espaço Batucajé': {
@@ -203,12 +209,13 @@ const espacos: Record<string, EspacoData> = {
       pt: `O batuque é a essência da cultura afro-brasileira, os sons dos tambores, berimbaus, adufes (pandeiros) e agogôs, levam homens e mulheres a sintonizar profundamente com seus corpos e espíritos, através da ginga da capoeira, da congada, do maracatu e do samba. Os acontecimentos da vida cotidiana, como nascimentos, mortes, plantios, colheitas, vitórias e manifestações da natureza, eram comemorados comunitariamente com danças, músicas e baticuns. Antigamente, os toques eram também um precioso meio de comunicação entre os guerreiros e entre o divino e o profano.
 
       `,
-      en: `Batucajé
-      DANCING TO THE BEAT OF DRUMS
+      en: `
       The drum beat is the essence of African-Brazilian culture.  The sound of the drums, berimbaus, tambourines and agogôs take me and women deeply into synchronism with their bodies and souls, through the movements of capoeira, congada, maracatu and samba. Events of daily life, such as birth, planting, harvest, victories and natural elements were celebrated in the communities through dance, music and the beat of drums in the past, the pounding of the drums was also a precious means of communication between warriors, the divine and the profane.
       
       
       `,
+      italic: `Batucajé
+      DANCING TO THE BEAT OF DRUMS`,
     },
   },
   'Espaço Atalaia de Acaiuba': {
@@ -226,7 +233,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
 
       `,
-      en: `ACAIUBA´S LOOKOUT
+      en: `
       Protected by the dense Atlantic forest, the Palmarinos employed guerrilla tactics, surprising and defeating dozens of Portugueses and Dutch expeditions for decades. The Portugueses troops were able to break and enter the Palmarino stronghold only by besieging the Serra da Barriga and by using cannons and muskets. Here, history records the largest number of men, women and children killed in battle. This genocide happened during the early hours of February 6, 1694.
       
       Atalaia means ''High Point''
@@ -236,6 +243,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       
       
       `,
+      italic: `ACAIUBA´S LOOKOUT`,
     },
   },
   'Espaço Lagoa Encantada dos Negros': {
@@ -252,8 +260,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
 
       `,
-      en: `MAGICAL POND OF THE PALMARINOS
-      SACRED IÔCO
+      en: `
       This place represents the purification of life, where the Palmarinos, through the energy of water and trees, rested and quenched their thirst. They sharpened their weapons and tools, nourishe their souls through the presence of their supreme god, through nature. In Brazil, Irôco is the Orixá of the white Gameleira tree and represents time. Ir is the essence of creation, the power of the land, and teaches men and women the meaning of life. It is the primordial tree. Brought to Brazil by Africans, ir has witnessed everything, resisted everything and continues to see everything. 
       
       Iroco or Irocô (in Yoruba: Iroko) is an orixá from Candomblé Queto. In Brazil, it is associated with the tree known as gameleira (Ficus insipida), while, in Africa, it is associated with the Milicia excelsa tree. It corresponds to 'vodum Locô' in Candomblé Jeje and 'Inquice Tempo' in Candomblé Banto.
@@ -261,6 +268,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       
       
       `,
+      italic: `MAGICAL POND OF THE PALMARINOS
+      SACRED IÔCO`,
     },
   },
   'Espaço Onjó de Farinha': {
@@ -276,12 +285,13 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
 
       `,
-      en: `MILL HOUSE
+      en: `
       Manual flour production, so common in rural communities, was an Indian custom, incorporated by African-Brazilians and much used at the Quilombo dos Palmares. Palmarinos raised animals and cultivated corn, beans, sugar cane, bananas and oranges. They also planted manioc, from which they extracted flour that, after roasted, could be used to make delicious cakes, “beijus”, “tapioca” and other treats, still served by families of northeastern Brazil.
       
       
       
       `,
+      italic: `MILL HOUSE`,
     },
   },
   'Espaço Restaurante Kúuku-Waana': {
@@ -297,14 +307,15 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
 
       `,
-      en: `Kúuku-Wáana
-      FAMILY FEAST
+      en: `
       African-Brazilian cuisine has a dimension beyond the meal itself. Feasting serves as a link of communication with the ancestors. In Bantu culture, food is an important element to restore vital forces, and maintains balance between the living and the deceased. Here, you may taste some of the same kinds of food produced and consumed by the palmarinos when they arrived at the Serra da Barriga in 1597, under the leadership of Princess Aqualtune.
       
       
       
       
       `,
+      italic: `Kúuku-Wáana
+      FAMILY FEAST`,
     },
   },
   'Espaço Atalaia de Toculo': {
@@ -323,7 +334,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
 
       `,
-      en: `TOCULO´S LOOKOUT
+      en: `
       From the top of Serra da Barriga, overlooking the Mundaú River, Zumbi dos Palmares commanded the maroon resistance, controlling all suspicious movements in the woods. A stockade, constructed at the base of the hill, turned the quilombo into a fortress, for its trenches filled with deadly sharpened sticks. Cannons were used for the maroons and leading to  the tragic demise of the Cerca Real dos Macacos, on February 6, 1694.
       
       Atalaia means ''High Point''
@@ -333,6 +344,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       
       
       `,
+      italic: `TOCULO´S LOOKOUT`,
     },
   },
 };

@@ -29,6 +29,7 @@ import AtalaiaImgView from '../pages/Atalaia/Img';
 import { Suspense, lazy, ComponentType } from 'react';
 import GallerySkeleton from '../pages/GallerySkeleton';
 import VideoScreen from '../components/VideoScreen';
+import InfoView from '../pages/Espacos/infomation';
 
 const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
   return new Promise<{ default: T }>(resolve => {
@@ -179,6 +180,11 @@ export const router = createBrowserRouter([
   {
     path: '/historical-figure/:figureName', 
     element: <HistoricalFigurePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/historical-figure/:figureName/infoView', 
+    element: <InfoView />,
     errorElement: <ErrorPage />,
   },
 ]);
