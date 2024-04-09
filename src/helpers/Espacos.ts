@@ -286,7 +286,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `MAGICAL POND OF THE PALMARINOS
       SACRED IÔCO`,
     },
-    images: espacoImages['Espaço Lagoa Encatanda dos Negros'],
+    images: espacoImages['Espaço Lagoa Encantada dos Negros'],
   },
   'Espaço Onjó de Farinha': {
     path: '/historical-figure/Espaço Onjó de Farinha',
