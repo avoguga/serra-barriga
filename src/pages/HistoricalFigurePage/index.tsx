@@ -60,7 +60,7 @@ const HistoricalFigurePage: React.FC = () => {
           <HomeButton
             iconType="Img"
             onClick={() => {
-              navigate('/#');
+              navigate(`/historical-figure/${figureName}/ImageView`);
             }}
           >
             IMAGENS

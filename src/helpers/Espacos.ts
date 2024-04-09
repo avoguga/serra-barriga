@@ -1,4 +1,4 @@
-import acotierne from '../assets/icons/Espaco_Acotirene.svg';
+import acotierne from '../assets/icons/tela-espaco/Espaco_Acotirene (1).png';
 import aqualtune from '../assets/icons/tela-espaco/Espaco_Aqualtune (1).webp';
 import capoeira from '../assets/icons/tela-espaco/Espaco_Caa-Pueira (2).webp';
 import zumba from '../assets/icons/tela-espaco/Espaco_Ganga-Zumba (1).png';
@@ -18,6 +18,8 @@ import toculo from '../assets/icons/tela-espaco/desenhos_ATALAIA DO TOCULO.webp'
 import lagoa from '../assets/icons/tela-espaco/desenhos_LAGOA ENCANTADA DOS NEGROS.webp';
 import restaurante from '../assets/icons/tela-espaco/desenhos_RESTAURANTE KÚUKU-WAANA.webp';
 
+import { espacoImages } from './EspacoImages';
+
 export interface EspacoData {
   path: string;
   title: string;
@@ -28,6 +30,7 @@ export interface EspacoData {
     en: string;
     italic?: string;
   };
+  images?: string[];
 }
 
 // Mapeie as classes previstas para os dados de rota correspondentes
@@ -46,6 +49,7 @@ const espacos: Record<string, EspacoData> = {
       In the history of Quilombo dos Palmares there are myths and real facts. This mixture of information is the result of the ideological stance of social segments that were involved in the past with this historical fact, and of those who, in the present, seek to rescue the history of black people from the perspective of the defeated. The story of Acotirene exemplifies this mythical and real vision of Quilombo dos Palmares. As a myth, she was the advisor of all Palmarinos; As a real fact, her name was given to an important mocambo. Acotirene was one of the mocambos of Quilombo dos Palmares, installed on the coast of the States of Pernambuco and Alagoas, in honor of one of the first women who inhabited Quilombo dos Palmares and who had a great influence on the lives of black quilombolas.
       `,
     },
+    images: espacoImages['Espaço Acotirene'],
     // outros dados relevantes
   },
   'Espaço Aqualtune': {
@@ -62,7 +66,7 @@ const espacos: Record<string, EspacoData> = {
       Having been princess of the kingdom of Congo in the 17th century, Aqualtune led an army of around 10 thousand people, including men and women, against the attacks of Portuguese forces. She ended up defeated and captured by the Portuguese, who were subjugating and selling them to Brazilian slave owners. Arriving in Brazil in Recife, it was sold to the Porto Calvo mill, now the municipality of Alagoas. However, upon learning about the existence of the largest center of black resistance in Brazil, Quilombo dos Palmares, it didn't take long for Aqualtune to put his leadership strength into practice and command an escape with other companions towards Palmares. She had her children Ganga Zumba and Ganga Zona, two great warriors, and Sabina, who was supposedly the mother of Zumbi dos Palmares.
       `,
     },
-    // outros dados relevantes
+    images: espacoImages['Espaço Aqualtune'],
   },
   'Espaço Caá-Pueira': {
     path: '/historical-figure/Espaço Caá-Pueira',
@@ -77,6 +81,7 @@ const espacos: Record<string, EspacoData> = {
       In the Capoeira Roda, singing, playing instruments, dancing, striking, playing, playing, symbols and rituals of African heritage - notably Bantu - recreated in Brazil are simultaneously expressed. Deeply ritualized, the Roda de Capoeira brings together songs and movements that express a worldview, a hierarchy and a code of ethics that are shared by the group. In the Capoeira Roda, beginners are baptized, great masters are trained and consecrated, Afro-Brazilian practices and values are transmitted and reiterated.
       `,
     },
+    images: espacoImages['Espaço Caá-Pueira'],
   },
   'Espaço Ganga Zumba': {
     path: '/historical-figure/Espaço Ganga Zumba',
@@ -86,6 +91,7 @@ const espacos: Record<string, EspacoData> = {
       pt: 'Filho da princesa Aqualtune, reinou durante décadas, levando Palmares ao apogeu e a ser reconhecido como nação pela coroa Portuguesa. Assinou um pacto em 1678, com o governador da capitania de Pernambuco. Foi traído e assasinado no mocambo de Cucaú.',
       en: 'Son of Princess Aqualtune, he reigned for decades, leading Palmares to its zenith and gaining recognition as a nation by the Portuguese crown. He signed a pact in 1678 with the governor of the Captaincy of Pernambuco. He was betrayed and assassinated in the mocambo of Cucaú.',
     },
+    images: espacoImages['Espaço Ganga Zumba'],
   },
   'Espaço Quilombo dos Palmares': {
     path: '/historical-figure/Espaço Quilombo dos Palmares',
@@ -95,6 +101,7 @@ const espacos: Record<string, EspacoData> = {
       pt: 'De 1597 a 1694, a Zona da Mata da Capitania de Pernambuco abrigou num raio de 200km² dezenas de mocambos cuja organização política, social e militar consolidou o lendário Quilombo dos Palmares.',
       en: 'From 1597 to 1694, the Zona da Mata region of the Captaincy of Pernambuco hosted within a 200km² radius dozens of settlements whose political, social, and military organization consolidated the legendary Quilombo dos Palmares ',
     },
+    images: espacoImages['Espaço Quilombo dos Palmares'],
   },
   'Espaço Zumbi': {
     path: '/historical-figure/Espaço Zumbi',
@@ -105,6 +112,7 @@ const espacos: Record<string, EspacoData> = {
       en: `Last leader of Palmares, Zumbi was betrayed and killed on November 20, 1695. As the result of untiring mobilization by the Brazilian Black Movement, he was recognized as a National Hero by the Brazilian Government on March 21, 1997. ZUMBI LIVES!
       `,
     },
+    images: espacoImages['Espaço Zumbi'],
   },
   'Espaço Onjó Cruzambe': {
     path: '/historical-figure/Espaço Onjó Cruzambe',
@@ -118,6 +126,7 @@ const espacos: Record<string, EspacoData> = {
       `,
       italic: `HOUSE OF THE SACRED`,
     },
+    images: espacoImages['Espaço Onjó Cruzambe'],
   },
   'Espaço Oxile das Ervas': {
     path: '/historical-figure/Espaço Oxile das Ervas',
@@ -132,6 +141,7 @@ const espacos: Record<string, EspacoData> = {
       `,
       italic: `HERBAL GARDEN`,
     },
+    images: espacoImages['Espaço Oxile das Ervas'],
   },
   'Espaço Muxima de Palmares': {
     path: '/historical-figure/Espaço Muxima de Palmares',
@@ -148,6 +158,7 @@ const espacos: Record<string, EspacoData> = {
       italic: `MUXIMA DE PALMARES 
       THE HEART OF PALMARES`,
     },
+    images: espacoImages['Espaço Muxima de Palmares'],
   },
   'Espaço Atalaia Acaiene': {
     path: '/historical-figure/Espaço Atalaia Acaiene',
@@ -173,6 +184,7 @@ const espacos: Record<string, EspacoData> = {
       `,
       italic: `ACAIENE’S LOOKOUT`,
     },
+    images: espacoImages['Espaço Atalaia Acaiene'],
   },
   'Espaço Ocas indígenas': {
     path: '/historical-figure/Espaço Ocas indígenas',
@@ -199,6 +211,7 @@ const espacos: Record<string, EspacoData> = {
       `,
       italic: `INDIAN DWELLINGS`,
     },
+    images: espacoImages['Espaço Ocas indígenas'],
   },
   'Espaço Batucajé': {
     path: '/historical-figure/Espaço Batucajé',
@@ -217,6 +230,7 @@ const espacos: Record<string, EspacoData> = {
       italic: `Batucajé
       DANCING TO THE BEAT OF DRUMS`,
     },
+    images: espacoImages['Espaço Batucajé'],
   },
   'Espaço Atalaia de Acaiuba': {
     path: '/historical-figure/Espaço Atalaia de Acaiuba',
@@ -245,6 +259,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       `,
       italic: `ACAIUBA´S LOOKOUT`,
     },
+    images: espacoImages['Espaço Atalaia de Acaiuba'],
   },
   'Espaço Lagoa Encantada dos Negros': {
     path: '/historical-figure/Espaço Lagoa Encantada dos Negros',
@@ -271,6 +286,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `MAGICAL POND OF THE PALMARINOS
       SACRED IÔCO`,
     },
+    images: espacoImages['Espaço Lagoa Encatanda dos Negros'],
   },
   'Espaço Onjó de Farinha': {
     path: '/historical-figure/Espaço Onjó de Farinha',
@@ -293,6 +309,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       `,
       italic: `MILL HOUSE`,
     },
+    images: espacoImages['Espaço Onjó de Farinha'],
   },
   'Espaço Restaurante Kúuku-Waana': {
     path: '/historical-figure/Espaço Restaurante Kúuku-Waana',
@@ -317,6 +334,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `Kúuku-Wáana
       FAMILY FEAST`,
     },
+    images: espacoImages['Espaço Restaurante Kúuku-Waana'],
   },
   'Espaço Atalaia de Toculo': {
     path: '/historical-figure/Espaço Atalaia de Toculo',
@@ -346,6 +364,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       `,
       italic: `TOCULO´S LOOKOUT`,
     },
+    images: espacoImages['Espaço Atalaia de Toculo'],
   },
 };
 
