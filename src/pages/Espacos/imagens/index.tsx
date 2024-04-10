@@ -3,10 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import LowArrow from "../../../components/LowArrowButton";
 import { EspacoData, getEspacoData } from "../../../helpers/Espacos";
 import Sidebar from "../../Atalaia/Sidebar";
-import { View, Nav, Content } from "../infomation/styles";
+
 import * as C from './styles'
 import img from '../../../assets/icons/imagem - branco.svg';
 import OpenImage from "../../../components/OpenImage";
+import SpaceHeader from "../../../components/SpaceHeader";
 
 const ImageView = () => {
     
@@ -19,27 +20,15 @@ const ImageView = () => {
         return <p>Espaço não encontrado.</p>;
     }
     return (
-      <View>
-        <Nav>
+      <C.View>
+        <C.Nav>
         <LowArrow onClick={() => navigate(`/historical-figure/${figureName}`)} isActive={true} />
-        </Nav>
+        </C.Nav>
         <C.NavFooter>
           <Sidebar />
         </C.NavFooter>
-        <Content>
-          <C.AgroupImgs>
-          <img
-              src={figureData.icon } 
-              alt={`Ilustração de ${figureData.title}`}
-              style={{
-                width: '200px',
-                height: 'auto',
-                margin: '100px 0 0 0',
-              }}
-            />
-            <h1>{figureData.title}</h1>
-            <p>{figureData.subtitle}</p>
-          </C.AgroupImgs>
+        <C.Content>
+        <SpaceHeader/>
           <C.ImgText>
             <img
               src={img} 
@@ -63,7 +52,7 @@ const ImageView = () => {
             <p>Nenhuma imagem disponível.</p>
           )}
         </C.AgroupImg>
-      </Content>
+      </C.Content>
       {openImage && (
         <OpenImage
           src={openImage.src}
@@ -73,7 +62,7 @@ const ImageView = () => {
           onClose={() => setOpenImage(null)} // Fecha a visualização da imagem
         />
       )}
-    </View>
+    </C.View>
 
     );
   };

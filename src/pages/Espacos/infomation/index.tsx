@@ -6,6 +6,7 @@ import Sidebar from '../../Atalaia/Sidebar/index';
 import LowArrow from '../../../components/LowArrowButton';
 
 import * as C from './styles'
+import SpaceHeader from '../../../components/SpaceHeader';
 
 const InfoView = () => {
   const { figureName } = useParams<{ figureName: string }>();
@@ -24,19 +25,7 @@ const InfoView = () => {
       <C.Content>
         {figureData ? (
           <>
-            <img
-              src={figureData.icon || infoIcon} // Aqui você pode ter uma lógica para fallback para 'infoIcon'
-              alt={`Ilustração de ${figureData.title}`}
-              style={{
-                width: '350px',
-                height: '232px',
-                margin: '100px 0 0 0',
-              }}
-            />
-            <C.AgroupTexts>
-              <h1>{figureData.title}</h1>
-              <p>{figureData.subtitle}</p>
-            </C.AgroupTexts>
+          <SpaceHeader/>
             <C.InfoText>
               <img
                 src={infoIcon}
