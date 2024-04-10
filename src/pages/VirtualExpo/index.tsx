@@ -4,19 +4,22 @@ import tiktok from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import '@google/model-viewer';
 
-import obj1 from '../../assets/modelosOtimizados/Objeto_01-b.glb';
-import obj2 from '../../assets/modelosOtimizados/Objeto_02-b (2).glb';
-import obj3 from '../../assets/modelosOtimizados/Objeto_03-b.glb';
-import obj4 from '../../assets/modelosOtimizados/Objeto_04_4k-c.glb';
-import obj5 from '../../assets/modelosOtimizados/Objeto_05_4k-b.glb';
-import obj6 from '../../assets/modelosOtimizados/Objeto_06_4k-b.glb';
-import obj7 from '../../assets/modelosOtimizados/Objeto_07_4k-b.glb';
-import obj8 from '../../assets/modelosOtimizados/Objeto_08_4k-c.glb';
-import obj9 from '../../assets/modelosOtimizados/Objeto_09_4k-b.glb';
-import obj10 from '../../assets/modelosOtimizados/Objeto_11_4k-b.glb';
-import obj11 from '../../assets/modelosOtimizados/Objeto_12_4k-b.glb';
-import obj12 from '../../assets/modelosOtimizados/Objeto_13_4k-b.glb';
-import obj13 from '../../assets/modelosOtimizados/Objeto_15_4k-b.glb';
+import obj1 from '../../assets/modelosOtimizados/Objeto_01-f-02.glb';
+import obj2 from '../../assets/modelosOtimizados/Objeto_01-b.glb';
+import obj3 from '../../assets/modelosOtimizados/Objeto_02-b (2).glb';
+import obj4 from '../../assets/modelosOtimizados/Objeto_03-b.glb';
+import obj5 from '../../assets/modelosOtimizados/Objeto_04_4k-c.glb';
+import obj6 from '../../assets/modelosOtimizados/Objeto_05_4k-b.glb';
+import obj7 from '../../assets/modelosOtimizados/Objeto_06_4k-b.glb';
+import obj8 from '../../assets/modelosOtimizados/Objeto_07_4k-b.glb';
+import obj9 from '../../assets/modelosOtimizados/Objeto_08_4k-c.glb';
+import obj10 from '../../assets/modelosOtimizados/Objeto_09_4k-b.glb';
+import obj11 from '../../assets/modelosOtimizados/Objeto_11_4k-b.glb';
+import obj12 from '../../assets/modelosOtimizados/Objeto_12_4k-b.glb';
+import obj13 from '../../assets/modelosOtimizados/Objeto_13_4k-b.glb';
+import obj14 from '../../assets/modelosOtimizados/Objeto_15_4k-b.glb';
+
+
 
 import { BackButton } from '../TakeHome';
 import { useNavigate } from 'react-router-dom';
@@ -114,6 +117,12 @@ const VirtualExpo = () => {
       id: 13,
 
       src: obj13,
+      alt: 'Modelo',
+    },
+    {
+      id: 14,
+
+      src: obj14,
       alt: 'Modelo',
     },
   ];
