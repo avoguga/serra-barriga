@@ -31,6 +31,7 @@ import GallerySkeleton from '../pages/GallerySkeleton';
 import VideoScreen from '../components/VideoScreen';
 import InfoView from '../pages/Espacos/infomation';
 import ImageView from '../pages/Espacos/imagens';
+import LocView from '../pages/Espacos/Location';
 
 const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
   return new Promise<{ default: T }>(resolve => {
@@ -191,6 +192,11 @@ export const router = createBrowserRouter([
   {
     path: '/historical-figure/:figureName/ImageView', 
     element: <ImageView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/historical-figure/:figureName/LocView', 
+    element: <LocView />,
     errorElement: <ErrorPage />,
   },
 ]);

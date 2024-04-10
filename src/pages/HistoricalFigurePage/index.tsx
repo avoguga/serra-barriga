@@ -44,7 +44,7 @@ const HistoricalFigurePage: React.FC = () => {
           <HomeButton
             iconType="Location"
             onClick={() => {
-              navigate('/#');
+              navigate(`/historical-figure/${figureName}/LocView`);
             }}
           >
             LOCALIZAÇÃO
