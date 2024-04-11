@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const View = styled.div`
   background-color: #8aa61e;
-  height: 110vh;
+  height: 105vh;
   display: flex;
   justify-content: center;
   align-items: end;

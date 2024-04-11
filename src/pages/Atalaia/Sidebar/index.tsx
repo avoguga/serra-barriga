@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import HomeButton from '../../../components/HomeButton';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { EspacoData, getEspacoData } from '../../../helpers/Espacos';
 
 const Background = styled.div`
   width: 100%;
@@ -14,52 +15,61 @@ const Background = styled.div`
   justify-content: space-between;
   
   button {
-    max-width: 25px;
-    max-height: 25px;
+    max-width: 35px;
+    max-height: 35px;
   }
 `;
 
 const Sidebar = () => {
+  const { figureName } = useParams<{ figureName: string }>();
+  const figureData: EspacoData | undefined = getEspacoData(figureName ?? ''); 
   const navigate = useNavigate();
   return (
     <Background>
+      {figureData ? (
+        <>
       <HomeButton
-        iconType="Info"
+        iconType="InfoEspacos"
         onClick={() => {
-          navigate('/atalaia-de-acaiuba/info');
+          navigate(`/historical-figure/${figureName}/infoView`);
         }}
-      />
+        />
       <HomeButton
         iconType="Location"
-      
+        
         onClick={() => {
-          navigate('/atalaia-de-acaiuba/location');
+          navigate(`/historical-figure/${figureName}/LocView`);
         }}
-      />
+        />
       <HomeButton
-        iconType="Video"
+        iconType="VideoEspaco"
         onClick={() => {
-          navigate('/atalaia-de-acaiuba/videos');
+          navigate(`/historical-figure/${figureName}/VideosView`);
         }}
-      />
+        />
       <HomeButton
-        iconType="Img"
+        iconType="ImgEspacos"
         onClick={() => {
-          navigate('/atalaia-de-acaiuba/images');
+          navigate(`/historical-figure/${figureName}/ImageView`);
         }}
-      />
+        />
       <HomeButton
-        iconType="Audio"
+        iconType="AudioEspaco"
         onClick={() => {
           navigate('/#');
         }}
-      />
+        />
       <HomeButton
-        iconType="Selfie"
+        iconType="SelfieEspaco"
         onClick={() => {
           navigate('/#');
         }}
-      />
+        />
+
+        </>
+    ) : (
+      <p>Figura histórica não encontrada.</p>
+    )}
     </Background>
   );
 };

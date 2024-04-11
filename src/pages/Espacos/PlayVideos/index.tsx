@@ -1,10 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import atalaia from '../../../assets/images/atalaia-de-acaiuba.png';
-import Sidebar from '../Sidebar';
+
+import Sidebar from '../../Atalaia/Sidebar';
 
 import LowArrow from '../../../components/LowArrowButton';
+import SpaceHeader from '../../../components/SpaceHeader';
 
 const View = styled.div`
   background-color: #85a01d;
@@ -37,19 +38,7 @@ const NavFotter = styled.nav`
   width: 100%;
   bottom: 0;
 `;
-const AgroupTexts = styled.div`
-  margin: 20px 0 30px 0;
-  text-align: center;
-  >h1 {
-  
-    font-family: 'FuturaPTHeavy', sans-serif;
-  }
-  >p {
-    font-family: 'FuturaPTBook', sans-serif;
-    opacity: 0.85;
 
-  }
-`;
 
 const TitleText = styled.div`
   margin: 40px 0 0 0;
@@ -76,11 +65,27 @@ const Rodape = styled.div`
     font-size: 17px;
   }
 `;
+const VideoContainer = styled.div`
+  overflow: hidden;
+  padding-top: 56.25%; // Proporção de aspecto de 16:9
+  position: relative;
+  width: 100%;
+`;
 
-const AtalaiaVideosPlayView = () => {
+const StyledIframe = styled.iframe`
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+
+  top: 0;
+  width: 100%;
+`;
+const PlayView = () => {
   const location = useLocation();
-  const { videoUrl, videoTitle, interpretacao, texto, trilha } =
-    location.state || {};
+  const { url, videoTitle, interpretacao, texto, trilha } = location.state || {};
+    console.log(location.state);
+    
   return (
     <View>
       <Nav>
@@ -90,23 +95,18 @@ const AtalaiaVideosPlayView = () => {
         <Sidebar />
       </NavFotter>
       <Content>
-        <img
-          src={atalaia}
-          alt="Ilustração do mirante de acaiuba"
-          style={{
-            width: '350px',
-            height: '232px',
-            margin: '100px 0 0 0',
-          }}
-        />
-        <AgroupTexts>
-          <h1>Atalaia de Acaiuba</h1>
-          <p>Mirante de acaiuba - lider palmarino</p>
-        </AgroupTexts>
-        <TitleText>
+      <SpaceHeader/>
+      <TitleText>
           <p>Título: {videoTitle}</p>
         </TitleText>
-        <iframe src={videoUrl} width="100%"  height="242px"></iframe>
+        <VideoContainer>
+          <StyledIframe
+            src={url}
+            title={videoTitle}
+        
+          ></StyledIframe>
+        </VideoContainer>
+  
         <Rodape>
           <p>Interpretação: {interpretacao}</p>
           <p>Texto: {texto}</p>
@@ -117,4 +117,4 @@ const AtalaiaVideosPlayView = () => {
   );
 };
 
-export default AtalaiaVideosPlayView;
+export default PlayView;
