@@ -29,7 +29,7 @@ const VideosView = () => {
   return (
     <C.View>
       <C.Nav>
-        <LowArrow onClick={() =>   navigate(`/historical-figure/${figureName}/VideosView`)} isActive={true} />
+        <LowArrow onClick={() =>   navigate(`/historical-figure/${figureName}`)} isActive={true} />
       </C.Nav>
       <C.NavFotter>
         <Sidebar />

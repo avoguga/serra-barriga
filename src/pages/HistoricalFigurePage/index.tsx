@@ -68,7 +68,7 @@ const HistoricalFigurePage: React.FC = () => {
           <HomeButton
             iconType="AudioEspaco"
             onClick={() => {
-              navigate('/#');
+              navigate(`/historical-figure/${figureName}/AudiosView`);
             }}
           >
             ÁUDIOS

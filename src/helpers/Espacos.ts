@@ -20,9 +20,17 @@ import restaurante from '../assets/icons/tela-espaco/desenhos_RESTAURANTE KÚUKU
 
 import { espacoImages } from './EspacoImages';
 import { espacoVideos } from './EspacoVideos';
+import { espacoAudios } from './espacoAudios';
 
 export interface VideoData {
   url: string;
+  title: string;
+  interpretacao: string;
+  texto: string;
+  trilha: string;
+}
+export interface AudioData {
+  audio: string[];
   title: string;
   interpretacao: string;
   texto: string;
@@ -40,6 +48,7 @@ export interface EspacoData {
   };
   images?: string[];
   videos?: VideoData[];
+  audios?: AudioData[];
 }
 
 // Mapeie as classes previstas para os dados de rota correspondentes
@@ -60,6 +69,7 @@ const espacos: Record<string, EspacoData> = {
     },
     images: espacoImages['Espaço Acotirene'],
     videos: espacoVideos['Espaço Acotirene'],
+    audios: espacoAudios['Espaço Acotirene'],
     // outros dados relevantes
   },
   'Espaço Aqualtune': {

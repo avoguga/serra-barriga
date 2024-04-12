@@ -10,7 +10,7 @@ import About from '../pages/About';
 import SerraDaBarriga from '../pages/SerraDaBarriga';
 import VideosAndImages from '../pages/VideosAndImages';
 
-import Audios from '../pages/Audios';
+
 import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
@@ -34,6 +34,8 @@ import ImageView from '../pages/Espacos/imagens';
 import LocView from '../pages/Espacos/Location';
 import VideosView from '../pages/Espacos/Videos';
 import PlayView from '../pages/Espacos/PlayVideos';
+import AudiosView from '../pages/Espacos/Audios';
+import AudiosTakeHome from '../pages/AudiosTakeHome';
 
 const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
   return new Promise<{ default: T }>(resolve => {
@@ -101,7 +103,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/takehome/audios',
-    element: <Audios />,
+    element: <AudiosTakeHome />,
     errorElement: <ErrorPage />,
   },
   {
@@ -207,4 +209,10 @@ export const router = createBrowserRouter([
     element: <PlayView />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/historical-figure/:figureName/AudiosView',
+    element: <AudiosView />,
+    errorElement: <ErrorPage />,
+  },
+  
 ]);

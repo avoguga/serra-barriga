@@ -56,7 +56,7 @@ const Sidebar = () => {
       <HomeButton
         iconType="AudioEspaco"
         onClick={() => {
-          navigate('/#');
+          navigate(`/historical-figure/${figureName}/AudiosView`);
         }}
         />
       <HomeButton
