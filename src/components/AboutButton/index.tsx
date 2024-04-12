@@ -6,15 +6,15 @@ import WatermarkImageBottom from '../../assets/marcamontanhaparafundoclao.png';
 const BackgroundImg = styled.div`
 position: relative;
 
-
-  width: 100vw;
-  height: 40%; 
+width: 90vw;
+  height: 200px;
+margin-right: 28px;
  
-  align-items: center;
   background-image: url(${WatermarkImageBottom});
   background-position: bottom center;
   background-repeat: no-repeat;
-  background-size: cover;
+
+  background-size: 140vw;
   background-color: #67781B;
 `
 const ButtonContainer = styled.div`

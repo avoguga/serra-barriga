@@ -21,6 +21,7 @@ const ButtonContainer = styled.div`
   gap: 20px;
   justify-content: center;
   margin: 0 10px;
+
 `;
 
 export const BackButton = styled.button`
@@ -214,7 +215,7 @@ const Maps: React.FC = () => {
             
             }} />
             <h2 style={{
-              font: 'normal normal 500 22px/30px ',
+              fontFamily: 'FuturaPTDemi',
               letterSpacing: '0px',
               color: '#FFFFFF',
               fontSize: '30px'
@@ -226,7 +227,7 @@ const Maps: React.FC = () => {
               <TransformComponent>
                 {/* Imagem do Mapa e Botões de Localização */}
                 <div style={{ position: 'relative', width:'100vw', display:'flex', alignItems:'center', justifyContent:'center', marginRight:'30px' }}>
-                  <img src={mapa} alt="mapa" style={{ width: '450px', height: '520px' }} />
+                  <img src={mapa} alt="mapa" style={{ width: '480px', height: '520px' }} />
                   
                   {/* Botões dos Locais */}
                   {locationInfos.map((location) => (

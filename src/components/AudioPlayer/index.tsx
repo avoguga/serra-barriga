@@ -1,99 +1,93 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as  C from './styles'
+import * as C from './styles';
 import { FaPlay, FaPause } from 'react-icons/fa';
-import nattan from '../../assets/nattan.mp3'
 
-const AudioPlayer: React.FC = () => {
-    const audioRef = useRef<HTMLAudioElement>(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
+interface AudioPlayerProps {
+  src: string;  
+  colorTheme: 'green' | 'orange';
+  styles?: {
+    wrapper?: React.CSSProperties;
+    progressBarActive?: React.CSSProperties;
+  };
+}
 
-    useEffect(() => {
-        // Assegura-se de que audioRef.current não é nulo antes de acessar .duration
-        setDuration(audioRef.current?.duration ?? 0);
-    }, [audioRef]);
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, styles, colorTheme }) => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-    useEffect(() => {
-        // Verifica se o áudio está tocando
-        const handlePlay = () => setIsPlaying(true);
-        const handlePause = () => setIsPlaying(false);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.addEventListener('loadedmetadata', () => {
+        setDuration(audio.duration);
+      });
+    }
+  }, []);
 
-        if (audioRef.current) {
-            audioRef.current.addEventListener('play', handlePlay);
-            audioRef.current.addEventListener('pause', handlePause);
-        }
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      const handlePlay = () => setIsPlaying(true);
+      const handlePause = () => setIsPlaying(false);
+      audio.addEventListener('play', handlePlay);
+      audio.addEventListener('pause', handlePause);
+      return () => {
+        audio.removeEventListener('play', handlePlay);
+        audio.removeEventListener('pause', handlePause);
+      };
+    }
+  }, []);
 
-        // Remove os event listeners no cleanup
-        return () => {
-            if (audioRef.current) {
-                audioRef.current.removeEventListener('play', handlePlay);
-                audioRef.current.removeEventListener('pause', handlePause);
-            }
-        };
-    }, []);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.addEventListener('timeupdate', () => {
+        setCurrentTime(audio.currentTime);
+      });
+    }
+  }, []);
 
-    useEffect(() => {
-        // Atualiza o estado de currentTime quando o evento onTimeUpdate ocorrer
-        const audio = audioRef.current;
+  const togglePlayPause = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
-        const setAudioTime = () => setCurrentTime(audio?.currentTime ?? 0);
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const time = Number(e.target.value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = time;
+      setCurrentTime(time);
+    }
+  };
 
-        audio?.addEventListener('timeupdate', setAudioTime);
+  const calculateProgress = () => (duration ? `${(currentTime / duration) * 100}%` : '0%');
 
-        return () => {
-            audio?.removeEventListener('timeupdate', setAudioTime);
-        };
-    }, []);
-
-    const togglePlayPause = () => {
-        // Assegura-se de que audioRef.current não é nulo antes de chamar métodos .play() ou .pause()
-        if (audioRef.current) {
-            if (isPlaying) {
-                audioRef.current.pause();
-            } else {
-                audioRef.current.play();
-            }
-            setIsPlaying(!isPlaying);
-        }
-    };
-
-    const calculateProgress = () => {
-        if (duration) {
-            return (currentTime / duration) * 100 + '%';
-        }
-        return '0%';
-    };
-
-    return (
-        <C.PlayerWrapper>
-            <audio
-                ref={audioRef}
-                src={nattan}
-                preload="metadata"
-            />
-            <C.PlayButton onClick={togglePlayPause}>
-                {isPlaying ? <FaPause /> : <FaPlay />}
-            </C.PlayButton>
-            <C.ProgressBarContainer>
-                <C.ProgressBarActive width={calculateProgress()} />
-                <C.ProgressBar
-                    type="range"
-                    value={currentTime}
-                    max={duration}
-                    onChange={(e) => {
-                        const time = Number(e.target.value);
-                        // Verifica se audioRef.current não é nulo antes de definir o currentTime
-                        if (audioRef.current) {
-                            audioRef.current.currentTime = time;
-                        }
-                        setCurrentTime(time);
-                    }}
-                />
-            </C.ProgressBarContainer>
-            {/* Outros elementos do player */}
-        </C.PlayerWrapper>
-    );
+  return (
+    <C.PlayerWrapper style={styles?.wrapper}>
+      <audio ref={audioRef} src={src} preload="metadata" />
+      <C.PlayButton onClick={togglePlayPause} colorTheme={colorTheme}>
+        {isPlaying ? <FaPause /> : <FaPlay />}
+      </C.PlayButton>
+      <C.ProgressBarContainer>
+        <C.ProgressBarActive width={calculateProgress()} style={styles?.progressBarActive} />
+        <C.ProgressBar
+          value={currentTime}
+          max={duration}
+          onChange={handleSliderChange}
+    colorTheme={colorTheme}
+        />
+      </C.ProgressBarContainer>
+    </C.PlayerWrapper>
+  );
 };
 
 export default AudioPlayer;

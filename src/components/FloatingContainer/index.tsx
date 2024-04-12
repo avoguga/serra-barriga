@@ -58,9 +58,9 @@ const BackButton = styled(Button)<{ backBgColor?: string }>`
   }
 `;
 
-const BackArrowIcon = Icons['BackArrow'];
-const ScanIcon = Icons['Scan'];
-const HomeIcon = Icons['Home'];
+const BackArrowIcon = Icons['BackArrowEspaco'];
+const ScanIcon = Icons['ScanEspaco'];
+const HomeIcon = Icons['HomeEspaco'];
 
 const FloatingButtonBar = ({
   isVisible = true,

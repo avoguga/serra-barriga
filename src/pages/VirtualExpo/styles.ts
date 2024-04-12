@@ -42,10 +42,9 @@ export const ExpoInfoContainer = styled.div`
   min-height: 296px;
   height: auto;
 
-  div > svg {
-    width: 100px;
-    height: 54px;
-    margin-right: 24px;
+  svg {
+    width: 150px;
+    height: 64px;
   }
 `;
 

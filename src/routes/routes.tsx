@@ -10,7 +10,7 @@ import About from '../pages/About';
 import SerraDaBarriga from '../pages/SerraDaBarriga';
 import VideosAndImages from '../pages/VideosAndImages';
 
-import Audios from '../pages/Audios';
+
 import VirtualExpo from '../pages/VirtualExpo';
 import SerraBarriga2 from '../pages/SerraBarriga2';
 import Tour360 from '../pages/Tour360';
@@ -23,14 +23,19 @@ import Maps from '../pages/Maps';
 import HistoricalFigurePage from '../pages/HistoricalFigurePage';
 import AtalaiaInfoView from '../pages/Atalaia/Information';
 import AtalaiaLocView from '../pages/Atalaia/Location';
-import AtalaiaVideosView from '../pages/Atalaia/Videos';
-import AtalaiaVideosPlayView from '../pages/Atalaia/PlayVideos';
+
+import AtalaiaVideosPlayView from '../pages/Espacos/PlayVideos';
 import AtalaiaImgView from '../pages/Atalaia/Img';
 import { Suspense, lazy, ComponentType } from 'react';
 import GallerySkeleton from '../pages/GallerySkeleton';
 import VideoScreen from '../components/VideoScreen';
 import InfoView from '../pages/Espacos/infomation';
 import ImageView from '../pages/Espacos/imagens';
+import LocView from '../pages/Espacos/Location';
+import VideosView from '../pages/Espacos/Videos';
+import PlayView from '../pages/Espacos/PlayVideos';
+import AudiosView from '../pages/Espacos/Audios';
+import AudiosTakeHome from '../pages/AudiosTakeHome';
 
 const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
   return new Promise<{ default: T }>(resolve => {
@@ -98,7 +103,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/takehome/audios',
-    element: <Audios />,
+    element: <AudiosTakeHome />,
     errorElement: <ErrorPage />,
   },
   {
@@ -146,11 +151,7 @@ export const router = createBrowserRouter([
     element: <AtalaiaLocView />,
     errorElement: <ErrorPage />,
   },
-  {
-    path: '/atalaia-de-acaiuba/videos',
-    element: <AtalaiaVideosView />,
-    errorElement: <ErrorPage />,
-  },
+
   {
     path: '/atalaia-de-acaiuba/videos/playvideos',
     element: <AtalaiaVideosPlayView />,
@@ -193,4 +194,25 @@ export const router = createBrowserRouter([
     element: <ImageView />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: '/historical-figure/:figureName/LocView', 
+    element: <LocView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/historical-figure/:figureName/VideosView',
+    element: <VideosView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/historical-figure/:figureName/VideosView/PlayView',
+    element: <PlayView />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/historical-figure/:figureName/AudiosView',
+    element: <AudiosView />,
+    errorElement: <ErrorPage />,
+  },
+  
 ]);

@@ -10,6 +10,13 @@ body, html {
   width: 100%;
   height: 100vh;
 }
+.icon-white {
+  fill: #FFFFFF;
+}
+svg{ 
+  fill: #FFFFFF;
+}
+
 
 body, p, a, ul, li {
   text-decoration: none;

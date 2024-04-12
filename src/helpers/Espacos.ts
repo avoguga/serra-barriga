@@ -19,7 +19,23 @@ import lagoa from '../assets/icons/tela-espaco/desenhos_LAGOA ENCANTADA DOS NEGR
 import restaurante from '../assets/icons/tela-espaco/desenhos_RESTAURANTE KÚUKU-WAANA.webp';
 
 import { espacoImages } from './EspacoImages';
+import { espacoVideos } from './EspacoVideos';
+import { espacoAudios } from './espacoAudios';
 
+export interface VideoData {
+  url: string;
+  title: string;
+  interpretacao: string;
+  texto: string;
+  trilha: string;
+}
+export interface AudioData {
+  audio: string[];
+  title: string;
+  interpretacao: string;
+  texto: string;
+  trilha: string;
+}
 export interface EspacoData {
   path: string;
   title: string;
@@ -31,6 +47,8 @@ export interface EspacoData {
     italic?: string;
   };
   images?: string[];
+  videos?: VideoData[];
+  audios?: AudioData[];
 }
 
 // Mapeie as classes previstas para os dados de rota correspondentes
@@ -50,6 +68,8 @@ const espacos: Record<string, EspacoData> = {
       `,
     },
     images: espacoImages['Espaço Acotirene'],
+    videos: espacoVideos['Espaço Acotirene'],
+    audios: espacoAudios['Espaço Acotirene'],
     // outros dados relevantes
   },
   'Espaço Aqualtune': {
@@ -66,7 +86,7 @@ const espacos: Record<string, EspacoData> = {
       Having been princess of the kingdom of Congo in the 17th century, Aqualtune led an army of around 10 thousand people, including men and women, against the attacks of Portuguese forces. She ended up defeated and captured by the Portuguese, who were subjugating and selling them to Brazilian slave owners. Arriving in Brazil in Recife, it was sold to the Porto Calvo mill, now the municipality of Alagoas. However, upon learning about the existence of the largest center of black resistance in Brazil, Quilombo dos Palmares, it didn't take long for Aqualtune to put his leadership strength into practice and command an escape with other companions towards Palmares. She had her children Ganga Zumba and Ganga Zona, two great warriors, and Sabina, who was supposedly the mother of Zumbi dos Palmares.
       `,
     },
-    images: espacoImages['Espaço Aqualtune'],
+    images: espacoImages['Espaço Acotirene'],
   },
   'Espaço Caá-Pueira': {
     path: '/historical-figure/Espaço Caá-Pueira',

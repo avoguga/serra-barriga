@@ -4,6 +4,7 @@ import { Icons } from '../../helpers/icons';
 const Button = styled.button`
   display: flex;
   width: 120px;
+
   flex-direction: column;
   white-space: nowrap;
   background-color: transparent;
@@ -13,7 +14,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  
   cursor: pointer;
   font-size: 16px;
  font-family:'FuturaPTDemi';
@@ -23,8 +24,10 @@ const Button = styled.button`
   }
 
   svg {
-    width: 50px;
-    height: 50px;
+  
+  width: 45px;
+  height: 45px;
+    
   }
 `;
 
@@ -39,7 +42,7 @@ const HomeButton = ({ children, onClick, iconType }: HomeButtonProps) => {
   const ButtonIcon = Icons[iconType];
 
   return (
-    <Button onClick={onClick}>
+    <Button onClick={onClick} >
       <ButtonIcon />
       {children}
     </Button>
