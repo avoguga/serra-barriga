@@ -166,14 +166,14 @@ export const router = createBrowserRouter([
     path: '/agenda',
     element: <Agenda />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: ':eventId', 
-        element: <EventDetails />,
-        errorElement: <ErrorPage />,
-      },
-    ],
   },
+  
+    {
+      path: '/agenda/:eventId', 
+      element: <EventDetails />,
+      errorElement: <ErrorPage />,
+    },
+ 
   {
     path: '/maps',
     element: <Maps />,

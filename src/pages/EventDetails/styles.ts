@@ -4,7 +4,7 @@ export const Container = styled.div`
   background: #009289;
   display: flex;
   flex-direction: column;
-
+  min-height: 100vh;
   max-height: 250vh;
   align-items: center;
   padding: 7rem 0rem;
@@ -45,10 +45,10 @@ export const TituloSecaoEvento = styled.h3`
 export const DescricaoEvento = styled.p`
   font-size: 19px;
   color: #ffffff;
-  font-family: 'FuturaPT', sans-serif;
+  font-family: 'FuturaPTBook', sans-serif;
   font-weight: 100;
   text-align: left;
-  opacity: 0.9;
+
   width: 90%;
 
   > span {

@@ -12,6 +12,7 @@ interface EventoProps {
   Month: string;
   DescriptionPT: string;
   DescriptionEN: string;
+  Span: string;
 
   Data: Date;
 }
@@ -32,6 +33,7 @@ const EventDetails = () => {
             Month: response.data.data.attributes.Month,
             DescriptionPT: response.data.data.attributes.DescriptionPT,
             DescriptionEN: response.data.data.attributes.DescriptionEN,
+            Span: response.data.data.attributes.Span,
 
             Data: new Date(response.data.data.attributes.Data),
           };
@@ -63,8 +65,8 @@ const EventDetails = () => {
 
           </h2>
         </C.DataHoraEvento>
-        <C.DescricaoEvento>{evento.DescriptionPT}</C.DescricaoEvento>
-        <C.TituloSecaoEvento></C.TituloSecaoEvento>
+        <C.DescricaoEvento>{evento.DescriptionPT} </C.DescricaoEvento>
+        <C.TituloSecaoEvento> {evento.Span} </C.TituloSecaoEvento>
         <C.DescricaoEvento>
           <span>{evento.DescriptionEN}</span>
         </C.DescricaoEvento>
