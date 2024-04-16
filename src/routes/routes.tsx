@@ -36,6 +36,7 @@ import VideosView from '../pages/Espacos/Videos';
 import PlayView from '../pages/Espacos/PlayVideos';
 import AudiosView from '../pages/Espacos/Audios';
 import AudiosTakeHome from '../pages/AudiosTakeHome';
+import SelfieView from '../pages/Espacos/Selfie';
 
 const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
   return new Promise<{ default: T }>(resolve => {
@@ -214,5 +215,12 @@ export const router = createBrowserRouter([
     element: <AudiosView />,
     errorElement: <ErrorPage />,
   },
+
+  {
+    path: '/historical-figure/:figureName/SelfieView',
+    element: <SelfieView />,
+    errorElement: <ErrorPage />,
+  },
+  
   
 ]);
