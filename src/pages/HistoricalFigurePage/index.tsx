@@ -76,7 +76,7 @@ const HistoricalFigurePage: React.FC = () => {
           <HomeButton
             iconType="SelfieEspaco"
             onClick={() => {
-              navigate('/#');
+              navigate(`/historical-figure/${figureName}/SelfieView`);
             }}
           >
             SELFIE HISTÓRICA
