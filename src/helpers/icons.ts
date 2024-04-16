@@ -20,6 +20,9 @@ import BackArrow from '../assets/icons/seta redonda voltar pagina.svg?react';
 
 import RightArrow from '../assets/icons/set direita.svg';
 import LeftArrow from '../assets/icons/set esquerda.svg?react';
+import PopArrow from '../assets/icons/seta para baixo - popup.svg?react';
+import Close from '../assets/icons/X - Branco.svg?react';
+
 import BottomArrow from '../assets/icons/seta descer.svg?react';
 import Arqueologia from '../assets/icons/arqueologia.svg?react';
 import View360 from '../assets/icons/view 360.svg?react';
@@ -68,4 +71,6 @@ export const Icons = {
   HomeEspaco,
   ScanEspaco,
   LocationEspaco,
+  PopArrow,
+  Close,
 };
