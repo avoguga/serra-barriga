@@ -37,6 +37,7 @@ import PlayView from '../pages/Espacos/PlayVideos';
 import AudiosView from '../pages/Espacos/Audios';
 import AudiosTakeHome from '../pages/AudiosTakeHome';
 import SelfieView from '../pages/Espacos/Selfie';
+import Ficha from '../pages/Ficha';
 
 const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
   return new Promise<{ default: T }>(resolve => {
@@ -125,6 +126,11 @@ export const router = createBrowserRouter([
   {
     path: '/about',
     element: <About />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/about/Ficha',
+    element: <Ficha />,
     errorElement: <ErrorPage />,
   },
   {

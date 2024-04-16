@@ -19,6 +19,7 @@ import logoIphan from '../../assets/icons/logo-iphan.svg';
 // Others
 import packageJson from '../../../package.json';
 import BtnDownArrow from '../../components/ScrollButton';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = styled.nav`
   position: absolute;
@@ -67,6 +68,7 @@ const Footer = styled.footer`
 
 const About = () => {
   const version = packageJson.version;
+  const navigate = useNavigate();
 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
@@ -153,7 +155,9 @@ const About = () => {
           />
           <span>
             <u>
-              <b>FICHA TÉCNICA</b>
+            <b onClick={() => {
+              navigate(`/about/Ficha`);
+            }}>FICHA TÉCNICA</b>
             </u>
           </span>
           <span> © 2024 APP DESENVOLVIDO POR NÚCLEO ZERO</span>

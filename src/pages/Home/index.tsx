@@ -8,6 +8,9 @@ import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper
 import { useEffect, useState } from 'react';
 import AboutButton from '../../components/AboutButton';
 import CustomAlert from '../../components/CustomAlert';
+import WelcomeScreen from '../../components/WelcomeScreen';
+
+
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -83,6 +86,12 @@ const Home = () => {
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  const handleWelcomeClose = () => {
+    setShowWelcome(false); // Quando o botão "Começar" no componente WelcomeScreen for clicado, oculte o componente WelcomeScreen
+  };
+
 
   useEffect(() => {
     if (isSamsungInternet()) {
@@ -98,6 +107,11 @@ const Home = () => {
           {alertMessage}
         </CustomAlert>
       )}
+ 
+ {showWelcome && (
+        
+          <WelcomeScreen onClose={handleWelcomeClose} /> 
+      )}
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
           
       <div
@@ -111,16 +125,22 @@ const Home = () => {
   
         }}
       >
+        
+
         <img
           src={Logo}
           alt="Logo"
           style={{
             width: '200px',
             height: '70px',
-            marginTop: '50px',
+            marginTop: '60px',
             marginBottom: '60px',
+            padding:'5px'
           }}
-        />
+          />
+      
+   
+
 
         <ButtonContainer>
           <HomeButton
