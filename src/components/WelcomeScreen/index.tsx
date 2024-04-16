@@ -17,18 +17,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onClose }) => {
       <C.WelcomeContainer>
         
         <C.WelcomeContent>
-          <div style={{ marginLeft:'335px',paddingRight:'25px' }}>
-          <HomeButton iconType='Close' onClick={onClose} />
+          <div style={{ marginLeft:'335px',paddingRight:'25px',}}>
+          <HomeButton iconType='Close'  onClick={onClose} />
           </div>
-        <img src={parqueLogo} alt="" />
+        <img src={parqueLogo} alt="imagem do parque" style={{ 
+          width:"400px",
+          height:'220px'
+        }} />
         <img
           src={Logo}
           alt="Logo"
           style={{
             width: '200px',
             height: '70px',
-            marginTop: '50px',
-            marginBottom: '60px',
+           
+            marginBottom: '20px',
 
           }}
         />
