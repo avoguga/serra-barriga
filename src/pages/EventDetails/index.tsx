@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import { format } from 'date-fns';
 import * as C from './styles';
 import Header from '../../components/Header';
-import {format} from 'date-fns'
 
 interface EventoProps {
   id: number;
@@ -13,29 +12,30 @@ interface EventoProps {
   DescriptionPT: string;
   DescriptionEN: string;
   Span: string;
-
   Data: Date;
 }
 
 const EventDetails = () => {
-  const { eventId } = useParams<{ eventId?: string }>(); // Garanta que o useParams reflita o tipo correto
-  const [evento, setEvento] = useState<EventoProps | null>(null); // O estado deve ser inicializado como null
+  const { eventId } = useParams<{ eventId: string }>(); // Captura o ID do evento da URL
+  const [evento, setEvento] = useState<EventoProps | null>(null);
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
-    // Certifique-se de que o ID do evento esteja presente antes de fazer a chamada da API
     if (eventId) {
-      axios.get(`http://localhost:1337/api/agendas/${eventId}`)
+      axios.get(`https://serra-gestor.vercel.app/api/agendas/${eventId}`) // Ajuste no endpoint para pegar evento específico
         .then(response => {
+          const { data } = response;
+          if (!data) {
+            throw new Error('Evento não encontrado');
+          }
           const eventoData: EventoProps = {
-            id: response.data.data.id,
-            Title: response.data.data.attributes.Title,
-            Month: response.data.data.attributes.Month,
-            DescriptionPT: response.data.data.attributes.DescriptionPT,
-            DescriptionEN: response.data.data.attributes.DescriptionEN,
-            Span: response.data.data.attributes.Span,
-
-            Data: new Date(response.data.data.attributes.Data),
+            id: data.id,
+            Title: data.Title,
+            Month: data.Month,
+            DescriptionPT: data.DescriptionPT,
+            DescriptionEN: data.DescriptionEN || '', // Supondo que pode não existir
+            Span: data.Span || '', // Supondo que pode não existir
+            Data: new Date(data.Data)
           };
           setEvento(eventoData);
         })
@@ -51,8 +51,10 @@ const EventDetails = () => {
   }
 
   if (!evento) {
-    return <div style={{ backgroundColor: '#009289', height: '100vh'}}>Carregando...</div>;
+    return <div style={{ backgroundColor: '#009289', height: '100vh' }}>Carregando...</div>;
   }
+
+  const formattedDate = evento.Data ? format(evento.Data, 'dd/MM \'às\' HH\'h\'') : 'Data indisponível';
 
   return (
     <C.Container>
@@ -60,13 +62,10 @@ const EventDetails = () => {
       <C.DetalhesContainer>
         <C.TituloEvento>{evento.Title}</C.TituloEvento>
         <C.DataHoraEvento>
-          <h2>
-          {format(evento.Data, 'dd/MM \'às\' HH\'h\'')}
-
-          </h2>
+          <h2>{formattedDate}</h2>
         </C.DataHoraEvento>
-        <C.DescricaoEvento>{evento.DescriptionPT} </C.DescricaoEvento>
-        <C.TituloSecaoEvento> {evento.Span} </C.TituloSecaoEvento>
+        <C.DescricaoEvento>{evento.DescriptionPT}</C.DescricaoEvento>
+        <C.TituloSecaoEvento>{evento.Span}</C.TituloSecaoEvento>
         <C.DescricaoEvento>
           <span>{evento.DescriptionEN}</span>
         </C.DescricaoEvento>

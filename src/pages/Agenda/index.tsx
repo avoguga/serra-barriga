@@ -27,15 +27,15 @@ const Agenda = () => {
   const [uniqueMonths, setUniqueMonths] = useState<string[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:1337/api/agendas?")
+    axios.get("https://serra-gestor.vercel.app/api/agendas/")
       .then(response => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const eventosMapeados: EventoProps[] = response.data.data.map((evento: any) => ({
           id: evento.id,
-          Title: evento.attributes.Title,
-          Mes: evento.attributes.Mes.toLowerCase(), // Assume que Mes é uma string diretamente acessível
-          DescriptionPT: evento.attributes.DescriptionPT,
-          Data: new Date(evento.attributes.Data),
+          Title: evento.Title,
+          Mes: evento.Mes.toLowerCase(), // Assume que Mes é uma string diretamente acessível
+          DescriptionPT: evento.DescriptionPT,
+          Data: new Date(evento.Data),
         }));
 
         setEventos(eventosMapeados);
