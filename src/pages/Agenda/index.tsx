@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { format } from 'date-fns';
+
+import { formatDate } from '../../helpers/DataHelpers';
 
 import FloatingButtonBar from '../../components/FloatingContainer';
 import HeaderC from '../../components/Header';
@@ -13,7 +14,7 @@ interface EventoProps {
   Title: string;
   Mes: string;
   DescriptionPT: string;
-  Data: Date;
+  Data: string;
 }
 
 const Agenda = () => {
@@ -27,10 +28,12 @@ const Agenda = () => {
   const [uniqueMonths, setUniqueMonths] = useState<string[]>([]);
 
   useEffect(() => {
-    axios.get("https://serra-gestor.vercel.app/api/agendas/")
+    axios.get("https://serra-gestor.vercel.app/api/eventos?")
       .then(response => {
+        console.log(response);
+        
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const eventosMapeados: EventoProps[] = response.data.data.map((evento: any) => ({
+        const eventosMapeados: EventoProps[] = response.data.map((evento: any) => ({
           id: evento.id,
           Title: evento.Title,
           Mes: evento.Mes.toLowerCase(), // Assume que Mes é uma string diretamente acessível
@@ -86,7 +89,7 @@ const Agenda = () => {
           eventosFiltrados.map(event => (
             <C.EventCard key={event.id}>
               <C.EventTitle>{event.Title}</C.EventTitle>
-              <C.EventDateTime>{format(event.Data, 'dd/MM \'às\' HH\'h\'')}</C.EventDateTime>
+              <C.EventDateTime>{formatDate(event.Data)} </C.EventDateTime>
               <C.ButtonCard>
                 <C.MoreButton onClick={() => goToAgenda(event.id)}>
                   SAIBA MAIS

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { format } from 'date-fns';
 import * as C from './styles';
 import Header from '../../components/Header';
+import { formatDate } from '../../helpers/DataHelpers';
+
 
 interface EventoProps {
   id: number;
@@ -12,32 +13,35 @@ interface EventoProps {
   DescriptionPT: string;
   DescriptionEN: string;
   Span: string;
-  Data: Date;
+  Data: string;  
 }
 
 const EventDetails = () => {
-  const { eventId } = useParams<{ eventId: string }>(); // Captura o ID do evento da URL
+  const { eventId } = useParams<{ eventId: string }>();
   const [evento, setEvento] = useState<EventoProps | null>(null);
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
     if (eventId) {
-      axios.get(`https://serra-gestor.vercel.app/api/agendas/${eventId}`) // Ajuste no endpoint para pegar evento específico
+      axios.get(`https://serra-gestor.vercel.app/api/eventos/${eventId}`)
         .then(response => {
           const { data } = response;
+          console.log(response.data);
+          
           if (!data) {
             throw new Error('Evento não encontrado');
           }
           const eventoData: EventoProps = {
             id: data.id,
             Title: data.Title,
-            Month: data.Month,
+            Month: data.Mes,
             DescriptionPT: data.DescriptionPT,
-            DescriptionEN: data.DescriptionEN || '', // Supondo que pode não existir
-            Span: data.Span || '', // Supondo que pode não existir
-            Data: new Date(data.Data)
+            DescriptionEN: data.DescriptionEN || '',
+            Span: data.Span || '',
+            Data: data.Data  
           };
           setEvento(eventoData);
+          
         })
         .catch(err => {
           setError('Evento não encontrado');
@@ -51,18 +55,17 @@ const EventDetails = () => {
   }
 
   if (!evento) {
-    return <div style={{ backgroundColor: '#009289', height: '100vh' }}>Carregando...</div>;
+    return <div style={{  height: '100vh',background: '#009289' }}>Carregando...</div>;
   }
-
-  const formattedDate = evento.Data ? format(evento.Data, 'dd/MM \'às\' HH\'h\'') : 'Data indisponível';
 
   return (
     <C.Container>
       <Header />
+  
       <C.DetalhesContainer>
         <C.TituloEvento>{evento.Title}</C.TituloEvento>
         <C.DataHoraEvento>
-          <h2>{formattedDate}</h2>
+          <h2>{formatDate(evento.Data)} </h2>
         </C.DataHoraEvento>
         <C.DescricaoEvento>{evento.DescriptionPT}</C.DescricaoEvento>
         <C.TituloSecaoEvento>{evento.Span}</C.TituloSecaoEvento>
