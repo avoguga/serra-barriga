@@ -1,5 +1,5 @@
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import styled from 'styled-components';
+
 import tiktok from '../../assets/icons/app serra.svg';
 
 const Tour360 = () => {

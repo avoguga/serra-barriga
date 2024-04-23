@@ -87,18 +87,26 @@ const Home = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [showWelcome, setShowWelcome] = useState(true);
-
-  const handleWelcomeClose = () => {
-    setShowWelcome(false); // Quando o botão "Começar" no componente WelcomeScreen for clicado, oculte o componente WelcomeScreen
-  };
-
-
   useEffect(() => {
+    // Verifica no localStorage
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (hasVisited) {
+      setShowWelcome(false);
+    }
+    
     if (isSamsungInternet()) {
       setAlertMessage("Detectamos que você está usando o navegador Samsung Internet. Para uma melhor experiência, recomendamos o uso de outro navegador, como Google Chrome ou Safari.");
       setShowAlert(true);
     }
   }, []);
+  
+  
+  const handleWelcomeClose = () => {
+    setShowWelcome(false);
+    localStorage.setItem('hasVisited', 'true'); 
+  };
+
+  
 
   return (
 <>
