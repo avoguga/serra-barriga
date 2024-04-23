@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import styled from 'styled-components';
 import mapa from '../../assets/Mapa Serra da Barriga -  novo-03.webp';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import LocIcon from '../../assets/icons/localização.svg';
+import LocIcon from '../../assets/icons/localização mapa.svg';
 import BtnDownArrow from '../../components/ScrollButton';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import logo from '../../assets/logo.png'
+import { TransformWrapper, TransformComponent, ReactZoomPanPinchRef } from 'react-zoom-pan-pinch';
 import { useNavigate } from 'react-router-dom';
 
 const ButtonContainer = styled.div`
@@ -15,7 +16,8 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin: 0 10px;
+
+ 
 `;
 
 export const BackButton = styled.button`
@@ -45,14 +47,8 @@ const LocationButton = styled.button<{ x: number; y: number }>`
   height: 35px; /* Aumentei o tamanho da bolinha */
   border-radius: 50%;
   z-index: 10;
-  @media only screen 
-  and (device-width: 430px) 
-  and (device-height: 932px) 
-  and (-webkit-device-pixel-ratio: 3) {
-    width: 30px;
-    height: 30px; /* Ajuste para o iPhone 14 Pro Max */
-    left: ${(props) => (props.x / 500) * 100}%;
-  }
+ 
+  
 `;
 
 // Interface atualizada para coordenadas relativas
@@ -69,8 +65,8 @@ const Tooltip = styled.div<TooltipProps>`
   and (device-width: 430px) 
   and (device-height: 932px) 
   and (-webkit-device-pixel-ratio: 3) {
-    left: calc(${(props) => props.x} - 3% ); /* Alterado para centralizar horizontalmente */
-  top: calc(${(props) => props.y} - 6%);
+    left: calc(${(props) => props.x}  ); /* Alterado para centralizar horizontalmente */
+  top: calc(${(props) => props.y} - 5%);
   }
   transform: translate(-50%, -50%);
   padding: 8px 16px;
@@ -129,26 +125,26 @@ interface LocationInfo {
 }
 
 const locationMappings: { [key: string]: { x: number; y: number } } = {
-  'ENTRADA': { x: 185, y: 460 },
-  'ONJÓ CRUZAMBÊ': { x: 400, y: 461 },
-  'OXILE DAS ERVAS': { x: 445, y: 448 },
-  'ESPAÇO ACOTIRENE': { x: 470, y: 405 },
-  'MUXIMA DE PALMARES': { x: 395, y: 373 },
-  'ESPAÇO QUILOMBO': { x: 320, y: 403 },
-  'ESPAÇO GANGA-ZUMBA': { x: 395, y: 292 },
-  'ATALAIA DE ACAIENE': { x: 445, y: 234 },
-  'OCAS INDÍGENAS': { x: 355, y: 254 },
-  'ESPAÇO CAÁ-PUÊRA': { x: 305, y: 204 },
-  'BATUCAJÉ': { x: 240, y: 201 },
-  'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 275, y: 315 },
-  'BANHEIROS': { x: 175, y: 257 },
-  'ATALAIA DO ACAIUBA': { x: 105, y: 263 },
-  'ONJÓ DE FARINHA': { x: 185, y: 306 },
-  'LAGOAS ENCATADA DOS NEGROS': { x: 220, y: 108 },
-  'RESTAURANTE KÚUKU-WAANA': { x: 170, y: 380 },
-  'ESPAÇO AQUALTUNE': { x: 257, y: 100 },
-  'ATALAIA DO TOCULO': { x: 112, y: 458 },
-  'ESPAÇO ZUMBI': { x: 112, y: 395 },
+  'ENTRADA': { x: 208, y: 460 }, //1
+  'ONJÓ CRUZAMBÊ': { x: 335, y: 461 },//2
+  'OXILE DAS ERVAS': { x: 360, y: 448 },//3
+  'ESPAÇO ACOTIRENE': { x: 377, y: 405 },//4
+  'MUXIMA DE PALMARES': { x: 332, y: 373 },//5
+  'ESPAÇO QUILOMBO': { x: 290, y: 403 },//6
+  'ESPAÇO GANGA-ZUMBA': { x: 332, y: 292 },//7
+  'ATALAIA DE ACAIENE': { x: 362, y: 234 },//8
+  'OCAS INDÍGENAS': { x: 310, y: 254 },//9
+  'ESPAÇO CAÁ-PUÊRA': { x: 278, y: 204 },//10
+  'BATUCAJÉ': { x: 240, y: 201 },//11
+  'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 260, y: 315 },//12
+  'BANHEIROS': { x: 202, y: 257 },//13
+  'ATALAIA DO ACAIUBA': { x: 160, y: 263 },//14
+  'ONJÓ DE FARINHA': { x: 205, y: 306 },//17
+  'LAGOAS ENCATADA DOS NEGROS': { x: 227, y: 108 },//15
+  'RESTAURANTE KÚUKU-WAANA': { x: 200, y: 380 },//18
+  'ESPAÇO AQUALTUNE': { x: 250, y: 100 },//16
+  'ATALAIA DO TOCULO': { x: 162, y: 458 },//19
+  'ESPAÇO ZUMBI': { x: 162, y: 395 },//20
 };
 
 const locationInfos: LocationInfo[] = items.map((name, index) => {
@@ -164,11 +160,13 @@ const locationInfos: LocationInfo[] = items.map((name, index) => {
 const Maps: React.FC = () => {
   const navigate = useNavigate();
   const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(null);
+  const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
 
   const handleLocationClick = (locationInfo: LocationInfo) => {
     setSelectedLocation(locationInfo);
   };
 
+ 
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage}>
       <div
@@ -180,19 +178,29 @@ const Maps: React.FC = () => {
           alignItems: 'center',
         }}
       >
+        <img src={logo} alt="serra da barriga" style={{
+          width:'180px',
+          height:'66px',
+          marginTop:'35px',
+          marginBottom:'25px'
+
+          
+          
+
+        }} />
         <BackButton onClick={() => navigate('/takehome/serra-da-barriga')}>
           <img src={seta} alt="Voltar" />
         </BackButton>
 
         <ButtonContainer>
-          <img src={LocIcon} alt="Localização" style={{ width: '30px', height: '30px', marginRight: '-10px', marginTop: '2px', fill:'#FFF' }} />
+          <img src={LocIcon} alt="Localização" style={{ width: '30px', height: '30px', marginRight: '-10px', marginTop: '2px',  }} />
           <h2 style={{ fontFamily: 'FuturaPTDemi', letterSpacing: '0px', color: '#FFFFFF', fontSize: '30px' }}>Mapa</h2>
 
-          <TransformWrapper>
+          <TransformWrapper initialScale={1} minScale={0.5} maxScale={4}   ref={transformComponentRef}  >
             <TransformComponent>
-              <div style={{ position: 'relative', width:'100vw', display:'flex', alignItems:'center', justifyContent:'center', marginRight:'30px' }}>
-                <img src={mapa} alt="mapa" style={{ width: '480px', height: '520px' }} />
-                
+              <div style={{ position: 'relative', width:'280vw',display:'flex', alignItems:'center', justifyContent:'center', marginRight:'30px' }}>
+                <img src={mapa} alt="mapa" style={{ width: '100vh', height: '95vh' }} />
+      
                 {locationInfos.map((location) => (
                   <LocationButton
                     key={location.id}
