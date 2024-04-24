@@ -17,7 +17,7 @@ import Tour360 from '../pages/Tour360';
 import VideoPlay from '../pages/VideoPlay';
 import AtalaiaView from '../pages/Atalaia';
 import PersonalityPage from '../pages/Personality';
-import Agenda from '../pages/Agenda';
+
 import EventDetails from '../pages/EventDetails'
 import Maps from '../pages/Maps';
 import HistoricalFigurePage from '../pages/HistoricalFigurePage';
@@ -26,8 +26,7 @@ import AtalaiaLocView from '../pages/Atalaia/Location';
 
 import AtalaiaVideosPlayView from '../pages/Espacos/PlayVideos';
 import AtalaiaImgView from '../pages/Atalaia/Img';
-import { Suspense, lazy, ComponentType } from 'react';
-import GallerySkeleton from '../pages/GallerySkeleton';
+
 import VideoScreen from '../components/VideoScreen';
 import InfoView from '../pages/Espacos/infomation';
 import ImageView from '../pages/Espacos/imagens';
@@ -38,16 +37,15 @@ import AudiosView from '../pages/Espacos/Audios';
 import AudiosTakeHome from '../pages/AudiosTakeHome';
 import SelfieView from '../pages/Espacos/Selfie';
 import Ficha from '../pages/Ficha';
+import Agenda from '../pages/Agenda';
+import HomeExpo from '../pages/HomeExpo';
 
-const fakeDelay = <T extends ComponentType<never>>(importPromise: Promise<{ default: T }>) => {
-  return new Promise<{ default: T }>(resolve => {
-    setTimeout(() => resolve(importPromise), 3500);
-  });
-};
 
 
 // eslint-disable-next-line react-refresh/only-export-components
-const Images = lazy(() => fakeDelay(import("../pages/Images")));
+
+
+
 
 
 export const router = createBrowserRouter([
@@ -95,12 +93,8 @@ export const router = createBrowserRouter([
    
   },
   {
-    path: '/takehome/images',
-    element: (
-      <Suspense fallback={<div><GallerySkeleton/></div>}>
-        <Images />
-      </Suspense>
-    ),
+    path: '/takehome/virtual-expo',
+    element: <VirtualExpo/>,
     errorElement: <ErrorPage />,
   },
   {
@@ -110,7 +104,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/virtual-expo',
-    element: <VirtualExpo />,
+    element: <HomeExpo />,
     errorElement: <ErrorPage />,
   },
   {
@@ -171,7 +165,10 @@ export const router = createBrowserRouter([
   },
   {
     path: '/agenda',
-    element: <Agenda />,
+    element: 
+        <Agenda />
+     
+  ,
     errorElement: <ErrorPage />,
   },
   

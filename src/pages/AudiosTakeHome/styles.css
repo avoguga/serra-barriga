@@ -4,7 +4,7 @@
 }
 .fundo {
   background: #d66b00;
-  height: 160vh;
+  height: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -54,5 +54,7 @@
   color: #E7EBE0;
   font-size: 13px;
   opacity: 0.80;
+  white-space:nowrap;
+  margin-right: 35px;
 
 }

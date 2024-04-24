@@ -29,19 +29,19 @@ const VideosAndImages: React.FC = () => {
         <C.LogoImage src={logo} alt="logo" />
 <C.TabContainer>
 
-        <C.SelfieContainer>
+        <C.SelfieContainer onClick={() => handleTabSwitch('videos')}>
           <C.Icon src={Video} alt="video" />
-        <button onClick={() => handleTabSwitch('videos')}>
+        
 
           <C.Text>VÍDEOS</C.Text> 
-        </button>
+        
         </C.SelfieContainer>
-        <C.SelfieContainer>
+        <C.SelfieContainer onClick={() => handleTabSwitch('images')}>
           <C.Icon src={imagem} alt="imagem" />
-        <button onClick={() => handleTabSwitch('images')}>
+        
 
           <C.Text>FOTOS</C.Text> 
-        </button>
+     
         </C.SelfieContainer>
 </C.TabContainer>
 

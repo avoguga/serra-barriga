@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as C from './styles';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import { useAudioContext } from "../../context/audioContext";
 
 interface AudioPlayerProps {
   src: string;  
@@ -11,17 +12,20 @@ interface AudioPlayerProps {
   };
 }
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, styles, colorTheme }) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, colorTheme, styles }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const { activeAudio, setActiveAudio } = useAudioContext();
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [currentTime, setCurrentTime] = useState<number>(0);
+  const [duration, setDuration] = useState<number>(0);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
       audio.addEventListener('loadedmetadata', () => {
-        setDuration(audio.duration);
+        if (audio.duration !== Infinity) {
+          setDuration(audio.duration);
+        }
       });
     }
   }, []);
@@ -29,25 +33,27 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, styles, colorTheme }) =>
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
-      const handlePlay = () => setIsPlaying(true);
-      const handlePause = () => setIsPlaying(false);
-      audio.addEventListener('play', handlePlay);
-      audio.addEventListener('pause', handlePause);
+      audio.addEventListener('play', () => setIsPlaying(true));
+      audio.addEventListener('pause', () => setIsPlaying(false));
       return () => {
-        audio.removeEventListener('play', handlePlay);
-        audio.removeEventListener('pause', handlePause);
+        audio.removeEventListener('play', () => setIsPlaying(true));
+        audio.removeEventListener('pause', () => setIsPlaying(false));
       };
     }
   }, []);
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.addEventListener('timeupdate', () => {
-        setCurrentTime(audio.currentTime);
-      });
+    if (isPlaying && audioRef.current) {
+      setActiveAudio(audioRef.current);
     }
-  }, []);
+  }, [isPlaying, setActiveAudio]);
+
+  useEffect(() => {
+    if (activeAudio  !== audioRef.current) {
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    }
+  }, [activeAudio]);
 
   const togglePlayPause = () => {
     const audio = audioRef.current;
@@ -62,14 +68,14 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, styles, colorTheme }) =>
   };
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const time = Number(e.target.value);
+    const time = parseFloat(e.target.value);
     if (audioRef.current) {
       audioRef.current.currentTime = time;
       setCurrentTime(time);
     }
   };
 
-  const calculateProgress = () => (duration ? `${(currentTime / duration) * 100}%` : '0%');
+  const calculateProgress = (): string => (duration ? `${(currentTime / duration) * 100}%` : '0%');
 
   return (
     <C.PlayerWrapper style={styles?.wrapper}>
@@ -80,10 +86,11 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, styles, colorTheme }) =>
       <C.ProgressBarContainer>
         <C.ProgressBarActive width={calculateProgress()} style={styles?.progressBarActive} />
         <C.ProgressBar
+          type="range"
           value={currentTime}
           max={duration}
           onChange={handleSliderChange}
-    colorTheme={colorTheme}
+          colorTheme={colorTheme}
         />
       </C.ProgressBarContainer>
     </C.PlayerWrapper>
