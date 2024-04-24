@@ -26,8 +26,10 @@ const Agenda = () => {
   const [eventos, setEventos] = useState<EventoProps[]>([]);
   const [eventosFiltrados, setEventosFiltrados] = useState<EventoProps[]>([]);
   const [uniqueMonths, setUniqueMonths] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true); // Inicia o loading antes da chamada da API
     axios.get("https://serra-gestor.vercel.app/api/eventos?")
       .then(response => {
         console.log(response);
@@ -36,16 +38,18 @@ const Agenda = () => {
         const eventosMapeados: EventoProps[] = response.data.map((evento: any) => ({
           id: evento.id,
           Title: evento.Title,
-          Mes: evento.Mes.toLowerCase(), // Assume que Mes é uma string diretamente acessível
+          Mes: evento.Mes.toLowerCase(),
           DescriptionPT: evento.DescriptionPT,
           Data: new Date(evento.Data),
         }));
-
+  
         setEventos(eventosMapeados);
         setUniqueMonths([...new Set(eventosMapeados.map(evento => evento.Mes))]);
+        setLoading(false); // Encerra o loading após processar os dados
       })
       .catch(error => {
         console.error("Erro ao buscar eventos:", error);
+        setLoading(false); // Encerra o loading mesmo se ocorrer um erro
       });
   }, []);
 
@@ -78,14 +82,20 @@ const Agenda = () => {
           <C.MonthSelector value={mesSelecionado} onChange={handleMonthChange}>
             {uniqueMonths.map((month, index) => (
               <option key={index} value={month}>
-                {month.charAt(0).toUpperCase() + month.slice(1)} {/* Capitalize the first letter */}
+                {month.charAt(0).toUpperCase() + month.slice(1)}
               </option>
             ))}
           </C.MonthSelector>
         </C.MonthContainer>
       </C.SelectContainer>
       <C.EventContainer ref={eventContainerRef}>
-        {eventosFiltrados.length > 0 ? (
+        {loading ? (
+            <C.SkeletonGallery>
+            {Array.from({ length: 2 }).map((_, index) => (
+              <C.SkeletonImage key={index} />
+            ))}
+          </C.SkeletonGallery>
+        ) : eventosFiltrados.length > 0 ? (
           eventosFiltrados.map(event => (
             <C.EventCard key={event.id}>
               <C.EventTitle>{event.Title}</C.EventTitle>
@@ -109,6 +119,7 @@ const Agenda = () => {
       <Outlet />
     </C.PageContainer>
   );
+  
 };
 
 export default Agenda;

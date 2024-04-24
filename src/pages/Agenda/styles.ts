@@ -1,4 +1,12 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+const shimmerAnimation = keyframes`
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+`;
 
 export const PageContainer = styled.div`
   display: flex;
@@ -101,7 +109,7 @@ export const EventContainer = styled.div`
   justify-content: baseline;
   margin: 10rem 4rem 0 4rem;
   gap: 25px;
-  height: 13rem;
+  height: rem;
   overflow-y: visible;
 
   &::-webkit-scrollbar {
@@ -119,7 +127,7 @@ export const EventCard = styled.div`
   flex-direction: column;
   justify-content: space-around;
 
-  min-width: 75%;
+  min-width: 78%;
   max-height: 12rem;
 `;
 
@@ -159,4 +167,31 @@ export const ArrowContainer = styled.aside`
   cursor: pointer;
   margin-left: 18rem;
   color: #035f59;
+`;
+
+export const SkeletonGallery = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 12px;
+  overflow-y: scroll;
+  flex-direction: column;
+  width: 170px;
+  height: 280px;
+`;
+
+export const SkeletonImage = styled.div`
+  background: #035f59;
+  animation: ${shimmerAnimation} 2s infinite linear;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 20%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  background-size: 1000px 100%;
+  width: 270px;
+  height: 280px;
+  border-radius: 4px;
 `;

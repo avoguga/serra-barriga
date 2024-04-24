@@ -12,7 +12,7 @@ const shimmerAnimation = keyframes`
 `;
 
 const SkeletonWrapper = styled.div`
-  background-color: #D66B00;
+  background-color: #009289;
   height: 100vh;
   padding: 16px;
   display: flex;
@@ -46,19 +46,21 @@ const SkeletonHeaderText = styled.div`
 
 const SkeletonGallery = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   overflow-y: scroll;
+  flex-direction: column;
+  width: 170px;
 `;
 
 const SkeletonImage = styled.div`
-  background:#753D00;
+  background:#035F59;
   animation: ${shimmerAnimation} 2s infinite linear;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.1) 100%);
   background-size: 1000px 100%;
-  width: 140px;
-  height: 140px;
+  width: 270px;
+  height: 180px;
   border-radius: 4px;
 `;
 
@@ -82,7 +84,7 @@ const GallerySkeleton = () => {
       <SkeletonImageWrapper />
       <SkeletonHeaderText />
       <SkeletonGallery>
-        {Array.from({ length: 12 }).map((_, index) => (
+        {Array.from({ length: 4 }).map((_, index) => (
           <SkeletonImage key={index} />
         ))}
       </SkeletonGallery>

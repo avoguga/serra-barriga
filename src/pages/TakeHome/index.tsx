@@ -131,12 +131,12 @@ const TakeHome = () => {
               ÁUDIOS
             </HomeButton>
             <HomeButton
-              iconType="Img"
+              iconType="Expo"
               onClick={() => {
-                navigate('/takehome/images');
+                navigate('/takehome/virtual-expo');
               }}
             >
-              IMAGENS
+              EXPOSIÇÃO VIRTUAL
             </HomeButton>
 
             <HomeButton
