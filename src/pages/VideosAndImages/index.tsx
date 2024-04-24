@@ -8,8 +8,7 @@ import Video from '../../assets/icons/video.svg';
 import imagem from '../../assets/icons/imagem - branco.svg';
 import Images from '../Images';
 import VideoList from '../../components/VideoList';
-// Adicione seus tipos de assets como SVG ou imagens se estiverem sendo importados
-// Isso é necessário se você estiver utilizando o TypeScript para importações de imagens
+
 
 
 // Seu componente React aqui
@@ -26,7 +25,7 @@ const VideosAndImages: React.FC = () => {
 <C.BackButton onClick={() => navigate('/takehome')}>
           <img src={seta} alt="Go back" />
         </C.BackButton>
-        <C.LogoImage src={logo} alt="logo" />
+        <C.LogoImage src={logo} alt="logo"  />
 <C.TabContainer>
 
         <C.SelfieContainer onClick={() => handleTabSwitch('videos')}>
