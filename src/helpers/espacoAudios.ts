@@ -207,6 +207,10 @@ export const espacoAudios: EspacoAudiosMap = {
   ],
 };
 
-export function getEspacoAudios(espacoName: string): AudioData[] | undefined {
-  return espacoAudios[espacoName];
+export function getEspacoAudios(espacoName?: string): AudioData[] {
+  if (!espacoName) {
+    // Retorna todos os áudios de todos os espaços
+    return Object.values(espacoAudios).flat();
+  }
+  return espacoAudios[espacoName] || [];
 }
