@@ -23,10 +23,10 @@ const Button = styled.button`
     outline: none;
   }
 
-  svg {
+  svg { 
   
-  width: 45px;
-  height: 45px;
+  width: 67px;
+  height: 67px;
     
   }
 `;

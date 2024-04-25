@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../../assets/logo.png';
-import aaa from '../../assets/icons/desenho mão segurando celular.svg';
+import aaa from '../../assets/icons/mão com celular.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import AboutButton from '../../components/AboutButton';
 import CustomAlert from '../../components/CustomAlert';
 import WelcomeScreen from '../../components/WelcomeScreen';
+import WatermarkImageBottom from '../../assets/marcamontanhaparafundoclao.png';
 
 
 
@@ -17,8 +18,10 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
   row-gap: 30px;
   background-color: #67781b;
-  column-gap: 50px;
+  column-gap: 47px;
   justify-content: center;
+  align-items: center;
+ 
   
     font-family: 'FuturaPTDemi', sans-serif;
     font-size: 17px;
@@ -28,15 +31,21 @@ const ButtonContainer = styled.div`
 
 const BottomContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+ 
   background-color: #20aa9a;
+  position: absolute;
   width: 350px;
   height: 124px;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
-  margin-top: 30px;
+  top: 60%;
   border-radius: 90px;
+  margin-top: 15px;
+
+  z-index: 1;
+  
 `;
 
 const TextContainer = styled.div`
@@ -49,13 +58,35 @@ const TextContainer = styled.div`
   p {
     font: normal normal normal 15px/22px;
     letter-spacing: 0px;
-    margin-left: 13px;
+    margin-left: 0px;
     font-family: 'FuturaPTDemi', sans-serif;
     font-weight:bold;
   
   }
 `;
+const FooterContainer = styled.footer `
+  background-image: url(${WatermarkImageBottom});
+  background-position: bottom center;
+  background-repeat: no-repeat;
 
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+width: 150vw;
+  min-height: 260px;
+  max-height: 290px;
+margin-right: 35px;
+
+margin-top: 200px;
+background-size: 130vw;
+  background-color: #67781B;
+  margin-bottom: 8px;
+  z-index: 0;
+  
+
+
+`
 // export const enterFullScreen = () => {
 //   const doc: any = window.document;
 //   const docEl: any = doc.documentElement;
@@ -125,11 +156,13 @@ const Home = () => {
       <div
         style={{
           backgroundColor: '#67781B',
-          height: '100vh',
+          minHeight:'100vh',
+          maxHeight: '150vh',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent:'center'
+          justifyContent:'center',
+          
   
         }}
       >
@@ -139,10 +172,10 @@ const Home = () => {
           src={Logo}
           alt="Logo"
           style={{
-            width: '200px',
+            width: '180px',
             height: '70px',
-            marginTop: '60px',
-            marginBottom: '60px',
+            marginTop: '50px',
+            marginBottom:'50px',
             padding:'5px'
           }}
           />
@@ -199,12 +232,24 @@ const Home = () => {
           >
             AGENDA
           </HomeButton>
+
+          </ButtonContainer>
+          <AboutButton
+            iconType="InfoRodape"
+            onClick={() => {
+              navigate('/about');
+              // toggleFullScreen;
+            }}
+            customStyle={{ marginBottom: '15px' }}
+          >
+            SOBRE O APP
+          </AboutButton>
           <BottomContainer
             onClick={() => {
               navigate('/qrcode');
             }}
           >
-            <img src={aaa} alt="aaa" width={80}  height={190} />
+            <img src={aaa} alt="aaa" width={120}  height={190} />
             <TextContainer>
               <p>
                 Aponte a câmera do celular para o símbolo e tenha uma
@@ -212,18 +257,8 @@ const Home = () => {
               </p>
             </TextContainer>
           </BottomContainer>
+        <FooterContainer/>
 
-          <AboutButton
-            iconType="InfoRodape"
-            onClick={() => {
-              navigate('/about');
-              // toggleFullScreen;
-            }}
-            customStyle={{ marginBottom: '25px' }}
-          >
-            SOBRE O APP
-          </AboutButton>
-        </ButtonContainer>
       </div>
     </WatermarkWrapper>
     </>

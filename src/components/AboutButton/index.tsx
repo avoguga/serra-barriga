@@ -1,27 +1,23 @@
 import styled from 'styled-components';
 import { Icons } from '../../helpers/icons';
-import WatermarkImageBottom from '../../assets/marcamontanhaparafundoclao.png';
+
 
 
 const BackgroundImg = styled.div`
-position: relative;
 
-width: 90vw;
-  height: 200px;
-margin-right: 28px;
- 
-  background-image: url(${WatermarkImageBottom});
-  background-position: bottom center;
-  background-repeat: no-repeat;
-
-  background-size: 140vw;
-  background-color: #67781B;
 `
 const ButtonContainer = styled.div`
   position: absolute; // Isso vai posicionar seu botão em relação ao BackgroundImg.
-  top: 55%; // Centraliza verticalmente em relação ao BackgroundImg.
-  left: 53%; // Centraliza horizontalmente em relação ao BackgroundImg.
+  top: 90%; // Centraliza verticalmente em relação ao BackgroundImg.
+  left: 49%; // Centraliza horizontalmente em relação ao BackgroundImg.
   transform: translate(-50%, -50%); // Ajuste fino para centralizar perfeitamente o botão.
+  z-index: 1;
+  @media only screen and (width:360px) and (height: 740px) {
+    top: 91%; 
+  left: 48%; 
+    
+    
+  }
 `;
 
 const Button = styled.button`
@@ -35,7 +31,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0;
   cursor: pointer;
   font-size: 16px;
  white-space: nowrap;

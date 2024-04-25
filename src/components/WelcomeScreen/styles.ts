@@ -5,12 +5,12 @@ export const WelcomeContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 110vh;
+  height: 150vh;
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
   color: #ffff;
 `;
 
