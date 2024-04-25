@@ -23,6 +23,9 @@ svg{
   fill: #FFFFFF;
 }
 
+.cls-1 {
+  stroke: white !important;
+} **
 
 body, p, a, ul, li {
   text-decoration: none;
