@@ -22,6 +22,7 @@ const WatermarkDiv = styled.div<WatermarkWrapperProps>`
     background-position: top center;
     background-repeat: no-repeat;
     pointer-events: none;
+    opacity: 0.4;
   }
 
   &::before {

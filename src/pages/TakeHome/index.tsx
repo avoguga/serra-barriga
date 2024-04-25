@@ -13,6 +13,10 @@ const ButtonContainer = styled.div`
   gap: 40px;
   justify-content: center;
   margin: 0 10px;
+  h5{
+    font-family: 'FuturaPTBook', sans-serif;
+    font-weight: normal;
+  }
 `;
 
 export const BackButton = styled.button`
@@ -52,6 +56,7 @@ const Box = styled.div`
     height: 42px;
   }
   font-family: 'FuturaPTBook', sans-serif;
+  font-weight: normal;
 
   `;
 
@@ -65,7 +70,10 @@ const TakeHome = () => {
         <div
           style={{
             backgroundColor: '#D66B00',
-            height: '115vh',
+            height:'105vh',
+            maxHeight: '110vh',
+            justifyContent:'end',
+            
             
 
             display: 'flex',
@@ -73,6 +81,7 @@ const TakeHome = () => {
             alignItems: 'center',
           }}
         >
+       
           <BackButton
             onClick={() => {
               navigate('/');
