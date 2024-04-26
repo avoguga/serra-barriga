@@ -46,14 +46,21 @@ import claudio3 from '../assets/images/Fotos das personalidades/Mestre Cláudio/
 import zezito1 from '../assets/images/Fotos das personalidades/Zezito Araújo/Acervo Vamos Subir a Serra_11zon.webp';
 import zezito2 from '../assets/images/Fotos das personalidades/Zezito Araújo/Foto - Rovena Rosa.webp';
 import zezito3 from '../assets/images/Fotos das personalidades/Zezito Araújo/Foto retirada da internet.webp';
+
+export type PhotoType = {
+  src: string;
+  id: number;
+};
+
 export type PersonalityType = {
+  id: number;
   name: string;
   image: string;
   description: {
     pt: string; // Descrição em Português
     en: string; // Descrição em Inglês
   };
-  photos?: string[];
+  photos?: PhotoType[];
 };
 
 // Importe as imagens usando a sintaxe ES6. Ajuste os caminhos conforme necessário.
@@ -78,7 +85,13 @@ export const personalities: PersonalityType[] = [
       pt: 'Protegidos pela densa mata atlântica, os quilombolas usavam tática de guerrilha avançada, surpreendendo e derrotando dezenas de expedições portuguesas e holandesas ao longo de décadas. Sitiando a Serra da Barriga, as tropas portuguesas somente conseguiram romper e adentrar o reduto palmarino usando armamento pesado – canhões e escopetas. Aqui, a história registra o maior número de homens, mulheres e crianças mortos e degolados em combates. Esse genocídio aconteceu na madrugada do dia 6 de fevereiro de 1694. ACAIUBA´S LOOKOUT ',
       en: 'Protected by the dense Atlantic forest, the Palmarinos employed guerrilla tactics, surprising and defeating dozens of Portugueses and Dutch expeditions for decades. The Portugueses troops were able to break and entre the Palmarino stronghold only by besieging the Serra da Barriga and by using cannons and muskets. Here, history records the largest number of mem, women and children killed in battle. This genocide happened during the early hours of February 6, 1694.',
     },
-    photos: [foto1, foto2, foto3, foto4],
+    photos: [
+      { id: 1, src: foto1 },
+      { id: 2, src: foto2 },
+      { id: 3, src: foto3 },
+      { id: 4, src: foto4 },
+    ],
+    id: 0,
   },
   {
     name: 'Carolina de Jesus',
@@ -87,7 +100,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Carolina de Jesus.',
       en: 'Descriptive text in English for Carolina de Jesus.',
     },
-    photos: [caroline1, caroline2, caroline3],
+    photos: [
+      { id: 4, src: caroline1 },
+      { id: 5, src: caroline2 },
+      { id: 6, src: caroline3 },
+    ],
+    id: 1,
   },
   {
     name: 'Joãozinho da Gomeia',
@@ -96,7 +114,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Joãozinho da Gomeia.',
       en: 'Descriptive text in English for Joãozinho da Gomeia.',
     },
-    photos: [joao1, joao2, joao3],
+    photos: [
+      { id: 7, src: joao1 },
+      { id: 8, src: joao2 },
+      { id: 9, src: joao3 },
+    ],
+    id: 2,
   },
   {
     name: 'Lupicínio Rodrigues',
@@ -105,7 +128,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Lupicínio Rodrigues.',
       en: 'Descriptive text in English for Lupicínio Rodrigues.',
     },
-    photos: [lupinicio1, lupinicio2, lupinicio3],
+    photos: [
+      { id: 10, src: lupinicio1 },
+      { id: 11, src: lupinicio2 },
+      { id: 12, src: lupinicio3 },
+    ],
+    id: 3,
   },
   {
     name: 'Abdias Nascimento',
@@ -114,7 +142,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Abdias Nascimento.',
       en: 'Descriptive text in English for Abdias Nascimento.',
     },
-    photos: [abdias1, abdias2, abdias3],
+    photos: [
+      { id: 13, src: abdias1 },
+      { id: 14, src: abdias2 },
+      { id: 15, src: abdias3 },
+    ],
+    id: 4,
   },
   {
     name: 'Chica Xavier',
@@ -123,7 +156,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Chica Xavier.',
       en: 'Descriptive text in English for Chica Xavier.',
     },
-    photos: [chica1, chica2, chica3],
+    photos: [
+      { id: 16, src: chica1 },
+      { id: 17, src: chica2 },
+      { id: 18, src: chica3 },
+    ],
+    id: 5,
   },
   {
     name: 'Helcias Pereira',
@@ -132,7 +170,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Helcias Pereira.',
       en: 'Descriptive text in English for Helcias Pereira.',
     },
-    photos: [helcias1, helcias2, helcias3],
+    photos: [
+      { id: 19, src: helcias1 },
+      { id: 20, src: helcias2 },
+      { id: 21, src: helcias3 },
+    ],
+    id: 6,
   },
   {
     name: 'Mãe Biu de Xambá',
@@ -141,7 +184,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mãe Biu de Xambá.',
       en: 'Descriptive text in English for Mãe Biu de Xambá.',
     },
-    photos: [biu1, biu2, biu3],
+    photos: [
+      { id: 22, src: biu1 },
+      { id: 23, src: biu2 },
+      { id: 24, src: biu3 },
+    ],
+    id: 7,
   },
 
   {
@@ -151,7 +199,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mãe Mírian.',
       en: 'Descriptive text in English for Mãe Mírian.',
     },
-    photos: [mirian1, mirian2, mirian3],
+    photos: [
+      { id: 25, src: mirian1 },
+      { id: 26, src: mirian2 },
+      { id: 27, src: mirian3 },
+    ],
+    id: 8,
   },
   {
     name: 'Mestre Camisa',
@@ -160,7 +213,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mestre Camisa.',
       en: 'Descriptive text in English for Mestre Camisa.',
     },
-    photos: [camisa1, camisa2, camisa3],
+    photos: [
+      { id: 28, src: camisa1 },
+      { id: 29, src: camisa2 },
+      { id: 30, src: camisa3 },
+    ],
+    id: 9,
   },
   {
     name: 'Mestre Cláudio',
@@ -169,7 +227,12 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Mestre Cláudio.',
       en: 'Descriptive text in English for Mestre Cláudio.',
     },
-    photos: [claudio1, claudio2, claudio3],
+    photos: [
+      { id: 31, src: claudio1 },
+      { id: 32, src: claudio2 },
+      { id: 33, src: claudio3 },
+    ],
+    id: 10,
   },
   {
     name: 'Zezito Araújo',
@@ -178,6 +241,11 @@ export const personalities: PersonalityType[] = [
       pt: 'Texto descritivo em Português para Zezito Araújo.',
       en: 'Descriptive text in English for Zezito Araújo.',
     },
-    photos: [zezito1, zezito2, zezito3],
+    photos: [
+      { id: 34, src: zezito1 },
+      { id: 35, src: zezito2 },
+      { id: 36, src: zezito3 },
+    ],
+    id: 11,
   },
 ];

@@ -1,16 +1,29 @@
 import logo from '../../assets/logo.png';
 import * as C from './styles'
 import iconX from '../../assets/icons/X - Branco.svg'
+import { useEffect, useState } from 'react';
 
-interface OpenImageProps {
-    src: string;
+export interface OpenImageProps {
+    images: string[];
     alt: string;
     background: string;
     description: string;
     onClose?: () => void; 
+    initialIndex?:number ;
+  
   }
 
-const OpenImage: React.FC <OpenImageProps> = ({src,alt,background,description, onClose}) => {
+const OpenImage: React.FC <OpenImageProps> = ({images,alt,background,description, onClose, initialIndex}) => {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+
+  useEffect(() => {
+    // Garantir que o currentIndex seja atualizado corretamente quando initialIndex mudar
+    setCurrentIndex(initialIndex ?? 0);
+    }, [initialIndex]);
+
+  const handleClick = (index: number) => {
+    setCurrentIndex(index);
+  };
     return (
         <C.FullScreenWrapper background={background}>
         <C.LogoContainer>
@@ -46,12 +59,13 @@ const OpenImage: React.FC <OpenImageProps> = ({src,alt,background,description, o
        
         </C.LogoContainer>
 
-        <C.ImageContainer  onClick={(e) => e.stopPropagation()}>
-          <C.StyledImage src={src} alt={alt} />
-          <C.Description>{description}</C.Description>
-        </C.ImageContainer>
-        </C.FullScreenWrapper>
-
+        <C.ImageContainer onClick={(e) => e.stopPropagation()}>
+        {images.map((image, index) => (
+  <C.StyledImage key={index} src={image} alt={alt} onClick={() => handleClick(index)} style={{ display: index === currentIndex ? 'flex' : 'block' }} />
+))}
+  </C.ImageContainer>
+    <C.Description>{description}</C.Description>
+</C.FullScreenWrapper>
       );
       
     };
