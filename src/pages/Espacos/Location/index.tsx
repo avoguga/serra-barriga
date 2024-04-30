@@ -51,6 +51,7 @@ const LocView = () => {
     <img
       src={maps}
       alt="Mapa do Atalaia de Acaiuaba"
+      loading='lazy'
     />
  
     <C.Marker 
