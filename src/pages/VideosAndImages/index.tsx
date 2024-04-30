@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import * as C from './styles'; // Ajuste o caminho do import conforme necessário
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import logo from '../../assets/logo.png';
-import Video from '../../assets/icons/video.svg';
-import imagem from '../../assets/icons/imagem - branco.svg';
+import Video from '../../assets/icons/i_video pagina.png';
+import imagem from '../../assets/icons/i_imagem pagina.png';
 import Images from '../Images';
 import VideoList from '../../components/VideoList';
 
@@ -55,7 +55,7 @@ const VideosAndImages: React.FC = () => {
           }}>  <Images/> </div>
         )}
 
-        {/* Example of a button to switch tabs */}
+
     </C.PageWrapper>
   );
 };

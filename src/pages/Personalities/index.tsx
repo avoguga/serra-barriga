@@ -8,7 +8,7 @@ import {
   personalities,
 } from '../../helpers/personalitiesData';
 
-import FloatingButtonBar from '../../components/FloatingContainer';
+import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import * as C from './styles';
 
 
@@ -26,11 +26,17 @@ const Personalities = () => {
   };
   if (outlet) {
     return <div>{outlet}</div>;
-  }
+  } 
 
   return (
     <C.PageContainer>
-      <FloatingButtonBar backgroundColor="#8C111B" />
+      <C.BackButton
+            onClick={() => {
+              navigate('/takehome');
+            }}
+          >
+            <img src={seta} alt="" />
+          </C.BackButton>
       <C.MainContainer>
         <img
           src={logo}

@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-import Sidebar from '../../Atalaia/Sidebar';
+import Sidebar from '../Sidebar';
 
 import LowArrow from '../../../components/LowArrowButton';
 import SpaceHeader from '../../../components/SpaceHeader';
@@ -92,7 +92,7 @@ const PlayView = () => {
         <LowArrow onClick={() => window.history.back()} isActive={true} />
       </Nav>
       <NavFotter>
-        <Sidebar />
+        <Sidebar activeSection='VideosView'/>
       </NavFotter>
       <Content>
       <SpaceHeader/>

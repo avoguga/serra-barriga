@@ -1,11 +1,16 @@
 import { styled } from 'styled-components';
 
+interface MarkerProps {
+  posX: string;
+  posY: string;
+}
+
 export const View = styled.div`
   background-color: #8aa61e;
-  height: 105vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: center;
   font-family: 'Futura PT', sans-serif;
   color: #ffffff;
   h1 {
@@ -21,6 +26,18 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  p {
+    font-family: 'FuturaPTBook', sans-serif;
+  }
+`;
+
+export const ImageContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+
+  margin-right: 20px;
 `;
 
 export const Nav = styled.nav`
@@ -52,7 +69,7 @@ export const InfoText = styled.div`
   background: #8d094a;
   width: 300px;
   height: 29px;
-  margin: 0 0 -40px 0;
+  margin: 15px 0 -40px 0;
   border-radius: 58px;
   display: flex;
   align-items: center;
@@ -63,43 +80,53 @@ export const InfoText = styled.div`
     letter-spacing: 1px;
   }
 `;
-
-export const Here = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #607407;
-
-  width: 202px;
-  text-align: center;
-  border-radius: 58px;
-  height: 41px;
-  margin: -50px 0 100px 0;
-  p {
-    font-family: 'FuturaPTBook', sans-serif;
-    font-size: 22px;
-    opacity: 0.85;
+export const MapContainer = styled.div`
+  position: relative;
+  img {
+    width: 450px;
+    height: 408px;
   }
-`;
-export const ContentHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
-    margin-top: 55px;
+
+  @media only screen and (width: 360px) and (height: 740px) {
+    img {
+      width: 420px;
+      height: 400px;
+    }
   }
 `;
 
-export const PersonalityTitle = styled.h1`
-  font-family: 'FuturaPTHeavy', sans-serif;
-  white-space: nowrap;
+export const Marker = styled.div<MarkerProps>`
+  position: absolute;
+  top: ${(props) => props.posY};
+  left: ${(props) => props.posX};
+  background: none;
+  border: 1px solid #67781b;
+  cursor: pointer;
+  color: red;
+  background-color: aliceblue;
+  width: 150px;
+  padding: 8px 16px;
+  background: #ffffff;
+  color: #67781b;
 
-  font-size: 22px;
-`;
-export const Subtitle = styled.h4`
-  font-family: 'FuturaPTBook', sans-serif;
-  text-align: center;
+  font-family: 'FuturaPTDemi', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
-  color: #e7ebe0;
+  &:after {
+    position: absolute;
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffffff;
+    z-index: 1;
+  }
 `;

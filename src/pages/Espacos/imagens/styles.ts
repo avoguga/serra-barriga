@@ -36,11 +36,19 @@ export const ImgText = styled.div`
   border-radius: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: baseline;
   > h3 {
     font-family: 'FuturaPTDemi', sans-serif;
     letter-spacing: 1px;
-    margin-right: 70px;
+    margin-left: 65px;
+  }
+  svg {
+    fill: '#FFFF';
+    stroke: #fff;
+  }
+  img {
+    fill: #fff;
+    color: #fff;
   }
 `;
 

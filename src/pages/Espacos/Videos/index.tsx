@@ -1,9 +1,9 @@
 import { useNavigate, useParams,  } from 'react-router-dom';
 
-import videos from '../../../assets/icons/video.svg';
+import videos from '../../../assets/icons/i_video pagina.png';
 import poster from '../../../assets/images/video-poster.png'
 
-import Sidebar from '../../Atalaia/Sidebar';
+import Sidebar from '../Sidebar';
 import LowArrow from '../../../components/LowArrowButton';
 
 import * as C from './styles'
@@ -32,7 +32,7 @@ const VideosView = () => {
         <LowArrow onClick={() =>   navigate(`/historical-figure/${figureName}`)} isActive={true} />
       </C.Nav>
       <C.NavFotter>
-        <Sidebar />
+        <Sidebar activeSection='VideosView' />
       </C.NavFotter>
       <C.Content>
       <SpaceHeader/>
@@ -41,8 +41,8 @@ const VideosView = () => {
             src={videos}
             alt="ícone de videos"
             style={{
-              width: '25px',
-              height: '25px',
+              width: '35px',
+              height: '35px',
               marginLeft:'10px'
             }}
           />

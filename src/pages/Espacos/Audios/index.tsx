@@ -3,9 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as C from './styles';
 
 import AudioPlayer from '../../../components/AudioPlayer';
-import imagem from '../../../assets/icons/audio.svg';
+import imagem from '../../../assets/icons/i_audio pagina.png';
 import LowArrow from '../../../components/LowArrowButton';
-import Sidebar from '../../Atalaia/Sidebar';
+import Sidebar from '../Sidebar';
 import { EspacoData, getEspacoData } from '../../../helpers/Espacos';
 import SpaceHeader from '../../../components/SpaceHeader';
 import { getEspacoAudios } from '../../../helpers/espacoAudios';
@@ -28,14 +28,14 @@ const AudiosView = () => {
         <LowArrow onClick={() => navigate(`/historical-figure/${figureName}`)} isActive={true} />
       </C.Nav>
       <C.NavFooter>
-        <Sidebar />
+        <Sidebar activeSection='AudiosView'  />
       </C.NavFooter>
       <SpaceHeader />
       <C.AudioContainer>
         <img
           src={imagem} 
           alt="ícone de audio"
-          style={{ width: '25px', height: '25px' }}
+          style={{ width: '35px', height: '35px', marginLeft:'5px' }}
         />
         <h3>Áudio</h3>
       </C.AudioContainer>
@@ -53,9 +53,9 @@ const AudiosView = () => {
               }} /> 
             ))}
             <C.AudioDetails>
-              <C.AudioText>Interpretação: {audio.interpretacao}</C.AudioText>
+              <C.AudioText>Voz: {audio.interpretacao}</C.AudioText>
               <C.AudioText>Texto: {audio.texto}</C.AudioText>
-              <C.AudioText>Trilha: {audio.trilha}</C.AudioText>
+            
             </C.AudioDetails>
           </React.Fragment>
         ))}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import infoIcon from '../../../assets/icons/infobranco.svg';
+import infoIcon from '../../../assets/icons/i_info texto.png';
 import { EspacoData, getEspacoData } from '../../../helpers/Espacos';
-import Sidebar from '../../Atalaia/Sidebar/index';
+import Sidebar from '../Sidebar/index';
 import LowArrow from '../../../components/LowArrowButton';
 
 import * as C from './styles'
@@ -20,7 +20,7 @@ const InfoView = () => {
       </C.Nav>
       <C.NavFotter>
         
-     <Sidebar   />
+     <Sidebar   activeSection='infoView' />
       </C.NavFotter>
       <C.Content>
         {figureData ? (
@@ -31,9 +31,9 @@ const InfoView = () => {
                 src={infoIcon}
                 alt="ícone de informação"
                 style={{
-                  width: '20px',
-                  height: '20px',
-                  marginLeft:'10px'
+                  width: '35px',
+                  height: '35px',
+                  marginLeft:'px'
                 }}
               />
               <h2>Informações</h2>

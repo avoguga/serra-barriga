@@ -1,11 +1,13 @@
 import React, { useState,  } from 'react';
-import { useParams } from 'react-router-dom';
-import FloatingButtonBar from '../../components/FloatingContainer';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import logo from '../../assets/logo.png';
 import PersonalitiesSvg from '../../assets/personalidade - branco.svg';
 import { personalities,  } from '../../helpers/personalitiesData';
 import Arrow from '../../components/ArrowButton';
 import OpenImage from '../../components/OpenImage';
+import seta from '../../assets/seta voltar e abaixo - branco.svg';
+
 
 import * as C from './styles'
 import { FullScreenImage } from '../../helpers/OpenImage';
@@ -13,12 +15,17 @@ import { FullScreenImage } from '../../helpers/OpenImage';
 
 
 const PersonalityPage = () => {
+  const navigate = useNavigate();
+
+  
   const { personalityName } = useParams<{ personalityName: string }>();
   const personality = personalities.find((p) => p.name === personalityName);
   const [isExpanded, setIsExpanded] = useState(false);
   const [leftArrowActive, setLeftArrowActive] = useState(false);
 const [rightArrowActive, setRightArrowActive] = useState(false);
 const [fullScreenImage, setFullScreenImage] = useState<FullScreenImage | null>(null);
+
+
 
 
 
@@ -47,23 +54,32 @@ const handleRightClick = () => {
   };
 
 
-  const openFullScreenImage = (src: string, description = `${personalityName}`, background = '#8C111B') => {
-    setFullScreenImage({ src, description, background });
+  const openFullScreenImage = (images: string[], description: string, background: string, photoId: number) => {
+    console.log("Opening image at index:", photoId); 
+    setFullScreenImage({
+      images,
+      description,
+      background,
+      initialIndex: photoId // Asegure-se que este é o índice correto da foto clicada
+    });
   };
-
   const closeFullScreenImage = () => {
     setFullScreenImage(null);
   };
 
-
-  
 
 
 
 
   return (
     <C.Container>
-      <FloatingButtonBar backgroundColor="#8C111B" />
+<C.BackButton
+            onClick={() => {
+              navigate('/takehome/personalities');
+            }}
+          >
+            <img src={seta} alt="" />
+          </C.BackButton>
 
       <C.MainContainer>
         <img
@@ -91,11 +107,20 @@ const handleRightClick = () => {
         </C.PageHeader>
         {personality ? (
           <>
-            <C.PersonalityImage
-              src={personality.image}
-              alt={personality.name}
-              onClick={() => openFullScreenImage(personality.image)}
-            />
+           <C.PersonalityImage
+  src={personality.image}
+  alt={personality.name}
+  onClick={() => {
+    if (personality && personality.photos) {
+      // Se você quer incluir esta imagem principal como parte das fotos em tela cheia:
+      const allImages = [personality.image, ...personality.photos.map(p => p.src)];
+      openFullScreenImage(allImages, personality.name, '#8C111B', 0);
+    } else {
+      // Se não há outras fotos ou se só deseja abrir a imagem principal:
+      openFullScreenImage([personality.image], personality.name, '#8C111B', 0);
+    }
+  }}
+/>
             
             <C.Description onClick={toggleIsExpanded}>
             <C.Title>{personality.name}</C.Title>
@@ -124,11 +149,18 @@ const handleRightClick = () => {
         </C.SubTitleContainer>
         <C.ScrollContainer ref={scrollContainerRef}>
   <C.InnerScrollContainer>
-    {personality && personality.photos && personality.photos.map((photo, index) => (
-      <C.PhotoBox key={index} onClick={() => openFullScreenImage(photo)}>
-        <img src={photo} loading='lazy' alt={`Foto ${index + 1} de ${personality.name}`} />
-      </C.PhotoBox>
-    ))}
+  {personality && personality.photos && personality.photos.map((photo, index) => (
+  <C.PhotoBox
+    key={photo.id}
+    onClick={() => {
+      const images = personality.photos?.map(p => p.src) || [];
+      openFullScreenImage(images, personality.name, '#8C111B', index);
+    }}
+  >
+    <img src={photo.src} alt={`Foto de ${personality.name}`} />
+  </C.PhotoBox>
+))}
+
   </C.InnerScrollContainer>
 </C.ScrollContainer>
         <C.ArrowContainer>
@@ -149,11 +181,14 @@ const handleRightClick = () => {
       {fullScreenImage && (
   
     <OpenImage 
-      src={fullScreenImage.src} 
+    key={fullScreenImage.initialIndex}
+      images={fullScreenImage.images} 
       alt={fullScreenImage.description} 
       background='#8C111B' 
       description={fullScreenImage.description}
       onClose={closeFullScreenImage}
+      initialIndex={fullScreenImage.initialIndex}
+
      
     />
 

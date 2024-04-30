@@ -32,11 +32,12 @@ export const BackButton = styled.button`
 `;
 
 const Images = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string[]>([]);
   const [imageDescription, setImageDescription] = useState<string>('');
+  const [currentIndex, setCurrentIndex] = useState(0);
   
 
-  // Suponha que este seja o seu array de imagens
+   
   const images = [
     { src: oxiras1, description: 'Apresentações artísticas de orixás em evento do VSS. ' },
     { src: oxiras2, description: 'Apresentações artísticas de orixás em evento do VSS. ' },
@@ -50,11 +51,16 @@ const Images = () => {
     { src: restaurante, description: 'RESTAURANTE KÚUKU-WAANA' },
   ];
 
-  const openFullScreenImage = (src: string, description: string): void => {
-    setSelectedImage(src);
-    setImageDescription(description);
+  const openFullScreenImage = (index: number) => {
+    setSelectedImage(images.map(img => img.src));  
+    setImageDescription(images[index].description);
+    setCurrentIndex(index);  
   };
  
+  const handleClose = () => {
+    setSelectedImage([])
+    return null  
+  };
 
   return (
     <WatermarkWrapper>
@@ -71,11 +77,7 @@ const Images = () => {
 
         <div className="fotos">
           {images.map((image, index) => (
-            <div
-              key={index}
-              className="foto"
-              onClick={() => openFullScreenImage(image.src, image.description)}
-            >
+          <div key={index} className="foto" onClick={() => openFullScreenImage(index)}>
               <img
                 src={image.src}
                 alt={`Foto ${index + 1}`}
@@ -85,19 +87,19 @@ const Images = () => {
             </div>
           ))}
         </div>
-        {selectedImage && (
+        {selectedImage.length > 0 && (  // Verifique se o array não está vazio
           <OpenImage
-            src={selectedImage}
+            images={selectedImage}
             alt="Imagem selecionada"
             background="#D66B00"
             description={imageDescription}
-            onClose={() => setSelectedImage(null)}
-            
+            onClose={handleClose}
+            initialIndex={currentIndex}
           />
         )}
       </div>
     </WatermarkWrapper>
   );
-};
+}; 
 
 export default Images;

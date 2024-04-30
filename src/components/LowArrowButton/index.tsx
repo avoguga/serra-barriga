@@ -9,7 +9,7 @@ interface ArrowProps {
 }
 
 const ArrowButton = styled.button`
-  background: #40011f;
+  background: #8D094A;
   width: 50px;
   height: 50px;
   border-radius: 50%;

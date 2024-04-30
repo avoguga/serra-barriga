@@ -1,4 +1,4 @@
-import imagem from '../../assets/icons/audio.svg';
+import imagem from '../../assets/icons/i_audio pagina.png';
 import { useNavigate,  } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
@@ -87,9 +87,9 @@ const AudiosTakeHome = () => {
               
             }}
           >
-            <p className="aaaaa">Interpretação: {audio.interpretacao} </p>
+            <p className="aaaaa">voz: {audio.interpretacao} </p>
             <p className="aaaaa">Texto: {audio.texto}</p>
-            <p className="aaaaa">Trilha: {audio.trilha} </p>
+   
           </div> <br /><br />
           </React.Fragment>
         ))}

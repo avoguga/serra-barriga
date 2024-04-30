@@ -3,7 +3,7 @@ import * as C from './styles';
 import { useLocation, useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import logo from '../../assets/logo.png';
-import Video from '../../assets/icons/video.svg';
+import Video from '../../assets/icons/i_video pagina.png';
 //
 const VideoScreen: React.FC = () => {
     const navigate = useNavigate();

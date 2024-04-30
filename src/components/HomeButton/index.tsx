@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Icons } from '../../helpers/icons';
 
-const Button = styled.button`
+const Button = styled.button<{active?: boolean}>`
   display: flex;
   width: 120px;
 
@@ -27,7 +27,9 @@ const Button = styled.button`
   
   width: 67px;
   height: 67px;
-    
+  fill: ${props => props.active ? '#7A9600' : 'currentColor'} 
+  
+ 
   }
 `;
 
@@ -36,13 +38,14 @@ interface HomeButtonProps
   children?: React.ReactNode;
   iconType: keyof typeof Icons;
   onClick?: () => void;
+  active?: boolean;
 }
 
-const HomeButton = ({ children, onClick, iconType }: HomeButtonProps) => {
+const HomeButton = ({ children, onClick, iconType,active }: HomeButtonProps) => {
   const ButtonIcon = Icons[iconType];
 
   return (
-    <Button onClick={onClick} >
+    <Button onClick={onClick} active={active} >
       <ButtonIcon />
       {children}
     </Button>

@@ -173,3 +173,17 @@ export const FullScreenImage = styled.img`
   max-height: 90%;
   display: flex;
 `;
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--square-color);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  position: fixed; // Alterado de absolute para fixed
+  top: 7%;
+  left: 5%;
+  z-index: 10;
+  cursor: pointer;
+`;

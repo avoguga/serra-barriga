@@ -1,5 +1,6 @@
 export interface FullScreenImage {
-  src: string;
+  images: string[];
+  initialIndex?: number;
   description: string;
   background: string;
 }

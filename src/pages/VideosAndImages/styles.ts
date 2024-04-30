@@ -37,11 +37,10 @@ export const SelfieContainer = styled.div`
 `;
 
 export const Icon = styled.img`
-  margin-right: 11%;
-  height: 38%;
+  margin-right: 5%;
 
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
 `;
 
 export const VideoContainer = styled.div`
