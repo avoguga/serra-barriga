@@ -159,7 +159,7 @@ const SerraDaBarriga = () => {
         <iframe
           src="https://www.youtube.com/embed/USLC-TsQdnI"
           title="Memórias de luta na Serra da Barriga"
-          frameBorder="0"
+          
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
           className="video"

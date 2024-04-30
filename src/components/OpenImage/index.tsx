@@ -23,6 +23,8 @@ const OpenImage: React.FC<OpenImageProps> = ({
   const [currentIndex, setCurrentIndex] = useState(initialIndex ?? 0);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  
+
   useEffect(() => {
     // Garantir que o currentIndex seja atualizado corretamente quando initialIndex mudar
     setCurrentIndex(initialIndex ?? 0);
@@ -42,10 +44,14 @@ const OpenImage: React.FC<OpenImageProps> = ({
     }
   }, [currentIndex]);
 
+
+       
+
   return (
     <C.FullScreenWrapper background={background} onClick={onClose}>
       <C.LogoContainer>
         <img
+        
           src={iconX}
           alt="iconX"
           loading="lazy"
@@ -59,7 +65,8 @@ const OpenImage: React.FC<OpenImageProps> = ({
           }}
           onClick={onClose}
         />
-        <img
+
+ <img
           src={logo}
           alt="logo serra da barriga"
           style={{
@@ -82,6 +89,7 @@ const OpenImage: React.FC<OpenImageProps> = ({
           />
         ))}
       </C.ImageContainer>
+     
       <C.Description>{description}</C.Description>
     </C.FullScreenWrapper>
   );
