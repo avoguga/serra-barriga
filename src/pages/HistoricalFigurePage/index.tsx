@@ -34,7 +34,7 @@ const HistoricalFigurePage: React.FC = () => {
               </C.ContentHeader> 
               <C.AgroupButtons>
           <HomeButton
-            iconType="InfoEspacos"
+            iconType="Info"
             onClick={() => {
               navigate(`/historical-figure/${figureName}/infoView`);
             }}
@@ -42,7 +42,7 @@ const HistoricalFigurePage: React.FC = () => {
             INFORMAÇÕES
           </HomeButton>
           <HomeButton
-            iconType="Location"
+            iconType="LocationEspaco"
             onClick={() => {
               navigate(`/historical-figure/${figureName}/LocView`);
             }}
@@ -50,7 +50,7 @@ const HistoricalFigurePage: React.FC = () => {
             LOCALIZAÇÃO
           </HomeButton>
           <HomeButton
-            iconType="VideoEspaco"
+            iconType="Video"
             onClick={() => {
               navigate(`/historical-figure/${figureName}/VideosView`);
             }}
@@ -58,7 +58,7 @@ const HistoricalFigurePage: React.FC = () => {
             VÍDEOS
           </HomeButton>
           <HomeButton
-            iconType="ImgEspacos"
+            iconType="Img"
             onClick={() => {
               navigate(`/historical-figure/${figureName}/ImageView`);
             }}
@@ -66,7 +66,7 @@ const HistoricalFigurePage: React.FC = () => {
             IMAGENS
           </HomeButton>
           <HomeButton
-            iconType="AudioEspaco"
+            iconType="Audio"
             onClick={() => {
               navigate(`/historical-figure/${figureName}/AudiosView`);
             }}
@@ -74,7 +74,7 @@ const HistoricalFigurePage: React.FC = () => {
             ÁUDIOS
           </HomeButton>
           <HomeButton
-            iconType="SelfieEspaco"
+            iconType="Selfie"
             onClick={() => {
               navigate(`/historical-figure/${figureName}/SelfieView`);
             }}

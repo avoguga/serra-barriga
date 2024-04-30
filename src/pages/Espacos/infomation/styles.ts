@@ -48,11 +48,11 @@ export const InfoText = styled.div`
   border-radius: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: baseline;
   > h2 {
     font-family: 'FuturaPTDemi', sans-serif;
     letter-spacing: 1px;
-    margin-right: 45px;
+    margin-left: 45px;
   }
 `;
 

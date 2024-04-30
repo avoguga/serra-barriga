@@ -11,12 +11,14 @@ export const PersonalityContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  justify-content: end;
 `;
 export const ContentHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   @media only screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
     margin-top: 55px;
   }
@@ -25,7 +27,8 @@ export const ContentHeader = styled.header`
 export const PersonalityTitle = styled.h1`
   font-family: 'FuturaPTHeavy', sans-serif;
   white-space: nowrap;
-
+  margin-top: 10px;
+  margin-bottom: 15px;
   font-size: 22px;
 `;
 export const Subtitle = styled.h4`
@@ -33,11 +36,13 @@ export const Subtitle = styled.h4`
   text-align: center;
   white-space: nowrap;
   color: #e7ebe0;
+  margin-bottom: 20px;
 `;
 export const PersonalityImage = styled.img`
-  width: 260px; // Largura do ícone
-  height: 230px; // Altura automática para manter a proporção
-  align-self: center; // Centraliza o ícone na coluna
+  width: 245px; // Largura do ícone
+  height: 215px; // Altura automática para manter a proporção
+  align-self: center;
+  margin-bottom: 20px;
 `;
 export const PersonalityDescription = styled.div`
   display: flex;

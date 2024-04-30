@@ -26,6 +26,7 @@ export const ImageContainer = styled.div`
   }
 
   padding: 30px;
+  scroll-behavior: smooth;
 `;
 
 export const StyledImage = styled.img`

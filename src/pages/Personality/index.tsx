@@ -55,14 +55,14 @@ const handleRightClick = () => {
 
 
   const openFullScreenImage = (images: string[], description: string, background: string, photoId: number) => {
-    const initialIndex = images.findIndex((img, index) => index === photoId);
-    if (initialIndex !== -1) {
-      setFullScreenImage({ images, description, background, initialIndex });
-    } else {
-      setFullScreenImage({ images, description, background });
-    }
+    console.log("Opening image at index:", photoId); 
+    setFullScreenImage({
+      images,
+      description,
+      background,
+      initialIndex: photoId // Asegure-se que este é o índice correto da foto clicada
+    });
   };
-  
   const closeFullScreenImage = () => {
     setFullScreenImage(null);
   };
@@ -149,15 +149,18 @@ const handleRightClick = () => {
         </C.SubTitleContainer>
         <C.ScrollContainer ref={scrollContainerRef}>
   <C.InnerScrollContainer>
-  {personality && personality.photos && personality.photos.map((photo, index) => (  // Incluindo o index aqui
-  <C.PhotoBox key={photo.id} onClick={() => {
-    // Verifique se photos está definido antes de tentar mapeá-lo
-    const images = personality.photos ? personality.photos.map(p => p.src) : [];
-    openFullScreenImage(images, personality.name, '#8C111B', index); // Passando index corretamente
-  }}>
-    <img src={photo.src} loading="lazy" alt={`Foto de ${personality.name}`} />
+  {personality && personality.photos && personality.photos.map((photo, index) => (
+  <C.PhotoBox
+    key={photo.id}
+    onClick={() => {
+      const images = personality.photos?.map(p => p.src) || [];
+      openFullScreenImage(images, personality.name, '#8C111B', index);
+    }}
+  >
+    <img src={photo.src} alt={`Foto de ${personality.name}`} />
   </C.PhotoBox>
 ))}
+
   </C.InnerScrollContainer>
 </C.ScrollContainer>
         <C.ArrowContainer>
@@ -178,11 +181,13 @@ const handleRightClick = () => {
       {fullScreenImage && (
   
     <OpenImage 
+    key={fullScreenImage.initialIndex}
       images={fullScreenImage.images} 
       alt={fullScreenImage.description} 
       background='#8C111B' 
       description={fullScreenImage.description}
       onClose={closeFullScreenImage}
+      initialIndex={fullScreenImage.initialIndex}
 
      
     />

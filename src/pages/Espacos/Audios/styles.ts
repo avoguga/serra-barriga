@@ -47,6 +47,7 @@ export const Title = styled.div`
   p {
     font-family: 'FuturaPTBook', sans-serif;
     margin-left: 10px;
+    text-transform: uppercase;
   }
   background: #7a9600;
   color: #e7ebe0;
@@ -76,6 +77,7 @@ export const AudioText = styled.p`
   font-size: 13px;
   color: #e7ebe0;
   white-space: nowrap;
+  text-transform: uppercase;
 `;
 export const Nav = styled.nav`
   position: absolute;
@@ -98,11 +100,11 @@ export const AudioContainer = styled.div`
   border-radius: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: baseline;
 
   > h3 {
     font-family: 'FuturaPTDemi', sans-serif;
     letter-spacing: 1px;
-    margin-right: 85px;
+    margin-left: 75px;
   }
 `;

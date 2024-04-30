@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import loc from '../../../assets/icons/localização.svg';
-import maps from '../../../assets/images/mapa-atalaia.png';
-import Sidebar from '../../Atalaia/Sidebar';
+import loc from '../../../assets/icons/i_localização pagina.png';
+import maps from '../../../assets/images/Mapa Memorial Serra da Barriga - novo-03 (1).webp';
+import Sidebar from '../Sidebar';
 
 import LowArrow from '../../../components/LowArrowButton';
 
@@ -10,16 +10,20 @@ import * as C from './styles'
 
 import { EspacoData, getEspacoData } from '../../../helpers/Espacos';
 
+
 const LocView = () => {
     const navigate = useNavigate();
     const { figureName } = useParams<{ figureName: string }>();
     
    
    const figureData: EspacoData | undefined = getEspacoData(figureName ?? ''); 
+
   
   if (!figureData) {
       return <p>Espaço não encontrado.</p>;
   }
+
+
   return (
     <C.View>
       <C.Nav>
@@ -34,25 +38,35 @@ const LocView = () => {
             src={loc}
             alt="ícone de Localização"
             style={{
-              width: '25px',
-              height: '25px',
+              width: '35px',
+              height: '35px',
             }}
           />
           <h3>Localização</h3>
           <div></div>
         </C.InfoText>
-        <img
-          src={maps}
-          style={{
-            maxWidth: '130%',
-            width: '568px',
-            height: '568px',
-          }}
-        />
-        <C.Here> <p> Você está aqui</p></C.Here>
+        <C.ImageContent>
+
+        <C.MapContainer>
+    <img
+      src={maps}
+      alt="Mapa do Atalaia de Acaiuaba"
+    />
+ 
+    <C.Marker 
+    posX="10%"
+    posY="38%" 
+        >
+          ATALAIA DO ACAIUBA
+        </C.Marker>
+
+  </C.MapContainer>
+          </C.ImageContent>
+        
       </C.Content>
       <C.NavFotter>
-        <Sidebar />
+        
+        <Sidebar activeSection='LocView'  />
       </C.NavFotter>
     </C.View>
   );

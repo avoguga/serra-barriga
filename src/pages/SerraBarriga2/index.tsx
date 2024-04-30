@@ -227,6 +227,8 @@ const SerraDaBarriga2 = () => {
   
   const [fullScreenImage, setFullScreenImage] = useState<FullScreenImage | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const navigate = useNavigate();
   const fullText = `Serra da Barriga está localizada no atual município de União dos Palmares, no estado de Alagoas. À época do Quilombo dos Palmares, fazia parte da Capitania de Pernambuco.  
 
@@ -258,9 +260,16 @@ const SerraDaBarriga2 = () => {
  const scrollContainerRef = React.createRef<HTMLDivElement>();
   
   
- const openFullScreenImage = (src: string, description: string, background: string = '#D66B00'): void => {
-  setFullScreenImage({ src, description, background });
+ const openFullScreenImage = (p0: string[], description: string, index: number) => {
+  setFullScreenImage({
+    images: images.map(img => img.src),
+    description: images[index].description,
+    background: '#D66B00',
+    initialIndex: index
+  });
+  setCurrentIndex(index);
 };
+
 const closeFullScreenImage = () => {
   setFullScreenImage(null);
 };
@@ -320,7 +329,7 @@ const scrollCarrossel = (direction: string) => {
     {images.map((image, index) => (
       <img key={index} 
            src={image.src} 
-           onClick={() => openFullScreenImage(image.src, image.description)}
+           onClick={() => openFullScreenImage(images.map(img => img.src), image.description, index)}
            alt={image.description} 
            style={{ width: '160px', height: '160px' }}
       />
@@ -356,12 +365,12 @@ const scrollCarrossel = (direction: string) => {
             {fullScreenImage && (
   
   <OpenImage 
-    src={fullScreenImage.src} 
+    images={fullScreenImage.images}
     alt={fullScreenImage.description} 
     background='#D66B00' 
     description={fullScreenImage.description}
     onClose={closeFullScreenImage}
-   
+   initialIndex={currentIndex}
   />
 
 )}

@@ -22,13 +22,13 @@ import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
 
 const SerraDaBarriga = () => {
   const images = [
-    { src:  foto1},
-    { src:  foto2},
-    { src:  foto3},
-    { src:  foto4},
-    { src:  foto5},
-    { src:  foto6},
-    { src:  foto7},
+    { src:  foto1, description:'foto 1'},
+    { src:  foto2, description:'foto 2'},
+    { src:  foto3, description:'foto 3'},
+    { src:  foto4, description:'foto 4'},
+    { src:  foto5, description:'foto 5'},
+    { src:  foto6, description:'foto 6'},
+    { src:  foto7, description:'foto 7'},
 
    
 
@@ -69,10 +69,15 @@ const SerraDaBarriga = () => {
     ? paragraphs
     : paragraphs.slice(0, previewParagraphCount);
 
-    const openFullScreenImage = (src: string, description = 'descrição da imagem', background = '#8C111B') => {
-      setFullScreenImage({ src, description, background });
+    const openFullScreenImage = (index: number) => {
+      const selectedImage = images[index];
+      setFullScreenImage({
+        images: images.map(img => img.src), // Passa todas as imagens para navegação
+        description: selectedImage.description,
+        background: '#8C111B',
+        initialIndex: index // Define a imagem inicial baseada no índice clicado
+      });
     };
-  
     const closeFullScreenImage = () => {
       setFullScreenImage(null);
     };
@@ -134,7 +139,7 @@ const SerraDaBarriga = () => {
             <img key={index} 
             src={image.src} 
             className="image" 
-            onClick={() => openFullScreenImage(image.src)}
+            onClick={() => openFullScreenImage(index)}
            
             
             
@@ -172,11 +177,12 @@ const SerraDaBarriga = () => {
             {fullScreenImage && (
   
   <OpenImage 
-    src={fullScreenImage.src} 
+    images={fullScreenImage.images} 
     alt={fullScreenImage.description} 
     background='#8C111B' 
     description={fullScreenImage.description}
     onClose={closeFullScreenImage}
+   initialIndex={fullScreenImage.initialIndex}
    
   />
 
