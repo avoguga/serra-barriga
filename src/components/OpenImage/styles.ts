@@ -27,6 +27,13 @@ export const ImageContainer = styled.div`
 
   padding: 30px;
   scroll-behavior: smooth;
+  &.pinch-zoom {
+    touch-action: pan-x pan-y;
+    overflow: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
 `;
 
 export const StyledImage = styled.img`

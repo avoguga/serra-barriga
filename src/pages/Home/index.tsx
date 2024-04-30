@@ -87,25 +87,6 @@ background-size: 130vw;
 
 
 `
-// export const enterFullScreen = () => {
-//   const doc: any = window.document;
-//   const docEl: any = doc.documentElement;
-
-//   const requestFullScreen =
-//     docEl.requestFullscreen ||
-//     docEl.mozRequestFullScreen ||
-//     docEl.webkitRequestFullScreen ||
-//     docEl.msRequestFullscreen;
-
-//   if (
-//     !doc.fullscreenElement &&
-//     !doc.mozFullScreenElement &&
-//     !doc.webkitFullscreenElement &&
-//     !doc.msFullscreenElement
-//   ) {
-//     requestFullScreen.call(docEl);
-//   }
-// };
 
 const isSamsungInternet = (): boolean => {
   return /SamsungBrowser/.test(navigator.userAgent);
