@@ -6,10 +6,10 @@ import footer from '../../assets/icons/logo parque - verde.svg'
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import FloatingButtonBar from '../../components/FloatingContainer';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import OpenImage from '../../components/OpenImage';
 import { FullScreenImage } from '../../helpers/OpenImage';
-import React from 'react';
+
 import Arrow from '../../components/ArrowButton';
 
 import foto1 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (1).webp';

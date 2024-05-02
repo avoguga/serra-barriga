@@ -30,7 +30,7 @@ const Agenda = () => {
 
   useEffect(() => {
     setLoading(true); // Inicia o loading antes da chamada da API
-    axios.get("https://serra-gestor.vercel.app/api/eventos?")
+    axios.get("https://serra-gestor.vercel.app/api/eventos")
       .then(response => {
         console.log(response);
         
@@ -72,7 +72,7 @@ const Agenda = () => {
     navigate(`/agenda/${EventId}`);
   };
 
-  return (
+  return ( 
     <C.PageContainer>
       <FloatingButtonBar backgroundColor="#026660" backBgColor='#003431' />
       <HeaderC />

@@ -2,7 +2,7 @@ import React from 'react';
 import * as C from './styles';
 import { useLocation, useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.png'; 
 import Video from '../../assets/icons/i_video pagina.png';
 //
 const VideoScreen: React.FC = () => {
@@ -18,7 +18,7 @@ const VideoScreen: React.FC = () => {
   return (
     <C.VideoScreenContainer>
 
-<C.BackButton onClick={() => navigate('/takehome/videosAndImages')}>
+<C.BackButton onClick={() =>navigate(-1)}>
           <img src={seta} alt="Go back" />
         </C.BackButton>
         <C.LogoImage src={logo} alt="logo" />

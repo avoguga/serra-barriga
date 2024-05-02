@@ -19,7 +19,7 @@ import obj12 from '../../assets/modelosOtimizados/Objeto_12_4k-b.glb';
 import obj13 from '../../assets/modelosOtimizados/Objeto_13_4k-b.glb';
 import obj14 from '../../assets/modelosOtimizados/Objeto_15_4k-b.glb';
 
-
+import Video from '../../assets/icons/i_video pagina.png';
 
 import { BackButton } from '../TakeHome';
 import { useNavigate } from 'react-router-dom';
@@ -28,10 +28,12 @@ import { useState } from 'react';
 
 import * as C from './styles';
 
-type Modelo3D = {
+export type Modelo3D = {
   id: number;
   src: string;
   alt: string;
+  title:string;
+  description: string;
 };
 
 const VirtualExpo = () => {
@@ -46,84 +48,112 @@ const VirtualExpo = () => {
 
       src: obj1,
       alt: 'Modelo',
+      title: 'ARTEFATO',
+      description: 'Artefacto ou artefato, em arqueologia, é qualquer objeto feito ou modificado por seres humanos. Esses objetos fornecem, através de pesquisas e análises arqueológicas, diversas informações sobre as ...'
     },
     {
       id: 2,
 
       src: obj2,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 3,
 
       src: obj3,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 4,
 
       src: obj4,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 5,
 
       src: obj5,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 6,
 
       src: obj6,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 7,
 
       src: obj7,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 8,
 
       src: obj8,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 9,
 
       src: obj9,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 10,
 
       src: obj10,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 11,
 
       src: obj11,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 12,
 
       src: obj12,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 13,
 
       src: obj13,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 14,
 
       src: obj14,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
   ];
 
@@ -196,10 +226,20 @@ const VirtualExpo = () => {
           </C.ReadMoreButton>
         </C.ExpoInfoContainer>
 
+        <C.SelfieContainer onClick={() => {
+              navigate(`/virtual-expo/expo-videos`);
+            }}>
+          <C.Icon src={Video} alt="video" />
+        
+
+          <C.Text>VÍDEOS</C.Text> 
+        
+        </C.SelfieContainer>
+
         <C.ModelsContainer>
           {modelos.map((modelo) => (
-            <div key={modelo.id}>
-              {modelo.id === 1 || modelo.id === 2 ? (
+            <button key={modelo.id}      onClick={() => navigate(`/virtual-expo/expo-details/${modelo.id} `, {state:modelo})}>
+              {modelo.id === 1 || modelo.id === 2 ? ( 
                 <model-viewer
                   ar
                   loading="eager"
@@ -215,6 +255,7 @@ const VirtualExpo = () => {
                     width: '146px',
                     height: '146px',
                     backgroundColor: '#EB7400',
+               
 
                     borderRadius: '50%',
                   }}
@@ -237,7 +278,7 @@ const VirtualExpo = () => {
                   }}
                 ></model-viewer>
               )}
-            </div>
+            </button>
           ))}
         </C.ModelsContainer>
       </div>
