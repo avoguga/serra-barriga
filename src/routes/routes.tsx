@@ -23,7 +23,7 @@ import Maps from '../pages/Maps';
 import HistoricalFigurePage from '../pages/HistoricalFigurePage';
 
 
-import AtalaiaVideosPlayView from '../pages/Espacos/PlayVideos';
+
 
 
 import VideoScreen from '../components/VideoScreen';
@@ -38,6 +38,8 @@ import SelfieView from '../pages/Espacos/Selfie';
 import Ficha from '../pages/Ficha';
 import Agenda from '../pages/Agenda';
 import HomeExpo from '../pages/HomeExpo';
+import ExpoVideos from '../pages/ExpoVideos';
+import ExpoDetails from '../pages/ExpoDetails';
 
 
 
@@ -107,6 +109,16 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
+    path: '/virtual-expo/expo-videos',
+    element: <ExpoVideos />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/virtual-expo/expo-details/:modelId',
+    element: <ExpoDetails/>,
+    errorElement: <ErrorPage />,
+  },
+  {
     path: '/takehome/serra-da-barriga',
     element: <SerraBarriga2 />,
     errorElement: <ErrorPage />,
@@ -139,11 +151,7 @@ export const router = createBrowserRouter([
 
  
 
-  {
-    path: '/atalaia-de-acaiuba/videos/playvideos',
-    element: <AtalaiaVideosPlayView />,
-    errorElement: <ErrorPage />,
-  },
+ 
  
   {
     path: '/agenda',
