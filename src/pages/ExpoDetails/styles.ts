@@ -6,8 +6,18 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   height: 105vh;
-  background-color: black;
+
   color: #fff;
+`;
+
+export const VideoBackground = styled.video`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; // Isso garante que o vídeo cubra toda a tela sem distorção
+  z-index: -1;
 `;
 
 export const BackButton = styled.button`
