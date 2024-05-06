@@ -108,13 +108,13 @@ const Agenda = () => {
             </C.EventCard>
           ))
         ) : (
-          <p>Nenhum evento disponível para este mês.</p>
+          <p style={{color:'#FFFFFF', whiteSpace:"nowrap"}}>Nenhum evento disponível para este mês.</p>
         )}
       </C.EventContainer>
-      <C.ArrowContainer>
-        <div onClick={handleDownClick}>
+      <C.ArrowContainer> <br />
+        <button onClick={handleDownClick}>
           <img src={ArrowDownIcon} alt="seta para baixo" width={30} height={41} />
-        </div>
+        </button>
       </C.ArrowContainer>
       <Outlet />
     </C.PageContainer>

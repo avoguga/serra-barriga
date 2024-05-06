@@ -126,7 +126,7 @@ const QRCode: React.FC = () => {
           </BackButton>
           <img src={logo} alt="Logo" style={{ width: '200px', height: '70px', marginTop: '50px', marginBottom: '30px' }} />
         </HeaderContainer>
-        {isLoading && <div style={{ textAlign: 'center', fontSize: '18px' }}>Carregando a câmera, aguarde um momento...</div>}
+        {isLoading && <div style={{ textAlign: 'center', fontSize: '18px', color:"#FFFF", marginTop:'20px', marginBottom:'20px' }}>Carregando a câmera, aguarde um momento...</div>}
         <CameraContainer ref={webcamRef}></CameraContainer>
       </Container>
     </WatermarkWrapper>

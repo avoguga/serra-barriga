@@ -20,8 +20,8 @@ export const HeaderContent = styled.div`
   align-items: center;
   width: 170px;
 
-  justify-content: center;
-  gap: 13px;
+  justify-content: baseline;
+  gap: 25px;
   font-family: 'FuturaPTDemi', sans-serif;
   font-size: 14px;
 `;

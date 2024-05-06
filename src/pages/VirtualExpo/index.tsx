@@ -63,63 +63,63 @@ const VirtualExpo = () => {
       id: 3,
 
       src: obj3,
-      alt: 'Modelo',
-      title: '',
+      alt: 'Vasilhame de cerâmica',
+      title: 'Vasilhame de cerâmica',
       description: ''
     },
     {
       id: 4,
 
       src: obj4,
-      alt: 'Modelo',
-      title: '',
-      description: ''
+      alt: 'Opérculo',
+      title: 'Opérculo',
+      description: ' Objeto cerâmico utilizado para cobrir a urna funerária (Igaçara).'
     },
     {
       id: 5,
 
       src: obj5,
-      alt: 'Modelo',
-      title: '',
-      description: ''
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
+      description: 'Representação de animal (zoomorfo).'
     },
     {
       id: 6,
 
       src: obj6,
-      alt: 'Modelo',
-      title: '',
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
       description: ''
     },
     {
       id: 7,
 
       src: obj7,
-      alt: 'Modelo',
-      title: '',
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
       description: ''
     },
     {
       id: 8,
 
       src: obj8,
-      alt: 'Modelo',
-      title: '',
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
       description: ''
     },
     {
       id: 9,
 
       src: obj9,
-      alt: 'Modelo',
-      title: '',
+      alt: 'Disco de argila.',
+      title: 'Disco de argila',
       description: ''
     },
     {
       id: 10,
 
       src: obj10,
-      alt: 'Modelo',
+      alt: '',
       title: '',
       description: ''
     },
@@ -127,32 +127,33 @@ const VirtualExpo = () => {
       id: 11,
 
       src: obj11,
-      alt: 'Modelo',
-      title: '',
+      alt: 'Machado de lítico ',
+      title: 'Machado de lítico',
       description: ''
     },
     {
       id: 12,
 
       src: obj12,
-      alt: 'Modelo',
-      title: '',
-      description: ''
+      alt: 'Urna funerária (igaçara)',
+      title: 'Urna funerária (igaçara)',
+      description: `Tradição Aratu
+      O tamanho desta urna, os seixos associados e o local onde foi encontrada segerem que foi utilizada para um enterramento secundário de uma criaça. Infelizmente, a peça foi descoberta e desenterrada por não-arqueólogos, impedindo assim que retirássemos mais informações.`
     },
     {
       id: 13,
 
       src: obj13,
-      alt: 'Modelo',
-      title: '',
-      description: ''
+      alt: 'Varilha cerâmica indígena',
+      title: 'Varilha cerâmica indígena',
+      description: 'tradição Aratu.'
     },
     {
       id: 14,
 
       src: obj14,
-      alt: 'Modelo',
-      title: '',
+      alt: 'Disco de argila',
+      title: 'Disco de argila ',
       description: ''
     },
   ];
@@ -194,7 +195,7 @@ const VirtualExpo = () => {
         />
         <BackButton
           onClick={() => {
-            navigate(-1);
+            navigate(-1) , {state: { background:'#EB7400'}};
           }}
         >
           <img src={seta} alt="" />
@@ -238,7 +239,7 @@ const VirtualExpo = () => {
 
         <C.ModelsContainer>
           {modelos.map((modelo) => (
-            <button key={modelo.id}      onClick={() => navigate(`/virtual-expo/expo-details/${modelo.id} `, {state:modelo})}>
+            <button key={modelo.id}      onClick={() => navigate(`/virtual-expo/expo-details/${modelo.id} `, {state: {modelo, background:'#EB7400'}})}>
               {modelo.id === 1 || modelo.id === 2 ? ( 
                 <model-viewer
                   ar

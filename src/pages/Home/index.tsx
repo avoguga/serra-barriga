@@ -87,6 +87,31 @@ background-size: 130vw;
 
 
 `
+const Main = styled.main`
+  background-color: #67781B;
+  min-height: 100vh;
+  max-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (width: 360px), (height: 740px) {
+
+    height: auto
+ 
+   
+  }
+
+  
+  @media only screen and (width: 390px), (height: 844px) {
+
+height: 110vh
+
+
+}
+`;
+
 
 const isSamsungInternet = (): boolean => {
   return /SamsungBrowser/.test(navigator.userAgent);
@@ -134,7 +159,7 @@ const Home = () => {
       )}
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
           
-      <div
+      <Main
         style={{
           backgroundColor: '#67781B',
           minHeight:'100vh',
@@ -143,6 +168,7 @@ const Home = () => {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent:'center',
+          
           
   
         }}
@@ -240,7 +266,7 @@ const Home = () => {
           </BottomContainer>
         <FooterContainer/>
 
-      </div>
+      </Main>
     </WatermarkWrapper>
     </>
   );

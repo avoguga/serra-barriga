@@ -14,7 +14,7 @@ export const BackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #b55a01;
+
   border-radius: 50%;
   width: 55px;
   height: 55px;
@@ -28,7 +28,7 @@ export const ExpoContainer = styled.div`
   font-family: 'FuturaPTHeavy';
   font-size: 12px;
   color: var(--text-color);
-  background: #b55a01;
+
   padding: 1rem;
   border-radius: 230px;
   display: flex;
