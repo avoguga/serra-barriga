@@ -28,11 +28,14 @@ import { useState } from 'react';
 
 import * as C from './styles';
 
-type Modelo3D = {
+export type Modelo3D = {
   id: number;
   src: string;
   alt: string;
+  title:string;
+  description: string;
 };
+
 
 const HomeExpo = () => {
   const ExpoIcon = Icons['Expo'];
@@ -46,84 +49,113 @@ const HomeExpo = () => {
 
       src: obj1,
       alt: 'Modelo',
+      title: 'ARTEFATO',
+      description: 'Artefacto ou artefato, em arqueologia, é qualquer objeto feito ou modificado por seres humanos. Esses objetos fornecem, através de pesquisas e análises arqueológicas, diversas informações sobre as ...'
     },
     {
       id: 2,
 
       src: obj2,
       alt: 'Modelo',
+      title: '',
+      description: ''
     },
     {
       id: 3,
 
       src: obj3,
-      alt: 'Modelo',
+      alt: 'Vasilhame de cerâmica',
+      title: 'Vasilhame de cerâmica',
+      description: ''
     },
     {
       id: 4,
 
       src: obj4,
-      alt: 'Modelo',
+      alt: 'Opérculo',
+      title: 'Opérculo',
+      description: ' Objeto cerâmico utilizado para cobrir a urna funerária (Igaçara).'
     },
     {
       id: 5,
 
       src: obj5,
-      alt: 'Modelo',
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
+      description: 'Representação de animal (zoomorfo).'
     },
     {
       id: 6,
 
       src: obj6,
-      alt: 'Modelo',
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
+      description: ''
     },
     {
       id: 7,
 
       src: obj7,
-      alt: 'Modelo',
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
+      description: ''
     },
     {
       id: 8,
 
       src: obj8,
-      alt: 'Modelo',
+      alt: 'Cachimbo de cerâmica',
+      title: 'Cachimbo de cerâmica',
+      description: ''
     },
     {
       id: 9,
 
       src: obj9,
-      alt: 'Modelo',
+      alt: 'Disco de argila.',
+      title: 'Disco de argila',
+      description: ''
     },
     {
       id: 10,
 
       src: obj10,
-      alt: 'Modelo',
+      alt: '',
+      title: '',
+      description: ''
     },
     {
       id: 11,
 
       src: obj11,
-      alt: 'Modelo',
+      alt: 'Machado de lítico ',
+      title: 'Machado de lítico',
+      description: ''
     },
     {
       id: 12,
 
       src: obj12,
-      alt: 'Modelo',
+      alt: 'Urna funerária (igaçara)',
+      title: 'Urna funerária (igaçara)',
+      description: `Tradição Aratu
+      O tamanho desta urna, os seixos associados e o local onde foi encontrada segerem que foi utilizada para um enterramento secundário de uma criaça. Infelizmente, a peça foi descoberta e desenterrada por não-arqueólogos, impedindo assim que retirássemos mais informações.`
     },
     {
       id: 13,
 
       src: obj13,
-      alt: 'Modelo',
+      alt: 'Varilha cerâmica indígena',
+      title: 'Varilha cerâmica indígena',
+      description: 'tradição Aratu.'
     },
     {
       id: 14,
 
       src: obj14,
-      alt: 'Modelo',
+      alt: 'Disco de argila',
+      title: 'Disco de argila ',
+      description: ''
     },
   ];
 
@@ -164,7 +196,7 @@ const HomeExpo = () => {
         />
         <BackButton
           onClick={() => {
-            navigate(-1);
+            navigate(-1) , {state: { background:'#859A27'}};
           }}
         >
           <img src={seta} alt="" />
@@ -198,8 +230,8 @@ const HomeExpo = () => {
 
         <C.ModelsContainer>
           {modelos.map((modelo) => (
-            <div key={modelo.id}>
-              {modelo.id === 1 || modelo.id === 2 ? (
+            <button key={modelo.id}      onClick={() => navigate(`/virtual-expo/expo-details/${modelo.id} `, {state: {modelo, background:'#859A27'}})}>
+              {modelo.id === 1 || modelo.id === 2 ? ( 
                 <model-viewer
                   ar
                   loading="eager"
@@ -215,6 +247,7 @@ const HomeExpo = () => {
                     width: '146px',
                     height: '146px',
                     backgroundColor: '#859A27',
+               
 
                     borderRadius: '50%',
                   }}
@@ -237,7 +270,7 @@ const HomeExpo = () => {
                   }}
                 ></model-viewer>
               )}
-            </div>
+            </button>
           ))}
         </C.ModelsContainer>
       </div>

@@ -10,18 +10,18 @@ const ExpoDetails = () => {
     const ExpoIcon = Icons['Arqueologia'];
     const location = useLocation();
     const navigate = useNavigate();
-  const modelo = location.state as Modelo3D; 
+    const { modelo, background } = location.state as { modelo: Modelo3D, background: string };
 
   return (
     <C.Container>
-         <C.BackButton
+         <C.BackButton  style={{ backgroundColor: background }}
           onClick={() => {
             navigate(-1);
           }}
         >
           <img src={seta} alt="" />
         </C.BackButton>
-        <C.ExpoContainer>
+        <C.ExpoContainer  style={{ backgroundColor: background }}>
           <ExpoIcon />
           <h2>EXPOSIÇÃO VIRTUAL</h2>
         </C.ExpoContainer>

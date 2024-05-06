@@ -11,15 +11,17 @@ export const ExpoContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 25px;
-  padding-left: 1.5rem;
+  padding-left: 0rem;
   padding-right: 1.5rem;
   width: 285px;
   height: 70px;
-
+  white-space: nowrap;
+  gap: 5px;
   svg {
-    width: 40px;
-    height: 40px;
-    margin-right: 24px;
+    width: 55px;
+    height: 55px;
+    margin-right: 4px;
+    fill: #ffffff;
   }
 `;
 
@@ -45,6 +47,7 @@ export const ExpoInfoContainer = styled.div`
   svg {
     width: 150px;
     height: 64px;
+    fill: #ffffff;
   }
 `;
 

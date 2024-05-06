@@ -25,8 +25,8 @@ const Header = () => {
               src={AgendaSvg}
               alt="AgendaIcon"
               style={{
-                width: '38px',
-                height: '55px',
+                width: '45px',
+                height: '45px',
               }}
             />
             <h3>AGENDA</h3>
