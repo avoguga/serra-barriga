@@ -21,7 +21,7 @@ import obj14 from '../../assets/modelosOtimizados/Objeto_15_4k-b.glb';
 
 
 
-import { BackButton } from '../TakeHome';
+
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useState } from 'react';
@@ -171,7 +171,9 @@ const HomeExpo = () => {
   const textToShow = isExpanded
     ? paragraphs
     : paragraphs.slice(0, previewParagraphCount);
-
+    const backButtonStyle = {
+      backgroundColor: '#394603' // Essa cor pode vir de um estado ou prop
+    };
   return (
     <WatermarkWrapper>
       <div
@@ -194,13 +196,12 @@ const HomeExpo = () => {
             marginBottom: '60px',
           }}
         />
-        <BackButton
-          onClick={() => {
-            navigate(-1) , {state: { background:'#859A27'}};
-          }}
+      <C.BackButton
+          onClick={() => navigate(-1)}
+          style={backButtonStyle} // Passando o estilo aqui
         >
           <img src={seta} alt="" />
-        </BackButton>
+        </C.BackButton>
         <C.ExpoContainer>
           <ExpoIcon />
           <h2>EXPOSIÇÃO VIRTUAL</h2>

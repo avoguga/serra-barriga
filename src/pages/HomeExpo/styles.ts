@@ -59,7 +59,20 @@ export const ExpoText = styled.p`
 
   opacity: 0.85;
 `;
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  position: fixed; // Alterado de absolute para fixed
+  top: 7%;
+  left: 5%;
+  z-index: 10;
+  cursor: pointer;
+`;
 export const ModelsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
