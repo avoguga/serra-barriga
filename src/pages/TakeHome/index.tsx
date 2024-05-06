@@ -23,7 +23,7 @@ export const BackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--square-color);
+background: #753D00;
   border-radius: 50%;
   width: 55px;
   height: 55px;
@@ -159,8 +159,7 @@ const TakeHome = () => {
             <HomeButton
               iconType="Icon360"
               onClick={() => {
-                window.location.href =
-                  'https://kuula.co/share/collection/79KY4?logo=1&info=1&fs=1&vr=0&zoom=1&gyro=0&thumbs=-1&inst=0&keys=0';
+                navigate('/takehome/tour-360');
               }}
             >
               PASSEIO 360º
