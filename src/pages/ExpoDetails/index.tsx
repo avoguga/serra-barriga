@@ -55,7 +55,11 @@ const ExpoDetails = () => {
   return (
     <WebcamBackground>
       <C.Container>
+
+        <C.BackButton onClick={() => navigate(-1)} style={{backgroundColor: background}}>
+
         <C.BackButton onClick={() => navigate(-1)}>
+
           <img src={seta} alt="" />
         </C.BackButton>
         <C.ExpoContainer style={{ backgroundColor: background }}>

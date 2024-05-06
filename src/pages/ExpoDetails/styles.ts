@@ -6,6 +6,10 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
   height: 105vh;
+
+
+
+ main
   color: #fff;
 `;
 

@@ -1,27 +1,39 @@
+import { useNavigate } from 'react-router-dom';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
+import styled from 'styled-components';
+import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
-import tiktok from '../../assets/icons/app serra.svg';
+const BackButton = styled.button`
+display: flex;
+align-items: center;
+justify-content: center;
+background: #753D00;
+border-radius: 50%;
+width: 55px;
+height: 55px;
+position: fixed; // Alterado de absolute para fixed
+top: 7%;
+left: 5%;
+
+cursor: pointer;
+`;
 
 const Tour360 = () => {
+  const navigate = useNavigate();
   return (
     <WatermarkWrapper>
-      <div
-        style={{
-          backgroundColor: '#8AA61E',
-          height: '100vh',
-        }}
-      >
-        <img
-          src={tiktok}
-          alt="tiktok"
-          style={{
-            width: '100%',
-            height: '102px',
-            marginTop: '118px',
-            marginBottom: '67px',
-          }}
-        />
-      </div>
+    
+              <BackButton
+            onClick={() => {
+              navigate('/takehome');
+            }}> 
+            
+            <img src={seta} alt="" />
+            </BackButton>
+
+            <iframe src="https://kuula.co/share/collection/79KY4?logo=1&info=1&fs=1&vr=0&zoom=1&gyro=0&thumbs=-1&inst=0&keys=0" frameBorder={0} style={{ height:'100vh', width:'100%', zIndex:'10'}}></iframe>
+  
+    
     </WatermarkWrapper>
   );
 };

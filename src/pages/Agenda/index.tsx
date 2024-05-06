@@ -30,7 +30,7 @@ const Agenda = () => {
 
   useEffect(() => {
     setLoading(true); // Inicia o loading antes da chamada da API
-    axios.get("https://serra-gestor.vercel.app/api/eventos")
+    axios.get("https://serra-gestor.vercel.app/api/eventos?")
       .then(response => {
         console.log(response);
         
@@ -98,8 +98,8 @@ const Agenda = () => {
         ) : eventosFiltrados.length > 0 ? (
           eventosFiltrados.map(event => (
             <C.EventCard key={event.id}>
-              <C.EventTitle>{event.Title}</C.EventTitle>
-              <C.EventDateTime>{formatDate(event.Data)} </C.EventDateTime>
+              <C.EventTitle>{event.Title}   </C.EventTitle>
+              <C.EventDateTime>{formatDate(event.Data)}</C.EventDateTime>
               <C.ButtonCard>
                 <C.MoreButton onClick={() => goToAgenda(event.id)}>
                   SAIBA MAIS
