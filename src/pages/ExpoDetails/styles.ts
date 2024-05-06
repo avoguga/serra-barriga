@@ -7,9 +7,6 @@ export const Container = styled.main`
   justify-content: center;
   height: 105vh;
 
-
-
- main
   color: #fff;
 `;
 
