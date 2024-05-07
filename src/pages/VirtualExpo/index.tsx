@@ -21,7 +21,6 @@ import obj14 from '../../assets/modelosOtimizados/Objeto_15_4k-b.glb';
 
 import Video from '../../assets/icons/i_video pagina.png';
 
-import { BackButton } from '../TakeHome';
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useState } from 'react';
@@ -193,13 +192,13 @@ const VirtualExpo = () => {
             marginBottom: '60px',
           }}
         />
-        <BackButton
+        <C.BackButton
           onClick={() => {
             navigate(-1) , {state: { background:'#EB7400'}};
           }}
         >
           <img src={seta} alt="" />
-        </BackButton>
+        </C.BackButton>
         <C.ExpoContainer>
           <ExpoIcon />
           <h2>EXPOSIÇÃO VIRTUAL</h2>

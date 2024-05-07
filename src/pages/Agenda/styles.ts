@@ -127,19 +127,23 @@ export const EventCard = styled.div`
   flex-direction: column;
   justify-content: space-around;
 
-  min-width: 78%;
-  max-height: 12rem;
+  width: 240px;
+  max-height: 14rem;
+  overflow: hidden;
 `;
 
 export const EventTitle = styled.h4`
   color: #3f3f3f;
   margin-bottom: 0.5rem;
-
+  font-size: 20px;
   font-weight: bold;
+  white-space: normal;
+  overflow: visible;
 `;
 export const EventDateTime = styled.p`
   color: #3f3f3f;
   margin-bottom: 1rem;
+  font-family: 'FuturaPTBook', sans-serif;
 `;
 export const MoreButton = styled.button`
   background-color: transparent;
@@ -151,9 +155,11 @@ export const MoreButton = styled.button`
   font-size: 1rem;
   display: flex;
   text-align: center;
-  width: 75%;
+  width: 130px;
   transition: background-color 0.3s ease;
   justify-content: center;
+  white-space: nowrap;
+  font-family: 'FuturaPTBook', sans-serif;
 `;
 export const ButtonCard = styled.div`
   display: flex;
