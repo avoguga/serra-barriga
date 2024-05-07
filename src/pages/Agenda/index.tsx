@@ -33,9 +33,12 @@ const Agenda = () => {
     axios.get("https://serra-gestor.vercel.app/api/eventos?")
       .then(response => {
         console.log(response);
+      
+        
         
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const eventosMapeados: EventoProps[] = response.data.map((evento: any) => ({
+          
           id: evento.id,
           Title: evento.Title,
           Mes: evento.Mes.toLowerCase(),
@@ -107,8 +110,9 @@ const Agenda = () => {
               </C.ButtonCard>
             </C.EventCard>
           ))
-        ) : (
-          <p style={{color:'#FFFFFF', whiteSpace:"nowrap"}}>Nenhum evento disponível para este mês.</p>
+        ) : ( 
+        <p style={{color:'#FFFFFF', whiteSpace:"nowrap"}}>Nenhum evento disponível para este mês.</p>
+
         )}
       </C.EventContainer>
       <C.ArrowContainer> <br />
