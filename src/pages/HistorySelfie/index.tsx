@@ -2,11 +2,11 @@ import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper
 import logo from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import styled from 'styled-components';
-import Iansa from '../../assets/iansã.png';
+import Iansa from '../../assets/acotirene-selfie-min.png';
 import FloatingButtonBar from '../../components/FloatingContainer';
 import BtnDownArrow from '../../components/ScrollButton';
 
-import tiktok from '../../assets/icons/logo-tiktok.svg'
+import tiktok from '../../assets/icons/logo-tiktok.svg';
 
 const Selfiee = Icons['Selfie'];
 
@@ -66,13 +66,12 @@ const Footer = styled.div`
   height: 10.5vh;
   display: flex;
   justify-content: center;
-  color: #FFFF;
+  color: #ffff;
   align-items: center;
   h4 {
     font-family: 'FuturaPT', sans-serif;
     font-size: 15px;
-  color: #FFFF;
-
+    color: #ffff;
   }
   opacity: 0.59;
 `;
@@ -91,13 +90,15 @@ const HistorySelfie = () => {
           alignItems: 'center',
         }}
       >
-
-        <img src={tiktok} alt=""     style={{
+        <img
+          src={tiktok}
+          alt=""
+          style={{
             width: '200px',
             height: '70px',
             marginTop: '80px',
-           
-          }}/>
+          }}
+        />
         <img
           src={logo}
           alt="logo serra da barriga"
@@ -134,19 +135,10 @@ const HistorySelfie = () => {
         <br />
         <ImageContainer
           onClick={() =>
-            (window.location.href =
-              'https://www.instagram.com/ar/966915324853206/?ch=NzZmOWJkMDU5MzJmMTQ4MTI3ZmZhMTIwODNiYTllZDc%3D')
+            (window.location.href = 'https://vm.tiktok.com/ZMMn86bLs/')
           }
         >
-          <img src={Iansa} alt="Iansã" width={300} height={350} />
-        </ImageContainer>
-        <ImageContainer
-          onClick={() =>
-            (window.location.href =
-              'https://www.instagram.com/ar/966915324853206/?ch=NzZmOWJkMDU5MzJmMTQ4MTI3ZmZhMTIwODNiYTllZDc%3D')
-          }
-        >
-          <img src={Iansa} alt="Iansã;" width={300} height={350} />
+          <img src={Iansa} alt="Iansã" width={290} height={370} />
         </ImageContainer>
         <Footer>
           <h4> Imagens meramente ilustrativas</h4>
