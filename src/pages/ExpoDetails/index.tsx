@@ -37,7 +37,7 @@ const WebcamBackground = ({ children }: any) => {
 
   return (
     <div style={{ position: 'relative', height: '100vh' }}>
-      <C.VideoBackground autoPlay muted ref={videoRef} />
+      <C.VideoBackground playsInline autoPlay muted ref={videoRef} />
       {children}
     </div>
   );
@@ -55,10 +55,10 @@ const ExpoDetails = () => {
   return (
     <WebcamBackground>
       <C.Container>
-
-        <C.BackButton onClick={() => navigate(-1)} style={{backgroundColor: background}}>
-
-
+        <C.BackButton
+          onClick={() => navigate(-1)}
+          style={{ backgroundColor: background }}
+        >
           <img src={seta} alt="" />
         </C.BackButton>
         <C.ExpoContainer style={{ backgroundColor: background }}>
