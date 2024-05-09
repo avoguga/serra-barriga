@@ -5,7 +5,7 @@ import { Icons } from '../../helpers/icons';
 import '@google/model-viewer';
 
 import obj1 from '../../assets/modelosOtimizados/Objeto_01-f-02.glb';
-import obj2 from '../../assets/modelosOtimizados/Objeto_01-b.glb';
+
 import obj3 from '../../assets/modelosOtimizados/Objeto_02-b (2).glb';
 import obj4 from '../../assets/modelosOtimizados/Objeto_03-b.glb';
 import obj5 from '../../assets/modelosOtimizados/Objeto_04_4k-c.glb';
@@ -48,114 +48,107 @@ const HomeExpo = () => {
       id: 1,
 
       src: obj1,
-      alt: 'Modelo',
-      title: 'ARTEFATO',
-      description: 'Artefacto ou artefato, em arqueologia, é qualquer objeto feito ou modificado por seres humanos. Esses objetos fornecem, através de pesquisas e análises arqueológicas, diversas informações sobre as ...'
+      alt: 'Vasilhame de cerâmica (alisado) - Tradição Aratu.      ',
+      title: 'Vasilhame de cerâmica (alisado) -       ',
+      description: 'Tradição Aratu.'
     },
+  
     {
       id: 2,
 
-      src: obj2,
-      alt: 'Modelo',
-      title: '',
-      description: ''
+      src: obj3,
+      alt: 'Vasilhame de cerâmica (alisado) - Tradição Aratu.      ',
+      title: 'Vasilhame de cerâmica (alisado)       ',
+      description: 'Tradição Aratu.'
     },
     {
       id: 3,
 
-      src: obj3,
-      alt: 'Vasilhame de cerâmica',
-      title: 'Vasilhame de cerâmica',
-      description: ''
+      src: obj4,
+      alt: 'Vasilhame de cerâmica - Tradição Papeba      ',
+      title: 'Vasilhame de cerâmica       ',
+      description: 'Tradição Papeba. '
     },
     {
       id: 4,
 
-      src: obj4,
-      alt: 'Opérculo',
-      title: 'Opérculo',
-      description: ' Objeto cerâmico utilizado para cobrir a urna funerária (Igaçara).'
+      src: obj5,
+      alt: 'Opérculo ',
+      title: 'Opérculo ',
+      description: 'objeto cerâmico (alisado) utilizado para cobrir a urna funerária (Igaçaba) - Tradição Aratu.'
     },
     {
       id: 5,
 
-      src: obj5,
-      alt: 'Cachimbo de cerâmica',
-      title: 'Cachimbo de cerâmica',
-      description: 'Representação de animal (zoomorfo).'
+      src: obj6,
+      alt: 'Cachimbo de cerâmica com representação de animal (zoomorfo).',
+      title: 'Cachimbo de cerâmica com representação de animal (zoomorfo).',
+      description: 'Representação provavelmente de Tatu.'
     },
     {
       id: 6,
 
-      src: obj6,
-      alt: 'Cachimbo de cerâmica',
-      title: 'Cachimbo de cerâmica',
+      src: obj7,
+      alt: 'Cachimbo de cerâmica (alisado).',
+      title: 'Cachimbo de cerâmica (alisado).      ',
       description: ''
     },
     {
       id: 7,
 
-      src: obj7,
-      alt: 'Cachimbo de cerâmica',
-      title: 'Cachimbo de cerâmica',
+      src: obj8,
+      alt: 'Fornilho de cachimbo (não é inteiro).',
+      title: 'Fornilho de cachimbo (não é inteiro).',
       description: ''
     },
     {
       id: 8,
 
-      src: obj8,
-      alt: 'Cachimbo de cerâmica',
-      title: 'Cachimbo de cerâmica',
+      src: obj9,
+      alt: 'Fornilho de cachimbo (picoteado).      ',
+      title: 'Fornilho de cachimbo (picoteado).      ',
       description: ''
     },
     {
       id: 9,
 
-      src: obj9,
-      alt: 'Disco de argila.',
-      title: 'Disco de argila',
+      src: obj10,
+      alt: 'Fornilho de cachimbo (alisado).      ',
+      title: 'Fornilho de cachimbo (alisado).      ',
       description: ''
     },
     {
       id: 10,
 
-      src: obj10,
-      alt: '',
-      title: '',
+      src: obj11,
+      alt: 'Machado lítico polido.      ',
+      title: 'Machado lítico polido.      ',
       description: ''
     },
     {
       id: 11,
 
-      src: obj11,
-      alt: 'Machado de lítico ',
-      title: 'Machado de lítico',
-      description: ''
-    },
-    {
-      id: 12,
-
       src: obj12,
-      alt: 'Urna funerária (igaçara)',
-      title: 'Urna funerária (igaçara)',
+      alt: 'Urna funerária (igaçaba)',
+      title: 'Urna funerária (igaçaba)',
       description: `Tradição Aratu
       O tamanho desta urna, os seixos associados e o local onde foi encontrada segerem que foi utilizada para um enterramento secundário de uma criaça. Infelizmente, a peça foi descoberta e desenterrada por não-arqueólogos, impedindo assim que retirássemos mais informações.`
     },
     {
-      id: 13,
+      id: 12,
 
       src: obj13,
-      alt: 'Varilha cerâmica indígena',
-      title: 'Varilha cerâmica indígena',
-      description: 'tradição Aratu.'
+      alt: 'Vasilhame de cerâmica indígena alisado em baixo e roletado em cima' ,
+      title: 'Vasilhame de cerâmica indígena',
+      description: ' alisado em baixo e roletado em cima.'
     },
     {
-      id: 14,
+      id: 13,
 
       src: obj14,
       alt: 'Disco de argila',
       title: 'Disco de argila ',
-      description: ''
+      description: 'possivelmente usado em atividades lúdicas.'
     },
   ];
 

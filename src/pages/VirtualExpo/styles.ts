@@ -140,6 +140,7 @@ export const BackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #753d00;
 
   border-radius: 50%;
   width: 55px;
