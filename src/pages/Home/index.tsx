@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../../assets/logo.png';
+import mapa from '../../assets/icons/i_Mapa.png';
+
 import aaa from '../../assets/icons/mão com celular.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import HomeButton from '../../components/HomeButton';
@@ -36,7 +38,7 @@ const BottomContainer = styled.div`
  
   background-color: #20aa9a;
   position: absolute;
-  width: 350px;
+  width: 385px;
   height: 124px;
   padding: 10px;
   box-sizing: border-box;
@@ -45,7 +47,17 @@ const BottomContainer = styled.div`
   margin-top: 15px;
 
   z-index: 1;
-  
+  @media only screen and (width: 360px), (height: 740px) {
+
+    width: 350px;
+  margin-top: 0;
+  top: 62%;
+
+
+    
+
+
+}
 `;
 
 const TextContainer = styled.div`
@@ -54,15 +66,32 @@ const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+text-align: left;
+
   p {
-    font: normal normal normal 15px/22px;
+    font-size: 15px;
     letter-spacing: 0px;
-    margin-left: 0px;
+    margin-right: 8px;
     font-family: 'FuturaPTDemi', sans-serif;
     font-weight:bold;
   
   }
+  span{
+    font-family: 'FuturaPTBold', sans-serif;
+  }
+  @media only screen and (width: 360px), (height: 740px) {
+
+    p {
+    font-size: 14px;
+    letter-spacing: 0px;
+    margin-right: 8px;
+    font-family: 'FuturaPTDemi', sans-serif;
+    font-weight:bold;
+  
+  }
+
+
+}
 `;
 const FooterContainer = styled.footer `
   background-image: url(${WatermarkImageBottom});
@@ -81,14 +110,23 @@ margin-right: 35px;
 margin-top: 200px;
 background-size: 130vw;
   background-color: #67781B;
-  margin-bottom: 8px;
-  z-index: 0;
   
+  z-index: 0;
+  @media only screen and (width: 360px), (height: 740px) {
+
+    background-position:  center;
+margin-top: 200px;
+
+
+
+
+}
 
 
 `
 const Main = styled.main`
   background-color: #67781B;
+
   min-height: 100vh;
   max-height: 150vh;
   display: flex;
@@ -98,8 +136,11 @@ const Main = styled.main`
 
   @media only screen and (width: 360px), (height: 740px) {
 
-    height: auto
+    height: 120vh;
+    justify-content: space-around;
  
+  
+
    
   }
 
@@ -110,7 +151,69 @@ height: 110vh
 
 
 }
+
+@media only screen and (width: 360px), (height: 640px) {
+
+height: 140vh
+
+
+}
 `;
+export const LogoContainer = styled.div `
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 15px;
+
+@media only screen and (width: 360px), (height: 740px) {
+
+margin-top:5px;
+
+
+
+}
+
+
+
+`
+export const MapaButton =styled.button`
+  background: #20AA9A;
+  border-radius: 50px;
+  width: 80px;
+  height: 85px;
+  color: #ffff;
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  align-items: center;
+  
+h3{
+  font-size: 15px; 
+  z-index: 3;
+  position:absolute;
+top: 9.2%;
+
+}
+
+@media only screen and (width: 390px), (height: 844px) {
+
+h3{
+  top: 8.3% ;
+}
+
+
+}
+@media only screen and (width: 360px), (height: 740px) {
+h3{
+  top: 11% ;
+}  
+
+
+
+
+
+}
+`
 
 
 const isSamsungInternet = (): boolean => {
@@ -160,23 +263,14 @@ const Home = () => {
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
           
       <Main
-        style={{
-          backgroundColor: '#67781B',
-          minHeight:'100vh',
-          maxHeight: '150vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent:'center',
-          
-          
-  
-        }}
-      >
-        
+>
 
-        <img
+      <LogoContainer>
+
+      <img
           src={Logo}
+          loading='lazy'
+
           alt="Logo"
           style={{
             width: '180px',
@@ -186,6 +280,27 @@ const Home = () => {
             padding:'5px'
           }}
           />
+        <MapaButton  onClick={() => {
+              navigate('/maps');
+            }}>
+
+
+        <img
+          src={mapa}
+          loading='lazy'
+          alt="icone de mapa"
+          style={{
+            width: '60px',
+            height: '60px',
+            
+            
+            
+            padding:'3px'
+          }}
+          />
+          <h3> MAPA</h3>
+          </MapaButton>
+          </LogoContainer>
       
    
 
@@ -256,16 +371,16 @@ const Home = () => {
               navigate('/qrcode');
             }}
           >
-            <img src={aaa} alt="aaa" width={120}  height={190} />
+            <img src={aaa} alt="aaa" width={140}  height={190} />
             <TextContainer>
               <p>
-                Aponte a câmera do celular para o símbolo e tenha uma
-                experiência ampliada.
+              Aponte a câmera do celular para o <span>símbolo da placa </span> tenha uma experiência ampliada.
+
               </p>
             </TextContainer>
           </BottomContainer>
-        <FooterContainer/>
 
+        <FooterContainer/>
       </Main>
     </WatermarkWrapper>
     </>

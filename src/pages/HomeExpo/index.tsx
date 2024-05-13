@@ -19,9 +19,6 @@ import obj12 from '../../assets/modelosOtimizados/Objeto_12_4k-b.glb';
 import obj13 from '../../assets/modelosOtimizados/Objeto_13_4k-b.glb';
 import obj14 from '../../assets/modelosOtimizados/Objeto_15_4k-b.glb';
 
-
-
-
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useState } from 'react';
@@ -32,10 +29,9 @@ export type Modelo3D = {
   id: number;
   src: string;
   alt: string;
-  title:string;
+  title: string;
   description: string;
 };
-
 
 const HomeExpo = () => {
   const ExpoIcon = Icons['Expo'];
@@ -50,16 +46,16 @@ const HomeExpo = () => {
       src: obj1,
       alt: 'Vasilhame de cerâmica (alisado) - Tradição Aratu.      ',
       title: 'Vasilhame de cerâmica (alisado) -       ',
-      description: 'Tradição Aratu.'
+      description: 'Tradição Aratu.',
     },
-  
+
     {
       id: 2,
 
       src: obj3,
       alt: 'Vasilhame de cerâmica (alisado) - Tradição Aratu.      ',
       title: 'Vasilhame de cerâmica (alisado)       ',
-      description: 'Tradição Aratu.'
+      description: 'Tradição Aratu.',
     },
     {
       id: 3,
@@ -67,7 +63,7 @@ const HomeExpo = () => {
       src: obj4,
       alt: 'Vasilhame de cerâmica - Tradição Papeba      ',
       title: 'Vasilhame de cerâmica       ',
-      description: 'Tradição Papeba. '
+      description: 'Tradição Papeba. ',
     },
     {
       id: 4,
@@ -75,7 +71,8 @@ const HomeExpo = () => {
       src: obj5,
       alt: 'Opérculo ',
       title: 'Opérculo ',
-      description: 'objeto cerâmico (alisado) utilizado para cobrir a urna funerária (Igaçaba) - Tradição Aratu.'
+      description:
+        'objeto cerâmico (alisado) utilizado para cobrir a urna funerária (Igaçaba) - Tradição Aratu.',
     },
     {
       id: 5,
@@ -83,7 +80,7 @@ const HomeExpo = () => {
       src: obj6,
       alt: 'Cachimbo de cerâmica com representação de animal (zoomorfo).',
       title: 'Cachimbo de cerâmica com representação de animal (zoomorfo).',
-      description: 'Representação provavelmente de Tatu.'
+      description: 'Representação provavelmente de Tatu.',
     },
     {
       id: 6,
@@ -91,7 +88,7 @@ const HomeExpo = () => {
       src: obj7,
       alt: 'Cachimbo de cerâmica (alisado).',
       title: 'Cachimbo de cerâmica (alisado).      ',
-      description: ''
+      description: '',
     },
     {
       id: 7,
@@ -99,7 +96,7 @@ const HomeExpo = () => {
       src: obj8,
       alt: 'Fornilho de cachimbo (não é inteiro).',
       title: 'Fornilho de cachimbo (não é inteiro).',
-      description: ''
+      description: '',
     },
     {
       id: 8,
@@ -107,7 +104,7 @@ const HomeExpo = () => {
       src: obj9,
       alt: 'Fornilho de cachimbo (picoteado).      ',
       title: 'Fornilho de cachimbo (picoteado).      ',
-      description: ''
+      description: '',
     },
     {
       id: 9,
@@ -115,7 +112,7 @@ const HomeExpo = () => {
       src: obj10,
       alt: 'Fornilho de cachimbo (alisado).      ',
       title: 'Fornilho de cachimbo (alisado).      ',
-      description: ''
+      description: '',
     },
     {
       id: 10,
@@ -123,7 +120,7 @@ const HomeExpo = () => {
       src: obj11,
       alt: 'Machado lítico polido.      ',
       title: 'Machado lítico polido.      ',
-      description: ''
+      description: '',
     },
     {
       id: 11,
@@ -132,15 +129,15 @@ const HomeExpo = () => {
       alt: 'Urna funerária (igaçaba)',
       title: 'Urna funerária (igaçaba)',
       description: `Tradição Aratu
-      O tamanho desta urna, os seixos associados e o local onde foi encontrada segerem que foi utilizada para um enterramento secundário de uma criaça. Infelizmente, a peça foi descoberta e desenterrada por não-arqueólogos, impedindo assim que retirássemos mais informações.`
+      O tamanho desta urna, os seixos associados e o local onde foi encontrada segerem que foi utilizada para um enterramento secundário de uma criaça. Infelizmente, a peça foi descoberta e desenterrada por não-arqueólogos, impedindo assim que retirássemos mais informações.`,
     },
     {
       id: 12,
 
       src: obj13,
-      alt: 'Vasilhame de cerâmica indígena alisado em baixo e roletado em cima' ,
+      alt: 'Vasilhame de cerâmica indígena alisado em baixo e roletado em cima',
       title: 'Vasilhame de cerâmica indígena',
-      description: ' alisado em baixo e roletado em cima.'
+      description: ' alisado em baixo e roletado em cima.',
     },
     {
       id: 13,
@@ -148,7 +145,7 @@ const HomeExpo = () => {
       src: obj14,
       alt: 'Disco de argila',
       title: 'Disco de argila ',
-      description: 'possivelmente usado em atividades lúdicas.'
+      description: 'possivelmente usado em atividades lúdicas.',
     },
   ];
 
@@ -164,9 +161,9 @@ const HomeExpo = () => {
   const textToShow = isExpanded
     ? paragraphs
     : paragraphs.slice(0, previewParagraphCount);
-    const backButtonStyle = {
-      backgroundColor: '#394603' // Essa cor pode vir de um estado ou prop
-    };
+  const backButtonStyle = {
+    backgroundColor: '#394603', // Essa cor pode vir de um estado ou prop
+  };
   return (
     <WatermarkWrapper>
       <div
@@ -189,7 +186,7 @@ const HomeExpo = () => {
             marginBottom: '60px',
           }}
         />
-      <C.BackButton
+        <C.BackButton
           onClick={() => navigate(-1)}
           style={backButtonStyle} // Passando o estilo aqui
         >
@@ -224,8 +221,15 @@ const HomeExpo = () => {
 
         <C.ModelsContainer>
           {modelos.map((modelo) => (
-            <button key={modelo.id}      onClick={() => navigate(`/virtual-expo/expo-details/${modelo.id} `, {state: {modelo, background:'#859A27'}})}>
-              {modelo.id === 1 || modelo.id === 2 ? ( 
+            <button
+              key={modelo.id}
+              onClick={() =>
+                navigate(`/virtual-expo/expo-details/${modelo.id} `, {
+                  state: { modelo, background: '#859A27' },
+                })
+              }
+            >
+              {modelo.id === 1 || modelo.id === 2 ? (
                 <model-viewer
                   ar
                   loading="eager"
@@ -241,7 +245,6 @@ const HomeExpo = () => {
                     width: '146px',
                     height: '146px',
                     backgroundColor: '#859A27',
-               
 
                     borderRadius: '50%',
                   }}
