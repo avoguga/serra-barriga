@@ -188,7 +188,7 @@ const Maps: React.FC = () => {
           
 
         }} />
-        <BackButton onClick={() => navigate('/takehome/serra-da-barriga')}>
+        <BackButton onClick={() => navigate(-1)}>
           <img src={seta} alt="Voltar" />
         </BackButton>
 

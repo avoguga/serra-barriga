@@ -13,11 +13,31 @@ const ButtonContainer = styled.div`
   transform: translate(-50%, -50%); // Ajuste fino para centralizar perfeitamente o botão.
   z-index: 1;
   @media only screen and (width:360px) and (height: 740px) {
-    top: 91%; 
+    top: 87%; 
   left: 48%; 
     
     
   }
+  @media only screen and (width:360px) and (height: 640px) {
+    top: 93%; 
+  left: 48%; 
+    
+    
+  }
+  @media only screen and (width:384px) and (height: 640px) {
+    top: 93%; 
+  left: 48%; 
+    
+    
+  }
+
+  @media only screen and (width: 390px), (height: 844px) {
+
+
+    top: 92%; 
+
+
+}
 `;
 
 const Button = styled.button`
@@ -65,8 +85,7 @@ const AboutButton = ({
   const ButtonIcon = Icons[iconType];
 
   return (
-    <>
-  <BackgroundImg>
+    <BackgroundImg>
       <ButtonContainer>
         <Button onClick={onClick} style={customStyle}>
           <ButtonIcon />
@@ -74,9 +93,6 @@ const AboutButton = ({
         </Button>
       </ButtonContainer>
     </BackgroundImg>
-    
-
-    </>
 
   );
 
