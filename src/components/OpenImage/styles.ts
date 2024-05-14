@@ -35,13 +35,18 @@ export const ImageContainer = styled.div`
     display: block;
   }
 `;
-
-export const StyledImage = styled.img`
+export const StyledImage = styled.img<{ isZoomed: boolean }>`
   background-color: green;
-  max-width: 100%; // Defina a largura máxima das imagens para que elas se ajustem ao contêiner
-  max-height: 35vh; // Ajuste conforme necessário
+  max-width: 100%;
+  max-height: 35vh;
   margin: 10px;
+  transition: transform 0.3s ease;
+
+  transform: ${({ isZoomed }) => (isZoomed ? 'scale(1.5)' : 'scale(1)')};
+  cursor: ${({ isZoomed }) => (isZoomed ? 'zoom-out' : 'zoom-in')};
+  z-index: ${({ isZoomed }) => (isZoomed ? '3' : '0')};
 `;
+
 export const Description = styled.div`
   color: #e7ebe0;
   font-family: 'FuturaPTBook', sans-serif;

@@ -167,15 +167,7 @@ const handleRightClick = () => {
           <Arrow direction="left" onClick={handleLeftClick} isActive={leftArrowActive} />
           <Arrow direction="right" onClick={handleRightClick} isActive={rightArrowActive} />
         </C.ArrowContainer>
-        <C.SubTitleContainer>
-          <h2>VIDEOS</h2>
-        </C.SubTitleContainer>
-
-        <C.VideoBox color="#FFF">{/* Conteúdo do vídeo */}</C.VideoBox>
-        <C.ArrowContainer>
-          <Arrow direction="left" onClick={() => {}} isActive={false} />
-          <Arrow direction="right" onClick={() => {}} isActive={false} />
-        </C.ArrowContainer>
+     
       </C.MainContainer>
 
       {fullScreenImage && (
