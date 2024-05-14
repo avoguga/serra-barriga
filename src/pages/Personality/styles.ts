@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   background: #b21522;
-  height: 235vh;
-  justify-content: baseline;
+  max-height: 200vh;
+  justify-content: end;
   align-items: center;
   flex-direction: column;
   max-width: 485px;
@@ -59,22 +59,21 @@ export const Title = styled.h1`
 export const Description = styled.div`
   background-color: #c7222f;
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   font-family: 'FuturaPT', sans-serif;
   font-size: 15px;
   max-width: 80%;
   opacity: 1;
-  text-align: left;
 
-  width: 125vw;
-  height: 360px;
+  width: 125vw; // Isso parece ser muito grande, talvez você queria ajustar para algo como 100% ou menos dependendo do layout
   cursor: pointer;
-  justify-content: center;
+
   border-radius: 0px 0px 90px 90px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-  padding: 20px; /* Added padding for inner spacing */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 30px; // Added padding for inner spacing
   margin: 0px 0;
 `;
+
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;

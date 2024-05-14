@@ -31,7 +31,7 @@ const Tour360 = () => {
             <img src={seta} alt="" />
             </BackButton>
 
-            <iframe src="https://kuula.co/share/collection/79KY4?logo=1&info=1&fs=1&vr=0&zoom=1&gyro=0&thumbs=-1&inst=0&keys=0" frameBorder={0} style={{ height:'100vh', width:'100%', zIndex:'10'}}></iframe>
+            <iframe src="https://kuula.co/share/collection/7cxdN?logo=-1&info=0&fs=1&vr=1&sd=1&gyro=0&thumbs=-1&margin=5&alpha=0.90&inst=0&keys=0" frameBorder={0} style={{ height:'100vh', width:'100%', zIndex:'10'}}></iframe>
   
     
     </WatermarkWrapper>
