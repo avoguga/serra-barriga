@@ -3,19 +3,29 @@ import { useNavigate } from 'react-router-dom';
 import * as tmImage from '@teachablemachine/image';
 import logo from '../../assets/logo.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
-import { CameraContainer, Container, HeaderContainer } from './styles';
+import * as C from './styles';
 import { BackButton } from '../TakeHome';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import { getEspacoData, } from '../../helpers/Espacos';
+import { getEspacoData } from '../../helpers/Espacos';
+import aaa from '../../assets/icons/mão com celular.png';
+import scannerButton from '../../assets/icons/i_botao escanear.png';
+import styled from 'styled-components';
 
+const InfoImage = styled.img`
+  width: 90px;
+  height: 120px;
+  position: absolute;
+  right: 70%;
+`;
 
 export interface EspacoData {
-   path: string;
-   title: string;
-   icon: string;
-   description: { pt: string; en: string; };
-   }
+  path: string;
+  title: string;
+  icon: string;
+  description: { pt: string; en: string; };
+}
+
 interface Prediction {
   className: string;
   probability: number;
@@ -24,12 +34,15 @@ interface Prediction {
 interface TeachableMachineModel {
   predict: (input: HTMLImageElement) => Promise<Prediction[]>;
 }
- 
+
 const QRCode: React.FC = () => {
   const navigate = useNavigate();
   const webcamRef = useRef<HTMLDivElement>(null);
   const [model, setModel] = useState<TeachableMachineModel | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isScanning, setIsScanning] = useState(false);
+  const [scanningMessage, setScanningMessage] = useState('');
+  const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
 
   useEffect(() => {
     const loadModelAndCamera = async () => {
@@ -38,9 +51,10 @@ const QRCode: React.FC = () => {
       try {
         const loadedModel = await tmImage.load(modelURL, metadataURL) as TeachableMachineModel;
         setModel(loadedModel);
-        setIsLoading(false);
 
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        setVideoStream(stream);
+
         const videoElement = document.createElement('video');
         videoElement.srcObject = stream;
         videoElement.autoplay = true;
@@ -51,30 +65,42 @@ const QRCode: React.FC = () => {
         videoElement.style.objectFit = 'cover';
 
         if (webcamRef.current) {
+          webcamRef.current.innerHTML = ''; // Limpa quaisquer elementos de vídeo existentes
           webcamRef.current.appendChild(videoElement);
         }
+
+        setIsLoading(false);
       } catch (error) {
-        console.error('Error loading model or camera:', error);
+        console.error('Erro ao carregar o modelo ou a câmera:', error);
         setIsLoading(false);
       }
     };
 
     loadModelAndCamera();
+
+    return () => {
+      // Limpa a câmera quando o componente é desmontado
+      if (videoStream) {
+        videoStream.getTracks().forEach(track => track.stop());
+      }
+    };
   }, []);
 
   useEffect(() => {
+    let interval: NodeJS.Timeout;
+
     const predict = async () => {
-      if (!model || isLoading) return;
-  
-      const interval = setInterval(async () => {
+      if (!model || isLoading || !isScanning) return;
+
+      interval = setInterval(async () => {
         if (!webcamRef.current) return;
         const videoElement = webcamRef.current.querySelector('video');
         if (!videoElement) return;
-  
+
         const image = await captureImage(videoElement as HTMLVideoElement);
         const prediction = await model.predict(image);
         const highProbPrediction = prediction.sort((a, b) => b.probability - a.probability)[0];
-  
+
         if (highProbPrediction.probability > 0.9) {
           const espacoData = getEspacoData(highProbPrediction.className);
           if (espacoData) {
@@ -86,22 +112,18 @@ const QRCode: React.FC = () => {
           }
         }
       }, 700);
-  
-      return () => {
-        clearInterval(interval); // Garante que o intervalo seja limpo se o componente for desmontado
-        // Interrompe as faixas do stream de mídia ao sair
-        if (webcamRef.current) {
-          const videoElement = webcamRef.current.querySelector('video');
-          if (videoElement && videoElement.srcObject) {
-            const stream = videoElement.srcObject as MediaStream;
-            stream.getTracks().forEach(track => track.stop());
-          }
-        }
-      };
     };
-  
-    predict();
-  }, [model, isLoading, navigate]);
+
+    if (isScanning) {
+      setScanningMessage('Escaneando, por favor, aguarde...');
+      predict();
+    }
+
+    return () => {
+      clearInterval(interval); // Garante que o intervalo seja limpo se o componente for desmontado
+      setScanningMessage(''); // Limpa a mensagem de escaneamento ao parar
+    };
+  }, [model, isLoading, isScanning, navigate]);
 
   const captureImage = async (videoElement: HTMLVideoElement): Promise<HTMLImageElement> => {
     const canvas = document.createElement('canvas');
@@ -116,19 +138,39 @@ const QRCode: React.FC = () => {
     return image;
   };
 
+  const handleScanClick = () => {
+    setIsScanning(!isScanning);
+    if (!isScanning) {
+      setScanningMessage('Escaneando, por favor, aguarde...');
+    } else {
+      setScanningMessage('');
+    }
+  };
 
   return (
-    <WatermarkWrapper watermarkImage={WatermarkImage}>
-      <Container>
-        <HeaderContainer>
+    <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
+      <C.Container>
+        <C.HeaderContainer>
           <BackButton onClick={() => navigate('/')}>
             <img src={seta} alt="Seta voltar" />
           </BackButton>
-          <img src={logo} alt="Logo" style={{ width: '200px', height: '70px', marginTop: '50px', marginBottom: '30px' }} />
-        </HeaderContainer>
-        {isLoading && <div style={{ textAlign: 'center', fontSize: '18px', color:"#FFFF", marginTop:'20px', marginBottom:'20px' }}>Carregando a câmera, aguarde um momento...</div>}
-        <CameraContainer ref={webcamRef}></CameraContainer>
-      </Container>
+          <img src={logo} alt="Logo" style={{ width: '169px', height: '70px', marginTop: '50px', marginBottom: '50px' }} />
+        </C.HeaderContainer>
+        <C.BottomContainer>
+          <InfoImage src={aaa} alt="informação de como ler imagem" />
+          <C.TextContainer>
+            <p>
+              Aponte a câmera do celular para o símbolo da placa e tenha uma experiência ampliada.
+            </p>
+          </C.TextContainer>
+        </C.BottomContainer>
+        <C.CameraContainer ref={webcamRef}></C.CameraContainer>
+        <C.ScannerButton onClick={handleScanClick}>
+          <C.ScannerImage src={scannerButton} alt="Botão para escanear" />
+        </C.ScannerButton>
+        {isLoading && <div style={{ textAlign: 'center', fontSize: '18px', color: "#FFFF", marginTop: '50px', marginBottom: '50px' }}>Carregando a câmera, aguarde um momento...</div>}
+        {scanningMessage && <div style={{ textAlign: 'center', fontSize: '18px', color: "#FFFF", marginTop: '50px',  }}>{scanningMessage}</div>}
+      </C.Container>
     </WatermarkWrapper>
   );
 };
