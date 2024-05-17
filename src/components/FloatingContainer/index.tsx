@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
 import styled from 'styled-components';
 import { Icons } from '../../helpers/icons';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 interface FloatingButtonBarProps {
   isVisible?: boolean;
@@ -9,7 +11,6 @@ interface FloatingButtonBarProps {
   onClickHome?: () => void;
   backgroundColor?: string;
   backBgColor?: string;
- 
 }
 
 interface FloatingBarProps {
@@ -38,13 +39,13 @@ const Button = styled.button`
   }
 `;
 const BackButton = styled(Button)<{ backBgColor?: string }>`
-   background-color: ${(props) => props.backBgColor || '#003431'};
-  border-radius: 50%; 
-  width: 40px; 
-  height: 40px; 
-  position: relative; 
-  margin-left: 25px; 
-  margin-right: 16px; 
+  background-color: ${(props) => props.backBgColor || '#003431'};
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin-left: 25px;
+  margin-right: 16px;
   margin-top: 10px;
 
   svg {
@@ -70,20 +71,23 @@ const FloatingButtonBar = ({
   backgroundColor,
   backBgColor,
 }: FloatingButtonBarProps) => {
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   if (!isVisible) return null;
 
-  const handleLeftArrowClick = onClickLeftArrow
-    ? onClickLeftArrow
-    : () => navigate(-1);
+  const handleLeftArrowClick = () => {
+    if (onClickLeftArrow) {
+      onClickLeftArrow();
+    } else {
+      navigate(-1);
+    }
+  };
   const handleScanClick = onClickScan ? onClickScan : () => navigate('/qrcode');
   const handleHomeClick = onClickHome ? onClickHome : () => navigate('/');
 
   return (
-    <FloatingBar backgroundColor={backgroundColor} >
-      
-      <BackButton  backBgColor={backBgColor}  onClick={handleLeftArrowClick} >
+    <FloatingBar backgroundColor={backgroundColor}>
+      <BackButton backBgColor={backBgColor} onClick={handleLeftArrowClick}>
         <BackArrowIcon />
       </BackButton>
       <Button onClick={handleScanClick}>

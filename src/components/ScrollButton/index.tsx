@@ -4,10 +4,12 @@ import DownArrow from '../../assets/icons/seta baixo.svg';
   
   const ArrowButton = styled.button`
     position: fixed;
-    width: 100%;
-    left: 45%;
-    bottom: 40px;
-    height: 350px;
+    width: auto;
+    
+    left: 90%;
+    
+height: 15px;
+    top:60%;
     font-size: 3rem;
     z-index: 1;
     cursor: pointer;

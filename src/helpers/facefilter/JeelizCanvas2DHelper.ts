@@ -1,15 +1,4 @@
-/*
-Usage: JeelizCanvas2DHelper(spec) where spec is the returned object of the initialization function (callbackReady)
-Return an object width these properties:
-
- - canvas: the CANVAS element
- - ctx: the canvas drawing context
- - update_canvasTexture: function to launch each time the canvas has been updated (somethink has been drawn on it)
- - draw: draw the video with the canvas above
- - getCoordinates: transform the detectedState relative 2D viewport coords into canvas 2D pixel coordinates
- - resize: to call if the HTML canvas size has changed
-*/
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   IJeelizFaceFilterDetectState,
   IJeelizFaceFilterInitResult as IJeelizFaceFilterInitResult,
@@ -20,7 +9,7 @@ export class JeelizCanvas2DHelper {
   private CANVASTEXTURE: WebGLTexture | null = null;
   private CANVASTEXTURENEEDSUPDATE: boolean | null = null;
   private SHADERCOPY: WebGLProgram | null | undefined = null;
-  private VIDEOTEXTURE: WebGLUniformLocation | null = null;
+  private VIDEOTEXTURE: WebGLTexture | null = null; // Corrigido o tipo para WebGLTexture
   private VIDEOTEXTURETRANSFORMMAT2: number[] | null = null;
   private UUVTRANSFORM: WebGLUniformLocation | null = null;
   private spec: IJeelizFaceFilterInitResult;
@@ -42,7 +31,7 @@ export class JeelizCanvas2DHelper {
     // affect some globalz:
     this.GL = spec.GL;
     this.CV = spec.canvasElement;
-    this.VIDEOTEXTURE = spec.videoTexture;
+    this.VIDEOTEXTURE = spec.videoTexture as WebGLTexture; // Força o tipo para WebGLTexture
     this.VIDEOTEXTURETRANSFORMMAT2 = spec.videoTransformMat2;
 
     // create and size the 2D canvas and its drawing context:
@@ -53,7 +42,7 @@ export class JeelizCanvas2DHelper {
     this.CANVAS2D.height = this.CV.height;
     this.CTX = this.CANVAS2D.getContext('2d');
 
-    // create the Webthis.GL texture with the canvas:
+    // create the WebGL texture with the canvas:
     this.CANVASTEXTURE = this.GL.createTexture();
     this.GL.bindTexture(this.GL.TEXTURE_2D, this.CANVASTEXTURE);
     this.GL.texImage2D(
@@ -121,7 +110,7 @@ export class JeelizCanvas2DHelper {
     this.GL.uniform1i(uSampler, 0);
   }
 
-  //BEGIN WEBthis.GL HELPERS
+  //BEGIN WEBGL HELPERS
   // compile a shader:
   private compile_shader(source: any, glType: any, typeString: any) {
     if (this.GL == null) return;
@@ -144,6 +133,7 @@ export class JeelizCanvas2DHelper {
   // helper function to build the shader program:
   private build_shaderProgram(
     shaderVertexSource: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     shaderFragmentSource: any,
     id: any
   ) {
@@ -174,13 +164,13 @@ export class JeelizCanvas2DHelper {
     this.GL.linkProgram(glShaderProgram);
     return glShaderProgram;
   }
-  //END WEBthis.GL HELPERS
+  //END WEBGL HELPERS
 
   public update_canvasTexture() {
     this.CANVASTEXTURENEEDSUPDATE = true;
   }
 
-  public draw(detectState: IJeelizFaceFilterDetectState) {
+  public draw() {
     // draw the video and the canvas above
     if (
       this.CV == null ||

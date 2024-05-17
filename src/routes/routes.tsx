@@ -40,6 +40,7 @@ import Agenda from '../pages/Agenda';
 import HomeExpo from '../pages/HomeExpo';
 import ExpoVideos from '../pages/ExpoVideos';
 import ExpoDetails from '../pages/ExpoDetails';
+import ARFilterComponent from '../components/ARFilter';
 
 
 
@@ -63,6 +64,11 @@ export const router = createBrowserRouter([
   {
     path: '/selfie',
     element: <HistorySelfie />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/ar-filter',
+    element: <ARFilterComponent />,
     errorElement: <ErrorPage />,
   },
   {
