@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import characterImg from '../../assets/aqualtune_final__cortada_-_cintura_pra_cima-removebg-preview.png';
-import clm from 'clmtrackr';
+
 import { BackButton } from '../VideoScreen/styles';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const ARFilterComponent: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const trackerRef = useRef<clm.tracker | null>(null);
+
   const navigate = useNavigate();
 
 
@@ -66,21 +66,13 @@ const ARFilterComponent: React.FC = () => {
         characterMesh.position.set(characterPosition.x, characterPosition.y, characterPosition.z);
         scene.add(characterMesh);
 
-        const tracker = new clm.tracker();
-        tracker.init();
-        tracker.start(videoRef.current as HTMLVideoElement);
-        trackerRef.current = tracker;
+        
 
         const animate = () => {
           requestAnimationFrame(animate);
 
-          const positions = tracker.getCurrentPosition();
-          if (positions) {
-            const nosePosition = positions[62];
-            characterMesh.position.x = (nosePosition[0] - videoWidth / 2) / 100;
-            characterMesh.position.y = -(nosePosition[1] - videoHeight / 2) / 100;
-          }
-
+   
+       
           renderer.render(scene, camera);
         };
 
@@ -138,12 +130,9 @@ const ARFilterComponent: React.FC = () => {
             const tracks = stream.getTracks();
             tracks.forEach(track => track.stop());
           }
-          if (trackerRef.current) {
-            // Use the correct method to stop the tracker
-            trackerRef.current = null;
-          }
+         
           if (canvasRef.current) {
-            canvasRef.current.removeEventListener('mousedown', handleMouseDown);
+            canvasRef.current.addEventListener('mousedown', handleMouseDown);
             canvasRef.current.removeEventListener('touchstart', handleMouseDown);
           }
           window.removeEventListener('mousemove', handleMouseMove);
