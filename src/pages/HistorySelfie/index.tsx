@@ -1,21 +1,23 @@
+import React, { useState } from 'react';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import logo from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import styled from 'styled-components';
-import Iansa from '../../assets/acotirene-selfie-min.png';
+
 import FloatingButtonBar from '../../components/FloatingContainer';
 import BtnDownArrow from '../../components/ScrollButton';
-
 import tiktok from '../../assets/icons/logo-tiktok.svg';
+import SelfieDestiny from '../../components/SelfieDestiny';
+import { espacoSelfie } from '../../helpers/SelfieHistorica';
 
 const Selfiee = Icons['Selfie'];
 
-export const Container = styled.main`
-  background-color: '#8AA61E';
-  width: '100vw';
-  display: 'flex';
-  flex-direction: 'column';
-  align-items: 'center';
+export const Container = styled.div`
+  background-color: #8AA61E;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   p {
     font-family: 'FuturaPT', sans-serif;
@@ -51,15 +53,15 @@ export const SelfieContainer = styled.button`
 `;
 
 const ImageContainer = styled.div`
-  width: 280px;
+  width: 300px;
   height: 380px;
   border: 3px solid #ffffff;
   margin: 15px 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
 `;
+
 const Footer = styled.div`
   background: #313a0a;
   width: 100vw;
@@ -70,26 +72,49 @@ const Footer = styled.div`
   align-items: center;
   h4 {
     font-family: 'FuturaPT', sans-serif;
-    font-size: 15px;
+    font-size: 19px;
     color: #ffff;
   }
   opacity: 0.59;
 `;
 
 const HistorySelfie = () => {
+  const initialContent: { [key: string]: JSX.Element } = {};
+  Object.keys(espacoSelfie).forEach((key) => {
+    const imageUrl = espacoSelfie[key]?.[0];
+    if (imageUrl) {
+      initialContent[key] = <img src={imageUrl} alt={key} width={290} height={370} />;
+    }
+  });
+
+  const [content, setContent] = useState<{ [key: string]: JSX.Element }>(initialContent);
+  const [isInitial, setIsInitial] = useState(true);
+ 
+
+  const handleClick = (personagem: string) => {
+    setContent({ ...content, [personagem]: <SelfieDestiny /> });
+    setIsInitial(false);
+    if (!isInitial) {
+      const resetContent: { [key: string]: JSX.Element } = {};
+      Object.keys(espacoSelfie).forEach((key) => {
+        const imageUrl = espacoSelfie[key]?.[0];
+        if (imageUrl) {
+          resetContent[key] = <img src={imageUrl} alt={key} width={290} height={370} />;
+        }
+      });
+      setContent(resetContent);
+      setIsInitial(true);
+    }
+    }
+  
+
+  
+
   return (
     <WatermarkWrapper>
-      <FloatingButtonBar backBgColor="#313A0A" />
+      <FloatingButtonBar backBgColor="#313A0A"  />
       <BtnDownArrow />
-      <Container
-        style={{
-          backgroundColor: '#8AA61E',
-          width: '100vw',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
+      <Container>
         <img
           src={tiktok}
           alt=""
@@ -113,7 +138,8 @@ const HistorySelfie = () => {
           <Selfiee />
           <h3>SELFIE HISTÓRICA</h3>
         </SelfieContainer>
-        <br /> <br />
+        <br />
+        <br />
         <p
           style={{
             width: '280px',
@@ -126,22 +152,18 @@ const HistorySelfie = () => {
           }}
         >
           Escolha um{' '}
-          <span style={{ color: '#FFFFFF' }}>
-            {' '}
-            personagem da história e tire uma selfie{' '}
-          </span>{' '}
-          na serra da barriga
-        </p>{' '}
+          <span style={{ color: '#FFFFFF' }}>personagem da história e tire uma selfie</span> na
+          serra da barriga
+        </p>
         <br />
-        <ImageContainer
-          onClick={() =>
-            (window.location.href = 'https://vm.tiktok.com/ZMMn86bLs/')
-          }
-        >
-          <img src={Iansa} alt="Iansã" width={290} height={370} />
-        </ImageContainer>
+        {Object.keys(espacoSelfie).map((key) => (
+          <div key={key} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#8AA61E', flexDirection: 'column' }}>
+            <ImageContainer onClick={() => handleClick(key)}>{content[key]}  </ImageContainer>
+            <p style={{ color: '#FFF',fontSize:'19px' }}>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
+          </div>
+        ))} <br /><br />
         <Footer>
-          <h4> Imagens meramente ilustrativas</h4>
+          <h4 >Imagens meramente ilustrativas</h4>
         </Footer>
       </Container>
     </WatermarkWrapper>
