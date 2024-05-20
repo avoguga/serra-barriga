@@ -2,6 +2,8 @@ import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper
 
 import tiktok from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
+import Video from '../../assets/icons/i_video pagina.png';
+
 import '@google/model-viewer';
 
 import obj1 from '../../assets/modelosOtimizados/Objeto_01-f-02.glb';
@@ -218,6 +220,15 @@ const HomeExpo = () => {
             {isExpanded ? 'LER MENOS' : 'LER MAIS'}
           </C.ReadMoreButton>
         </C.ExpoInfoContainer>
+        <C.SelfieContainer onClick={() => {
+              navigate(`/virtual-expo/expo-videos`);
+            }}>
+          <C.Icon src={Video} alt="video" />
+        
+
+          <C.Text>VÍDEOS</C.Text> 
+        
+        </C.SelfieContainer>
 
         <C.ModelsContainer>
           {modelos.map((modelo) => (

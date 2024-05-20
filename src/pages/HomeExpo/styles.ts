@@ -138,3 +138,29 @@ export const ReadMoreButton = styled.button`
   align-items: center;
   font-family: 'FuturaPTBold', sans-serif;
 `;
+
+export const SelfieContainer = styled.div`
+  background-color: #313a0a;
+  width: 150px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  margin-top: 10px;
+`;
+export const Text = styled.p`
+  font-family: 'FuturaPTDemi', sans-serif;
+
+  font-size: 17px;
+  color: white;
+  margin-bottom: 0px;
+`;
+
+export const Icon = styled.img`
+  margin-right: 5%;
+
+  width: 45px;
+  height: 45px;
+`;
