@@ -37,6 +37,21 @@ export const BottomContainer = styled.div`
     top: 27%;
   }
 `;
+
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333c0c;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  position: fixed; // Alterado de absolute para fixed
+  top: 7%;
+  left: 5%;
+  z-index: 10;
+  cursor: pointer;
+`;
 export const TextContainer = styled.div`
   max-width: 250px;
   color: #fff;

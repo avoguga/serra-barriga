@@ -13,7 +13,8 @@ import VideoList from '../../components/VideoList';
 
 // Seu componente React aqui
 const VideosAndImages: React.FC = () => {
-  const [tab, setTab] = useState<'images' | 'videos'>('images');
+  const [tab, setTab] = useState<'images' | 'videos'>('videos');
+
   const navigate = useNavigate();
 
   const handleTabSwitch = (selectedTab: 'images' | 'videos') => {
@@ -28,14 +29,14 @@ const VideosAndImages: React.FC = () => {
         <C.LogoImage src={logo} alt="logo"  />
 <C.TabContainer>
 
-        <C.SelfieContainer onClick={() => handleTabSwitch('videos')}>
+        <C.SelfieContainer onClick={() => handleTabSwitch('videos')} selected={tab === 'videos'}>
           <C.Icon src={Video} alt="video" />
         
 
           <C.Text>VÍDEOS</C.Text> 
         
         </C.SelfieContainer>
-        <C.SelfieContainer onClick={() => handleTabSwitch('images')}>
+        <C.SelfieContainer onClick={() => handleTabSwitch('images')} selected={tab === 'images'}>
           <C.Icon src={imagem} alt="imagem" />
         
 
@@ -47,7 +48,8 @@ const VideosAndImages: React.FC = () => {
       
         {tab === 'videos' ? (
           <div style={{
-            marginTop:'25px'
+            marginTop:'25px',
+       
           }}> <VideoList/> </div>
         ) : (
           <div style={{

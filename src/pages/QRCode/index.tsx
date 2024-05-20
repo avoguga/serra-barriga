@@ -4,13 +4,14 @@ import * as tmImage from '@teachablemachine/image';
 import logo from '../../assets/logo.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import * as C from './styles';
-import { BackButton } from '../TakeHome';
+
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import { getEspacoData } from '../../helpers/Espacos';
 import aaa from '../../assets/icons/mão com celular.png';
 import scannerButton from '../../assets/icons/i_botao escanear.png';
 import styled from 'styled-components';
+import CustomAlert from '../../components/CustomAlert'; // Importe o CustomAlert
 
 const InfoImage = styled.img`
   width: 90px;
@@ -43,6 +44,8 @@ const QRCode: React.FC = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [scanningMessage, setScanningMessage] = useState('');
   const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
     const loadModelAndCamera = async () => {
@@ -110,6 +113,9 @@ const QRCode: React.FC = () => {
             stream.getTracks().forEach(track => track.stop());
             navigate(espacoData.path);
           }
+        } else {
+          setAlertMessage("Tente novamente, símbolo não detectado.");
+          setShowAlert(true);
         }
       }, 700);
     };
@@ -147,13 +153,17 @@ const QRCode: React.FC = () => {
     }
   };
 
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <C.Container>
         <C.HeaderContainer>
-          <BackButton onClick={() => navigate('/')}>
+          <C.BackButton onClick={() => navigate('/')}  >
             <img src={seta} alt="Seta voltar" />
-          </BackButton>
+          </C.BackButton>
           <img src={logo} alt="Logo" style={{ width: '169px', height: '70px', marginTop: '50px', marginBottom: '50px' }} />
         </C.HeaderContainer>
         <C.BottomContainer>
@@ -170,6 +180,7 @@ const QRCode: React.FC = () => {
         </C.ScannerButton>
         {isLoading && <div style={{ textAlign: 'center', fontSize: '18px', color: "#FFFF", marginTop: '50px', marginBottom: '50px' }}>Carregando a câmera, aguarde um momento...</div>}
         {scanningMessage && <div style={{ textAlign: 'center', fontSize: '18px', color: "#FFFF", marginTop: '50px',  }}>{scanningMessage}</div>}
+        {showAlert && <CustomAlert  show={showAlert}  onClose={handleCloseAlert} > {alertMessage} </CustomAlert>}
       </C.Container>
     </WatermarkWrapper>
   );

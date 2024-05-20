@@ -1,4 +1,3 @@
-// styles.ts
 import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
@@ -24,8 +23,12 @@ export const TabContainer = styled.div`
   gap: 10px;
 `;
 
-export const SelfieContainer = styled.div`
-  background-color: #b75c01;
+interface SelfieContainerProps {
+  selected: boolean;
+}
+
+export const SelfieContainer = styled.div<SelfieContainerProps>`
+  background-color: ${({ selected }) => (selected ? '#A95502' : '#b75c01')};
   width: 150px;
   height: 60px;
   display: flex;
@@ -38,7 +41,6 @@ export const SelfieContainer = styled.div`
 
 export const Icon = styled.img`
   margin-right: 5%;
-
   width: 45px;
   height: 45px;
 `;
@@ -63,7 +65,6 @@ export const VideoButton = styled.button`
 
 export const Text = styled.p`
   font-family: 'FuturaPTDemi', sans-serif;
-
   font-size: 17px;
   color: white;
   margin-bottom: 0px;
