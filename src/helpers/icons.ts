@@ -27,6 +27,7 @@ import BottomArrow from '../assets/icons/seta descer.svg?react';
 import Arqueologia from '../assets/icons/arqueologia.svg?react';
 import View360 from '../assets/icons/view 360.svg?react';
 import Video from '../assets/icons/video pagina.svg?react';
+import Mapa from '../assets/icons/Mapa.svg?react';
 
 // tela espaços
 import InfoEspacos from '../assets/icons/infobranco.svg?react';
@@ -73,4 +74,5 @@ export const Icons = {
   LocationEspaco,
   PopArrow,
   Close,
+  Mapa,
 };

@@ -39,6 +39,7 @@ const VirtualExpo = () => {
   const ExpoIcon = Icons['Expo'];
   const ArqIcon = Icons['Arqueologia'];
   const navigate = useNavigate();
+  
 
   const [isExpanded, setIsExpanded] = useState(false);
   const modelos: Modelo3D[] = [
