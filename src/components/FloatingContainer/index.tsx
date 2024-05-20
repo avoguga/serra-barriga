@@ -3,12 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { Icons } from '../../helpers/icons';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import mapa from '../../assets/icons/i_Mapa.png'
 
 interface FloatingButtonBarProps {
   isVisible?: boolean;
   onClickLeftArrow?: () => void;
   onClickScan?: () => void;
   onClickHome?: () => void;
+  onClickMapa?: () => void;
+
   backgroundColor?: string;
   backBgColor?: string;
 }
@@ -18,7 +21,7 @@ interface FloatingBarProps {
 }
 
 const FloatingBar = styled.div<FloatingBarProps>`
-  width: 220px;
+  width: 270px;
   height: 64px;
   display: flex;
   position: fixed;
@@ -27,15 +30,17 @@ const FloatingBar = styled.div<FloatingBarProps>`
   z-index: 1000;
   background-color: ${(props) => props.backgroundColor || '#586617'};
   border-radius: 0px 0px 57px 0px;
+  gap: 10px;
 `;
 
 const Button = styled.button`
   margin: 5px;
+ 
 
   svg {
     width: 30px;
     height: 30px;
-    margin-right: 25px;
+  
   }
 `;
 const BackButton = styled(Button)<{ backBgColor?: string }>`
@@ -45,7 +50,7 @@ const BackButton = styled(Button)<{ backBgColor?: string }>`
   height: 40px;
   position: relative;
   margin-left: 25px;
-  margin-right: 16px;
+  
   margin-top: 10px;
 
   svg {
@@ -68,6 +73,7 @@ const FloatingButtonBar = ({
   onClickLeftArrow,
   onClickScan,
   onClickHome,
+  onClickMapa,
   backgroundColor,
   backBgColor,
 }: FloatingButtonBarProps) => {
@@ -84,6 +90,8 @@ const FloatingButtonBar = ({
   };
   const handleScanClick = onClickScan ? onClickScan : () => navigate('/qrcode');
   const handleHomeClick = onClickHome ? onClickHome : () => navigate('/');
+  const handleMapaClick = onClickMapa? onClickMapa : () => navigate('/maps');
+
 
   return (
     <FloatingBar backgroundColor={backgroundColor}>
@@ -95,6 +103,13 @@ const FloatingButtonBar = ({
       </Button>
       <Button onClick={handleHomeClick}>
         <HomeIcon />
+      </Button>
+      <Button onClick={handleMapaClick}>
+        <img src={mapa} alt="icone de mapa" style={{
+          width:'50px',
+          height:'50px',
+          
+        }} />
       </Button>
     </FloatingBar>
   );

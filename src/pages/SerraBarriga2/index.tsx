@@ -308,17 +308,9 @@ const scrollCarrossel = (direction: string) => {
       </ReadMoreButton>
         </Text>
       </SerraInfo>
+      <br /><br /><br />
 
-      <Mapa>
-        <MapaBtn
-          onClick={() => {
-            navigate('/maps');
-          }}
-        >
-          <MapaImg src={mapa} alt="" />
-          <MapaTexto>MAPA</MapaTexto>
-        </MapaBtn>
-      </Mapa>
+ 
       <Title>FOTOS</Title>
       <Carrossel>
         {/* {images.map((image, index) => (

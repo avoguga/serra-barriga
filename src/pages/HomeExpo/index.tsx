@@ -221,7 +221,7 @@ const HomeExpo = () => {
           </C.ReadMoreButton>
         </C.ExpoInfoContainer>
         <C.SelfieContainer onClick={() => {
-              navigate(`/virtual-expo/expo-videos`);
+              navigate('/virtual-expo/expo-videos-home');
             }}>
           <C.Icon src={Video} alt="video" />
         

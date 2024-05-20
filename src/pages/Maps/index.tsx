@@ -3,12 +3,16 @@ import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper
 import styled from 'styled-components';
 import mapa from '../../assets/Mapa Serra da Barriga -  novo-03.webp';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
-import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import LocIcon from '../../assets/icons/localização mapa.svg';
 import BtnDownArrow from '../../components/ScrollButton';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
 import { TransformWrapper, TransformComponent, ReactZoomPanPinchRef } from 'react-zoom-pan-pinch';
-import { useNavigate } from 'react-router-dom';
+
+import zoomIn from '../../assets/icons/botao +.svg';
+import zoomOut from '../../assets/icons/botao -.svg';
+import pinca from '../../assets/icons/pinça.svg';
+import * as C from './styles';
+import FloatingButtonBar from '../../components/FloatingContainer';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -16,8 +20,7 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-
- 
+  margin-bottom: 10px; /* Ajusta o espaço entre os botões e o mapa */
 `;
 
 export const BackButton = styled.button`
@@ -43,35 +46,26 @@ const LocationButton = styled.button<{ x: number; y: number }>`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  width: 35px;
-  height: 35px; /* Aumentei o tamanho da bolinha */
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   z-index: 10;
- 
   
 `;
 
-// Interface atualizada para coordenadas relativas
 interface TooltipProps {
-  x: string; // Agora é uma string representando um valor percentual
-  y: string; // Agora é uma string representando um valor percentual
+  x: string;
+  y: string;
 }
 
 const Tooltip = styled.div<TooltipProps>`
   position: absolute;
-  left: calc(${(props) => props.x}  ); /* Alterado para centralizar horizontalmente */
-  top: calc(${(props) => props.y} - 6%);
-  @media only screen 
-  and (device-width: 430px) 
-  and (device-height: 932px) 
-  and (-webkit-device-pixel-ratio: 3) {
-    left: calc(${(props) => props.x}  ); /* Alterado para centralizar horizontalmente */
-  top: calc(${(props) => props.y} - 5%);
-  }
+  left: calc(${(props) => props.x});
+  top: calc(${(props) => props.y} - 4%);
   transform: translate(-50%, -50%);
   padding: 8px 16px;
-  background: #FFFFFF;
-  color: #67781B;
+  background: #ffffff;
+  color: #67781b;
   font-family: 'FuturaPTDemi', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
@@ -90,32 +84,29 @@ const Tooltip = styled.div<TooltipProps>`
     transform: translateX(-50%) rotate(45deg);
     border-width: 5px;
     border-style: solid;
-    border-color: #FFFFFF ;
+    border-color: #ffffff;
     z-index: -1; 
   }
 `;
 
+const MapaContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px; /* Ajusta o espaço entre os botões e o mapa */
+
+  img {
+    color: #ffbf00;
+  }
+`;
+
 const items = [
-  'ENTRADA',
-  'OXILE DAS ERVAS',
-  'ONJÓ CRUZAMBÊ',
-  'ESPAÇO ACOTIRENE',
-  'MUXIMA DE PALMARES',
-  'ESPAÇO QUILOMBO',
-  'ATALAIA DE ACAIENE',
-  'ESPAÇO GANGA-ZUMBA',
-  'ESPAÇO AQUALTUNE',
-  'OCAS INDÍGENAS',
-  'ESPAÇO CAÁ-PUÊRA',
-  'BATUCAJÉ',
-  'ATALAIA DO ACAIUBA',
-  'ONJÓ DE FARINHA',
-  'ESPAÇO ZUMBI',
-  'ATALAIA DO TOCULO',
-  'RESTAURANTE KÚUKU-WAANA',
-  'LAGOAS ENCATADA DOS NEGROS',
-  'ESTÁTUA GANGA-ZUMBA E ZUMBI',
-  'BANHEIROS'
+  'ENTRADA', 'OXILE DAS ERVAS', 'ONJÓ CRUZAMBÊ', 'ESPAÇO ACOTIRENE', 'MUXIMA DE PALMARES',
+  'ESPAÇO QUILOMBO', 'ATALAIA DE ACAIENE', 'ESPAÇO GANGA-ZUMBA', 'ESPAÇO AQUALTUNE',
+  'OCAS INDÍGENAS', 'ESPAÇO CAÁ-PUÊRA', 'BATUCAJÉ', 'ATALAIA DO ACAIUBA', 'ONJÓ DE FARINHA',
+  'LAGOAS ENCATADA DOS NEGROS', 'RESTAURANTE KÚUKU-WAANA', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'ATALAIA DE TOCULO', 'ESPAÇO ZUMBI'
 ];
 
 interface LocationInfo {
@@ -125,104 +116,109 @@ interface LocationInfo {
 }
 
 const locationMappings: { [key: string]: { x: number; y: number } } = {
-  'ENTRADA': { x: 208, y: 460 }, //1
-  'ONJÓ CRUZAMBÊ': { x: 335, y: 461 },//2
-  'OXILE DAS ERVAS': { x: 360, y: 448 },//3
-  'ESPAÇO ACOTIRENE': { x: 377, y: 405 },//4
-  'MUXIMA DE PALMARES': { x: 332, y: 373 },//5
-  'ESPAÇO QUILOMBO': { x: 290, y: 403 },//6
-  'ESPAÇO GANGA-ZUMBA': { x: 332, y: 292 },//7
-  'ATALAIA DE ACAIENE': { x: 362, y: 234 },//8
-  'OCAS INDÍGENAS': { x: 310, y: 254 },//9
-  'ESPAÇO CAÁ-PUÊRA': { x: 278, y: 204 },//10
-  'BATUCAJÉ': { x: 240, y: 201 },//11
-  'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 260, y: 315 },//12
-  'BANHEIROS': { x: 202, y: 257 },//13
-  'ATALAIA DO ACAIUBA': { x: 160, y: 263 },//14
-  'ONJÓ DE FARINHA': { x: 205, y: 306 },//17
-  'LAGOAS ENCATADA DOS NEGROS': { x: 227, y: 108 },//15
-  'RESTAURANTE KÚUKU-WAANA': { x: 200, y: 380 },//18
-  'ESPAÇO AQUALTUNE': { x: 250, y: 100 },//16
-  'ATALAIA DO TOCULO': { x: 162, y: 458 },//19
-  'ESPAÇO ZUMBI': { x: 162, y: 395 },//20
+  'ENTRADA': { x: 185, y: 342 }, 'ONJÓ CRUZAMBÊ': { x: 360, y: 340 }, 'OXILE DAS ERVAS': { x: 395, y: 330 },
+  'ESPAÇO ACOTIRENE': { x: 415, y: 300 }, 'MUXIMA DE PALMARES': { x: 355, y: 275 }, 'ESPAÇO QUILOMBO': { x: 295, y: 300 },
+  'ESPAÇO GANGA-ZUMBA': { x: 355, y: 215 }, 'ATALAIA DE ACAIENE': { x: 395, y: 175 }, 'OCAS INDÍGENAS': { x: 325, y: 187 },
+  'ESPAÇO CAÁ-PUÊRA': { x: 280, y: 150 }, 'BATUCAJÉ': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
+  'BANHEIROS': { x: 175, y: 190 }, 'ATALAIA DO ACAIUBA': { x: 120, y: 195 }, 'ONJÓ DE FARINHA': { x: 185, y: 225 },
+  'LAGOAS ENCATADA DOS NEGROS': { x: 210, y: 80 }, 'RESTAURANTE KÚUKU-WAANA': { x: 173, y: 280 },
+  'ESPAÇO AQUALTUNE': { x: 245, y: 75 },'ATALAIA DE TOCULO': { x: 125, y: 340 },'ESPAÇO ZUMBI': { x: 125, y: 295 },
 };
 
 const locationInfos: LocationInfo[] = items.map((name, index) => {
   const coordinates = locationMappings[name] || { x: 0, y: 0 };
-
-  return {
-    id: index + 1,
-    name,
-    coordinates,
-  };
+  return { id: index + 1, name, coordinates };
 });
 
 const Maps: React.FC = () => {
-  const navigate = useNavigate();
+  
   const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(null);
   const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
 
   const handleLocationClick = (locationInfo: LocationInfo) => {
     setSelectedLocation(locationInfo);
+    if (transformComponentRef.current) {
+      transformComponentRef.current.zoomToElement(`#location-${locationInfo.id}`, 1.5, 2000);
+    }
   };
 
- 
-  return (
+  const handleZoomIn = () => {
+    if (transformComponentRef.current) {
+      transformComponentRef.current.zoomIn();
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (transformComponentRef.current) {
+      transformComponentRef.current.zoomOut();
+    }
+  };
+
+  return ( 
     <WatermarkWrapper watermarkImage={WatermarkImage}>
+      <FloatingButtonBar backBgColor='#313A0A'/>
       <div
         style={{
           backgroundColor: '#67781B',
-          height: '100vh',
+          height: '115vh',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          paddingTop: '80px', /* Ajuste o espaço superior */
         }}
       >
-        <img src={logo} alt="serra da barriga" style={{
-          width:'180px',
-          height:'66px',
-          marginTop:'35px',
-          marginBottom:'25px'
-
-          
-          
-
-        }} />
-        <BackButton onClick={() => navigate(-1)}>
-          <img src={seta} alt="Voltar" />
-        </BackButton>
-
-        <ButtonContainer>
-          <img src={LocIcon} alt="Localização" style={{ width: '30px', height: '30px', marginRight: '-10px', marginTop: '2px',  }} />
-          <h2 style={{ fontFamily: 'FuturaPTDemi', letterSpacing: '0px', color: '#FFFFFF', fontSize: '30px' }}>Mapa</h2>
-
-          <TransformWrapper initialScale={1} minScale={0.5} maxScale={4}   ref={transformComponentRef}  >
-            <TransformComponent>
-              <div style={{ position: 'relative', width:'280vw',display:'flex', alignItems:'center', justifyContent:'center', marginRight:'30px' }}>
-                <img src={mapa} alt="mapa" style={{ width: '100vh', height: '95vh' }} />
+        <img src={logo} alt="serra da barriga" style={{ width: '180px', height: '66px', marginBottom: '25px' }} />
       
-                {locationInfos.map((location) => (
-                  <LocationButton
-                    key={location.id}
-                    x={location.coordinates.x}
-                    y={location.coordinates.y}
-                    onClick={() => handleLocationClick(location)}
-                    aria-label={`Local ${location.name}`}
-                  />
-                ))}
-
-                {selectedLocation && (
-                  <Tooltip x={(selectedLocation.coordinates.x / 480) * 100 + '%'} y={(selectedLocation.coordinates.y / 520) * 100 + '%'}>
-                    {selectedLocation.name}
-                  </Tooltip>
-                )}
-              </div>
-            </TransformComponent> 
-          </TransformWrapper>
-
-          <BtnDownArrow />
+        <ButtonContainer>
+          <MapaContainer>
+            <img src={LocIcon} alt="Localização" style={{ width: '30px', height: '30px', marginRight: '-10px', marginTop: '2px' }} />
+            <h2 style={{ fontFamily: 'FuturaPTDemi', letterSpacing: '0px', color: '#FFFFFF', fontSize: '30px', margin: '0' }}>Mapa</h2>
+            <C.ZoomButton onClick={handleZoomIn}>
+              <img src={zoomIn} alt="Zoom In" style={{ width: '20px', height: '20px' }} />
+            </C.ZoomButton>
+            <C.ZoomButton onClick={handleZoomOut}>
+              <img src={zoomOut} alt="Zoom Out" style={{ width: '20px', height: '20px' }} />
+            </C.ZoomButton>
+          </MapaContainer>
         </ButtonContainer>
+        <TransformWrapper
+          initialScale={0.5}
+          minScale={0.5}
+          maxScale={3}
+          ref={transformComponentRef}
+          centerOnInit={true}
+          onZoomStop={({ state }) => {
+            if (state.scale > 1) {
+              transformComponentRef.current?.centerView(1000);
+            }
+          }}
+        >
+          <TransformComponent>
+            <div style={{ position: 'relative', width: '105vh', height: '135vh', display: 'flex', justifyContent: 'baseline', alignItems: 'center', flexDirection:'column' }}>
+              <img src={mapa} alt="mapa" style={{ width: '100%', height: '100vh', marginRight:'35px' }} />
+              {locationInfos.map((location) => (
+                <LocationButton
+                  key={location.id}
+                  id={`location-${location.id}`}
+                  x={location.coordinates.x}
+                  y={location.coordinates.y}
+                  onClick={() => handleLocationClick(location)}
+                  aria-label={`Local ${location.name}`}
+                />
+              ))}
+              {selectedLocation && (
+                <Tooltip x={(selectedLocation.coordinates.x / 480) * 100 + '%'} y={(selectedLocation.coordinates.y / 520) * 100 + '%'}>
+                  {selectedLocation.name}
+                </Tooltip>
+              )}
+            </div>
+          </TransformComponent>
+        </TransformWrapper> <br />
+              <div  style={{ width: '50px', height: '150px', position: 'absolute', top: '92%',  }}>
 
+              <img src={pinca} alt="Pinça" style={{ width: '50px', height: '50px' }} />
+              </div>
+        <BtnDownArrow />
       </div>
     </WatermarkWrapper>
   );

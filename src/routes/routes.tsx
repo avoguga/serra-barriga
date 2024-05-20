@@ -41,6 +41,8 @@ import HomeExpo from '../pages/HomeExpo';
 import ExpoVideos from '../pages/ExpoVideos';
 import ExpoDetails from '../pages/ExpoDetails';
 import ARFilterComponent from '../components/ARFilter';
+import ExpoVideosHome from '../pages/ExpoVideosHome';
+import VideoScreenHome from '../components/VideoScreenHome';
 
 
 
@@ -100,6 +102,12 @@ export const router = createBrowserRouter([
    
   },
   {
+    path: '/video-home',
+    element: <VideoScreenHome  />,
+    errorElement: <ErrorPage />,
+   
+  },
+  {
     path: '/takehome/virtual-expo',
     element: <VirtualExpo/>,
     errorElement: <ErrorPage />,
@@ -117,6 +125,11 @@ export const router = createBrowserRouter([
   {
     path: '/virtual-expo/expo-videos',
     element: <ExpoVideos />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/virtual-expo/expo-videos-home',
+    element: <ExpoVideosHome />,
     errorElement: <ErrorPage />,
   },
   {

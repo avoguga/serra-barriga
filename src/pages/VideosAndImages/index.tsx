@@ -50,7 +50,12 @@ const VideosAndImages: React.FC = () => {
           <div style={{
             marginTop:'25px',
        
-          }}> <VideoList/> </div>
+          }}>
+            
+            
+            
+            
+             <VideoList/> </div>
         ) : (
           <div style={{
             marginTop:'25px'
