@@ -12,6 +12,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
   const historicalCharacterRef = useRef<HTMLImageElement>(null);
   const [historicalCharacterLoaded, setHistoricalCharacterLoaded] =
     useState(false);
+  const [videoVisible, setVideoVisible] = useState(true);
 
   const onHolisticResults = useCallback(
     (results: any) => {
@@ -102,6 +103,9 @@ const ARFilterComponent: React.FC = React.memo(() => {
           );
 
           canvasCtx.restore();
+
+          // Hide the video element after the first frame is processed
+          setVideoVisible(false);
         }
       }
     },
@@ -191,7 +195,16 @@ const ARFilterComponent: React.FC = React.memo(() => {
       <BackButton onClick={() => navigate(-1)}>
         <img src={seta} alt="Voltar" />
       </BackButton>
-      <video ref={videoRef} style={{ display: 'none' }}></video>
+      <video
+        ref={videoRef}
+        style={{
+          display: videoVisible ? 'block' : 'none',
+          width: '100vw',
+          height: '100vh',
+          transform: 'scaleX(-1)', // Mirror the video feed
+        }}
+        autoPlay
+      ></video>
       <canvas
         ref={backgroundCanvasRef}
         width={3840}
