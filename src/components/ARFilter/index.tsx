@@ -25,7 +25,6 @@ const ARFilterComponent: React.FC = React.memo(() => {
           backgroundCanvasRef.current.getContext('2d');
 
         if (canvasCtx && backgroundCanvasCtx) {
-          // Clear both canvases
           canvasCtx.clearRect(
             0,
             0,
@@ -39,7 +38,6 @@ const ARFilterComponent: React.FC = React.memo(() => {
             backgroundCanvasRef.current.height
           );
 
-          // Draw the camera feed on the background canvas
           backgroundCanvasCtx.globalCompositeOperation = 'source-over';
           backgroundCanvasCtx.drawImage(
             results.image,
@@ -49,7 +47,6 @@ const ARFilterComponent: React.FC = React.memo(() => {
             backgroundCanvasRef.current.height
           );
 
-          // Draw the historical character on the background canvas
           if (results.poseLandmarks && historicalCharacterRef.current) {
             const leftShoulder = results.poseLandmarks[11];
             const leftShoulderX =
@@ -57,8 +54,8 @@ const ARFilterComponent: React.FC = React.memo(() => {
             const leftShoulderY =
               leftShoulder.y * backgroundCanvasRef.current.height;
 
-            const imageWidth = 150;
-            const imageHeight = 330;
+            const imageWidth = historicalCharacterRef.current.width;
+            const imageHeight = historicalCharacterRef.current.height;
             const offsetX = -imageWidth / 2;
             const offsetY = -imageHeight / 2;
 
@@ -73,7 +70,6 @@ const ARFilterComponent: React.FC = React.memo(() => {
 
           backgroundCanvasCtx.restore();
 
-          // Apply the segmentation mask on the main canvas
           canvasCtx.save();
           canvasCtx.scale(-1, 1);
           canvasCtx.translate(-canvasRef.current.width, 0);
@@ -87,7 +83,6 @@ const ARFilterComponent: React.FC = React.memo(() => {
             canvasRef.current.height
           );
 
-          // Composite the person image on the main canvas
           canvasCtx.globalCompositeOperation = 'source-in';
           canvasCtx.drawImage(
             results.image,
@@ -97,7 +92,6 @@ const ARFilterComponent: React.FC = React.memo(() => {
             canvasRef.current.height
           );
 
-          // Composite the background canvas behind the main canvas
           canvasCtx.globalCompositeOperation = 'destination-over';
           canvasCtx.drawImage(
             backgroundCanvasRef.current,
@@ -116,75 +110,79 @@ const ARFilterComponent: React.FC = React.memo(() => {
 
   useEffect(() => {
     const loadScripts = async () => {
-      const loadScript = (src: string) => {
-        return new Promise((resolve, reject) => {
-          const script = document.createElement('script');
-          script.src = src;
-          script.async = true;
-          script.onload = resolve;
-          script.onerror = reject;
-          document.head.appendChild(script);
-        });
-      };
+      const scripts = [
+        'https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js',
+        'https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js',
+      ];
 
-      try {
-        await loadScript(
-          'https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js'
-        );
-        await loadScript(
-          'https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js'
-        );
-
-        const { Holistic } = window as any;
-        const holistic = new Holistic({
-          locateFile: (file: string) =>
-            `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`,
-        });
-
-        holistic.setOptions({
-          modelComplexity: 1,
-          smoothLandmarks: true,
-          enableSegmentation: true,
-          smoothSegmentation: true,
-          minDetectionConfidence: 0.5,
-          minTrackingConfidence: 0.5,
-        });
-
-        holistic.onResults(onHolisticResults);
-
-        if (videoRef.current) {
-          const { Camera } = window as any;
-
-          const camera = new Camera(videoRef.current, {
-            onFrame: async () => {
-              if (videoRef.current) {
-                await holistic.send({ image: videoRef.current });
-              }
-            },
-            width: 640,
-            height: 480,
-            facingMode: 'user', // Use the front camera
+      await Promise.all(
+        scripts.map((src) => {
+          return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
           });
-          camera.start();
-        }
-      } catch (error) {
-        console.error('Failed to load MediaPipe scripts', error);
+        })
+      );
+
+      const { Holistic, Camera } = window as any;
+
+      const holistic = new Holistic({
+        locateFile: (file: string) =>
+          `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`,
+      });
+
+      holistic.setOptions({
+        modelComplexity: 1,
+        smoothLandmarks: true,
+        enableSegmentation: true,
+        smoothSegmentation: true,
+        minDetectionConfidence: 0.7,
+        minTrackingConfidence: 0.7,
+      });
+
+      holistic.onResults(onHolisticResults);
+
+      if (videoRef.current) {
+        const constraints = {
+          video: {
+            width: { ideal: 3840 },
+            height: { ideal: 2160 },
+            facingMode: 'user',
+          },
+          audio: false,
+        };
+
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        videoRef.current.srcObject = stream;
+
+        const camera = new Camera(videoRef.current, {
+          onFrame: async () => {
+            if (videoRef.current) {
+              await holistic.send({ image: videoRef.current });
+            }
+          },
+          width: 1920,
+          height: 1080,
+        });
+        camera.start();
       }
     };
 
-    loadScripts();
+    loadScripts().catch((error) => {
+      console.error('Failed to load MediaPipe scripts', error);
+    });
 
     return () => {
       const holisticScript = document.querySelector('script[src*="holistic"]');
       const cameraUtilsScript = document.querySelector(
         'script[src*="camera_utils"]'
       );
-      if (holisticScript) {
-        holisticScript.remove();
-      }
-      if (cameraUtilsScript) {
-        cameraUtilsScript.remove();
-      }
+      if (holisticScript) holisticScript.remove();
+      if (cameraUtilsScript) cameraUtilsScript.remove();
     };
   }, [onHolisticResults]);
 
@@ -194,9 +192,16 @@ const ARFilterComponent: React.FC = React.memo(() => {
         <img src={seta} alt="Voltar" />
       </BackButton>
       <video ref={videoRef} style={{ display: 'none' }}></video>
-      <canvas ref={backgroundCanvasRef} style={{ display: 'none' }}></canvas>
+      <canvas
+        ref={backgroundCanvasRef}
+        width={3840}
+        height={2160}
+        style={{ display: 'none' }}
+      ></canvas>
       <canvas
         ref={canvasRef}
+        width={1920}
+        height={1080}
         style={{ width: '100vw', height: '100vh' }}
       ></canvas>
       <img
