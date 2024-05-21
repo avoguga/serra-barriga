@@ -766,6 +766,16 @@
   dependencies:
     "@lit-labs/ssr-dom-shim" "^1.0.0"
 
+"@mediapipe/camera_utils@^0.3.1675466862":
+  version "0.3.1675466862"
+  resolved "https://registry.yarnpkg.com/@mediapipe/camera_utils/-/camera_utils-0.3.1675466862.tgz#861051d4343325a7e838714fe72050df37c0cdd0"
+  integrity sha512-siuXBoUxWo9WL0MeAxIxvxY04bvbtdNl7uCxoJxiAiRtNnCYrurr7Vl5VYQ94P7Sq0gVq6PxIDhWWeZ/pLnSzw==
+
+"@mediapipe/holistic@^0.5.1675471629":
+  version "0.5.1675471629"
+  resolved "https://registry.yarnpkg.com/@mediapipe/holistic/-/holistic-0.5.1675471629.tgz#f1127d43161ff27e8889d5d39aaea164f9730980"
+  integrity sha512-qY+cxtDeSOvVtevrLgnodiwXYaAtPi7dHZtNv/bUCGEjFicAOYtMmrZSqMmbPkTB2+4jLnPF1vgshkAqQRSYAw==
+
 "@mediapipe/selfie_segmentation@^0.1.1675465747":
   version "0.1.1675465747"
   resolved "https://registry.yarnpkg.com/@mediapipe/selfie_segmentation/-/selfie_segmentation-0.1.1675465747.tgz#f1f61eb116bf2efc262faf0a49a1829f4bae2712"
