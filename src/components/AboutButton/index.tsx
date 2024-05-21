@@ -38,6 +38,18 @@ const ButtonContainer = styled.div`
 
 
 }
+
+@media only screen and (width: 360px), (height: 780px) {
+
+
+top: 88%;
+left: 48%; 
+
+
+
+}
+
+
 `;
 
 const Button = styled.button`

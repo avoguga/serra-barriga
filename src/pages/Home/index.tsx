@@ -123,6 +123,11 @@ margin-top: 200px;
 }
 
 
+@media only screen and (width: 360px), (height: 780px) {
+ 
+
+}
+
 `
 const Main = styled.main`
   background-color: #67781B;
@@ -206,13 +211,21 @@ h3{
 @media only screen and (width: 360px), (height: 740px) {
 h3{
   top: 11% ;
-}  
+} 
+
+
 
 
 
 
 
 }
+@media only screen and (width: 360px), (height: 780px) {
+h3{
+  top: 11% ;
+}  
+}
+
 `
 
 
@@ -362,7 +375,7 @@ const Home = () => {
               navigate('/about');
               // toggleFullScreen;
             }}
-            customStyle={{ marginBottom: '15px' }}
+            customStyle={{ marginBottom: '18px' }}
           >
             SOBRE O APP
           </AboutButton>

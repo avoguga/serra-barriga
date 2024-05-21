@@ -157,6 +157,7 @@ const TakeHome = () => {
               SERRA DA BARRIGA
             </HomeButton>
             <HomeButton
+            color='#FFF'
               iconType="Icon360"
               onClick={() => {
                 navigate('/takehome/tour-360');
