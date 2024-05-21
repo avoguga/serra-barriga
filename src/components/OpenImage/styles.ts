@@ -16,30 +16,26 @@ export const FullScreenWrapper = styled.div<{ background: string }>`
 
 export const ImageContainer = styled.div`
   display: flex;
+  margin-left: 30px;
   flex-direction: row;
-  justify-content: flex-start; /* Alinha as imagens à esquerda */
+  justify-content: start; /* Alinha as imagens à esquerda */
   overflow-x: auto;
+  overflow-y: hidden;
   align-items: center;
+  row-gap: 18;
   height: 50vh;
   &::-webkit-scrollbar {
     display: none;
   }
 
-  padding: 30px;
+  padding: 0px;
   scroll-behavior: smooth;
-  &.pinch-zoom {
-    touch-action: pan-x pan-y;
-    overflow: auto;
-    max-width: 100%;
-    max-height: 100%;
-    display: block;
-  }
 `;
 export const StyledImage = styled.img<{ isZoomed: boolean }>`
-  background-color: green;
+  background-color: transparent;
   max-width: 100%;
   max-height: 35vh;
-  margin: 10px;
+  padding: 7px;
   transition: transform 0.3s ease;
 
   transform: ${({ isZoomed }) => (isZoomed ? 'scale(1.5)' : 'scale(1)')};
@@ -52,6 +48,7 @@ export const Description = styled.div`
   font-family: 'FuturaPTBook', sans-serif;
   display: flex;
   font-size: 16px;
+
   align-items: flex-start; // Alinha os itens ao início do contêiner no eixo transversal
   justify-content: flex-start; // Alinha os itens ao início do contêiner no eixo principal
   background-color: transparent;
@@ -63,4 +60,31 @@ export const LogoContainer = styled.div`
   display: flex;
 
   align-items: center;
+`;
+export const NavigationButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 108%;
+  position: absolute;
+  bottom: 45%;
+  padding: 0 20px;
+`;
+
+export const PrevButton = styled.button`
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  height: 150px;
+  cursor: pointer;
+`;
+
+export const NextButton = styled.button`
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 `;

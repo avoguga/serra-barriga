@@ -6,6 +6,7 @@ import foto4 from '../assets/images/Fotos das personalidades/Mãe Neide/Jpeg/lar
 import caroline1 from '../assets/images/Fotos das personalidades/Carolina de Jesus/foto-retirada-da-internet-1.webp';
 import caroline2 from '../assets/images/Fotos das personalidades/Carolina de Jesus/foto-retirada-da-internet-2.webp';
 import caroline3 from '../assets/images/Fotos das personalidades/Carolina de Jesus/imagem-ims-acervo-uh-folhapress.webp';
+import caroline4 from '../assets/images/Fotos das personalidades/Carolina de Jesus/Acervo UH - Folhapress (2).webp';
 
 import joao1 from '../assets/images/Fotos das personalidades/Joãozinho da Gomeia/Foto - Fundação Pierre Verger (2).webp';
 import joao2 from '../assets/images/Fotos das personalidades/Joãozinho da Gomeia/Foto retirada da internet (2).webp';
@@ -19,9 +20,10 @@ import abdias1 from '../assets/images/Fotos das personalidades/Abdias Nascimento
 import abdias2 from '../assets/images/Fotos das personalidades/Abdias Nascimento/Foto - Ricardo Stuckert - Pr.webp';
 import abdias3 from '../assets/images/Fotos das personalidades/Abdias Nascimento/Foto - Senado Federal (2).webp';
 
-import chica1 from '../assets/images/Fotos das personalidades/Carolina de Jesus/foto-retirada-da-internet-1.webp';
-import chica2 from '../assets/images/Fotos das personalidades/Carolina de Jesus/foto-retirada-da-internet-2.webp';
-import chica3 from '../assets/images/Fotos das personalidades/Carolina de Jesus/imagem-ims-acervo-uh-folhapress.webp';
+import chica1 from '../assets/images/Fotos das personalidades/Chica Xavier/Foto Luana Xavier.webp';
+import chica2 from '../assets/images/Fotos das personalidades/Chica Xavier/Foto retirada da internet (1).webp';
+import chica3 from '../assets/images/Fotos das personalidades/Chica Xavier/Foto retirada da internet (3).webp';
+import chica4 from '../assets/images/Fotos das personalidades/Chica Xavier/Still do filme A Feijoada da Vovó Maria Conga.webp';
 
 import helcias1 from '../assets/images/Fotos das personalidades/Helcias Pereira/Acervo APNS (2).webp';
 import helcias2 from '../assets/images/Fotos das personalidades/Helcias Pereira/Acervo Vamos Subir a Serra.webp';
@@ -38,10 +40,9 @@ import mirian3 from '../assets/images/Fotos das personalidades/Mãe Mírian/Foto
 import camisa1 from '../assets/images/Fotos das personalidades/Mestre Camisa/Foto Acervo Pessoal (2)_2_11zon.webp';
 import camisa2 from '../assets/images/Fotos das personalidades/Mestre Camisa/Foto Fabio Rossi (2)_1_11zon.webp';
 import camisa3 from '../assets/images/Fotos das personalidades/Mestre Camisa/Foto retirada da internet (2)_4_11zon.webp';
+import camisa4 from '../assets/images/Fotos das personalidades/Mestre Camisa/Stéphane Lemistre - Minaris studio (2)_3.webp';
 
 import claudio1 from '../assets/images/Fotos das personalidades/Mestre Cláudio/Acervo Vamos Subir a Serra.webp';
-import claudio2 from '../assets/images/Fotos das personalidades/Mestre Cláudio/Acervo Vamos Subir a Serra.webp';
-import claudio3 from '../assets/images/Fotos das personalidades/Mestre Cláudio/Acervo Vamos Subir a Serra.webp';
 
 import zezito1 from '../assets/images/Fotos das personalidades/Zezito Araújo/Acervo Vamos Subir a Serra_11zon.webp';
 import zezito2 from '../assets/images/Fotos das personalidades/Zezito Araújo/Foto - Rovena Rosa.webp';
@@ -50,6 +51,7 @@ import zezito3 from '../assets/images/Fotos das personalidades/Zezito Araújo/Fo
 export type PhotoType = {
   src: string;
   id: number;
+  descriptionPhoto: string;
 };
 
 export type PersonalityType = {
@@ -63,7 +65,6 @@ export type PersonalityType = {
   photos?: PhotoType[];
 };
 
-// Importe as imagens usando a sintaxe ES6. Ajuste os caminhos conforme necessário.
 import maeNeideImage from '../assets/icons/icones-personalidades/icones_Mae Neide.webp';
 import carolinaDeJesusImage from '../assets/icons/icones-personalidades/icones_Carolina .webp';
 import joaozinhoDaGomeiaImage from '../assets/icons/icones-personalidades/icones_Joãozinho .webp';
@@ -86,10 +87,10 @@ export const personalities: PersonalityType[] = [
       en: 'Protected by the dense Atlantic forest, the Palmarinos employed guerrilla tactics, surprising and defeating dozens of Portugueses and Dutch expeditions for decades. The Portugueses troops were able to break and entre the Palmarino stronghold only by besieging the Serra da Barriga and by using cannons and muskets. Here, history records the largest number of mem, women and children killed in battle. This genocide happened during the early hours of February 6, 1694.',
     },
     photos: [
-      { id: 1, src: foto1 },
-      { id: 2, src: foto2 },
-      { id: 3, src: foto3 },
-      { id: 4, src: foto4 },
+      { id: 1, src: foto1, descriptionPhoto: 'Foto - Larissa Fontes' },
+      { id: 2, src: foto2, descriptionPhoto: 'Foto - Larissa Fontes' },
+      { id: 3, src: foto3, descriptionPhoto: 'Foto - Larissa Fontes' },
+      { id: 4, src: foto4, descriptionPhoto: 'Foto de Aprigio Vilanova' },
     ],
     id: 0,
   },
@@ -101,9 +102,26 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Carolina de Jesus.',
     },
     photos: [
-      { id: 4, src: caroline1 },
-      { id: 5, src: caroline2 },
-      { id: 6, src: caroline3 },
+      {
+        id: 5,
+        src: caroline4,
+        descriptionPhoto: 'Acervo UH - Folhapress ',
+      },
+      {
+        id: 6,
+        src: caroline1,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
+      {
+        id: 7,
+        src: caroline2,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
+      {
+        id: 8,
+        src: caroline3,
+        descriptionPhoto: 'Imagem- IMS Acervo - UH Folhapress',
+      },
     ],
     id: 1,
   },
@@ -115,9 +133,21 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Joãozinho da Gomeia.',
     },
     photos: [
-      { id: 7, src: joao1 },
-      { id: 8, src: joao2 },
-      { id: 9, src: joao3 },
+      {
+        id: 9,
+        src: joao1,
+        descriptionPhoto: 'Foto - Fundação Pierre Verger',
+      },
+      {
+        id: 10,
+        src: joao2,
+        descriptionPhoto: 'Foto retirada da internet ',
+      },
+      {
+        id: 11,
+        src: joao3,
+        descriptionPhoto: 'Imagem do Fundo Correio da Manhã',
+      },
     ],
     id: 2,
   },
@@ -129,9 +159,21 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Lupicínio Rodrigues.',
     },
     photos: [
-      { id: 10, src: lupinicio1 },
-      { id: 11, src: lupinicio2 },
-      { id: 12, src: lupinicio3 },
+      {
+        id: 12,
+        src: lupinicio1,
+        descriptionPhoto: 'Foto - Evandro Teixeira',
+      },
+      {
+        id: 13,
+        src: lupinicio2,
+        descriptionPhoto: 'Foto retirada da internet ',
+      },
+      {
+        id: 14,
+        src: lupinicio3,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
     ],
     id: 3,
   },
@@ -143,9 +185,21 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Abdias Nascimento.',
     },
     photos: [
-      { id: 13, src: abdias1 },
-      { id: 14, src: abdias2 },
-      { id: 15, src: abdias3 },
+      {
+        id: 15,
+        src: abdias1,
+        descriptionPhoto: 'Foto - Acervo Abdias Nascimento - Ipeafro',
+      },
+      {
+        id: 16,
+        src: abdias2,
+        descriptionPhoto: 'Foto - Ricardo Stuckert - Pr',
+      },
+      {
+        id: 17,
+        src: abdias3,
+        descriptionPhoto: 'Foto - Senado Federal ',
+      },
     ],
     id: 4,
   },
@@ -157,9 +211,26 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Chica Xavier.',
     },
     photos: [
-      { id: 16, src: chica1 },
-      { id: 17, src: chica2 },
-      { id: 18, src: chica3 },
+      {
+        id: 18,
+        src: chica1,
+        descriptionPhoto: 'Foto Luana Xavier',
+      },
+      {
+        id: 19,
+        src: chica2,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
+      {
+        id: 20,
+        src: chica3,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
+      {
+        id: 21,
+        src: chica4,
+        descriptionPhoto: 'Still do filme A Feijoada da Vovó Maria Conga',
+      },
     ],
     id: 5,
   },
@@ -171,9 +242,21 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Helcias Pereira.',
     },
     photos: [
-      { id: 19, src: helcias1 },
-      { id: 20, src: helcias2 },
-      { id: 21, src: helcias3 },
+      {
+        id: 22,
+        src: helcias1,
+        descriptionPhoto: 'Acervo APNS',
+      },
+      {
+        id: 23,
+        src: helcias2,
+        descriptionPhoto: 'Acervo Vamos Subir a Serra',
+      },
+      {
+        id: 24,
+        src: helcias3,
+        descriptionPhoto: 'Foto de Aprigio Vilanova ',
+      },
     ],
     id: 6,
   },
@@ -185,9 +268,21 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Mãe Biu de Xambá.',
     },
     photos: [
-      { id: 22, src: biu1 },
-      { id: 23, src: biu2 },
-      { id: 24, src: biu3 },
+      {
+        id: 25,
+        src: biu1,
+        descriptionPhoto: 'Foto Arquivo Nação Xambá',
+      },
+      {
+        id: 26,
+        src: biu2,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
+      {
+        id: 27,
+        src: biu3,
+        descriptionPhoto: 'Imagem de Beto Figueiroa',
+      },
     ],
     id: 7,
   },
@@ -200,9 +295,21 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Mãe Mírian.',
     },
     photos: [
-      { id: 25, src: mirian1 },
-      { id: 26, src: mirian2 },
-      { id: 27, src: mirian3 },
+      {
+        id: 28,
+        src: mirian1,
+        descriptionPhoto: 'Foto de Aprigio Vilanova',
+      },
+      {
+        id: 29,
+        src: mirian2,
+        descriptionPhoto: 'Foto Edilson Omena',
+      },
+      {
+        id: 30,
+        src: mirian3,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
     ],
     id: 8,
   },
@@ -214,9 +321,26 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Mestre Camisa.',
     },
     photos: [
-      { id: 28, src: camisa1 },
-      { id: 29, src: camisa2 },
-      { id: 30, src: camisa3 },
+      {
+        id: 31,
+        src: camisa1,
+        descriptionPhoto: 'Foto Acervo Pessoal',
+      },
+      {
+        id: 32,
+        src: camisa2,
+        descriptionPhoto: 'Foto Fabio Rossi',
+      },
+      {
+        id: 33,
+        src: camisa3,
+        descriptionPhoto: 'Foto retirada da internet',
+      },
+      {
+        id: 34,
+        src: camisa4,
+        descriptionPhoto: 'Stéphane Lemistre - Minaris studio ',
+      },
     ],
     id: 9,
   },
@@ -228,9 +352,11 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Mestre Cláudio.',
     },
     photos: [
-      { id: 31, src: claudio1 },
-      { id: 32, src: claudio2 },
-      { id: 33, src: claudio3 },
+      {
+        id: 35,
+        src: claudio1,
+        descriptionPhoto: 'Acervo Vamos Subir a Serra',
+      },
     ],
     id: 10,
   },
@@ -242,9 +368,21 @@ export const personalities: PersonalityType[] = [
       en: 'Descriptive text in English for Zezito Araújo.',
     },
     photos: [
-      { id: 34, src: zezito1 },
-      { id: 35, src: zezito2 },
-      { id: 36, src: zezito3 },
+      {
+        id: 36,
+        src: zezito1,
+        descriptionPhoto: 'Foto - Rovena Rosa',
+      },
+      {
+        id: 37,
+        src: zezito2,
+        descriptionPhoto: 'Foto - Vivi Leão ',
+      },
+      {
+        id: 38,
+        src: zezito3,
+        descriptionPhoto: 'Foto retirada da internet ',
+      },
     ],
     id: 11,
   },

@@ -1,37 +1,26 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import imagem from '../../assets/icons/i_audio pagina.png';
-import { useNavigate,  } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import './styles.css';
 import AudioPlayer from '../../components/AudioPlayer';
 import BtnDownArrow from '../../components/ScrollButton';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-
-
 import { getEspacoAudios } from '../../helpers/espacoAudios';
 
-import React from 'react';
 const AudiosTakeHome = () => {
- 
-  
   const navigate = useNavigate();
+  const audioData = getEspacoAudios();
 
-
-  const audioData = getEspacoAudios(); // Sem passar 'figureName'
-
-
-  
-
-
-
-  if (  !audioData || audioData.length === 0) {
+  if (!audioData || audioData.length === 0) {
     return <p>Espaço ou áudios não encontrados.</p>;
   }
 
   return (
     <WatermarkWrapper>
       <div className="fundo">
-        <BtnDownArrow/>
+        <BtnDownArrow />
         <button
           className="back"
           onClick={() => {
@@ -51,54 +40,53 @@ const AudiosTakeHome = () => {
           }}
         />
         <div className="galeria">
-          <img src={imagem} alt="" />
+          <img src={imagem} alt="Ícone de áudio" />
           <h2>GALERIA DE AUDIOS</h2>
         </div>
         <section
           style={{
             marginBottom: '20px',
-            
           }}
           id="audios"
           className="audios"
         >
-         
-
-
           {audioData.map((audio, index) => (
-          <React.Fragment key={index}>
-           <div id="title" className="title">
-            <p>{audio.title} </p>
-          </div>
-            {audio.audio.map((audioUrl, idx) => (
-              <AudioPlayer key={idx} src={audioUrl} colorTheme='orange' styles={{
-                progressBarActive:{ backgroundColor: '#d66b00' }
-              
-              }}/>
-            ))}
-             <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '5px',
-              marginTop: '20px',
-              marginRight: '100px',
-              
-            }}
-          >
-            <p className="aaaaa">voz: {audio.interpretacao} </p>
-            <p className="aaaaa">Texto: {audio.texto}</p>
-   
-          </div> <br /><br />
-          </React.Fragment>
-        ))}
+            <React.Fragment key={index}>
+              <div id="title" className="title">
+                <p>{audio.title}</p>
+              </div>
+              {audio.audio.length > 0 ? (
+                audio.audio.map((audioUrl, idx) => (
+                  <AudioPlayer
+                    key={idx}
+                    src={audioUrl}
+                    colorTheme="orange"
+                    styles={{
+                      progressBarActive: { backgroundColor: '#d66b00' },
+                    }}
+                  />
+                ))
+              ) : (
+              <p></p>
+              )}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  width:'90vw',
 
-        
-
-        
+                  alignItems: 'self-start',
+                  marginTop: '20px'
+                  
+                }}
+              >
+                <p className="aaaaa">Voz: {audio.interpretacao}</p>
+                <p className="aaaaa">Texto: {audio.texto}</p>
+              </div>
+              <br /><br />
+            </React.Fragment>
+          ))}
         </section>
-      
       </div>
     </WatermarkWrapper>
   );

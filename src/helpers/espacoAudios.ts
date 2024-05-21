@@ -45,6 +45,7 @@ interface AudioData {
   interpretacao: string;
   texto: string;
   trilha: string;
+  indisponivel?: string;
 }
 
 interface EspacoAudiosMap {
@@ -65,7 +66,7 @@ export const espacoAudios: EspacoAudiosMap = {
     {
       audio: [aqualtune1],
       title: 'Espaço Contemplativo Aqualtune',
-      interpretacao: '',
+      interpretacao: 'Leila Pinheiro',
       texto: 'Leila Pinheiro',
       trilha: 'Trilha do Áudio 2',
     },
@@ -109,100 +110,111 @@ export const espacoAudios: EspacoAudiosMap = {
   'Espaço Onjó Cruzambe': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Onjó Cruzambê',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Oxile das Ervas': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Oxile das Ervas',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Muxima de Palmares': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Muxima dos Palmares',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Atalaia Acaiene': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Atalaia Acaiene',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Ocas indígenas': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Ocas Indígenas',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: '',
+      texto: 'Sem áudios dispóniveis no momento',
+      trilha: '',
     },
   ],
   'Espaço Batucajé': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Batucajé',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Atalaia de Acaiuba': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Atalaia de Acaiuba',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Lagoa Encantada dos Negros': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Lagoa Encatadda dos Negros',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Onjó de Farinha': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Onjó de Farinha',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Restaurante Kúuku-Waana': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo  Restaurante Kúuku-Waana',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
   'Espaço Atalaia de Toculo': [
     {
       audio: [],
-      title: 'Título do Áudio 3',
-      interpretacao: 'Interpretação do Áudio 3',
-      texto: 'Texto do Áudio 3',
-      trilha: 'Trilha do Áudio 3',
+      title: 'Espaço Comtemplativo Atalaia de Toculo',
+      indisponivel: 'Sem audios disponíveis no momento.',
+      interpretacao: 'Sem audios disponíveis no momento.',
+      texto: 'Sem audios disponíveis no momento.',
+      trilha: 'Sem audios disponíveis no momento.',
     },
   ],
 };

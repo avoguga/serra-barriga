@@ -136,9 +136,13 @@ const Maps: React.FC = () => {
   const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
 
   const handleLocationClick = (locationInfo: LocationInfo) => {
-    setSelectedLocation(locationInfo);
-    if (transformComponentRef.current) {
-      transformComponentRef.current.zoomToElement(`#location-${locationInfo.id}`, 1.5, 2000);
+    if (selectedLocation?.id === locationInfo.id) {
+      setSelectedLocation(null); 
+    } else {
+      setSelectedLocation(locationInfo);
+      if (transformComponentRef.current) {
+        transformComponentRef.current.zoomToElement(`#location-${locationInfo.id}`, 1.5, 2000);
+      }
     }
   };
 

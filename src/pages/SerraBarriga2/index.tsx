@@ -1,15 +1,12 @@
-//import './style.css/';
+import React, { useState, useRef } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import setaEsquerda from '../../assets/set_esquerda.svg';
 import setaDireita from '../../assets/set_direita.svg';
-
-import mapa from '../../assets/mapa - branco.svg';
-import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import styled from 'styled-components';
 import { BackButton } from '../TakeHome';
-import { useState } from 'react';
-import React from 'react';
+import OpenImage from '../../components/OpenImage';
 
 import foto1 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (1).webp';
 import foto2 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (2).webp';
@@ -18,8 +15,8 @@ import foto4 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (4).
 import foto5 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova.webp';
 import foto6 from '../../assets/images/serra fotos/Serra da Barriga (3).webp';
 import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
-import { FullScreenImage } from '../../helpers/OpenImage';
-import OpenImage from '../../components/OpenImage';
+import foto8 from '../../assets/images/serra fotos/Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642.webp';
+
 
 const ContainerGeral = styled.div`
   background: #d66b00;
@@ -28,8 +25,6 @@ const ContainerGeral = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-
 
 const SetaVoltar = styled.img`
   /* height: 23px;
@@ -51,7 +46,6 @@ const Text = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'FuturaPTDemi', sans-serif;
- 
 
   @media (min-width: 700px) {
     transform: translateY(20px);
@@ -61,12 +55,14 @@ const Text = styled.div`
     font-family: 'FuturaPTDemi', sans-serif;
   }
 `;
+
 const Paragraph = styled.p`
   margin-bottom: 10px; /* ou qualquer valor que dê o espaço desejado */
   line-height: 1.6; /* Ajuste para o espaçamento de linha desejado */
 `;
+
 const SerraInfo = styled.div`
-  border-radius: 0px 0px 90px 90px ;
+  border-radius: 0px 0px 90px 90px;
   background-color: #e17406;
   display: flex;
   text-align: left;
@@ -85,75 +81,12 @@ const ReadMoreButton = styled.button`
   cursor: pointer;
   text-decoration: underline;
 `;
+
 const LogoStyle = styled.img`
   width: 200px;
   height: 70px;
   margin-bottom: 20px;
   margin-top: -10px;
-`;
-
-const Mapa = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #586617;
-  height: 110px;
-  width: 110px;
-  border-radius: 60px;
-  margin-bottom: 85px;
-  margin-top: 70px;
-
-  @media (min-width: 700px) {
-    height: 210px;
-    width: 210px;
-    border-radius: 120px;
-    margin-bottom: 70px;
-  }
-`;
-
-const MapaBtn = styled.button`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #586617;
-  height: 110px;
-  width: 110px;
-  border-radius: 60px;
-  margin-bottom: 35px;
-
-  @media (min-width: 700px) {
-    height: 210px;
-    width: 210px;
-    border-radius: 120px;
-    margin-bottom: 70px;
-  }
-`;
-
-const MapaImg = styled.img`
-  height: 110px;
-  width: 110px;
-  padding: 30px;
-  transform: translateY(-5px);
-
-  @media (min-width: 700px) {
-    height: 210px;
-    width: 210px;
-    padding: 60px;
-    transform: translateY(-10px);
-  }
-`;
-
-const MapaTexto = styled.p`
-  color: white;
-  transform: translateY(-25px);
-  font-size: 15px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-  @media (min-width: 700px) {
-    transform: translateY(-50px);
-    font-size: 20px;
-  }
 `;
 
 const Title = styled.div`
@@ -180,7 +113,6 @@ const Carrossel = styled.div`
   margin-left: 30px;
 `;
 
-
 const BtnSeta = styled.div`
   display: flex;
   gap: 280px;
@@ -199,6 +131,7 @@ const Video = styled.iframe`
     width: 80%;
   }
 `;
+
 const CarrosselContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -213,19 +146,19 @@ const CarrosselContainer = styled.div`
   margin-right: 20px; /* Espaço extra no final do carrossel */
 `;
 
-
 const SerraDaBarriga2 = () => {
   const images = [
-    { src: foto1, description: "Foto de Aprigio Vilanova " },
-    { src: foto2, description: "Foto de Aprigio Vilanova " },
-    { src: foto3, description: "Foto de Aprigio Vilanova" },
-    { src: foto4, description: "Foto de Aprigio Vilanova " },
-    { src: foto5, description: "Foto de Aprigio Vilanova " },
-    { src: foto6, description: "Foto de Aprigio Vilanova " },
-    { src: foto7, description: "Foto de Aprigio Vilanova " },
+    { src: foto1, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto2, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto3, description: 'Foto de Aprigio Vilanova' },
+    { src: foto4, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto5, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto6, description: 'Serra da Barriga ' },
+    { src: foto7, description: 'Serra da Barriga  ' },
+    {src: foto8, description: `Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642`}
   ];
-  
-  const [fullScreenImage, setFullScreenImage] = useState<FullScreenImage | null>(null);
+
+  const [fullScreenImage, setFullScreenImage] = useState<{ src: string; description: string }[] | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -249,44 +182,37 @@ const SerraDaBarriga2 = () => {
   A Serra da Barriga também trata-se de um platô com elevada altimetria territorial, chegando a 485 metros de altitude, com lados íngremes e escarpados.
    Compreende paisagem natural e edificada, observando-se ainda grande quantidade de palmeiras que, segundo historiadores, deram origem ao nome ''Palmares'', além de vegetação e de recursos hídricos compostos de nascentes que alimentam um açude e uma lagoa.
   `;
- // Divide o texto em parágrafos
- const paragraphs = fullText.split('\n');
+  // Divide o texto em parágrafos
+  const paragraphs = fullText.split('\n');
 
- // A quantidade de parágrafos a serem exibidos quando não expandido
- const previewParagraphCount = 3;
+  // A quantidade de parágrafos a serem exibidos quando não expandido
+  const previewParagraphCount = 3;
 
- // Define quais parágrafos mostrar com base no estado de expansão
- const textToShow = isExpanded ? paragraphs : paragraphs.slice(0, previewParagraphCount);
- const scrollContainerRef = React.createRef<HTMLDivElement>();
-  
-  
- const openFullScreenImage = (p0: string[], description: string, index: number) => {
-  setFullScreenImage({
-    images: images.map(img => img.src),
-    description: images[index].description,
-    background: '#D66B00',
-    initialIndex: index
-  });
-  setCurrentIndex(index);
-};
+  // Define quais parágrafos mostrar com base no estado de expansão
+  const textToShow = isExpanded ? paragraphs : paragraphs.slice(0, previewParagraphCount);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-const closeFullScreenImage = () => {
-  setFullScreenImage(null);
-};
+  const openFullScreenImage = (index: number) => {
+    setFullScreenImage(images);
+    setCurrentIndex(index);
+  };
 
-const scrollCarrossel = (direction: string) => {
-  if (scrollContainerRef.current) {
-    const { current } = scrollContainerRef;
-    // Adicione um log para verificar se este ponto é alcançado
-    console.log("Scrolling", direction);
+  const closeFullScreenImage = () => {
+    setFullScreenImage(null);
+  };
 
-    // Pode ajustar este valor conforme necessário
-    const scrollAmount = 200; // Valor fixo para teste
+  const scrollCarrossel = (direction: string) => {
+    if (scrollContainerRef.current) {
+      const { current } = scrollContainerRef;
+      // Pode ajustar este valor conforme necessário
+      const scrollAmount = 200; // Valor fixo para teste
 
-    const newScrollPosition = direction === 'left' ? current.scrollLeft - scrollAmount : current.scrollLeft + scrollAmount;
-    current.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
-  }
-};
+      const newScrollPosition =
+        direction === 'left' ? current.scrollLeft - scrollAmount : current.scrollLeft + scrollAmount;
+      current.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+    }
+  };
+
   return (
     <ContainerGeral>
       <BackButton
@@ -299,42 +225,39 @@ const scrollCarrossel = (direction: string) => {
       <SerraInfo>
         <LogoStyle src={logo} className="logoStyle" />
         <Text>
-          
-        {textToShow.map((paragraph, index) => (
-        <Paragraph key={index}>{paragraph}</Paragraph>
-      ))}
-      <ReadMoreButton onClick={() => setIsExpanded(!isExpanded)}>
-        {isExpanded ? 'LER MENOS' : 'LER MAIS'}
-      </ReadMoreButton>
+          {textToShow.map((paragraph, index) => (
+            <Paragraph key={index}>{paragraph}</Paragraph>
+          ))}
+          <ReadMoreButton onClick={() => setIsExpanded(!isExpanded)}>
+            {isExpanded ? 'LER MENOS' : 'LER MAIS'}
+          </ReadMoreButton>
         </Text>
       </SerraInfo>
-      <br /><br /><br />
+      <br />
+      <br />
+      <br />
 
- 
       <Title>FOTOS</Title>
       <Carrossel>
-        {/* {images.map((image, index) => (
-          <CarrosselImg key={index} src={image.src} />
-        ))} */}
-  
-  <CarrosselContainer ref={scrollContainerRef}>
-    {images.map((image, index) => (
-      <img key={index} 
-           src={image.src} 
-           onClick={() => openFullScreenImage(images.map(img => img.src), image.description, index)}
-           alt={image.description} 
-           style={{ width: '160px', height: '160px' }}
-      />
-    ))}
-  </CarrosselContainer>
+        <CarrosselContainer ref={scrollContainerRef}>
+          {images.map((image, index) => (
+            <img
+              key={index}
+              src={image.src}
+              onClick={() => openFullScreenImage(index)}
+              alt={image.description}
+              style={{ width: '160px', height: '160px' }}
+            />
+          ))}
+        </CarrosselContainer>
       </Carrossel>
       <BtnSeta>
-      <button onClick={() => scrollCarrossel('left')}>
-    <img src={setaEsquerda} alt="Scroll Left" />
-  </button>
-  <button onClick={() => scrollCarrossel('right')}>
-    <img src={setaDireita} alt="Scroll Right" />
-  </button>
+        <button onClick={() => scrollCarrossel('left')}>
+          <img src={setaEsquerda} alt="Scroll Left" />
+        </button>
+        <button onClick={() => scrollCarrossel('right')}>
+          <img src={setaDireita} alt="Scroll Right" />
+        </button>
       </BtnSeta>
       <Title>VÍDEOS</Title>
       <Video
@@ -345,27 +268,23 @@ const scrollCarrossel = (direction: string) => {
         allowFullScreen
       ></Video>
       <BtnSeta>
-  <button >
-    <img src={setaEsquerda} alt="Scroll Left" />
-  </button>
-  <button >
-    <img src={setaDireita} alt="Scroll Right" />
-  </button>
-</BtnSeta>
+        <button>
+          <img src={setaEsquerda} alt="Scroll Left" />
+        </button>
+        <button>
+          <img src={setaDireita} alt="Scroll Right" />
+        </button>
+      </BtnSeta>
 
-      <img  />
-            {fullScreenImage && (
-  
-  <OpenImage 
-    images={fullScreenImage.images}
-    alt={fullScreenImage.description} 
-    background='#D66B00' 
-    description={fullScreenImage.description}
-    onClose={closeFullScreenImage}
-   initialIndex={currentIndex}
-  />
-
-)}
+      {fullScreenImage && (
+        <OpenImage
+          images={fullScreenImage}
+          alt={images[currentIndex].description} // Passe o alt corretamente
+          background="#D66B00"
+          onClose={closeFullScreenImage}
+          initialIndex={currentIndex}
+        />
+      )}
     </ContainerGeral>
   );
 };

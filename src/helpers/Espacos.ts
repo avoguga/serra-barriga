@@ -46,7 +46,7 @@ export interface EspacoData {
     en: string;
     italic?: string;
   };
-  images?: string[];
+  images?: { src: string; description: string }[];
   videos?: VideoData[];
   audios?: AudioData[];
   selfie?: string[];

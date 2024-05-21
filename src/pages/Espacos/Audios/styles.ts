@@ -4,9 +4,18 @@ export const Background = styled.div`
   background: #8aa61e;
   height: 110vh;
   align-items: center;
+
   display: flex;
   flex-direction: column;
   color: #ffff;
+
+  @media only screen and (device-width: 360px) and (device-height: 640px) {
+    height: 125vh;
+    width: 100%;
+  }
+  @media only screen and (device-width: 360px) and (device-height: 658px) {
+    height: 125vh;
+  }
 `;
 
 export const BackButton = styled.button`
@@ -48,27 +57,30 @@ export const Title = styled.div`
     font-family: 'FuturaPTBook', sans-serif;
     margin-left: 10px;
     text-transform: uppercase;
+    white-space: nowrap;
   }
   background: #7a9600;
   color: #e7ebe0;
 
-  width: 85%;
+  width: 100%;
   border-radius: 30px;
-  padding: 0.5rem;
+  padding: 0.8rem;
   padding-left: rem;
   opacity: 0.8;
   margin-bottom: 20px;
+  @media only screen and (device-width: 360px) and (device-height: 658px) {
+    width: 80%;
+  }
 `;
 
 export const AudioDetails = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 5px;
   margin-top: 20px;
   margin-left: 20px;
-
-  margin-right: 200px;
+  width: 100%;
 `;
 
 export const AudioText = styled.p`

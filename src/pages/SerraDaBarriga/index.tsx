@@ -1,15 +1,11 @@
 import './style.css/';
 import logo from '../../assets/logo.png';
-
-import footer from '../../assets/icons/logo parque - verde.svg'
-
+import footer from '../../assets/icons/logo parque - verde.svg';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import FloatingButtonBar from '../../components/FloatingContainer';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import OpenImage from '../../components/OpenImage';
-import { FullScreenImage } from '../../helpers/OpenImage';
-
 import Arrow from '../../components/ArrowButton';
 
 import foto1 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (1).webp';
@@ -19,25 +15,31 @@ import foto4 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova (4).
 import foto5 from '../../assets/images/serra fotos/Foto de Aprigio Vilanova.webp';
 import foto6 from '../../assets/images/serra fotos/Serra da Barriga (3).webp';
 import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
+import foto8 from '../../assets/images/serra fotos/Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642.webp';
+
 
 const SerraDaBarriga = () => {
   const images = [
-    { src:  foto1, description:'foto 1'},
-    { src:  foto2, description:'foto 2'},
-    { src:  foto3, description:'foto 3'},
-    { src:  foto4, description:'foto 4'},
-    { src:  foto5, description:'foto 5'},
-    { src:  foto6, description:'foto 6'},
-    { src:  foto7, description:'foto 7'},
-
-   
-
+    { src: foto1, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto2, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto3, description: 'Foto de Aprigio Vilanova' },
+    { src: foto4, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto5, description: 'Foto de Aprigio Vilanova ' },
+    { src: foto6, description: 'Serra da Barriga ' },
+    { src: foto7, description: 'Serra da Barriga  ' },
+    {src: foto8, description: `Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642`}
   ];
-  const [fullScreenImage, setFullScreenImage] = useState<FullScreenImage | null>(null);
+
+  const [fullScreenImage, setFullScreenImage] = useState<{
+    images: { src: string; description: string }[];
+    description: string;
+    background: string;
+    initialIndex: number;
+  } | null>(null);
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [leftArrowActive, setLeftArrowActive] = useState(false);
   const [rightArrowActive, setRightArrowActive] = useState(false);
-
 
   const fullText = `Serra da Barriga está localizada no atual município de União dos Palmares, no estado de Alagoas. À época do Quilombo dos Palmares, fazia parte da Capitania de Pernambuco.  
 
@@ -58,47 +60,42 @@ const SerraDaBarriga = () => {
   A Serra da Barriga também trata-se de um platô com elevada altimetria territorial, chegando a 485 metros de altitude, com lados íngremes e escarpados.
    Compreende paisagem natural e edificada, observando-se ainda grande quantidade de palmeiras que, segundo historiadores, deram origem ao nome ''Palmares'', além de vegetação e de recursos hídricos compostos de nascentes que alimentam um açude e uma lagoa.
   `;
-  // Divide o texto em parágrafos
+
   const paragraphs = fullText.split('\n');
-
-  // A quantidade de parágrafos a serem exibidos quando não expandido
   const previewParagraphCount = 3;
+  const textToShow = isExpanded ? paragraphs : paragraphs.slice(0, previewParagraphCount);
 
-  // Define quais parágrafos mostrar com base no estado de expansão
-  const textToShow = isExpanded
-    ? paragraphs
-    : paragraphs.slice(0, previewParagraphCount);
+  const openFullScreenImage = (index: number) => {
+    setFullScreenImage({
+      images,
+      description: images[index].description,
+      background: '#8C111B',
+      initialIndex: index,
+    });
+  };
 
-    const openFullScreenImage = (index: number) => {
-      const selectedImage = images[index];
-      setFullScreenImage({
-        images: images.map(img => img.src), // Passa todas as imagens para navegação
-        description: selectedImage.description,
-        background: '#8C111B',
-        initialIndex: index // Define a imagem inicial baseada no índice clicado
-      });
-    };
-    const closeFullScreenImage = () => {
-      setFullScreenImage(null);
-    };
+  const closeFullScreenImage = () => {
+    setFullScreenImage(null);
+  };
 
-    const scrollContainerRef = React.createRef<HTMLDivElement>();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-    const handleLeftClick = () => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft -= 100;
-        setLeftArrowActive(true); 
-        setRightArrowActive(false)
-      }
-    };
-    
-    const handleRightClick = () => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollLeft += 100;
-        setLeftArrowActive(false); 
+  const handleLeftClick = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft -= 100;
+      setLeftArrowActive(true);
+      setRightArrowActive(false);
+    }
+  };
+
+  const handleRightClick = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft += 100;
+      setLeftArrowActive(false);
       setRightArrowActive(true);
-      }
-    };
+    }
+  };
+
   return (
     <WatermarkWrapper watermark watermarkImage={WatermarkImage}>
       <FloatingButtonBar backgroundColor="#8C111B" backBgColor='#560007' />
@@ -111,7 +108,6 @@ const SerraDaBarriga = () => {
               width: '200px',
               height: '70px',
               marginTop: '100px',
-              
             }}
           />
           <div className="text">
@@ -120,76 +116,59 @@ const SerraDaBarriga = () => {
                 {paragraph}
               </p>
             ))}
-            <button
-              className="btnReadMore"
-              onClick={() => setIsExpanded(!isExpanded)}
-            >
+            <button className="btnReadMore" onClick={() => setIsExpanded(!isExpanded)}>
               {isExpanded ? 'LER MENOS' : 'LER MAIS'}
             </button>
           </div>
         </div>
 
-
         <h4>FOTOS</h4>
- 
 
         <div className="carrosel-container" ref={scrollContainerRef}>
           <div className="carrosel">
-          {images.map((image, index) => image.src && (
-            <img key={index} 
-            src={image.src} 
-            className="image" 
-            onClick={() => openFullScreenImage(index)}
-           
-            
-            
-            />
-            
-          ))}
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={image.src}
+                className="image"
+                onClick={() => openFullScreenImage(index)}
+                alt={image.description}
+              />
+            ))}
+          </div>
         </div>
-       
-        </div>
-        <div className='arrow-container'>
 
-        
-<Arrow direction="left" onClick={handleLeftClick} isActive={leftArrowActive} />
-  <Arrow direction="right" onClick={handleRightClick} isActive={rightArrowActive} />
-</div>
-        <h4 >VÍDEOS</h4>
+        <div className="arrow-container">
+          <Arrow direction="left" onClick={handleLeftClick} isActive={leftArrowActive} />
+          <Arrow direction="right" onClick={handleRightClick} isActive={rightArrowActive} />
+        </div>
+
+        <h4>VÍDEOS</h4>
         <iframe
           src="https://www.youtube.com/embed/USLC-TsQdnI"
           title="Memórias de luta na Serra da Barriga"
-          
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
           className="video"
-        >
-          
-        </iframe>
-        <div className='arrow-container'>
+        />
 
-        <Arrow direction="left" onClick={handleLeftClick} isActive={false} />
+        <div className="arrow-container">
+          <Arrow direction="left" onClick={handleLeftClick} isActive={false} />
           <Arrow direction="right" onClick={handleRightClick} isActive={false} />
-        
-            </div>
-          
-            <img className='footer' src={footer} />
-            {fullScreenImage && (
-  
-  <OpenImage 
-    images={fullScreenImage.images} 
-    alt={fullScreenImage.description} 
-    background='#8C111B' 
-    description={fullScreenImage.description}
-    onClose={closeFullScreenImage}
-   initialIndex={fullScreenImage.initialIndex}
-   
-  />
+        </div>
 
-)}
-            
+        <img className="footer" src={footer} alt="footer" />
+
+        {fullScreenImage && (
+          <OpenImage
+            images={fullScreenImage.images}
+            alt={fullScreenImage.description}
+            background={fullScreenImage.background}
+            onClose={closeFullScreenImage}
+            initialIndex={fullScreenImage.initialIndex}
+          />
+        )}
       </div>
-     
     </WatermarkWrapper>
   );
 };
