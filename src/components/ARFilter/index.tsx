@@ -57,8 +57,8 @@ const ARFilterComponent: React.FC = React.memo(() => {
             const leftShoulderY =
               leftShoulder.y * backgroundCanvasRef.current.height;
 
-            const imageWidth = 800;
-            const imageHeight = 1650;
+            const imageWidth = 150;
+            const imageHeight = 330;
             const offsetX = -imageWidth / 2;
             const offsetY = -imageHeight / 2;
 
@@ -154,14 +154,16 @@ const ARFilterComponent: React.FC = React.memo(() => {
 
         if (videoRef.current) {
           const { Camera } = window as any;
+
           const camera = new Camera(videoRef.current, {
             onFrame: async () => {
               if (videoRef.current) {
                 await holistic.send({ image: videoRef.current });
               }
             },
-            width: 1280,
-            height: 720,
+            width: 640,
+            height: 480,
+            facingMode: 'user', // Use the front camera
           });
           camera.start();
         }
@@ -192,13 +194,11 @@ const ARFilterComponent: React.FC = React.memo(() => {
         <img src={seta} alt="Voltar" />
       </BackButton>
       <video ref={videoRef} style={{ display: 'none' }}></video>
+      <canvas ref={backgroundCanvasRef} style={{ display: 'none' }}></canvas>
       <canvas
-        ref={backgroundCanvasRef}
-        width="1280"
-        height="720"
-        style={{ display: 'none' }}
+        ref={canvasRef}
+        style={{ width: '100vw', height: '100vh' }}
       ></canvas>
-      <canvas ref={canvasRef} width="1280" height="720"></canvas>
       <img
         ref={historicalCharacterRef}
         src={zumbi}
