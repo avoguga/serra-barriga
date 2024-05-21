@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Holistic, Results } from '@mediapipe/holistic';
-import { Camera } from '@mediapipe/camera_utils';
-
+import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../VideoScreen/styles';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import { useNavigate } from 'react-router-dom';
 import zumbi from '../../assets/zumbi final.png';
 
 const ARFilterComponent: React.FC = React.memo(() => {
@@ -17,7 +14,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
     useState(false);
 
   const onHolisticResults = useCallback(
-    (results: Results) => {
+    (results: any) => {
       if (
         canvasRef.current &&
         backgroundCanvasRef.current &&
@@ -118,37 +115,74 @@ const ARFilterComponent: React.FC = React.memo(() => {
   );
 
   useEffect(() => {
-    const holistic = new Holistic({
-      locateFile: (file) =>
-        `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`,
-    });
+    const loadScripts = async () => {
+      const loadScript = (src: string) => {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.async = true;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      };
 
-    holistic.setOptions({
-      modelComplexity: 1,
-      smoothLandmarks: true,
-      enableSegmentation: true,
-      smoothSegmentation: true,
-      minDetectionConfidence: 0.5,
-      minTrackingConfidence: 0.5,
-    });
+      try {
+        await loadScript(
+          'https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js'
+        );
+        await loadScript(
+          'https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js'
+        );
 
-    holistic.onResults(onHolisticResults);
+        const { Holistic } = window as any;
+        const holistic = new Holistic({
+          locateFile: (file: string) =>
+            `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`,
+        });
 
-    if (videoRef.current) {
-      const camera = new Camera(videoRef.current, {
-        onFrame: async () => {
-          if (videoRef.current) {
-            await holistic.send({ image: videoRef.current });
-          }
-        },
-        width: 1280,
-        height: 720,
-      });
-      camera.start();
-    }
+        holistic.setOptions({
+          modelComplexity: 1,
+          smoothLandmarks: true,
+          enableSegmentation: true,
+          smoothSegmentation: true,
+          minDetectionConfidence: 0.5,
+          minTrackingConfidence: 0.5,
+        });
+
+        holistic.onResults(onHolisticResults);
+
+        if (videoRef.current) {
+          const { Camera } = window as any;
+          const camera = new Camera(videoRef.current, {
+            onFrame: async () => {
+              if (videoRef.current) {
+                await holistic.send({ image: videoRef.current });
+              }
+            },
+            width: 1280,
+            height: 720,
+          });
+          camera.start();
+        }
+      } catch (error) {
+        console.error('Failed to load MediaPipe scripts', error);
+      }
+    };
+
+    loadScripts();
 
     return () => {
-      holistic.close();
+      const holisticScript = document.querySelector('script[src*="holistic"]');
+      const cameraUtilsScript = document.querySelector(
+        'script[src*="camera_utils"]'
+      );
+      if (holisticScript) {
+        holisticScript.remove();
+      }
+      if (cameraUtilsScript) {
+        cameraUtilsScript.remove();
+      }
     };
   }, [onHolisticResults]);
 
