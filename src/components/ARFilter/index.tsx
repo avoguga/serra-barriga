@@ -3,6 +3,36 @@ import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../VideoScreen/styles';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import zumbi from '../../assets/zumbi final.png';
+import styled from 'styled-components';
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
+
+const Spinner = styled.div`
+  color: #fff;
+  font-size: 2em;
+`;
+
+const Video = styled.video`
+  width: 100vw;
+  height: 100vh;
+  transform: scaleX(-1); /* Mirror the video feed */
+`;
+
+const Canvas = styled.canvas`
+  width: 100vw;
+  height: 100vh;
+`;
 
 const ARFilterComponent: React.FC = React.memo(() => {
   const navigate = useNavigate();
@@ -13,6 +43,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
   const [historicalCharacterLoaded, setHistoricalCharacterLoaded] =
     useState(false);
   const [videoVisible, setVideoVisible] = useState(true);
+  const [loading, setLoading] = useState(false); // State to control overlay visibility
 
   const onHolisticResults = useCallback(
     (results: any) => {
@@ -106,6 +137,9 @@ const ARFilterComponent: React.FC = React.memo(() => {
 
           // Hide the video element after the first frame is processed
           setVideoVisible(false);
+
+          // Hide the loading overlay
+          setLoading(false);
         }
       }
     },
@@ -113,7 +147,25 @@ const ARFilterComponent: React.FC = React.memo(() => {
   );
 
   useEffect(() => {
+    const loadCamera = async () => {
+      if (videoRef.current) {
+        const constraints = {
+          video: {
+            width: { ideal: 3840 },
+            height: { ideal: 2160 },
+            facingMode: 'user',
+          },
+          audio: false,
+        };
+
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        videoRef.current.srcObject = stream;
+      }
+    };
+
     const loadScripts = async () => {
+      setLoading(true); // Show the loading overlay
+
       const scripts = [
         'https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js',
         'https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js',
@@ -151,18 +203,6 @@ const ARFilterComponent: React.FC = React.memo(() => {
       holistic.onResults(onHolisticResults);
 
       if (videoRef.current) {
-        const constraints = {
-          video: {
-            width: { ideal: 3840 },
-            height: { ideal: 2160 },
-            facingMode: 'user',
-          },
-          audio: false,
-        };
-
-        const stream = await navigator.mediaDevices.getUserMedia(constraints);
-        videoRef.current.srcObject = stream;
-
         const camera = new Camera(videoRef.current, {
           onFrame: async () => {
             if (videoRef.current) {
@@ -176,9 +216,16 @@ const ARFilterComponent: React.FC = React.memo(() => {
       }
     };
 
-    loadScripts().catch((error) => {
-      console.error('Failed to load MediaPipe scripts', error);
-    });
+    const initialize = async () => {
+      await loadCamera();
+      setTimeout(() => {
+        loadScripts().catch((error) => {
+          console.error('Failed to load MediaPipe scripts', error);
+        });
+      }, 1000); // 1 second delay
+    };
+
+    initialize();
 
     return () => {
       const holisticScript = document.querySelector('script[src*="holistic"]');
@@ -195,28 +242,25 @@ const ARFilterComponent: React.FC = React.memo(() => {
       <BackButton onClick={() => navigate(-1)}>
         <img src={seta} alt="Voltar" />
       </BackButton>
-      <video
+      {loading && (
+        <Overlay>
+          <Spinner>Loading...</Spinner>
+        </Overlay>
+      )}
+      <Video
         ref={videoRef}
         style={{
           display: videoVisible ? 'block' : 'none',
-          width: '100vw',
-          height: '100vh',
-          transform: 'scaleX(-1)', // Mirror the video feed
         }}
         autoPlay
-      ></video>
-      <canvas
+      />
+      <Canvas
         ref={backgroundCanvasRef}
         width={3840}
         height={2160}
         style={{ display: 'none' }}
-      ></canvas>
-      <canvas
-        ref={canvasRef}
-        width={1920}
-        height={1080}
-        style={{ width: '100vw', height: '100vh' }}
-      ></canvas>
+      />
+      <Canvas ref={canvasRef} width={1920} height={1080} />
       <img
         ref={historicalCharacterRef}
         src={zumbi}
