@@ -1,164 +1,276 @@
-import React, { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
-import characterImg from '../../assets/aqualtune_final__cortada_-_cintura_pra_cima-removebg-preview.png';
-
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BackButton } from '../VideoScreen/styles';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
-import { useNavigate } from 'react-router-dom';
+import zumbi from '../../assets/zumbi final.png';
+import styled from 'styled-components';
 
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
 
-const ARFilterComponent: React.FC = () => {
+const Spinner = styled.div`
+  color: #fff;
+  font-size: 2em;
+`;
+
+const Video = styled.video`
+  width: 100vw;
+  height: 100vh;
+  transform: scaleX(-1); /* Mirror the video feed */
+`;
+
+const Canvas = styled.canvas`
+  width: 100vw;
+  height: 100vh;
+`;
+
+const ARFilterComponent: React.FC = React.memo(() => {
+  const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const backgroundCanvasRef = useRef<HTMLCanvasElement>(null);
+  const historicalCharacterRef = useRef<HTMLImageElement>(null);
+  const [historicalCharacterLoaded, setHistoricalCharacterLoaded] =
+    useState(false);
+  const [videoVisible, setVideoVisible] = useState(true);
+  const [loading, setLoading] = useState(false); // State to control overlay visibility
 
-  const navigate = useNavigate();
+  const onHolisticResults = useCallback(
+    (results: any) => {
+      if (
+        canvasRef.current &&
+        backgroundCanvasRef.current &&
+        historicalCharacterLoaded
+      ) {
+        const canvasCtx = canvasRef.current.getContext('2d');
+        const backgroundCanvasCtx =
+          backgroundCanvasRef.current.getContext('2d');
 
+        if (canvasCtx && backgroundCanvasCtx) {
+          canvasCtx.clearRect(
+            0,
+            0,
+            canvasRef.current.width,
+            canvasRef.current.height
+          );
+          backgroundCanvasCtx.clearRect(
+            0,
+            0,
+            backgroundCanvasRef.current.width,
+            backgroundCanvasRef.current.height
+          );
 
-  const [characterPosition, setCharacterPosition] = useState({ x: -0.3, y: 0, z: 1 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null);
+          backgroundCanvasCtx.globalCompositeOperation = 'source-over';
+          backgroundCanvasCtx.drawImage(
+            results.image,
+            0,
+            0,
+            backgroundCanvasRef.current.width,
+            backgroundCanvasRef.current.height
+          );
+
+          if (results.poseLandmarks && historicalCharacterRef.current) {
+            const leftShoulder = results.poseLandmarks[11];
+            const leftShoulderX =
+              leftShoulder.x * backgroundCanvasRef.current.width;
+            const leftShoulderY =
+              leftShoulder.y * backgroundCanvasRef.current.height;
+
+            const imageWidth = historicalCharacterRef.current.width;
+            const imageHeight = historicalCharacterRef.current.height;
+            const offsetX = -imageWidth / 2;
+            const offsetY = -imageHeight / 2;
+
+            backgroundCanvasCtx.drawImage(
+              historicalCharacterRef.current,
+              leftShoulderX + offsetX,
+              leftShoulderY + offsetY,
+              imageWidth,
+              imageHeight
+            );
+          }
+
+          backgroundCanvasCtx.restore();
+
+          canvasCtx.save();
+          canvasCtx.scale(-1, 1);
+          canvasCtx.translate(-canvasRef.current.width, 0);
+
+          canvasCtx.globalCompositeOperation = 'copy';
+          canvasCtx.drawImage(
+            results.segmentationMask,
+            0,
+            0,
+            canvasRef.current.width,
+            canvasRef.current.height
+          );
+
+          canvasCtx.globalCompositeOperation = 'source-in';
+          canvasCtx.drawImage(
+            results.image,
+            0,
+            0,
+            canvasRef.current.width,
+            canvasRef.current.height
+          );
+
+          canvasCtx.globalCompositeOperation = 'destination-over';
+          canvasCtx.drawImage(
+            backgroundCanvasRef.current,
+            0,
+            0,
+            canvasRef.current.width,
+            canvasRef.current.height
+          );
+
+          canvasCtx.restore();
+
+          // Hide the video element after the first frame is processed
+          setVideoVisible(false);
+
+          // Hide the loading overlay
+          setLoading(false);
+        }
+      }
+    },
+    [historicalCharacterLoaded]
+  );
 
   useEffect(() => {
-    const setupVideo = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-          videoRef.current.onloadedmetadata = () => {
-            videoRef.current!.play();
-            initializeThreeJS();
-          };
-        }
-      } catch (error) {
-        console.error("Error accessing webcam:", error);
+    const loadCamera = async () => {
+      if (videoRef.current) {
+        const constraints = {
+          video: {
+            width: { ideal: 3840 },
+            height: { ideal: 2160 },
+            facingMode: 'user',
+          },
+          audio: false,
+        };
+
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        videoRef.current.srcObject = stream;
       }
     };
 
-    const initializeThreeJS = () => {
-      if (canvasRef.current && videoRef.current) {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.2, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current as HTMLCanvasElement, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
+    const loadScripts = async () => {
+      setLoading(true); // Show the loading overlay
 
-        camera.position.z = 3;
+      const scripts = [
+        'https://cdn.jsdelivr.net/npm/@mediapipe/holistic/holistic.js',
+        'https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js',
+      ];
 
-        // Video texture
-        const videoTexture = new THREE.VideoTexture(videoRef.current as HTMLVideoElement);
-        const videoMaterial = new THREE.MeshBasicMaterial({ map: videoTexture, side: THREE.DoubleSide });
+      await Promise.all(
+        scripts.map((src) => {
+          return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+          });
+        })
+      );
 
-        // Calculate video aspect ratio
-        const videoAspect = (videoRef.current as HTMLVideoElement).videoWidth / (videoRef.current as HTMLVideoElement).videoHeight;
-        const videoHeight = 5;
-        const videoWidth = videoHeight * videoAspect;
+      const { Holistic, Camera } = window as any;
 
-        const videoGeometry = new THREE.PlaneGeometry(videoWidth, videoHeight);
-        const videoMesh = new THREE.Mesh(videoGeometry, videoMaterial);
-        videoMesh.position.z = 0;
-        scene.add(videoMesh);
+      const holistic = new Holistic({
+        locateFile: (file: string) =>
+          `https://cdn.jsdelivr.net/npm/@mediapipe/holistic/${file}`,
+      });
 
-        // Character image
-        const characterTexture = new THREE.TextureLoader().load(characterImg);
-        const characterMaterial = new THREE.MeshBasicMaterial({ map: characterTexture, transparent: true });
+      holistic.setOptions({
+        modelComplexity: 1,
+        smoothLandmarks: true,
+        enableSegmentation: true,
+        smoothSegmentation: true,
+        minDetectionConfidence: 0.7,
+        minTrackingConfidence: 0.7,
+      });
 
-        const characterGeometry = new THREE.PlaneGeometry(1, 1.7);
-        const characterMesh = new THREE.Mesh(characterGeometry, characterMaterial);
-        characterMesh.position.set(characterPosition.x, characterPosition.y, characterPosition.z);
-        scene.add(characterMesh);
+      holistic.onResults(onHolisticResults);
 
-        
-
-        const animate = () => {
-          requestAnimationFrame(animate);
-
-   
-       
-          renderer.render(scene, camera);
-        };
-
-        animate();
-
-        const handleMouseDown = (event: MouseEvent | TouchEvent) => {
-          setIsDragging(true);
-          if (event instanceof MouseEvent) {
-            setDragStart({ x: event.clientX, y: event.clientY });
-          } else {
-            const touch = event.touches[0];
-            setDragStart({ x: touch.clientX, y: touch.clientY });
-          }
-        };
-
-        const handleMouseMove = (event: MouseEvent | TouchEvent) => {
-          if (isDragging && dragStart) {
-            let clientX, clientY;
-            if (event instanceof MouseEvent) {
-              clientX = event.clientX;
-              clientY = event.clientY;
-            } else {
-              const touch = event.touches[0];
-              clientX = touch.clientX;
-              clientY = touch.clientY;
+      if (videoRef.current) {
+        const camera = new Camera(videoRef.current, {
+          onFrame: async () => {
+            if (videoRef.current) {
+              await holistic.send({ image: videoRef.current });
             }
-            const deltaX = (clientX - dragStart.x) / 100;
-            const deltaY = (clientY - dragStart.y) / 100;
-            setCharacterPosition((prevPosition) => ({
-              ...prevPosition,
-              x: prevPosition.x + deltaX,
-              y: prevPosition.y - deltaY,
-            }));
-            setDragStart({ x: clientX, y: clientY });
-          }
-        };
-
-        const handleMouseUp = () => {
-          setIsDragging(false);
-          setDragStart(null);
-        };
-
-        if (canvasRef.current) {
-          canvasRef.current.addEventListener('mousedown', handleMouseDown);
-          canvasRef.current.addEventListener('touchstart', handleMouseDown);
-          window.addEventListener('mousemove', handleMouseMove);
-          window.addEventListener('touchmove', handleMouseMove);
-          window.addEventListener('mouseup', handleMouseUp);
-          window.addEventListener('touchend', handleMouseUp);
-        }
-
-        return () => {
-          if (videoRef.current && videoRef.current.srcObject) {
-            const stream = videoRef.current.srcObject as MediaStream;
-            const tracks = stream.getTracks();
-            tracks.forEach(track => track.stop());
-          }
-         
-          if (canvasRef.current) {
-            canvasRef.current.addEventListener('mousedown', handleMouseDown);
-            canvasRef.current.removeEventListener('touchstart', handleMouseDown);
-          }
-          window.removeEventListener('mousemove', handleMouseMove);
-          window.removeEventListener('touchmove', handleMouseMove);
-          window.removeEventListener('mouseup', handleMouseUp);
-          window.removeEventListener('touchend', handleMouseUp);
-        };
+          },
+          width: 1920,
+          height: 1080,
+        });
+        camera.start();
       }
     };
 
-    setupVideo();
-  }, [characterPosition]);
+    const initialize = async () => {
+      await loadCamera();
+      setTimeout(() => {
+        loadScripts().catch((error) => {
+          console.error('Failed to load MediaPipe scripts', error);
+        });
+      }, 1000); // 1 second delay
+    };
+
+    initialize();
+
+    return () => {
+      const holisticScript = document.querySelector('script[src*="holistic"]');
+      const cameraUtilsScript = document.querySelector(
+        'script[src*="camera_utils"]'
+      );
+      if (holisticScript) holisticScript.remove();
+      if (cameraUtilsScript) cameraUtilsScript.remove();
+    };
+  }, [onHolisticResults]);
 
   return (
     <>
-    <BackButton onClick={() => {
-              navigate(-1);
-            }}
-          >
-            <img src={seta} alt="" />
-      
-    </BackButton>
-      <video ref={videoRef} autoPlay muted style={{ display: 'none' }} />
-      <canvas ref={canvasRef} />
+      <BackButton onClick={() => navigate(-1)}>
+        <img src={seta} alt="Voltar" />
+      </BackButton>
+      {loading && (
+        <Overlay>
+          <Spinner>Loading...</Spinner>
+        </Overlay>
+      )}
+      <Video
+        ref={videoRef}
+        style={{
+          display: videoVisible ? 'block' : 'none',
+        }}
+        autoPlay
+      />
+      <Canvas
+        ref={backgroundCanvasRef}
+        width={3840}
+        height={2160}
+        style={{ display: 'none' }}
+      />
+      <Canvas ref={canvasRef} width={1920} height={1080} />
+      <img
+        ref={historicalCharacterRef}
+        src={zumbi}
+        alt="Historical character"
+        style={{ display: 'none' }}
+        onLoad={() => setHistoricalCharacterLoaded(true)}
+        onError={() => console.error('Failed to load the Historical Character')}
+      />
     </>
   );
-};
+});
 
 export default ARFilterComponent;
