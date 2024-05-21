@@ -46,6 +46,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 
@@ -55,10 +56,15 @@
   font-size: 13px;
   opacity: 0.80;
   white-space:nowrap;
-  margin-right: 25px;
+
   
 
     text-transform: uppercase;
   
 
+}
+
+.no-audio {
+  font-family: 'FuturaPt', sans-serif;
+  color: #E7EBE0;
 }

@@ -4,10 +4,9 @@ import iconX from '../../assets/icons/X - Branco.svg';
 import logo from '../../assets/logo.png';
 
 export interface OpenImageProps {
-  images: string[];
+  images: { src: string; description: string }[];
   alt: string;
   background: string;
-  description: string;
   onClose?: () => void;
   initialIndex?: number;
 }
@@ -16,7 +15,6 @@ const OpenImage: React.FC<OpenImageProps> = ({
   images,
   alt,
   background,
-  description,
   onClose,
   initialIndex = 0,
 }) => {
@@ -28,7 +26,7 @@ const OpenImage: React.FC<OpenImageProps> = ({
   const handleTap = (index: number) => {
     const currentTime = new Date().getTime();
     const tapLength = currentTime - (lastTapRef.current || currentTime);
-    
+
     if (lastTapRef.current && tapLength < 300) {
       setIsZoomed(!isZoomed);  // Toggle zoom
     } else {
@@ -40,6 +38,7 @@ const OpenImage: React.FC<OpenImageProps> = ({
     lastTapRef.current = currentTime;
   };
 
+  
   useEffect(() => {
     setCurrentIndex(initialIndex);
   }, [initialIndex]);
@@ -69,19 +68,20 @@ const OpenImage: React.FC<OpenImageProps> = ({
           style={{ width: '200px', height: '70px', marginTop: '100px', marginBottom: '30px', marginRight: '40px' }}
         />
       </C.LogoContainer>
-      <C.ImageContainer ref={containerRef} onClick={e => e.stopPropagation()}>
+      <C.ImageContainer ref={containerRef} onClick={(e) => e.stopPropagation()}>
         {images.map((image, index) => (
           <C.StyledImage
             key={index}
-            src={image}
+            src={image.src}
             alt={alt}
             isZoomed={isZoomed && currentIndex === index}  // Apply zoom only to the current image
             onClick={() => handleTap(index)}
-            style={{ display: 'block',width: isZoomed && currentIndex === index ? '100%' : 'auto', maxHeight: '35vh' }}
+            style={{ display: 'block', width: isZoomed && currentIndex === index ? '100%' : 'auto', maxHeight: '35vh' }}
           />
         ))}
       </C.ImageContainer>
-      <C.Description>{description}</C.Description>
+      
+      <C.Description>{images[currentIndex].description}</C.Description>
     </C.FullScreenWrapper>
   );
 };

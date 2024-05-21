@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 // Components
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
-import LowArrow from '../../components/LowArrowButton';
+
 
 // Assets
 import WatermarkImage from '../../assets/background-red.png';
@@ -20,13 +20,9 @@ import logoIphan from '../../assets/icons/logo-iphan.svg';
 import packageJson from '../../../package.json';
 import BtnDownArrow from '../../components/ScrollButton';
 import { useNavigate } from 'react-router-dom';
+import FloatingButtonBar from '../../components/FloatingContainer';
 
-const Nav = styled.nav`
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 50px 25px;
-`;
+
 
 const View = styled.div`
   font-family: 'Futura PT', sans-serif;
@@ -73,9 +69,7 @@ const About = () => {
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <View>
-        <Nav>
-          <LowArrow onClick={() => window.history.back()} isActive={true} />
-        </Nav>
+       <FloatingButtonBar backgroundColor='#700238' backBgColor='#4E0026'/>
         <Content>
         <BtnDownArrow/>
           <img
