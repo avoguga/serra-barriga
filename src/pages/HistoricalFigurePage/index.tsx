@@ -23,6 +23,7 @@ const HistoricalFigurePage: React.FC = () => {
               <C.PersonalityImage
                 src={figureData.icon}
                 alt={figureData.title}
+                loading='lazy'
                 
               />
               <C.PersonalityTitle>{figureData.title}</C.PersonalityTitle>
