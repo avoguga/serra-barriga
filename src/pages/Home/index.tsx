@@ -194,7 +194,7 @@ export const MapaButton =styled.button`
   
 h3{
   font-size: 15px; 
-  z-index: 3;
+  z-index: 2;
   position:absolute;
 top: 9.2%;
 
