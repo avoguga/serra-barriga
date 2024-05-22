@@ -83,7 +83,7 @@ export const personalities: PersonalityType[] = [
     name: 'Mãe Neide',
     image: maeNeideImage,
     description: {
-      pt: 'Protegidos pela densa mata atlântica, os quilombolas usavam tática de guerrilha avançada, surpreendendo e derrotando dezenas de expedições portuguesas e holandesas ao longo de décadas. Sitiando a Serra da Barriga, as tropas portuguesas somente conseguiram romper e adentrar o reduto palmarino usando armamento pesado – canhões e escopetas. Aqui, a história registra o maior número de homens, mulheres e crianças mortos e degolados em combates. Esse genocídio aconteceu na madrugada do dia 6 de fevereiro de 1694. ACAIUBA´S LOOKOUT ',
+      pt: 'Maria Neide Martins, conhecida como Mãe Neide Oyá D’Oxum, nasceu no município de Arapiraca/AL. A ialorixá fundou, em 1984, o Grupo Espírita Santa Bárbara (Guesb), onde desenvolve projetos com o foco no resgate social de pessoas em situação de vulnerabilidade, por meio da religiosidade, e da preservação da arte e da cultura negra. Mãe Neide também é responsável pelo Centro de Formação e Inclusão Social INAÊ, Gastróloga, Patrimônio Vivo do Estado de Alagoas e Embaixadora da Gastronomia Brasileira.',
       en: 'Protected by the dense Atlantic forest, the Palmarinos employed guerrilla tactics, surprising and defeating dozens of Portugueses and Dutch expeditions for decades. The Portugueses troops were able to break and entre the Palmarino stronghold only by besieging the Serra da Barriga and by using cannons and muskets. Here, history records the largest number of mem, women and children killed in battle. This genocide happened during the early hours of February 6, 1694.',
     },
     photos: [
@@ -98,7 +98,7 @@ export const personalities: PersonalityType[] = [
     name: 'Carolina de Jesus',
     image: carolinaDeJesusImage,
     description: {
-      pt: 'Texto descritivo em Português para Carolina de Jesus.',
+      pt: 'De família pobre, Carolina de Jesus nasceu em Sacramento/MG. É considerada uma das maiores escritoras negras do país, e tem em sua obra um importante referencial para os estudos culturais no Brasil e no mundo. Publicou seu primeiro livro em 1960 com o título “Quarto de Despejo” que, traduzido para 29 idiomas, vendeu mais de cem mil exemplares em diferentes partes do mundo. Publicou também “Casa de Alvenaria” (crônicas), “Pedaços da fome” (romance, 1963) e “Diário de Bitita” (na França em 1982, e no Brasil em 1986). Está incluída no Dicionário mundial de mulheres notáveis, publicado em Lisboa.',
       en: 'Descriptive text in English for Carolina de Jesus.',
     },
     photos: [
@@ -129,7 +129,7 @@ export const personalities: PersonalityType[] = [
     name: 'Joãozinho da Gomeia',
     image: joaozinhoDaGomeiaImage,
     description: {
-      pt: 'Texto descritivo em Português para Joãozinho da Gomeia.',
+      pt: `A partir de João Alves de Torres Filho, o Joãozinho da Goméia, nascido em 1914, os cultos de matriz africana nunca mais foram vistos da mesma maneira no Brasil, especialmente em regiões onde seus adeptos foram cruelmente perseguidos por décadas. Responsável pela popularização dessas religiões, eternizou-se como referência nas tradições de Matrizes Africanas e ficou conhecido como Rei do Candomblé.`,
       en: 'Descriptive text in English for Joãozinho da Gomeia.',
     },
     photos: [
@@ -155,7 +155,7 @@ export const personalities: PersonalityType[] = [
     name: 'Lupicínio Rodrigues',
     image: lupicinioRodriguesImage,
     description: {
-      pt: 'Texto descritivo em Português para Lupicínio Rodrigues.',
+      pt: `Nascido em Porto Alegre/RS em 1914, Lupi, como era também conhecido, demonstrou seu interesse pela música ainda criança. Ao longo da vida compôs desde marchinhas de carnaval a hinos de times de futebol. Porém, seu principal estilo era samba-canção, caracterizado por letras repletas de sentimento e melancolia. “Nervos de Aço”, “Cadeira Vazia” e “Se Acaso Você Chegasse” são exemplos de suas experiências amorosas que foram musicadas. Deixou mais de uma centena de canções editadas, e cerca de 500 inéditas.`,
       en: 'Descriptive text in English for Lupicínio Rodrigues.',
     },
     photos: [
@@ -181,7 +181,8 @@ export const personalities: PersonalityType[] = [
     name: 'Abdias Nascimento',
     image: abdiasImage,
     description: {
-      pt: 'Texto descritivo em Português para Abdias Nascimento.',
+      pt: `Escritor, artista plástico, teatrólogo, político e poeta, Abdias Nascimento foi um dos maiores ativistas pelos direitos do povo negro, no Brasil. Nascido em 1914 em Franca/SP, teve sua trajetória marcada pela participação na Frente Negra Brasileira, nos anos 1930, e pela contribuição ao Congresso Afro-Campineiro, em 1938. Em 1944 fundou e dirigiu o Teatro Experimental do Negro (TEN) no Rio de Janeiro, tornando-se pioneiro em levar ao palco um elenco negro, inovando a formação do teatro moderno brasileiro.
+      `,
       en: 'Descriptive text in English for Abdias Nascimento.',
     },
     photos: [
@@ -207,7 +208,7 @@ export const personalities: PersonalityType[] = [
     name: 'Chica Xavier',
     image: ChicaImage,
     description: {
-      pt: 'Texto descritivo em Português para Chica Xavier.',
+      pt: 'Chica Xavier, nome artístico de Francisca Xavier Queiroz de Jesus, nasceu em Salvador, em 22 de janeiro de 1932. Foi uma ialorixá, produtora teatral e atriz de teatro, cinema e televisão brasileira. Mesmo sendo mais conhecida pelo grande público por seus trabalhos nas telenovelas da TV Globo, onde eternizou personagens emblemáticas, atuou no teatro nacional por mais de 60 anos destacando-se como grande personalidade da representatividade negra na arte do Brasil.',
       en: 'Descriptive text in English for Chica Xavier.',
     },
     photos: [
@@ -238,7 +239,8 @@ export const personalities: PersonalityType[] = [
     name: 'Helcias Pereira',
     image: helciasImage,
     description: {
-      pt: 'Texto descritivo em Português para Helcias Pereira.',
+      pt: `Natural de Maceió/AL, Helcias Pereira é considerado um dos ativistas mais atuantes pela causa social do negro em Alagoas. Desde a adolescência, se dedica ao desenvolvimento de estratégias de combate ao racismo, à discriminação racial e à intolerância religiosa. Foi coordenador nacional dos Agentes de Pastoral Negros do Brasil (APNs) e fundador do Centro de Cultura e Estudos Étnicos Anajô. Em 2010, recebeu as comendas Zumbi dos Palmares e Dandara, concedidas pela Câmara Municipal de Maceió/AL, em reconhecimento a sua atuação pela diversidade étnico-racial no estado.
+      `,
       en: 'Descriptive text in English for Helcias Pereira.',
     },
     photos: [
@@ -264,7 +266,7 @@ export const personalities: PersonalityType[] = [
     name: 'Mãe Biu de Xambá',
     image: maeBiuImage,
     description: {
-      pt: 'Texto descritivo em Português para Mãe Biu de Xambá.',
+      pt: `Filha de Ogum, Severina Paraíso da Silva, conhecida como Mãe Biu, foi responsável pela manutenção da tradição Xambá, em Pernambuco. Durante mais de uma década  de repressão às religiões de matriz africana, garantiu a continuidade da cultura que vive em função do candomblé e que caracteriza a comunidade Portão do Gelo. Reconhecida pela Fundação Cultural Palmares como um dos primeiros quilombos urbanos do país, a comunidade se mantém viva e unida a partir da perpetuação dos valores e saberes transmitidos pela Ialorixá.`,
       en: 'Descriptive text in English for Mãe Biu de Xambá.',
     },
     photos: [
@@ -291,7 +293,7 @@ export const personalities: PersonalityType[] = [
     name: 'Mãe Mírian',
     image: maeMirianImage,
     description: {
-      pt: 'Texto descritivo em Português para Mãe Mírian.',
+      pt: `Representante das Casas de Culto Afro-brasileiras de Alagoas, é uma das mais respeitadas ialorixás do estado. À frente da Casa Ilé N’ifé Omi Omo Posú Bétá, criada por seu esposo em 1950, perpetua a cultura e religiosidade de seus ancestrais. Em 2012 recebeu, em nome das comunidades religiosas de matriz africana, o pedido oficial de perdão pelo governo do Estado, sobre a Quebra de Xangô. O fato ocorrido 100 anos antes, consistiu na destruição de todas as casas de culto afro-brasileiro de Maceió.      `,
       en: 'Descriptive text in English for Mãe Mírian.',
     },
     photos: [
@@ -317,7 +319,8 @@ export const personalities: PersonalityType[] = [
     name: 'Mestre Camisa',
     image: mestreCamisaImage,
     description: {
-      pt: 'Texto descritivo em Português para Mestre Camisa.',
+      pt: `José Tadeu Carneiro Cardoso, nascido em Jacobina, na Bahia, iniciou-se na Capoeira nos anos 60 com seu irmão mais velho, o Camisa Roxa. Em seguida mudou-se para Salvador, indo morar no bairro da Lapinha, onde continuou a praticar capoeira nas rodas de rua, principalmente nas de Mestre Valdemar e Mestre Traíra, que eram realizadas na Rua Pero Vaz. Posteriormente foi treinar na academia de Mestre Bimba, onde se formou. Mestre Camisa fundou a Escola Abadá-Capoeira, hoje presente em todos os estados brasileiros e em mais de 28 países do mundo, entre eles: Estados Unidos, México, Canadá, França, Dinamarca, Inglaterra, Israel e Angola. A Escola se tornou uma divulgadora da língua portuguesa pelo mundo, com cerca de 40 mil capoeiristas, seguindo a filosofia, doutrina, normas e fundamentos ditados pelo Mestre.
+      `,
       en: 'Descriptive text in English for Mestre Camisa.',
     },
     photos: [
@@ -348,7 +351,8 @@ export const personalities: PersonalityType[] = [
     name: 'Mestre Cláudio',
     image: mestreClaudioImage,
     description: {
-      pt: 'Texto descritivo em Português para Mestre Cláudio.',
+      pt: `Severino Cláudio Figueiredo Leite, também conhecido como Mestre Cláudio, é natural do Rio de Janeiro/RJ. Aprendeu a arte da ginga aos 12 anos. Em 1982, a Capoeira tornou-se seu ofício. Professor de Educação Física, Mestre Cláudio é um dos fundadores da Escola de Capoeira Pôr do Sol dos Palmares, onde há mais de 30 anos desenvolve atividades de formação de capoeiristas em todo o estado de Alagoas. Mestre Cláudio é massoterapeuta, biodanceiro e leitor corporal, com especialização em treinamento esportivo.
+      `,
       en: 'Descriptive text in English for Mestre Cláudio.',
     },
     photos: [
@@ -364,7 +368,7 @@ export const personalities: PersonalityType[] = [
     name: 'Zezito Araújo',
     image: zezitoImage,
     description: {
-      pt: 'Texto descritivo em Português para Zezito Araújo.',
+      pt: `Militante do Movimento Negro desde a década de 1980, Zezito Araújo teve relevante participação no tombamento da Serra da Barriga, localizada em União dos Palmares/AL, assim como nos projetos de desenvolvimento do Parque Memorial Quilombo dos Palmares. Zezito é historiador e foi diretor do Núcleo de Estudos Afro-brasileiros da Universidade Federal de Alagoas (UFAL). Por sua vasta experiência e atuação política contra a discriminação cultural, foi homenageado em 2012 pela Câmara Municipal de Maceió com a Comenda Zumbi dos Palmares.`,
       en: 'Descriptive text in English for Zezito Araújo.',
     },
     photos: [

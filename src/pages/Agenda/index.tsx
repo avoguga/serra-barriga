@@ -21,7 +21,9 @@ const Agenda = () => {
   const navigate = useNavigate();
   const eventContainerRef = useRef<HTMLDivElement>(null);
 
-  const mesAtual = new Date().toLocaleString('pt-BR', { month: 'long' }).toLowerCase();
+  const mesAtual = new Date()
+    .toLocaleString('pt-BR', { month: 'long' })
+    .toLowerCase();
   const [mesSelecionado, setMesSelecionado] = useState<string>(mesAtual);
   const [eventos, setEventos] = useState<EventoProps[]>([]);
   const [eventosFiltrados, setEventosFiltrados] = useState<EventoProps[]>([]);
@@ -30,34 +32,38 @@ const Agenda = () => {
 
   useEffect(() => {
     setLoading(true); // Inicia o loading antes da chamada da API
-    axios.get("https://serra-gestor.vercel.app/api/eventos?")
-      .then(response => {
+    axios
+      .get('http://93.127.210.45:1337/api/eventos?')
+      .then((response) => {
         console.log(response);
-      
-        
-        
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const eventosMapeados: EventoProps[] = response.data.map((evento: any) => ({
-          
-          id: evento.id,
-          Title: evento.Title,
-          Mes: evento.Mes.toLowerCase(),
-          DescriptionPT: evento.DescriptionPT,
-          Data: new Date(evento.Data),
-        }));
-  
+        const eventosMapeados: EventoProps[] = response.data.map(
+          (evento: any) => ({
+            id: evento.id,
+            Title: evento.Title,
+            Mes: evento.Mes.toLowerCase(),
+            DescriptionPT: evento.DescriptionPT,
+            Data: new Date(evento.Data),
+          })
+        );
+
         setEventos(eventosMapeados);
-        setUniqueMonths([...new Set(eventosMapeados.map(evento => evento.Mes))]);
+        setUniqueMonths([
+          ...new Set(eventosMapeados.map((evento) => evento.Mes)),
+        ]);
         setLoading(false); // Encerra o loading após processar os dados
       })
-      .catch(error => {
-        console.error("Erro ao buscar eventos:", error);
+      .catch((error) => {
+        console.error('Erro ao buscar eventos:', error);
         setLoading(false); // Encerra o loading mesmo se ocorrer um erro
       });
   }, []);
 
   useEffect(() => {
-    const eventosDoMesSelecionado = eventos.filter(evento => evento.Mes.toLowerCase() === mesSelecionado);
+    const eventosDoMesSelecionado = eventos.filter(
+      (evento) => evento.Mes.toLowerCase() === mesSelecionado
+    );
     setEventosFiltrados(eventosDoMesSelecionado);
   }, [mesSelecionado, eventos]);
 
@@ -75,9 +81,9 @@ const Agenda = () => {
     navigate(`/agenda/${EventId}`);
   };
 
-  return ( 
+  return (
     <C.PageContainer>
-      <FloatingButtonBar backgroundColor="#026660" backBgColor='#003431' />
+      <FloatingButtonBar backgroundColor="#026660" backBgColor="#003431" />
       <HeaderC />
       <C.SelectContainer>
         <h2>CONFIRA A AGENDA</h2>
@@ -93,15 +99,15 @@ const Agenda = () => {
       </C.SelectContainer>
       <C.EventContainer ref={eventContainerRef}>
         {loading ? (
-            <C.SkeletonGallery>
+          <C.SkeletonGallery>
             {Array.from({ length: 2 }).map((_, index) => (
               <C.SkeletonImage key={index} />
             ))}
           </C.SkeletonGallery>
         ) : eventosFiltrados.length > 0 ? (
-          eventosFiltrados.map(event => (
+          eventosFiltrados.map((event) => (
             <C.EventCard key={event.id}>
-              <C.EventTitle>{event.Title}   </C.EventTitle>
+              <C.EventTitle>{event.Title} </C.EventTitle>
               <C.EventDateTime>{formatDate(event.Data)}</C.EventDateTime>
               <C.ButtonCard>
                 <C.MoreButton onClick={() => goToAgenda(event.id)}>
@@ -110,20 +116,27 @@ const Agenda = () => {
               </C.ButtonCard>
             </C.EventCard>
           ))
-        ) : ( 
-        <p style={{color:'#FFFFFF', whiteSpace:"nowrap"}}>Nenhum evento disponível para este mês.</p>
-
+        ) : (
+          <p style={{ color: '#FFFFFF', whiteSpace: 'nowrap' }}>
+            Nenhum evento disponível para este mês.
+          </p>
         )}
       </C.EventContainer>
-      <C.ArrowContainer> <br />
+      <C.ArrowContainer>
+        {' '}
+        <br />
         <button onClick={handleDownClick}>
-          <img src={ArrowDownIcon} alt="seta para baixo" width={30} height={41} />
+          <img
+            src={ArrowDownIcon}
+            alt="seta para baixo"
+            width={30}
+            height={41}
+          />
         </button>
       </C.ArrowContainer>
       <Outlet />
     </C.PageContainer>
   );
-  
 };
 
 export default Agenda;

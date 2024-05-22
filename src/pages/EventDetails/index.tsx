@@ -5,7 +5,6 @@ import * as C from './styles';
 import Header from '../../components/Header';
 import { formatDate } from '../../helpers/DataHelpers';
 
-
 interface EventoProps {
   id: number;
   Title: string;
@@ -13,7 +12,7 @@ interface EventoProps {
   DescriptionPT: string;
   DescriptionEN: string;
   Span: string;
-  Data: string;  
+  Data: string;
 }
 
 const EventDetails = () => {
@@ -23,11 +22,12 @@ const EventDetails = () => {
 
   useEffect(() => {
     if (eventId) {
-      axios.get(`https://serra-gestor.vercel.app/api/eventos/${eventId}`)
-        .then(response => {
+      axios
+        .get(`http://93.127.210.45:1337/api/eventos/${eventId}`)
+        .then((response) => {
           const { data } = response;
           console.log(response.data);
-          
+
           if (!data) {
             throw new Error('Evento não encontrado');
           }
@@ -38,12 +38,11 @@ const EventDetails = () => {
             DescriptionPT: data.DescriptionPT,
             DescriptionEN: data.DescriptionEN || '',
             Span: data.Span || '',
-            Data: data.Data  
+            Data: data.Data,
           };
           setEvento(eventoData);
-          
         })
-        .catch(err => {
+        .catch((err) => {
           setError('Evento não encontrado');
           console.error('Erro ao buscar detalhes do evento:', err);
         });
@@ -55,13 +54,17 @@ const EventDetails = () => {
   }
 
   if (!evento) {
-    return <div style={{  height: '100vh',background: '#009289' }}>Carregando...</div>;
+    return (
+      <div style={{ height: '100vh', background: '#009289' }}>
+        Carregando...
+      </div>
+    );
   }
 
   return (
     <C.Container>
       <Header />
-  
+
       <C.DetalhesContainer>
         <C.TituloEvento>{evento.Title}</C.TituloEvento>
         <C.DataHoraEvento>

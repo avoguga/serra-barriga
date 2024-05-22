@@ -61,12 +61,13 @@ export const espacos: Record<string, EspacoData> = {
     icon: acotierne,
     description: {
       pt: `
-      O Deus de todos os nomes: N´Zambi, Olorum, Tupã e Oxalá, foi fonte de resistência dos quilombolas. Inquices dos Bantus, Voduns dos Jéjes e Orixás dos lorubás, representando as forças da natureza, inspiravam e protegiam o povo palmarino. 
-      Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa mescla de informações é resultado da postura ideológica dos segmentos sociais que se envolveram no passado com esse fato histórico, e daqueles que, no presente, procuram resgatar a história do negro a partir da perspectiva dos vencidos. A história de Acotirene exemplifica bem essa visão mítica e real do Quilombo dos Palmares. Enquanto mito, era a conselheira de todos os Palmarinos; como fato real, seu nome foi dado a um importante mocambo. Acotirene era um dos mocambos do Quilombo dos Palmares, instalado no litoral dos Estados de Pernambuco e Alagoas, em homenagem a uma das primeiras mulheres que habitou o Quilombo dos Palmares e que exerceu grande influencia na vida dos negros quilombolas.
-`,
-      en: `N´Zambi, Olorum, Tupã and Oxalá are  names for the same deity and source of resistance for the marrons Inquices to the Bantu, Voduns to the Jaje, and Orixás to the Yorubá, all representing the forces of nature, inspired and protected the Palmarino people.
+      O Deus de todos os nomes: N´Zambi, Olorum, Tupã e Oxalá, foi fonte de resistência dos quilombolas. Inquices dos Bantus, Voduns dos Jéjes e Orixás dos Iorubás, representando as forças da natureza, inspiraram e protegeram o povo palmarino.
 
-      In the history of Quilombo dos Palmares there are myths and real facts. This mixture of information is the result of the ideological stance of social segments that were involved in the past with this historical fact, and of those who, in the present, seek to rescue the history of black people from the perspective of the defeated. The story of Acotirene exemplifies this mythical and real vision of Quilombo dos Palmares. As a myth, she was the advisor of all Palmarinos; As a real fact, her name was given to an important mocambo. Acotirene was one of the mocambos of Quilombo dos Palmares, installed on the coast of the States of Pernambuco and Alagoas, in honor of one of the first women who inhabited Quilombo dos Palmares and who had a great influence on the lives of black quilombolas.
+Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa mescla de informações é resultado da postura ideológica dos segmentos sociais que se envolveram no passado com esse fato histórico, e daqueles que, no presente, procuram resgatar a história do negro a partir da perspectiva dos vencidos. A história de Acotirene exemplifica bem essa visão mítica e real do Quilombo dos Palmares. Enquanto mito, era a conselheira de todos os palmarinos; como fato real, seu nome foi dado a um importante mocambo. Acotirene era um dos mocambos do Quilombo dos Palmares, instalado no litoral dos Estados de Pernambuco e Alagoas, em homenagem a uma das primeiras mulheres que habitou o Quilombo dos Palmares e que exerceu grande influência na vida dos negros quilombolas.
+`,
+      en: `The God of all names: N'Zambi, Olorum, Tupã and Oxalá, was a source of resistance for the quilombolas. Nkisis for the Bantus, Voduns for the Jéjes and Orishas for the Yorubas, representing the forces of nature, inspired and protected the people of Palmares.
+
+      In the history of Quilombo dos Palmares, myths and real facts coexist. This blend of information is the result of the ideological stance of the social groups involved in the past with this historical event, and those who, in the present, seek to rescue the history of black people from the perspective of the vanquished. The story of Acotirene exemplifies this mythical and real view of Quilombo dos Palmares well. As a myth, she was the advisor to all the residents of Palmares; as a real fact, her name was given to an important settlement. Acotirene was one of the settlements of Quilombo dos Palmares, located on the coast of the states of Pernambuco and Alagoas, in homage to one of the first women who inhabited Quilombo dos Palmares and who exerted great influence on the lives of the black quilombolas.
       `,
     },
     images: espacoImages['Espaço Acotirene'],
@@ -79,13 +80,14 @@ export const espacos: Record<string, EspacoData> = {
     title: 'Espaço Aqualtune',
     icon: aqualtune,
     description: {
-      pt: `Princesa e guerreira africana, que fugiu grávida de um engenho em Porto Calvo. Com coragem e determinação adentrou e desbravou uma terra desconhecida e hostil. Fundou o Quilombo dos Palmares, também conhecido como Angola Janga (minha pequena Angola).
+      pt: `Princesa e guerreira africana que fugiu grávida de um engenho em Porto Calvo. Com coragem e determinação adentrou e desbravou uma terra desconhecida e hostil. Organizou politicamente o Quilombo dos Palmares, também conhecido como Angola Janga (Minha pequena Angola).
 
-      Teria sido princesa do reino do Congo no século 17, Aqualtune liderou um exército de cerca de 10 mil pessoas, entre eles homens e mulheres, contra as investidas de forças portuguesas. Acabou derrotada e capturada por portugueses, esses que estavam subjugando e vendendo para senhores de escravos brasileiros. Chegando no Brasil em Recife, foi vendida para o engenho de Porto Calvo, atual município de Alagoas. No entanto, ao saber sobre a existência do maior centro de resistência negra do Brasil, o Quilombo dos Palmares, não demorou muito para Aqualtune colocar em prática sua força de liderança e comandar uma fuga junto de outros companheiros em direção a Palmares. Teve seus filhos Ganga Zumba e Ganga Zona, dois grandes guerreiros, e Sabina, que supostamente seria mãe de Zumbi dos Palmares.
+      Aqualtune teria sido princesa do reino do Congo no século 17, e liderou um exército de cerca de 10 mil pessoas, entre eles homens e mulheres, contra as investidas de forças portuguesas. Acabou derrotada e capturada por portugueses, esses que estavam subjugando e vendendo para senhores de escravos brasileiros. Chegando no Brasil em Recife, foi vendida para o engenho de Porto Calvo, atual município de Alagoas. No entanto, ao saber sobre a existência do Quilombo dos Palmares, não demorou muito para Aqualtune colocar em prática sua força de liderança e comandar uma fuga junto de outros companheiros em direção a Palmares. Teve seus filhos Ganga-Zumba, Ganga-Zona e Ganga-Muiça, três grandes guerreiros, e Sabina, que provavelmente seria mãe de Zumbi dos Palmares.
       `,
-      en: `A princess and African Warrior, Aqualtune escaped, pregnant, from a sugar plantation in Porto Calvo. Through courage and determination, she explored an unknown and hostile land and established the Quilombo dos  Palmares, also known as Angola Janga, my little Angola.
+      en: `An African princess and warrior who escaped pregnant from a plantation in Porto Calvo. With courage and determination, she entered an unknown and hostile land and politically organized the Quilombo dos Palmares, also known as Angola Janga (my little Angola).
 
-      Having been princess of the kingdom of Congo in the 17th century, Aqualtune led an army of around 10 thousand people, including men and women, against the attacks of Portuguese forces. She ended up defeated and captured by the Portuguese, who were subjugating and selling them to Brazilian slave owners. Arriving in Brazil in Recife, it was sold to the Porto Calvo mill, now the municipality of Alagoas. However, upon learning about the existence of the largest center of black resistance in Brazil, Quilombo dos Palmares, it didn't take long for Aqualtune to put his leadership strength into practice and command an escape with other companions towards Palmares. She had her children Ganga Zumba and Ganga Zona, two great warriors, and Sabina, who was supposedly the mother of Zumbi dos Palmares.
+      Aqualtune is said to have been a princess of the Kingdom of Congo in the 17th century, and she led an army of about 10 thousand people, including men and women, against the attacks of Portuguese forces. She ended up being defeated and captured by the Portuguese, who were subjugating and selling captives to Brazilian slave owners. Upon arriving in Brazil in Recife, she was sold to the sugar plantation of Porto Calvo, the current municipality of Alagoas. However, upon learning about the existence the Quilombo dos Palmares, it didn't take long for Aqualtune to put her leadership strength into practice and lead an escape with other companions towards Palmares. She had her children Ganga-Zumba,Ganga-Zona and Ganga-Muiça, three great warriors, and Sabina, who supposedly would be the mother of Zumbi dos Palmares.
+      
       `,
     },
     images: espacoImages['Espaço Aqualtune'],
@@ -130,8 +132,8 @@ export const espacos: Record<string, EspacoData> = {
     title: 'Espaço Zumbi',
     icon: zumbi,
     description: {
-      pt: 'O último líder de Palmares, Zumbi foi traído e morto em 20 de novembro de 1695. Como resultado da incansável mobilização do Movimento Negro Brasileiro, ele foi reconhecido como herói nacional pelo govenro federal, em 21 de março de 1997. ZUMBI VIVE!',
-      en: `Last leader of Palmares, Zumbi was betrayed and killed on November 20, 1695. As the result of untiring mobilization by the Brazilian Black Movement, he was recognized as a National Hero by the Brazilian Government on March 21, 1997. ZUMBI LIVES!
+      pt: 'O último líder de Palmares, Zumbi foi traído e morto em 20 de novembro de 1695. Como resultado da incansável mobilização do Movimento Negro Brasileiro, ele foi reconhecido como herói nacional pelo governo federal, em 21 de março de 1997. ZUMBI VIVE!',
+      en: `Palmares’ last leader, Zumbi was betrayed and killed on November 20, 1695. As a result of the relentless mobilization of the Brazilian Black Movement, he was recognized as a national hero by the federal government on March 21, 1997. ZUMBI LIVES!
       `,
     },
     images: espacoImages['Espaço Zumbi'],
@@ -144,7 +146,7 @@ export const espacos: Record<string, EspacoData> = {
     description: {
       pt: 'Este espaço serve de apoio à prática das religiões de matriz africana que aqui se entrelaçam. Neste solo sagrado, Babalaôs, Ialorixás, Ekédes, Ogãs e Abiãs fazem axexês (oferendas) e Orikis (orações) aos eguns (espíritos) que vagam desassossegados pelo sangue derramado. Desde a década de 80, essas atividades acontecem na madrugada do dia 20 de novembro. Em oração, se pede proteção para a Serra e seus visitantes e licença para que a Serra seja visitada.',
       en: `
-      This place serves as support for diverse religions customs of African origin that are practiced here. On this sacred ground, Babalaôs, Babalorixás, Ialorixás, Ekedes, Ogãs, and Abiãs, make offerings (axexês) and say prayers (orikis) to the spirits (Eguns) that roam the Serra da Barriga, restless by the shedding of blood. Every year since the 1980s, these activities have taken place at dawn on November 20 th. Participants pray and ask for protection and permission so that the Serra da Barriga may be visited by all.
+      This space supports the practice of the Afro-Brazilian religions that are intertwined here. On this sacred ground, Babalorishas, Yalorishas, Ekedes, Ogans and Abians make axexes (offerings) and Orikis (prayers) to the eguns (spirits) who wander restlessly as a result of the bloodshed. Since the 1980s, these activities have taken place in the early hours of November 20th. The prayers ask for protection for the Serra and its visitors and for permission so the site can be visited.
       `,
       italic: `HOUSE OF THE SACRED`,
     },
@@ -158,7 +160,7 @@ export const espacos: Record<string, EspacoData> = {
     description: {
       pt: 'Na cultura dos diversos povos africanos e indígenas, as plantas e raízes eram utilizadas para cura, banhos e oferendas. Este conhecimento da medicina natural, mantido no Quilombo dos Palmares, perdura até hoje nas comunidades indígenas e remanescentes de Quilombo, nas casas religiosas de matriz africana, nas casas de rezadeiras e nas pajelanças. Esta prática se perpetua também através do plantio de ervas nos quintais, nas hortas e nos canteiros das famílias brasileiras.',
       en: `
-      Plants and roots were used for cures, baths and offerings in the cultures of many African and Amerindian peoples these secrets of natural medicine, held by the Palmarinos, remain today among Native south American Indians and present-day maroon communities, in religious centers of African origin, in the houses of healers and in tribal rituals. These medicinal traditions have been kept ative by Brasilia families through the cultivation of herbs in backyards, gardens and flower pots.
+      According to the culture of various African and indigenous peoples, plants and roots were used for healing, baths and offerings. This knowledge of natural medicine, maintained in the Quilombo dos Palmares, continues to this day in indigenous communities and Quilombo remnants, in the temples of Afro-Brazilian religions, in the houses of the rezadeiras (female faith healers) and in pajelanças (indigenous healing ritual). This practice is also perpetuated through the planting of such herbs in the backyards, vegetable gardens and flowerbeds of Brazilian families.
       
       `,
       italic: `HERBAL GARDEN`,
@@ -341,7 +343,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
     subtitle: 'BANQUETE FAMILIAR',
     icon: restaurante,
     description: {
-      pt: `A culinária afro-brasileira tem uma dimensão que transcende o alimento. Ela é uma oferenda da natureza aos seres vivos, e serve de elo de comunicação com os seus ancestrais. Na cultura Bantu, a culinária é um dos elementos de restauração da força vital e mantém o equilíbrio entre os vivos e os mortos. Aqui você poderá saborear alguns dos quitutes que eram produzidos e consumidos pelos quilombolas quando chegaram à Serra da Barriga em 1597, sob a liderança da Princesa Aqualtune.
+      pt: `A culinária afro-brasileira tem uma dimensão que transcende o alimento. Ela é uma oferenda da natureza aos seres vivos, e serve de elo de comunicação com os seus ancestrais. Na cultura Bantu, a culinária é um dos elementos de restauração da força vital e mantém o equilíbrio entre os vivos e os mortos. Aqui homenageamos o espaço onde era possível saborear alguns dos quitutes que eram produzidos e consumidos pelos quilombolas quando chegaram à Serra da Barriga em 1597, sob a liderança da Princesa Aqualtune.
+
 
       
 
@@ -349,7 +352,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
       `,
       en: `
-      African-Brazilian cuisine has a dimension beyond the meal itself. Feasting serves as a link of communication with the ancestors. In Bantu culture, food is an important element to restore vital forces, and maintains balance between the living and the deceased. Here, you may taste some of the same kinds of food produced and consumed by the palmarinos when they arrived at the Serra da Barriga in 1597, under the leadership of Princess Aqualtune.
+      Afro-Brazilian cuisine has a dimension that transcends food. It is an offering from nature to living beings and serves as a link of communication with their ancestors. In Bantu culture, cooking is one of the elements that restores the life force and maintains the balance between the living and the dead. Here, we honor the space where it was possible to taste some of the delicacies that were produced and consumed by the quilombolas when they arrived in the Serra da Barriga in 1597, under the leadership of Princess Aqualtune.
       
       
       
@@ -366,22 +369,24 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
     subtitle: 'MIRANTE DE TOCULO, FILHO DE GANGA-ZUMBA ',
     icon: toculo,
     description: {
-      pt: `Daqui do alto da Serra da Barriga, avistando o Rio Mundaú, Zumbi dos Palmares comandava a resistência quilombola, controlando todo movimento suspeito na mata. A paliçada construída logo abaixo no sopé da Serra tornou-se uma proteção impenetrável, uma fortaleza, rodeada por fossos contendo bichos ferozes e objetos pontiagudos. Canhões foram utilizados pela primeira vez contra Palmares em 6 de fevereiro de 1694, surpreendendo os quilombolas e determinando o fim trágico da Cerca Real dos Macacos. Em 06 de fevereiro de 1694.
+      pt: `Daqui do alto da Serra da Barriga, avistando o Rio Mundaú, Zumbi dos Palmares comandava a resistência quilombola, controlando todo movimento suspeito na mata. A paliçada construída logo abaixo no sopé da Serra tornou-se uma proteção impenetrável, uma fortaleza, rodeada por fossos contendo bichos ferozes e objetos pontiagudos. Canhões foram utilizados pela primeira vez contra Palmares em 6 de fevereiro de 1694, surpreendendo os quilombolas e determinando o fim trágico da Cerca Real dos Macacos.
 
-      Atalaia significa ''Ponto Alto''
+      ‘’Atalaia’’ significa “Posto de observação”
       
-      O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é dado o nome dos filhos de Ganga Zumba: Acaiuba, Toculo e Acaiene.
+      O Memorial da Serra da Barriga tem três Atalaias, e a todas são dados os nomes dos filhos de Ganga-Zumba: Acaiuba, Toculo e Acaiene.
+      
       
 
 
 
       `,
       en: `
-      From the top of Serra da Barriga, overlooking the Mundaú River, Zumbi dos Palmares commanded the maroon resistance, controlling all suspicious movements in the woods. A stockade, constructed at the base of the hill, turned the quilombo into a fortress, for its trenches filled with deadly sharpened sticks. Cannons were used for the maroons and leading to  the tragic demise of the Cerca Real dos Macacos, on February 6, 1694.
-      
-      Atalaia means ''High Point''
-      
-      The Serra da Barriga Memorial has three Atalaia points; all three are given the name of Ganga Zumba's children: Acaiuba, Toculo and Acaiene.
+      From the top of the Serra da Barriga, overlooking the Mundaú River, Zumbi dos Palmares commanded the quilombola resistance, controlling any suspicious movement in the forest. The palisade built at the foot of the mountain became an impenetrable protection, a fortress, surrounded by moats containing ferocious animals and sharp objects. Cannons were used for the first time against Palmares on February 6, 1694, surprising the quilombolas and determining the tragic end of the Cerca Real dos Macacos.
+
+‘’Atalaia’’ means "observation post".
+
+The Memorial of Serra da Barriga has three Atalaias, and all are named after the sons of Ganga-Zumba: Acaiuba, Toculo, and Acaiene.
+
       
       
       
