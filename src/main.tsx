@@ -7,10 +7,7 @@ import './styles/fonts.css';
 import { AudioProvider } from './context/audioContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <AudioProvider>
-
+  <AudioProvider>
     <RouterProvider router={router} />
-    </AudioProvider>
-  </React.StrictMode>
+  </AudioProvider>
 );
