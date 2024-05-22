@@ -23,7 +23,7 @@ export const BackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-background-color: #753D00;
+background-color: #333C0C;
   border-radius: 50%;
   width: 55px;
   height: 55px;

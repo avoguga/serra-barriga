@@ -104,24 +104,24 @@ const QRCode: React.FC = () => {
         const videoElement = webcamRef.current.querySelector('video');
         if (!videoElement) return;
 
-        const image = await captureImage(videoElement as HTMLVideoElement);
-        const prediction = await model.predict(image);
-        const highProbPrediction = prediction.sort(
-          (a, b) => b.probability - a.probability
-        )[0];
+        try {
+          const image = await captureImage(videoElement as HTMLVideoElement);
+          const prediction = await model.predict(image);
+          const highProbPrediction = prediction.sort(
+            (a, b) => b.probability - a.probability
+          )[0];
 
-        if (highProbPrediction.probability > 0.9) {
-          const espacoData = getEspacoData(highProbPrediction.className);
-          if (espacoData) {
-            clearInterval(interval); // Interrompe o intervalo de previsão
-            // Interrompe as faixas do stream de mídia
-            const stream = (videoElement as HTMLVideoElement)
-              .srcObject as MediaStream;
-            stream.getTracks().forEach((track) => track.stop());
-            navigate(espacoData.path);
+          if (highProbPrediction.probability > 0.9) {
+            const espacoData = getEspacoData(highProbPrediction.className);
+            if (espacoData) {
+              clearInterval(interval); // Interrompe o intervalo de previsão
+              navigate(espacoData.path);
+            }
           }
+        } catch (error) {
+          console.error('Erro durante a predição:', error);
         }
-      }, 700);
+      }, 1000); // Intervalo ajustado para 1 segundo
     };
 
     if (isScanning) {
@@ -145,7 +145,7 @@ const QRCode: React.FC = () => {
     if (!ctx) throw new Error('Não foi possível obter o contexto do canvas');
     ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
     const image = new Image();
-    image.src = canvas.toDataURL('image/png');
+    image.src = canvas.toDataURL('image/jpg');
     await new Promise((resolve) => (image.onload = resolve));
     return image;
   };
@@ -163,7 +163,7 @@ const QRCode: React.FC = () => {
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <C.Container>
         <C.HeaderContainer>
-          <BackButton onClick={() => navigate('/')}>
+          <BackButton onClick={() => navigate('/')} >
             <img src={seta} alt="Seta voltar" />
           </BackButton>
           <img
