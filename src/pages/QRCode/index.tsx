@@ -11,7 +11,7 @@ import { getEspacoData } from '../../helpers/Espacos';
 import aaa from '../../assets/icons/mão com celular.png';
 import scannerButton from '../../assets/icons/i_botao escanear.png';
 import styled from 'styled-components';
-import CustomAlert from '../../components/CustomAlert'; // Importe o CustomAlert
+import CustomAlert from '../../components/CustomAlert';
 
 const InfoImage = styled.img`
   width: 90px;
@@ -82,12 +82,11 @@ const QRCode: React.FC = () => {
     loadModelAndCamera();
 
     return () => {
-      // Limpa a câmera quando o componente é desmontado
       if (videoStream) {
         videoStream.getTracks().forEach(track => track.stop());
       }
     };
-  }, []);
+  }, [videoStream]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -107,10 +106,8 @@ const QRCode: React.FC = () => {
         if (highProbPrediction.probability > 0.9) {
           const espacoData = getEspacoData(highProbPrediction.className);
           if (espacoData) {
-            clearInterval(interval); // Interrompe o intervalo de previsão
-            // Interrompe as faixas do stream de mídia
-            const stream = (videoElement as HTMLVideoElement).srcObject as MediaStream;
-            stream.getTracks().forEach(track => track.stop());
+            clearInterval(interval);
+            setIsScanning(false);
             navigate(espacoData.path);
           }
         } else {
@@ -126,8 +123,8 @@ const QRCode: React.FC = () => {
     }
 
     return () => {
-      clearInterval(interval); // Garante que o intervalo seja limpo se o componente for desmontado
-      setScanningMessage(''); // Limpa a mensagem de escaneamento ao parar
+      clearInterval(interval);
+      setScanningMessage('');
     };
   }, [model, isLoading, isScanning, navigate]);
 
