@@ -5,7 +5,7 @@ import maps from '../../../assets/images/Mapa Memorial Serra da Barriga - novo-0
 import Sidebar from '../Sidebar';
 import LowArrow from '../../../components/LowArrowButton';
 import * as C from './styles';
-import { EspacoData, getEspacoData, espacos } from '../../../helpers/Espacos';
+import { EspacoData, getEspacoData,  } from '../../../helpers/Espacos';
 
 const LocView: React.FC = () => {
   const navigate = useNavigate();
@@ -17,13 +17,11 @@ const LocView: React.FC = () => {
     return <p>Espaço não encontrado.</p>;
   }
 
-  const markers = Object.entries(espacos).map(([key, data]) =>
-    data.mapPosition ? (
-      <C.Marker key={key} posX={data.mapPosition.posX} posY={data.mapPosition.posY}>
-        {data.title}
-      </C.Marker>
-    ) : null
-  );
+  const marker = figureData.mapPosition ? (
+    <C.Marker posX={figureData.mapPosition.posX} posY={figureData.mapPosition.posY}>
+      {figureData.title}
+    </C.Marker>
+  ) : null;
 
   return (
     <C.View>
@@ -46,7 +44,7 @@ const LocView: React.FC = () => {
         <C.ImageContent>
           <C.MapContainer>
             <img src={maps} alt="Mapa do Memorial Serra da Barriga" loading="lazy" />
-            {markers}
+            {marker}
           </C.MapContainer>
         </C.ImageContent>
       </C.Content>
