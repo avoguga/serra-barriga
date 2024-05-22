@@ -49,9 +49,21 @@ const Agenda = () => {
         );
 
         setEventos(eventosMapeados);
-        setUniqueMonths([
+        const mesesUnicos = [
           ...new Set(eventosMapeados.map((evento) => evento.Mes)),
-        ]);
+        ];
+        setUniqueMonths(mesesUnicos);
+
+        // Verifica se há eventos no mês atual
+        const eventosNoMesAtual = eventosMapeados.filter(
+          (evento) => evento.Mes === mesAtual
+        );
+
+        // Se não houver eventos no mês atual, seleciona o primeiro mês com eventos
+        if (eventosNoMesAtual.length === 0 && mesesUnicos.length > 0) {
+          setMesSelecionado(mesesUnicos[0]);
+        }
+
         setLoading(false); // Encerra o loading após processar os dados
       })
       .catch((error) => {
@@ -64,6 +76,7 @@ const Agenda = () => {
     const eventosDoMesSelecionado = eventos.filter(
       (evento) => evento.Mes.toLowerCase() === mesSelecionado
     );
+
     setEventosFiltrados(eventosDoMesSelecionado);
   }, [mesSelecionado, eventos]);
 
