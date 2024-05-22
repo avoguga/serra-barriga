@@ -49,7 +49,8 @@
  flex-direction: column;
  justify-content: center;
 font-family: 'FuturaPTBook' , sans-serif;
-   
+text-align: justify;
+
     line-height: 2.1;
     font-size: 13px;
     font-weight: 100;
@@ -67,7 +68,7 @@ font-family: 'FuturaPTBook' , sans-serif;
 .paragraph {
     margin-bottom: 10px; /* ou qualquer valor que dê o espaço desejado */
   line-height: 1.6; 
-  text-align: left;
+  text-align: justify;
 font-family: 'FuturaPTBook' , sans-serif;
 opacity: 0.9;
 
@@ -169,6 +170,7 @@ height: 140px;
         line-height: 2.1;
         font-size: 20px;
         font-weight: 100;
+        text-align: justify;
     }
 
     .title {

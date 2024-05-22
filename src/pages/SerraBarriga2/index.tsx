@@ -17,7 +17,6 @@ import foto6 from '../../assets/images/serra fotos/Serra da Barriga (3).webp';
 import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
 import foto8 from '../../assets/images/serra fotos/Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642.webp';
 
-
 const ContainerGeral = styled.div`
   background: #d66b00;
   display: flex;
@@ -40,7 +39,7 @@ const Text = styled.div`
   font-size: 17px;
   font-weight: 100;
   margin-bottom: 45px;
-  text-align: left;
+  text-align: justify;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -65,7 +64,7 @@ const SerraInfo = styled.div`
   border-radius: 0px 0px 90px 90px;
   background-color: #e17406;
   display: flex;
-  text-align: left;
+  text-align: justify;
   flex-direction: column;
   align-items: center;
   padding: 50px;
@@ -155,10 +154,15 @@ const SerraDaBarriga2 = () => {
     { src: foto5, description: 'Foto de Aprigio Vilanova ' },
     { src: foto6, description: 'Serra da Barriga ' },
     { src: foto7, description: 'Serra da Barriga  ' },
-    {src: foto8, description: `Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642`}
+    {
+      src: foto8,
+      description: `Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642`,
+    },
   ];
 
-  const [fullScreenImage, setFullScreenImage] = useState<{ src: string; description: string }[] | null>(null);
+  const [fullScreenImage, setFullScreenImage] = useState<
+    { src: string; description: string }[] | null
+  >(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -189,7 +193,9 @@ const SerraDaBarriga2 = () => {
   const previewParagraphCount = 3;
 
   // Define quais parágrafos mostrar com base no estado de expansão
-  const textToShow = isExpanded ? paragraphs : paragraphs.slice(0, previewParagraphCount);
+  const textToShow = isExpanded
+    ? paragraphs
+    : paragraphs.slice(0, previewParagraphCount);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const openFullScreenImage = (index: number) => {
@@ -208,7 +214,9 @@ const SerraDaBarriga2 = () => {
       const scrollAmount = 200; // Valor fixo para teste
 
       const newScrollPosition =
-        direction === 'left' ? current.scrollLeft - scrollAmount : current.scrollLeft + scrollAmount;
+        direction === 'left'
+          ? current.scrollLeft - scrollAmount
+          : current.scrollLeft + scrollAmount;
       current.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
     }
   };

@@ -57,33 +57,36 @@ const AudiosTakeHome = () => {
               </div>
               {audio.audio.length > 0 ? (
                 audio.audio.map((audioUrl, idx) => (
-                  <AudioPlayer
-                    key={idx}
-                    src={audioUrl}
-                    colorTheme="orange"
-                    styles={{
-                      progressBarActive: { backgroundColor: '#d66b00' },
-                    }}
-                  />
+                  <React.Fragment key={idx}>
+                    <AudioPlayer
+                      src={audioUrl}
+                      colorTheme="orange"
+                      styles={{
+                        progressBarActive: { backgroundColor: '#d66b00' },
+                      }}
+                    />
+                    {idx !== audio.audio.length - 1 && <br />}{' '}
+                    {/* Conditionally add a <br /> if not the last audio */}
+                  </React.Fragment>
                 ))
               ) : (
-              <p></p>
+                <p></p>
               )}
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  width:'90vw',
+                  width: '90vw',
 
                   alignItems: 'self-start',
-                  marginTop: '20px'
-                  
+                  marginTop: '20px',
                 }}
               >
                 <p className="aaaaa">Voz: {audio.interpretacao}</p>
                 <p className="aaaaa">Texto: {audio.texto}</p>
               </div>
-              <br /><br />
+              <br />
+              <br />
             </React.Fragment>
           ))}
         </section>
