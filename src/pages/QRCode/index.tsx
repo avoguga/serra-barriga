@@ -4,14 +4,13 @@ import * as tmImage from '@teachablemachine/image';
 import logo from '../../assets/logo.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import * as C from './styles';
-
+import { BackButton } from '../TakeHome';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import { getEspacoData } from '../../helpers/Espacos';
 import aaa from '../../assets/icons/mão com celular.png';
 import scannerButton from '../../assets/icons/i_botao escanear.png';
 import styled from 'styled-components';
-import CustomAlert from '../../components/CustomAlert';
 
 const InfoImage = styled.img`
   width: 90px;
@@ -24,7 +23,7 @@ export interface EspacoData {
   path: string;
   title: string;
   icon: string;
-  description: { pt: string; en: string; };
+  description: { pt: string; en: string };
 }
 
 interface Prediction {
@@ -44,18 +43,23 @@ const QRCode: React.FC = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [scanningMessage, setScanningMessage] = useState('');
   const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
     const loadModelAndCamera = async () => {
-      const modelURL = 'https://teachablemachine.withgoogle.com/models/IGp6AIkQS/model.json';
-      const metadataURL = 'https://teachablemachine.withgoogle.com/models/IGp6AIkQS/metadata.json';
+      const modelURL =
+        'https://teachablemachine.withgoogle.com/models/mtOLTcvXQ/model.json';
+      const metadataURL =
+        'https://teachablemachine.withgoogle.com/models/mtOLTcvXQ/metadata.json';
       try {
-        const loadedModel = await tmImage.load(modelURL, metadataURL) as TeachableMachineModel;
+        const loadedModel = (await tmImage.load(
+          modelURL,
+          metadataURL
+        )) as TeachableMachineModel;
         setModel(loadedModel);
 
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'environment' },
+        });
         setVideoStream(stream);
 
         const videoElement = document.createElement('video');
@@ -82,11 +86,12 @@ const QRCode: React.FC = () => {
     loadModelAndCamera();
 
     return () => {
+      // Limpa a câmera quando o componente é desmontado
       if (videoStream) {
-        videoStream.getTracks().forEach(track => track.stop());
+        videoStream.getTracks().forEach((track) => track.stop());
       }
     };
-  }, [videoStream]);
+  }, []);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -101,18 +106,20 @@ const QRCode: React.FC = () => {
 
         const image = await captureImage(videoElement as HTMLVideoElement);
         const prediction = await model.predict(image);
-        const highProbPrediction = prediction.sort((a, b) => b.probability - a.probability)[0];
+        const highProbPrediction = prediction.sort(
+          (a, b) => b.probability - a.probability
+        )[0];
 
         if (highProbPrediction.probability > 0.9) {
           const espacoData = getEspacoData(highProbPrediction.className);
           if (espacoData) {
-            clearInterval(interval);
-            setIsScanning(false);
+            clearInterval(interval); // Interrompe o intervalo de previsão
+            // Interrompe as faixas do stream de mídia
+            const stream = (videoElement as HTMLVideoElement)
+              .srcObject as MediaStream;
+            stream.getTracks().forEach((track) => track.stop());
             navigate(espacoData.path);
           }
-        } else {
-          setAlertMessage("Tente novamente, símbolo não detectado.");
-          setShowAlert(true);
         }
       }, 700);
     };
@@ -123,12 +130,14 @@ const QRCode: React.FC = () => {
     }
 
     return () => {
-      clearInterval(interval);
-      setScanningMessage('');
+      clearInterval(interval); // Garante que o intervalo seja limpo se o componente for desmontado
+      setScanningMessage(''); // Limpa a mensagem de escaneamento ao parar
     };
   }, [model, isLoading, isScanning, navigate]);
 
-  const captureImage = async (videoElement: HTMLVideoElement): Promise<HTMLImageElement> => {
+  const captureImage = async (
+    videoElement: HTMLVideoElement
+  ): Promise<HTMLImageElement> => {
     const canvas = document.createElement('canvas');
     canvas.width = videoElement.videoWidth;
     canvas.height = videoElement.videoHeight;
@@ -150,24 +159,30 @@ const QRCode: React.FC = () => {
     }
   };
 
-  const handleCloseAlert = () => {
-    setShowAlert(false);
-  };
-
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <C.Container>
         <C.HeaderContainer>
-          <C.BackButton onClick={() => navigate('/')}  >
+          <BackButton onClick={() => navigate('/')}>
             <img src={seta} alt="Seta voltar" />
-          </C.BackButton>
-          <img src={logo} alt="Logo" style={{ width: '169px', height: '70px', marginTop: '50px', marginBottom: '50px' }} />
+          </BackButton>
+          <img
+            src={logo}
+            alt="Logo"
+            style={{
+              width: '169px',
+              height: '70px',
+              marginTop: '50px',
+              marginBottom: '50px',
+            }}
+          />
         </C.HeaderContainer>
         <C.BottomContainer>
           <InfoImage src={aaa} alt="informação de como ler imagem" />
           <C.TextContainer>
             <p>
-              Aponte a câmera do celular para o símbolo da placa e toque no botão para escanear.
+              Aponte a câmera do celular para o símbolo da placa e tenha uma
+              experiência ampliada.
             </p>
           </C.TextContainer>
         </C.BottomContainer>
@@ -175,9 +190,31 @@ const QRCode: React.FC = () => {
         <C.ScannerButton onClick={handleScanClick}>
           <C.ScannerImage src={scannerButton} alt="Botão para escanear" />
         </C.ScannerButton>
-        {isLoading && <div style={{ textAlign: 'center', fontSize: '18px', color: "#FFFF", marginTop: '50px', marginBottom: '50px' }}>Carregando a câmera, aguarde um momento...</div>}
-        {scanningMessage && <div style={{ textAlign: 'center', fontSize: '18px', color: "#FFFF", marginTop: '50px',  }}>{scanningMessage}</div>}
-        {showAlert && <CustomAlert  show={showAlert}  onClose={handleCloseAlert} > {alertMessage} </CustomAlert>}
+        {isLoading && (
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: '18px',
+              color: '#FFFF',
+              marginTop: '50px',
+              marginBottom: '50px',
+            }}
+          >
+            Carregando a câmera, aguarde um momento...
+          </div>
+        )}
+        {scanningMessage && (
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: '18px',
+              color: '#FFFF',
+              marginTop: '50px',
+            }}
+          >
+            {scanningMessage}
+          </div>
+        )}
       </C.Container>
     </WatermarkWrapper>
   );
