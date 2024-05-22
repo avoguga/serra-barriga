@@ -170,7 +170,7 @@ const QRCode: React.FC = () => {
           <InfoImage src={aaa} alt="informação de como ler imagem" />
           <C.TextContainer>
             <p>
-              Aponte a câmera do celular para o símbolo da placa e tenha uma experiência ampliada.
+              Aponte a câmera do celular para o símbolo da placa e toque no botão para escanear.
             </p>
           </C.TextContainer>
         </C.BottomContainer>
