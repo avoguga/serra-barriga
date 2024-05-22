@@ -21,6 +21,14 @@ const ButtonContainer = styled.div`
   @media only screen and (width:360px) and (height: 640px) {
     top: 93%; 
   left: 48%; 
+  height: 10px;
+    
+    
+  }
+  @media only screen and (width:320px) and (height: 658px) {
+    top: 93%; 
+  left: 48%; 
+
     
     
   }
@@ -43,7 +51,7 @@ const ButtonContainer = styled.div`
 
 
 top: 88%;
-left: 48%; 
+  left: 48%; 
 
 
 
