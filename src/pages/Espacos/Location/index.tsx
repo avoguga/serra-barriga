@@ -35,6 +35,7 @@ const LocView = () => {
      <p>{figureData.subtitle} </p>
         <C.InfoText>
           <img
+          loading='lazy'
             src={loc}
             alt="ícone de Localização"
             style={{
