@@ -49,6 +49,7 @@ export const InfoText = styled.div`
   display: flex;
   align-items: center;
   justify-content: baseline;
+
   > h2 {
     font-family: 'FuturaPTDemi', sans-serif;
     letter-spacing: 1px;
@@ -75,6 +76,7 @@ export const AgroupText = styled.div`
     text-align: left;
     letter-spacing: 0.5px;
     font-family: 'FuturaPT', sans-serif;
+    text-align: justify;
   }
 `;
 export const SpanText = styled.span`

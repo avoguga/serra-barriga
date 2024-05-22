@@ -59,7 +59,7 @@ export const Title = styled.h1`
 export const Description = styled.div`
   background-color: #c7222f;
   color: #ffffff;
-  text-align: left;
+  text-align: justify;
   font-family: 'FuturaPT', sans-serif;
   font-size: 15px;
   max-width: 80%;
