@@ -202,8 +202,8 @@ const ARFilterComponent: React.FC = React.memo(() => {
         smoothLandmarks: true,
         enableSegmentation: true,
         smoothSegmentation: true,
-        minDetectionConfidence: 0.7,
-        minTrackingConfidence: 0.7,
+        minDetectionConfidence: 0.4,
+        minTrackingConfidence: 0.4,
       });
 
       holistic.onResults(onHolisticResults);
