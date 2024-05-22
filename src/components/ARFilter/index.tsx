@@ -57,6 +57,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
           backgroundCanvasRef.current.getContext('2d');
 
         if (canvasCtx && backgroundCanvasCtx) {
+          // Clear both canvases
           canvasCtx.clearRect(
             0,
             0,
@@ -70,6 +71,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
             backgroundCanvasRef.current.height
           );
 
+          // Draw the camera feed on the background canvas
           backgroundCanvasCtx.globalCompositeOperation = 'source-over';
           backgroundCanvasCtx.drawImage(
             results.image,
@@ -79,6 +81,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
             backgroundCanvasRef.current.height
           );
 
+          // Draw the historical character on the background canvas
           if (results.poseLandmarks && historicalCharacterRef.current) {
             const leftShoulder = results.poseLandmarks[11];
             const leftShoulderX =
@@ -102,6 +105,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
 
           backgroundCanvasCtx.restore();
 
+          // Apply the segmentation mask on the main canvas
           canvasCtx.save();
           canvasCtx.scale(-1, 1);
           canvasCtx.translate(-canvasRef.current.width, 0);
@@ -115,6 +119,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
             canvasRef.current.height
           );
 
+          // Composite the person image on the main canvas
           canvasCtx.globalCompositeOperation = 'source-in';
           canvasCtx.drawImage(
             results.image,
@@ -124,6 +129,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
             canvasRef.current.height
           );
 
+          // Composite the background canvas behind the main canvas
           canvasCtx.globalCompositeOperation = 'destination-over';
           canvasCtx.drawImage(
             backgroundCanvasRef.current,
@@ -249,9 +255,7 @@ const ARFilterComponent: React.FC = React.memo(() => {
       )}
       <Video
         ref={videoRef}
-        style={{
-          display: videoVisible ? 'block' : 'none',
-        }}
+        style={{ display: videoVisible ? 'block' : 'none' }}
         autoPlay
       />
       <Canvas
