@@ -77,6 +77,7 @@ const QRCode: React.FC = () => {
         }
 
         setIsLoading(false);
+        console.log('Modelo e câmera carregados');
       } catch (error) {
         console.error('Erro ao carregar o modelo ou a câmera:', error);
         setIsLoading(false);
@@ -94,16 +95,15 @@ const QRCode: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let animationFrameId: number;
 
     const predict = async () => {
       if (!model || isLoading || !isScanning) return;
 
-      interval = setInterval(async () => {
-        if (!webcamRef.current) return;
-        const videoElement = webcamRef.current.querySelector('video');
-        if (!videoElement) return;
+      const videoElement = webcamRef.current?.querySelector('video');
+      if (!videoElement) return;
 
+      const performPrediction = async () => {
         try {
           const image = await captureImage(videoElement as HTMLVideoElement);
           const prediction = await model.predict(image);
@@ -111,17 +111,26 @@ const QRCode: React.FC = () => {
             (a, b) => b.probability - a.probability
           )[0];
 
+          console.log('Predição:', highProbPrediction);
+
           if (highProbPrediction.probability > 0.9) {
             const espacoData = getEspacoData(highProbPrediction.className);
             if (espacoData) {
-              clearInterval(interval); // Interrompe o intervalo de previsão
+              console.log('Navegando para:', espacoData.path);
+              cancelAnimationFrame(animationFrameId); // Interrompe a predição
               navigate(espacoData.path);
+              return;
             }
           }
+
+          // Continue a predição no próximo frame
+          animationFrameId = requestAnimationFrame(performPrediction);
         } catch (error) {
           console.error('Erro durante a predição:', error);
         }
-      }, 1000); // Intervalo ajustado para 1 segundo
+      };
+
+      performPrediction();
     };
 
     if (isScanning) {
@@ -130,7 +139,7 @@ const QRCode: React.FC = () => {
     }
 
     return () => {
-      clearInterval(interval); // Garante que o intervalo seja limpo se o componente for desmontado
+      cancelAnimationFrame(animationFrameId); // Garante que a animação seja limpa se o componente for desmontado
       setScanningMessage(''); // Limpa a mensagem de escaneamento ao parar
     };
   }, [model, isLoading, isScanning, navigate]);
@@ -163,7 +172,7 @@ const QRCode: React.FC = () => {
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <C.Container>
         <C.HeaderContainer>
-          <BackButton onClick={() => navigate('/')} >
+          <BackButton onClick={() => navigate('/')}>
             <img src={seta} alt="Seta voltar" />
           </BackButton>
           <img
