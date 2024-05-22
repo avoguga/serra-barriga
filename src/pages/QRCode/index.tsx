@@ -34,6 +34,7 @@ interface Prediction {
 interface TeachableMachineModel {
   predict: (input: HTMLImageElement) => Promise<Prediction[]>;
 }
+// 
 
 const QRCode: React.FC = () => {
   const navigate = useNavigate();
@@ -127,12 +128,14 @@ const QRCode: React.FC = () => {
             alert('Imagem não reconhecida, por favor, tente novamente.');
           }
 
-          // Continue a predição no próximo frame
+          // Continue a predição no próximo frame e tal
           animationFrameId = requestAnimationFrame(performPrediction);
         } catch (error) {
           console.error('Erro durante a predição:', error);
         }
-      };
+      };  
+
+
 
       performPrediction();
     };
