@@ -36,7 +36,6 @@ export const ImageContent = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 50px;
-
   margin-right: 20px;
 `;
 
@@ -51,18 +50,6 @@ export const NavFotter = styled.nav`
   position: fixed;
   width: 100%;
   bottom: 0;
-`;
-export const AgroupTexts = styled.div`
-  margin: 150px 0 30px 0;
-  text-align: center;
-  h1 {
-    font-family: 'FuturaPTHeavy', sans-serif;
-  }
-  p {
-    font-family: 'FuturaPTBook', sans-serif;
-    opacity: 0.87;
-    font-size: 17px;
-  }
 `;
 
 export const InfoText = styled.div`
@@ -80,6 +67,7 @@ export const InfoText = styled.div`
     letter-spacing: 1px;
   }
 `;
+
 export const MapContainer = styled.div`
   position: relative;
   img {
@@ -100,15 +88,11 @@ export const Marker = styled.div<MarkerProps>`
   top: ${(props) => props.posY};
   left: ${(props) => props.posX};
   background: none;
-  border: 1px solid #67781b;
   cursor: pointer;
-  color: red;
-  background-color: aliceblue;
   width: 150px;
   padding: 8px 16px;
   background: #ffffff;
   color: #67781b;
-
   font-family: 'FuturaPTDemi', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
@@ -117,10 +101,10 @@ export const Marker = styled.div<MarkerProps>`
   border-radius: 10px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
+  text-align: center;
   &:after {
     position: absolute;
     content: '';
-    position: absolute;
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);

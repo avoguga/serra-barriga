@@ -50,10 +50,11 @@ export interface EspacoData {
   videos?: VideoData[];
   audios?: AudioData[];
   selfie?: string[];
+  mapPosition?: { posX: string; posY: string };
 }
 
 // Mapeie as classes previstas para os dados de rota correspondentes
-const espacos: Record<string, EspacoData> = {
+export const espacos: Record<string, EspacoData> = {
   'Espaço Acotirene': {
     path: '/historical-figure/Espaço Acotirene',
     title: 'Espaço Acotirene',
@@ -180,6 +181,7 @@ const espacos: Record<string, EspacoData> = {
       THE HEART OF PALMARES`,
     },
     images: espacoImages['Espaço Muxima de Palmares'],
+    mapPosition: { posX: '30%', posY: '38%' },
   },
   'Espaço Atalaia Acaiene': {
     path: '/historical-figure/Espaço Atalaia Acaiene',
@@ -206,6 +208,7 @@ const espacos: Record<string, EspacoData> = {
       italic: `ACAIENE’S LOOKOUT`,
     },
     images: espacoImages['Espaço Atalaia Acaiene'],
+    mapPosition: { posX: '10%', posY: '38%' },
   },
   'Espaço Ocas indígenas': {
     path: '/historical-figure/Espaço Ocas indígenas',
