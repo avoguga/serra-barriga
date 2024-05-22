@@ -203,7 +203,7 @@ top: 9.2%;
 @media only screen and (width: 390px), (height: 844px) {
 
 h3{
-  top: 8.3% ;
+  top: 8.0% ;
 }
 
 
