@@ -120,7 +120,11 @@ const QRCode: React.FC = () => {
               cancelAnimationFrame(animationFrameId); // Interrompe a predição
               navigate(espacoData.path);
               return;
+            } else {
+              alert('Imagem não reconhecida, por favor, tente novamente.');
             }
+          } else {
+            alert('Imagem não reconhecida, por favor, tente novamente.');
           }
 
           // Continue a predição no próximo frame
