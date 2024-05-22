@@ -9,6 +9,7 @@ export const View = styled.div`
   background-color: #8aa61e;
   height: 100vh;
   display: flex;
+
   justify-content: center;
   align-items: center;
   font-family: 'Futura PT', sans-serif;
@@ -89,7 +90,8 @@ export const Marker = styled.div<MarkerProps>`
   left: ${(props) => props.posX};
   background: none;
   cursor: pointer;
-  width: 150px;
+  min-width: 155px;
+  max-width: 210px;
   padding: 8px 16px;
   background: #ffffff;
   color: #67781b;

@@ -74,6 +74,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     videos: espacoVideos['Espaço Acotirene'],
     audios: espacoAudios['Espaço Acotirene'],
     selfie: espacoSelfie['Espaço Acotirene'],
+    mapPosition: { posX: '72%', posY: '64%' },
   },
   'Espaço Aqualtune': {
     path: '/historical-figure/Espaço Aqualtune',
@@ -91,6 +92,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       `,
     },
     images: espacoImages['Espaço Aqualtune'],
+    mapPosition: { posX: '36%', posY: '6%' },
   },
   'Espaço Caá-Pueira': {
     path: '/historical-figure/Espaço Caá-Pueira',
@@ -106,6 +108,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       `,
     },
     images: espacoImages['Espaço Caá-Pueira'],
+    mapPosition: { posX: '44%', posY: '26%' },
   },
   'Espaço Ganga Zumba': {
     path: '/historical-figure/Espaço Ganga Zumba',
@@ -116,6 +119,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       en: 'Son of Princess Aqualtune, he reigned for decades, leading Palmares to its zenith and gaining recognition as a nation by the Portuguese crown. He signed a pact in 1678 with the governor of the Captaincy of Pernambuco. He was betrayed and assassinated in the mocambo of Cucaú.',
     },
     images: espacoImages['Espaço Ganga Zumba'],
+    mapPosition: { posX: '59%', posY: '42%' },
   },
   'Espaço Quilombo dos Palmares': {
     path: '/historical-figure/Espaço Quilombo dos Palmares',
@@ -126,6 +130,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       en: 'From 1597 to 1694, the Zona da Mata region of the Captaincy of Pernambuco hosted within a 200km² radius dozens of settlements whose political, social, and military organization consolidated the legendary Quilombo dos Palmares ',
     },
     images: espacoImages['Espaço Quilombo dos Palmares'],
+    mapPosition: { posX: '47%', posY: '64%' },
   },
   'Espaço Zumbi': {
     path: '/historical-figure/Espaço Zumbi',
@@ -137,6 +142,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       `,
     },
     images: espacoImages['Espaço Zumbi'],
+    mapPosition: { posX: '11%', posY: '63%' },
   },
   'Espaço Onjó Cruzambe': {
     path: '/historical-figure/Espaço Onjó Cruzambe',
@@ -151,6 +157,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       italic: `HOUSE OF THE SACRED`,
     },
     images: espacoImages['Espaço Onjó Cruzambe'],
+    mapPosition: { posX: '60.5%', posY: '74%' },
   },
   'Espaço Oxile das Ervas': {
     path: '/historical-figure/Espaço Oxile das Ervas',
@@ -166,6 +173,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       italic: `HERBAL GARDEN`,
     },
     images: espacoImages['Espaço Oxile das Ervas'],
+    mapPosition: { posX: '68%', posY: '72%' },
   },
   'Espaço Muxima de Palmares': {
     path: '/historical-figure/Espaço Muxima de Palmares',
@@ -183,7 +191,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       THE HEART OF PALMARES`,
     },
     images: espacoImages['Espaço Muxima de Palmares'],
-    mapPosition: { posX: '30%', posY: '38%' },
+    mapPosition: { posX: '57%', posY: '58%' },
   },
   'Espaço Atalaia Acaiene': {
     path: '/historical-figure/Espaço Atalaia Acaiene',
@@ -210,7 +218,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       italic: `ACAIENE’S LOOKOUT`,
     },
     images: espacoImages['Espaço Atalaia Acaiene'],
-    mapPosition: { posX: '10%', posY: '38%' },
+    mapPosition: { posX: '67%', posY: '32%' },
   },
   'Espaço Ocas indígenas': {
     path: '/historical-figure/Espaço Ocas indígenas',
@@ -238,6 +246,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       italic: `INDIAN DWELLINGS`,
     },
     images: espacoImages['Espaço Ocas indígenas'],
+    mapPosition: { posX: '49%', posY: '36%' },
   },
   'Espaço Batucajé': {
     path: '/historical-figure/Espaço Batucajé',
@@ -257,6 +266,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       DANCING TO THE BEAT OF DRUMS`,
     },
     images: espacoImages['Espaço Batucajé'],
+    mapPosition: { posX: '33%', posY: '26%' },
   },
   'Espaço Atalaia de Acaiuba': {
     path: '/historical-figure/Espaço Atalaia de Acaiuba',
@@ -286,6 +296,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `ACAIUBA´S LOOKOUT`,
     },
     images: espacoImages['Espaço Atalaia de Acaiuba'],
+    mapPosition: { posX: '10%', posY: '38%' },
   },
   'Espaço Lagoa Encantada dos Negros': {
     path: '/historical-figure/Espaço Lagoa Encantada dos Negros',
@@ -313,6 +324,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       SACRED IÔCO`,
     },
     images: espacoImages['Espaço Lagoa Encantada dos Negros'],
+    mapPosition: { posX: '22%', posY: '8%' },
   },
   'Espaço Onjó de Farinha': {
     path: '/historical-figure/Espaço Onjó de Farinha',
@@ -336,6 +348,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `MILL HOUSE`,
     },
     images: espacoImages['Espaço Onjó de Farinha'],
+    mapPosition: { posX: '23%', posY: '45%' },
   },
   'Espaço Restaurante Kúuku-Waana': {
     path: '/historical-figure/Espaço Restaurante Kúuku-Waana',
@@ -362,6 +375,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       FAMILY FEAST`,
     },
     images: espacoImages['Espaço Restaurante Kúuku-Waana'],
+    mapPosition: { posX: '16%', posY: '59%' },
   },
   'Espaço Atalaia de Toculo': {
     path: '/historical-figure/Espaço Atalaia de Toculo',
@@ -394,6 +408,7 @@ The Memorial of Serra da Barriga has three Atalaias, and all are named after the
       italic: `TOCULO´S LOOKOUT`,
     },
     images: espacoImages['Espaço Atalaia de Toculo'],
+    mapPosition: { posX: '11%', posY: '75%' },
   },
 };
 
