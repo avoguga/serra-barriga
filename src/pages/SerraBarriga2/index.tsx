@@ -23,6 +23,7 @@ const ContainerGeral = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 `;
 
 const SetaVoltar = styled.img`
@@ -85,7 +86,7 @@ const LogoStyle = styled.img`
   width: 200px;
   height: 70px;
   margin-bottom: 20px;
-  margin-top: -10px;
+;
 `;
 
 const Title = styled.div`
@@ -124,6 +125,7 @@ const BtnSeta = styled.div`
 const Video = styled.iframe`
   background-color: var(--square-color);
   height: 170px;
+  margin-bottom: 5px;
 
   @media (min-width: 700px) {
     height: 510px;
@@ -275,14 +277,7 @@ const SerraDaBarriga2 = () => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></Video>
-      <BtnSeta>
-        <button>
-          <img src={setaEsquerda} alt="Scroll Left" />
-        </button>
-        <button>
-          <img src={setaDireita} alt="Scroll Right" />
-        </button>
-      </BtnSeta>
+
 
       {fullScreenImage && (
         <OpenImage

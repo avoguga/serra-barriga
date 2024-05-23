@@ -17,8 +17,9 @@ export const VideoTitle = styled.h1`
   background-color: #753d00;
   width: 100%;
   text-align: center;
-  padding: 5px;
-  height: 35px;
+
+  padding: 4px;
+  height: 40px;
 `;
 
 export const VideoDetails = styled.div`
@@ -26,8 +27,8 @@ export const VideoDetails = styled.div`
   display: flex;
   align-items: baseline;
   flex-direction: column;
-  position: relative;
-  right: 55px;
+  width: 100%;
+  padding: 15px;
 
   p {
     font-family: 'FuturaPTBook', sans-serif;
