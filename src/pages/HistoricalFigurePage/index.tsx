@@ -7,16 +7,22 @@ import HomeButton from '../../components/HomeButton';
 
 const HistoricalFigurePage: React.FC = () => {
   const { figureName } = useParams<{ figureName: string }>();
-  const [figureData, setFigureData] = useState<EspacoData | null>(null);
+  const [figureData, setFigureData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const loadData = async () => {
+      setLoading(true);
+      // @ts-ignore
+      const data = await getEspacoData(figureName);
+      setFigureData(data);
+      setLoading(false);
+    };
+
     if (figureName) {
-      const data = getEspacoData(figureName);
-      setFigureData(data ?? null);
+      loadData();
     }
-    setLoading(false);
   }, [figureName]);
 
   if (loading) {
@@ -42,9 +48,10 @@ const HistoricalFigurePage: React.FC = () => {
         </C.ContentHeader>
         <C.AgroupButtons>
           <HomeButton
-          
             iconType="Info"
-            onClick={() => navigate(`/historical-figure/${figureName}/infoView`)}
+            onClick={() =>
+              navigate(`/historical-figure/${figureName}/infoView`)
+            }
           >
             INFORMAÇÕES
           </HomeButton>
@@ -56,25 +63,33 @@ const HistoricalFigurePage: React.FC = () => {
           </HomeButton>
           <HomeButton
             iconType="Video"
-            onClick={() => navigate(`/historical-figure/${figureName}/VideosView`)}
+            onClick={() =>
+              navigate(`/historical-figure/${figureName}/VideosView`)
+            }
           >
             VÍDEOS
           </HomeButton>
           <HomeButton
             iconType="Img"
-            onClick={() => navigate(`/historical-figure/${figureName}/ImageView`)}
+            onClick={() =>
+              navigate(`/historical-figure/${figureName}/ImageView`)
+            }
           >
             IMAGENS
           </HomeButton>
           <HomeButton
             iconType="Audio"
-            onClick={() => navigate(`/historical-figure/${figureName}/AudiosView`)}
+            onClick={() =>
+              navigate(`/historical-figure/${figureName}/AudiosView`)
+            }
           >
             ÁUDIOS
           </HomeButton>
           <HomeButton
             iconType="Selfie"
-            onClick={() => navigate(`/historical-figure/${figureName}/SelfieView`)}
+            onClick={() =>
+              navigate(`/historical-figure/${figureName}/SelfieView`)
+            }
           >
             SELFIE HISTÓRICA
           </HomeButton>
