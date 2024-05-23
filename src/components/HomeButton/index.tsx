@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Icons } from '../../helpers/icons';
 
-const Button = styled.button<{active?: boolean}>`
+const Button = styled.button<{ active?: boolean; icon360?: boolean }>`
   display: flex;
   width: 120px;
 
@@ -14,23 +14,28 @@ const Button = styled.button<{active?: boolean}>`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   cursor: pointer;
   font-size: 16px;
- font-family:'FuturaPTDemi';
+  font-family: 'FuturaPTDemi';
 
   &:focus {
     outline: none;
   }
 
-  svg { 
-  
-  width: 67px;
-  height: 67px;
-  fill: ${props => props.active ? '#7A9600' : 'currentColor'} 
-  
- 
+  svg {
+    width: 67px;
+    height: 67px;
+    fill: ${(props) => (props.active ? '#7A9600' : 'currentColor')};
   }
+
+  ${(props) =>
+    props.icon360 &&
+    css`
+      svg {
+        margin-left: 20px;
+      }
+    `}
 `;
 
 interface HomeButtonProps
@@ -39,13 +44,20 @@ interface HomeButtonProps
   iconType: keyof typeof Icons;
   onClick?: () => void;
   active?: boolean;
+  icon360?: boolean;
 }
 
-const HomeButton = ({ children, onClick, iconType,active }: HomeButtonProps) => {
+const HomeButton = ({
+  children,
+  onClick,
+  iconType,
+  active,
+  icon360,
+}: HomeButtonProps) => {
   const ButtonIcon = Icons[iconType];
 
   return (
-    <Button onClick={onClick} active={active} >
+    <Button icon360={icon360} onClick={onClick} active={active}>
       <ButtonIcon />
       {children}
     </Button>
