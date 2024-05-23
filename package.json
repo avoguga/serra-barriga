@@ -48,7 +48,8 @@
     "react-zoom-pan-pinch": "^3.4.4",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.8",
-    "three": "^0.160.1"
+    "three": "^0.160.1",
+    "vite-plugin-pwa": "^0.20.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
