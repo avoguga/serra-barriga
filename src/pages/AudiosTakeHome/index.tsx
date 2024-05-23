@@ -52,41 +52,40 @@ const AudiosTakeHome = () => {
         >
           {audioData.map((audio, index) => (
             <React.Fragment key={index}>
-              <div id="title" className="title">
-                <p>{audio.title}</p>
-              </div>
-              {audio.audio.length > 0 ? (
-                audio.audio.map((audioUrl, idx) => (
-                  <React.Fragment key={idx}>
-                    <AudioPlayer
-                      src={audioUrl}
-                      colorTheme="orange"
-                      styles={{
-                        progressBarActive: { backgroundColor: '#d66b00' },
-                      }}
-                    />
-                    {idx !== audio.audio.length - 1 && <br />}{' '}
-                    {/* Conditionally add a <br /> if not the last audio */}
-                  </React.Fragment>
-                ))
-              ) : (
-                <p></p>
+              {audio.audio && audio.audio.length > 0 && (
+                <>
+                  <div id="title" className="title">
+                    <p>{audio.title}</p>
+                  </div>
+                  {audio.audio.map((audioUrl, idx) => (
+                    <React.Fragment key={idx}>
+                      <AudioPlayer
+                        src={audioUrl}
+                        colorTheme="orange"
+                        styles={{
+                          progressBarActive: { backgroundColor: '#d66b00' },
+                        }}
+                      />
+                      {idx !== audio.audio.length - 1 && <br />}{' '}
+                      {/* Conditionally add a <br /> if not the last audio */}
+                    </React.Fragment>
+                  ))}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      width: '90vw',
+                      alignItems: 'self-start',
+                      marginTop: '20px',
+                    }}
+                  >
+                    <p className="aaaaa">Voz: {audio.interpretacao}</p>
+                    <p className="aaaaa">Texto: {audio.texto}</p>
+                  </div>
+                  <br />
+                  <br />
+                </>
               )}
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '90vw',
-
-                  alignItems: 'self-start',
-                  marginTop: '20px',
-                }}
-              >
-                <p className="aaaaa">Voz: {audio.interpretacao}</p>
-                <p className="aaaaa">Texto: {audio.texto}</p>
-              </div>
-              <br />
-              <br />
             </React.Fragment>
           ))}
         </section>
