@@ -1,186 +1,181 @@
-:root{
+:root {
     --text-color: #fff;
     --square-color: black;
-}
-
-.container {
+  }
+  
+  .container {
     background-color: #B21522;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: auto;
     justify-content: end;
-    max-height: 300vh;
-    >h4 {
-        font-size: 15px;
-        color: var(--text-color);
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-        
-       display: flex;
-       justify-content: center;
-       align-items: center;
-    }
+    max-height: auto;
+  }
   
-    
-}
-.text-container {
-    border-radius: 0px 0px 90px 90px ;
-    
+  .container > h4 {
+    font-size: 15px;
+    color: var(--text-color);
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .text-container {
+    border-radius: 0px 0px 90px 90px;
     background-color: #C60D1C;
     display: flex;
-   
     flex-direction: column;
- height: auto;
+    height: auto;
     align-items: center;
     margin-bottom: 20px;
     gap: 10px;
     padding: 25px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-
-   
-}
-
-.text {
+  }
+  
+  .text {
     color: var(--text-color);
- 
- padding: 25px;
- display: flex;
- align-items: center;
- flex-direction: column;
- justify-content: center;
-font-family: 'FuturaPTBook' , sans-serif;
-text-align: justify;
-
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'FuturaPTBook', sans-serif;
+    text-align: justify;
     line-height: 2.1;
     font-size: 13px;
     font-weight: 100;
- 
-}
-.btnReadMore {
-    color: #e5dfae; 
+  }
+  
+  .btnReadMore {
+    color: #e5dfae;
     border: none;
     padding: 15px;
     margin-top: 18px;
-    font-family: 'FuturaPTBold' ,sans-serif;
+    font-family: 'FuturaPTBold', sans-serif;
     text-decoration: underline;
-}
-
-.paragraph {
-    margin-bottom: 10px; /* ou qualquer valor que dê o espaço desejado */
-  line-height: 1.6; 
-  text-align: justify;
-font-family: 'FuturaPTBook' , sans-serif;
-opacity: 0.9;
-
-}
-button {
+  }
+  
+  .paragraph {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    text-align: justify;
+    font-family: 'FuturaPTBook', sans-serif;
+    opacity: 0.9;
+  }
+  
+  button {
     background-color: transparent;
     border: none;
-}
-
-button img {
+  }
+  
+  button img {
     height: 35px;
-}
-
-.logoStyle {
+  }
+  
+  .logoStyle {
     width: 40%;
     transform: translateY(60px);
-}
-
-.video {
-    color: none;
-    background: none;
-  height: 25vh;
-  width: 85vw;
-    }
-
-.carrosel-container {
- width: 100%;
-    
-    height: 15vh;
-  overflow-y: hidden;
-    overflow-x: auto; /* Ativa a rolagem horizontal */
-    
+  }
   
-    
-}
-
-.carrosel {
-
-    display: flex; /* Usa flexbox para alinhar os blocos */
-
-    
-    
-}
-
-.footer {
-   width: 15rem;
-   opacity: 0.69;
-}
-.image {
-    margin: 0 10px; /* cria espaço entre as imagens */
-   width: 140px;
-  
-   
-height: 140px;
-}
-
-.arrow-container{
+  .video-container  {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    gap: 15px;
+    width: 100%;
     
-  flex-direction: row;
-  gap: 200px;
-  left: 0;
-  justify-content: space-around;
-  width: 100%;
-  color: #fff;
-}
 
+    
+    
 
-/* Para esconder a barra de rolagem no Webkit browsers */
-.carrosel::-webkit-scrollbar {
+  }
+  
+  .video-container::-webkit-scrollbar {
     display: none;
-}
-
-
-
-.title {
+  }
+  
+  .video {
+    height: 25vh;
+  
+    flex: 0 0 auto;
+  }
+  
+  .carrosel-container {
+    width: 100%;
+    height: 15vh;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+  
+  .carrosel {
+    display: flex;
+  }
+  
+  .footer {
+    width: 15rem;
+    opacity: 0.69;
+  }
+  
+  .image {
+    margin: 0 10px;
+    width: 140px;
+    height: 140px;
+  }
+  
+  .arrow-container {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    justify-content: space-around;
+    width: 100%;
+    color: #fff;
+  }
+  
+  .title {
     font-size: 15px;
     color: var(--text-color);
     margin-top: 1rem;
     margin-bottom: 14px;
     background-color: #B21522;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   
-
-}
-
-.btnSeta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btnSeta {
     display: flex;
     gap: 280px;
     background-color: #B21522;
-}
-
-@media (min-width:700px) {
+  }
+  
+  @media (min-width: 700px) {
     .text {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        transform: translateY(20px);
-        line-height: 2.1;
-        font-size: 20px;
-        font-weight: 100;
-        text-align: justify;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      transform: translateY(20px);
+      line-height: 2.1;
+      font-size: 20px;
+      font-weight: 100;
+      text-align: justify;
     }
-
+  
     .title {
-        font-size: 22px;
-        margin-bottom: 14px;
+      font-size: 22px;
+      margin-bottom: 14px;
     }
+  
     .video {
-        height: 400px;
+      height: 400px;
+      width: 600px;
     }
+  
     .btnSeta {
-        gap: 780px;
+      gap: 780px;
     }
-}
+  }
+  

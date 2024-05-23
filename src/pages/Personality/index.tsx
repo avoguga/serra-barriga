@@ -106,6 +106,7 @@ const PersonalityPage = () => {
               {isExpanded
                 ? personality.description.pt
                 : `${personality.description.pt.substring(0, 400)}...`} <br />
+         
               <C.ButtonContainer>
                 <C.ReadMoreButton onClick={toggleIsExpanded}>
                   {isExpanded ? 'LEIA MENOS' : 'LEIA MAIS'}
