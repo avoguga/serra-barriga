@@ -23,7 +23,6 @@ const ContainerGeral = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 `;
 
 const SetaVoltar = styled.img`
@@ -86,7 +85,6 @@ const LogoStyle = styled.img`
   width: 200px;
   height: 70px;
   margin-bottom: 20px;
-;
 `;
 
 const Title = styled.div`
@@ -162,6 +160,41 @@ const SerraDaBarriga2 = () => {
     },
   ];
 
+  const videos = [
+    {
+      src: 'https://www.youtube.com/embed/sesPGr4BYkM',
+      title: 'Margareth Menezes Ministra da Cultura do Brasil',
+    },
+    {
+      src: 'https://www.youtube.com/embed/kEU7XECoaJ4',
+      title: 'João Jorge Rodrigues Presidente da Fundação Cultural Palmares',
+    },
+    {
+      src: 'https://www.youtube.com/embed/Iku2KVqKVb0',
+      title: 'Nelson Mendes Diretor',
+    },
+    {
+      src: 'https://www.youtube.com/embed/H-0heADzD2Q',
+      title: 'Flávia Costa - Diretora do DPA',
+    },
+    {
+      src: 'https://www.youtube.com/embed/VZqUnoEm758',
+      title: 'Valdice Gomes',
+    },
+    {
+      src: 'https://www.youtube.com/embed/2Byj2R0m4n0',
+      title: "Mãe Neide Oya D'Oxum",
+    },
+    {
+      src: 'https://www.youtube.com/embed/Va6AlND_zCM',
+      title: 'Valdice Gomes',
+    },
+    {
+      src: 'https://www.youtube.com/embed/-5SvbBB64Y0',
+      title: "Mãe Neide Oya D'Oxum",
+    },
+  ];
+
   const [fullScreenImage, setFullScreenImage] = useState<
     { src: string; description: string }[] | null
   >(null);
@@ -200,6 +233,8 @@ const SerraDaBarriga2 = () => {
     : paragraphs.slice(0, previewParagraphCount);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  const scrollContainerVidRef = useRef<HTMLDivElement>(null);
+
   const openFullScreenImage = (index: number) => {
     setFullScreenImage(images);
     setCurrentIndex(index);
@@ -212,6 +247,20 @@ const SerraDaBarriga2 = () => {
   const scrollCarrossel = (direction: string) => {
     if (scrollContainerRef.current) {
       const { current } = scrollContainerRef;
+      // Pode ajustar este valor conforme necessário
+      const scrollAmount = 200; // Valor fixo para teste
+
+      const newScrollPosition =
+        direction === 'left'
+          ? current.scrollLeft - scrollAmount
+          : current.scrollLeft + scrollAmount;
+      current.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+    }
+  };
+
+  const scrollCarrosseVid = (direction: string) => {
+    if (scrollContainerVidRef.current) {
+      const { current } = scrollContainerVidRef;
       // Pode ajustar este valor conforme necessário
       const scrollAmount = 200; // Valor fixo para teste
 
@@ -270,14 +319,26 @@ const SerraDaBarriga2 = () => {
         </button>
       </BtnSeta>
       <Title>VÍDEOS</Title>
-      <Video
-        src="https://www.youtube.com/embed/USLC-TsQdnI"
-        title="Memórias de luta na Serra da Barriga"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      ></Video>
 
+      <CarrosselContainer ref={scrollContainerVidRef}>
+        {videos.map((video, index) => (
+          <Video
+            key={index}
+            src={video.src}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></Video>
+        ))}
+      </CarrosselContainer>
+      <BtnSeta>
+        <button onClick={() => scrollCarrosseVid('left')}>
+          <img src={setaEsquerda} alt="Scroll Left" />
+        </button>
+        <button onClick={() => scrollCarrosseVid('right')}>
+          <img src={setaDireita} alt="Scroll Right" />
+        </button>
+      </BtnSeta>
 
       {fullScreenImage && (
         <OpenImage
