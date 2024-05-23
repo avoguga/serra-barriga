@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import styled from 'styled-components';
 import mapa from '../../assets/Mapa Serra da Barriga -  novo-03.webp';
@@ -13,6 +14,7 @@ import zoomOut from '../../assets/icons/botao -.svg';
 import pinca from '../../assets/icons/pinça.svg';
 import * as C from './styles';
 import FloatingButtonBar from '../../components/FloatingContainer';
+import { getEspacoData } from '../../helpers/Espacos';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -50,7 +52,6 @@ const LocationButton = styled.button<{ x: number; y: number }>`
   height: 45px;
   border-radius: 50%;
   z-index: 10;
-  
 `;
 
 interface TooltipProps {
@@ -75,6 +76,7 @@ const Tooltip = styled.div<TooltipProps>`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   z-index: 20;
+  cursor: pointer; /* Adiciona o cursor pointer para indicar que é clicável */
   
   &:after {
     content: '';
@@ -103,10 +105,10 @@ const MapaContainer = styled.div`
 `;
 
 const items = [
-  'ENTRADA', 'OXILE DAS ERVAS', 'ONJÓ CRUZAMBÊ', 'ESPAÇO ACOTIRENE', 'MUXIMA DE PALMARES',
-  'ESPAÇO QUILOMBO', 'ATALAIA DE ACAIENE', 'ESPAÇO GANGA-ZUMBA', 'ESPAÇO AQUALTUNE',
-  'OCAS INDÍGENAS', 'ESPAÇO CAÁ-PUÊRA', 'BATUCAJÉ', 'ATALAIA DO ACAIUBA', 'ONJÓ DE FARINHA',
-  'LAGOAS ENCATADA DOS NEGROS', 'RESTAURANTE KÚUKU-WAANA', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'ATALAIA DE TOCULO', 'ESPAÇO ZUMBI'
+  'ENTRADA', 'Espaço Oxile das Ervas', 'Espaço Onjó Cruzambe', 'Espaço Acotirene', 'Espaço Muxima de Palmares',
+  'Espaço Quilombo dos Palmares', 'Espaço Atalaia Acaiene', 'Espaço Ganga Zumba', 'Espaço Aqualtune',
+  'Espaço Ocas indígenas', 'Espaço Caá-Puera', 'Espaço Batucajé', 'Espaço Atalaia de Acaiuba', 'Espaço Onjó de Farinha',
+  'Espaço Lagoa Encantada dos Negros', 'Espaço Restaurante Kúuku-Waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'Espaço Atalaia de Toculo', 'Espaço Zumbi'
 ];
 
 interface LocationInfo {
@@ -116,13 +118,13 @@ interface LocationInfo {
 }
 
 const locationMappings: { [key: string]: { x: number; y: number } } = {
-  'ENTRADA': { x: 185, y: 342 }, 'ONJÓ CRUZAMBÊ': { x: 360, y: 340 }, 'OXILE DAS ERVAS': { x: 395, y: 330 },
-  'ESPAÇO ACOTIRENE': { x: 415, y: 300 }, 'MUXIMA DE PALMARES': { x: 355, y: 275 }, 'ESPAÇO QUILOMBO': { x: 295, y: 300 },
-  'ESPAÇO GANGA-ZUMBA': { x: 355, y: 215 }, 'ATALAIA DE ACAIENE': { x: 395, y: 175 }, 'OCAS INDÍGENAS': { x: 325, y: 187 },
-  'ESPAÇO CAÁ-PUÊRA': { x: 280, y: 150 }, 'BATUCAJÉ': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
-  'BANHEIROS': { x: 175, y: 190 }, 'ATALAIA DO ACAIUBA': { x: 120, y: 195 }, 'ONJÓ DE FARINHA': { x: 185, y: 225 },
-  'LAGOAS ENCATADA DOS NEGROS': { x: 210, y: 80 }, 'RESTAURANTE KÚUKU-WAANA': { x: 173, y: 280 },
-  'ESPAÇO AQUALTUNE': { x: 245, y: 75 },'ATALAIA DE TOCULO': { x: 125, y: 340 },'ESPAÇO ZUMBI': { x: 125, y: 295 },
+  'ENTRADA': { x: 185, y: 342 }, 'Espaço Onjó Cruzambe': { x: 360, y: 340 }, 'Espaço Oxile das Ervas': { x: 395, y: 330 },
+  'Espaço Acotirene': { x: 415, y: 300 }, 'Espaço Muxima de Palmares': { x: 355, y: 275 }, 'Espaço Quilombo dos Palmares': { x: 295, y: 300 },
+  'Espaço Ganga Zumba': { x: 355, y: 215 }, 'Espaço Atalaia Acaiene': { x: 395, y: 175 }, 'Espaço Ocas indígenas': { x: 325, y: 187 },
+  'Espaço Caá-Puera': { x: 280, y: 150 }, 'Espaço Batucajé': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
+  'BANHEIROS': { x: 175, y: 190 }, 'Espaço Atalaia de Acaiuba': { x: 120, y: 195 }, 'Espaço Onjó de Farinha': { x: 185, y: 225 },
+  'Espaço Lagoa Encantada dos Negros': { x: 210, y: 80 }, 'Espaço Restaurante Kúuku-Waana': { x: 173, y: 280 },
+  'Espaço Aqualtune': { x: 245, y: 75 },'Espaço Atalaia de Toculo': { x: 125, y: 340 },'Espaço Zumbi': { x: 125, y: 295 },
 };
 
 const locationInfos: LocationInfo[] = items.map((name, index) => {
@@ -131,17 +133,32 @@ const locationInfos: LocationInfo[] = items.map((name, index) => {
 });
 
 const Maps: React.FC = () => {
-  
   const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(null);
   const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
+  const navigate = useNavigate();
 
   const handleLocationClick = (locationInfo: LocationInfo) => {
+    console.log('Location clicked:', locationInfo); // Log para depuração
     if (selectedLocation?.id === locationInfo.id) {
       setSelectedLocation(null); 
     } else {
       setSelectedLocation(locationInfo);
       if (transformComponentRef.current) {
         transformComponentRef.current.zoomToElement(`#location-${locationInfo.id}`, 1.5, 2000);
+      }
+    }
+  };
+
+  const handleTooltipClick = () => {
+    console.log('Tooltip clicked'); // Log para depuração
+    if (selectedLocation) {
+      console.log('Selected location:', selectedLocation); // Log para depuração
+      const espacoData = getEspacoData(selectedLocation.name);
+      if (espacoData) {
+        console.log('Navigating to:', espacoData.path); // Log para depuração
+        navigate(espacoData.path);
+      } else {
+        console.log('No espaco data found for:', selectedLocation.name); // Log para depuração
       }
     }
   };
@@ -211,7 +228,11 @@ const Maps: React.FC = () => {
                 />
               ))}
               {selectedLocation && (
-                <Tooltip x={(selectedLocation.coordinates.x / 480) * 100 + '%'} y={(selectedLocation.coordinates.y / 520) * 100 + '%'}>
+                <Tooltip
+                  x={(selectedLocation.coordinates.x / 480) * 100 + '%'}
+                  y={(selectedLocation.coordinates.y / 520) * 100 + '%'}
+                  onClick={handleTooltipClick}
+                >
                   {selectedLocation.name}
                 </Tooltip>
               )}
@@ -219,7 +240,6 @@ const Maps: React.FC = () => {
           </TransformComponent>
         </TransformWrapper> <br />
               <div  style={{ width: '50px', height: '150px', position: 'absolute', top: '92%',  }}>
-
               <img src={pinca} alt="Pinça" style={{ width: '50px', height: '50px' }} />
               </div>
         <BtnDownArrow />

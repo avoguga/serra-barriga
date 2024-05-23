@@ -410,7 +410,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       ‘’Atalaia’’ significa “Posto de observação”
       
       O Memorial da Serra da Barriga tem três Atalaias, e a todas são dados os nomes dos filhos de Ganga-Zumba: Acaiuba, Toculo e Acaiene.
-      
+       
       
 
 
