@@ -19,8 +19,7 @@ import obj10 from '../../assets/modelosOtimizados/Objeto_09_4k-b.glb';
 import obj11 from '../../assets/modelosOtimizados/Objeto_11_4k-b.glb';
 import obj12 from '../../assets/modelosOtimizados/Objeto_12_4k-b.glb';
 import obj13 from '../../assets/modelosOtimizados/Objeto_13_4k-b.glb';
-import obj14 from '../../assets/modelosOtimizados/Objeto_15_4k-b.glb';
-
+import obj14 from '../../assets/modelosOtimizados/compressed.glb';
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import { useState } from 'react';
