@@ -14,7 +14,6 @@ import logoSubirSerra from '../../assets/icons/logo-vamos-subir-serra.svg';
 import logoNucleoZero from '../../assets/icons/logo-nucleo-zero.svg';
 import logoParqueMemorial from '../../assets/icons/logo-parque-memorial.svg';
 
-
 // Others
 import packageJson from '../../../package.json';
 import BtnDownArrow from '../../components/ScrollButton';
@@ -66,7 +65,7 @@ const About = () => {
   return (
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <View>
-        <FloatingButtonBar backgroundColor='#700238' backBgColor='#4E0026' />
+        <FloatingButtonBar backgroundColor="#700238" backBgColor="#4E0026" />
         <Content>
           <BtnDownArrow />
           <img
@@ -78,13 +77,13 @@ const About = () => {
               margin: '140px 0 50px',
             }}
           />
-          <p>
-            ESTE APLICATIVO FOI DESENVOLVIDO PELA <b>ANAJÔ</b> NO PROJETO{' '}
-            <b>"VAMOS SUBIR A SERRA"</b>. CONHEÇA MAIS SOBRE ESSA INICIATIVA EM
-            PARCERIA COM A FUNDAÇÃO PALMARES.
-          </p>
+
           <h1>PARCERIA</h1>
-          <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.tiktok.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={logoTikTok}
               alt="Logo do aplicativo Tik Tok."
@@ -94,7 +93,11 @@ const About = () => {
               }}
             />
           </a>
-          <a href="https://www.vamossubiraserra.com.br/sobre-anajô" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.vamossubiraserra.com.br/sobre-anajô"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={logoAnajo}
               alt="Logo do centro de cultura Anajô."
@@ -104,7 +107,11 @@ const About = () => {
               }}
             />
           </a>
-          <a href="https://www.vamossubiraserra.com.br" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.vamossubiraserra.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={logoSubirSerra}
               alt="Logo do movimento vamos subir a serra Alagoas."
@@ -114,7 +121,11 @@ const About = () => {
               }}
             />
           </a>
-          <a href="https://www.gov.br/palmares/pt-br" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.gov.br/palmares/pt-br"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={logoPalmares}
               alt="Logo da fundação cultural Palmares."
@@ -125,7 +136,11 @@ const About = () => {
             />
           </a>
           <h1>DESENVOLVIMENTO</h1>
-          <a href="https://www.instagram.com/nucleozero_" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/nucleozero_"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={logoNucleoZero}
               alt="Logo do Núcleo Zero comunicação."
@@ -148,9 +163,13 @@ const About = () => {
           />
           <span>
             <u>
-              <b onClick={() => {
-                navigate(`/about/Ficha`);
-              }}>FICHA TÉCNICA</b>
+              <b
+                onClick={() => {
+                  navigate(`/about/Ficha`);
+                }}
+              >
+                FICHA TÉCNICA
+              </b>
             </u>
           </span>
           <span> © 2024 APP DESENVOLVIDO POR NÚCLEO ZERO</span>
