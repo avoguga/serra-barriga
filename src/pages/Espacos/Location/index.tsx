@@ -5,7 +5,7 @@ import maps from '../../../assets/images/Mapa Memorial Serra da Barriga - novo-0
 import Sidebar from '../Sidebar';
 import LowArrow from '../../../components/LowArrowButton';
 import * as C from './styles';
-import { EspacoData, getEspacoData,  } from '../../../helpers/Espacos';
+import { EspacoData, getEspacoData } from '../../../helpers/Espacos';
 
 const LocView: React.FC = () => {
   const navigate = useNavigate();
@@ -18,7 +18,10 @@ const LocView: React.FC = () => {
   }
 
   const marker = figureData.mapPosition ? (
-    <C.Marker posX={figureData.mapPosition.posX} posY={figureData.mapPosition.posY}>
+    <C.Marker
+      posX={figureData.mapPosition.posX}
+      posY={figureData.mapPosition.posY}
+    >
       {figureData.title}
     </C.Marker>
   ) : null;
@@ -26,7 +29,10 @@ const LocView: React.FC = () => {
   return (
     <C.View>
       <C.Nav>
-        <LowArrow onClick={() => navigate(`/historical-figure/${figureName}`)} isActive={true} />
+        <LowArrow
+          onClick={() => navigate(`/historical-figure/${figureName}`)}
+          isActive={true}
+        />
       </C.Nav>
       <C.Content>
         <h1>{figureData.title}</h1>
@@ -43,7 +49,11 @@ const LocView: React.FC = () => {
         </C.InfoText>
         <C.ImageContent>
           <C.MapContainer>
-            <img src={maps} alt="Mapa do Memorial Serra da Barriga" loading="lazy" />
+            <img
+              src={maps}
+              alt="Mapa do Memorial Serra da Barriga"
+              loading="lazy"
+            />
             {marker}
           </C.MapContainer>
         </C.ImageContent>

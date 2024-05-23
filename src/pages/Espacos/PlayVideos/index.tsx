@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-
 import Sidebar from '../Sidebar';
 
 import LowArrow from '../../../components/LowArrowButton';
@@ -9,11 +8,10 @@ import SpaceHeader from '../../../components/SpaceHeader';
 
 const View = styled.div`
   background-color: #85a01d;
-  
+
   color: #ffffff;
   h1 {
     font-size: 34px;
-    
   }
   p {
     font-size: 18px;
@@ -35,10 +33,10 @@ const Nav = styled.nav`
 
 const NavFotter = styled.nav`
   position: fixed;
+  z-index: 10;
   width: 100%;
   bottom: 0;
 `;
-
 
 const TitleText = styled.div`
   margin: 40px 0 0 0;
@@ -49,7 +47,7 @@ const TitleText = styled.div`
   justify-content: center;
   display: flex;
   p {
-    font-family: 'FuturaPTBook' , sans-serif;
+    font-family: 'FuturaPTBook', sans-serif;
     opacity: 0.87;
     font-size: 17px;
   }
@@ -60,7 +58,7 @@ const Rodape = styled.div`
   height: 70%;
   margin: 20px 0 150px 0;
   p {
-    font-family: 'FuturaPTBook' , sans-serif;
+    font-family: 'FuturaPTBook', sans-serif;
     opacity: 0.87;
     font-size: 17px;
   }
@@ -84,29 +82,25 @@ const StyledIframe = styled.iframe`
 const PlayView = () => {
   const location = useLocation();
   const { url, title, interpretacao, texto, trilha } = location.state || {};
-    console.log(location.state);
-    
+  console.log(location.state);
+
   return (
     <View>
       <Nav>
         <LowArrow onClick={() => window.history.back()} isActive={true} />
       </Nav>
       <NavFotter>
-        <Sidebar activeSection='VideosView'/>
+        <Sidebar activeSection="VideosView" />
       </NavFotter>
       <Content>
-      <SpaceHeader/>
-      <TitleText>
+        <SpaceHeader />
+        <TitleText>
           <p>Título: {title}</p>
         </TitleText>
         <VideoContainer>
-          <StyledIframe
-            src={url}
-            title={title}
-        
-          ></StyledIframe>
+          <StyledIframe src={url} title={title}></StyledIframe>
         </VideoContainer>
-  
+
         <Rodape>
           <p>Interpretação : {interpretacao}</p>
           <p>Texto: {texto}</p>

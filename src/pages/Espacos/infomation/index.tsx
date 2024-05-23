@@ -5,7 +5,7 @@ import { EspacoData, getEspacoData } from '../../../helpers/Espacos';
 import Sidebar from '../Sidebar/index';
 import LowArrow from '../../../components/LowArrowButton';
 
-import * as C from './styles'
+import * as C from './styles';
 import SpaceHeader from '../../../components/SpaceHeader';
 
 const InfoView = () => {
@@ -16,16 +16,18 @@ const InfoView = () => {
   return (
     <C.View>
       <C.Nav>
-        <LowArrow onClick={() => navigate(`/historical-figure/${figureName}`)} isActive={true} />
+        <LowArrow
+          onClick={() => navigate(`/historical-figure/${figureName}`)}
+          isActive={true}
+        />
       </C.Nav>
       <C.NavFotter>
-        
-     <Sidebar   activeSection='infoView' />
+        <Sidebar activeSection="infoView" />
       </C.NavFotter>
       <C.Content>
         {figureData ? (
           <>
-          <SpaceHeader/>
+            <SpaceHeader />
             <C.InfoText>
               <img
                 src={infoIcon}
@@ -33,7 +35,7 @@ const InfoView = () => {
                 style={{
                   width: '35px',
                   height: '35px',
-                  marginLeft:'px'
+                  marginLeft: 'px',
                 }}
               />
               <h2>Informações</h2>
@@ -42,7 +44,6 @@ const InfoView = () => {
               <p>{figureData.description.pt}</p>
               <C.SpanText>{figureData.description.italic} </C.SpanText>
               <p>{figureData.description.en}</p>
-
             </C.AgroupText>
           </>
         ) : (

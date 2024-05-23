@@ -19,6 +19,7 @@ export const Nav = styled.nav`
 
 export const NavFooter = styled.nav`
   position: fixed;
+  z-index: 10;
   width: 100%;
   bottom: 0;
 `;
