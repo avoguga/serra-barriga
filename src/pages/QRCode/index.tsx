@@ -34,7 +34,7 @@ interface Prediction {
 interface TeachableMachineModel {
   predict: (input: HTMLImageElement) => Promise<Prediction[]>;
 }
-// 
+//
 
 const QRCode: React.FC = () => {
   const navigate = useNavigate();
@@ -48,9 +48,9 @@ const QRCode: React.FC = () => {
   useEffect(() => {
     const loadModelAndCamera = async () => {
       const modelURL =
-        'https://teachablemachine.withgoogle.com/models/IGp6AIkQS/model.json';
+        'https://teachablemachine.withgoogle.com/models/-srIggdvm/model.json';
       const metadataURL =
-        'https://teachablemachine.withgoogle.com/models/IGp6AIkQS/metadata.json';
+        'https://teachablemachine.withgoogle.com/models/-srIggdvm/metadata.json';
       try {
         const loadedModel = (await tmImage.load(
           modelURL,
@@ -131,9 +131,7 @@ const QRCode: React.FC = () => {
         } catch (error) {
           console.error('Erro durante a predição:', error);
         }
-      };  
-
-
+      };
 
       performPrediction();
     };
