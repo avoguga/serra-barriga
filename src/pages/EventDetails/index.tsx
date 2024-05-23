@@ -23,7 +23,7 @@ const EventDetails = () => {
   useEffect(() => {
     if (eventId) {
       axios
-        .get(`http://93.127.210.45:1337/api/eventos/${eventId}`)
+        .get(`https://gestor.serradabarriga.app.br/api/eventos/${eventId}`)
         .then((response) => {
           const { data } = response;
           console.log(response.data);

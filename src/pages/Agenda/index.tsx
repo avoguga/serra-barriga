@@ -33,7 +33,7 @@ const Agenda = () => {
   useEffect(() => {
     setLoading(true); // Inicia o loading antes da chamada da API
     axios
-      .get('http://93.127.210.45:1337/api/eventos?')
+      .get('https://gestor.serradabarriga.app.br/api/eventos?')
       .then((response) => {
         console.log(response);
 
