@@ -128,7 +128,7 @@ export const EventCard = styled.div`
   justify-content: space-around;
 
   width: 240px;
-  max-height: 14rem;
+  max-height: 20rem;
   overflow: hidden;
 `;
 

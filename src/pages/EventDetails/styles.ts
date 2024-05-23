@@ -47,7 +47,7 @@ export const DescricaoEvento = styled.p`
   color: #ffffff;
   font-family: 'FuturaPTBook', sans-serif;
   font-weight: 100;
-  text-align: left;
+  text-align: justify;
 
   width: 90%;
 
