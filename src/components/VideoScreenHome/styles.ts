@@ -26,11 +26,9 @@ export const VideoDetails = styled.div`
   display: flex;
   align-items: baseline;
   flex-direction: column;
-  position: relative;
-  width: 100%;
   padding: 15px;
-
-  p {
+  width: 100%;
+  padding p {
     font-family: 'FuturaPTBook', sans-serif;
   }
 `;

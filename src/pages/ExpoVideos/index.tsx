@@ -15,7 +15,8 @@ import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
 import * as C from './styles';
 
-import VideoListHome from '../../components/VideoListHome';
+
+import VideoList from '../../components/VideoList';
 
 
 
@@ -30,7 +31,7 @@ const ExpoVideosHome = () => {
       <div
         style={{
           backgroundColor: 'rgb(214, 107, 0)',
-          height: '200vh',
+          height: 'auto',
           width: '100vw',
           display: 'flex',
           justifyContent:'center',
@@ -65,9 +66,9 @@ const ExpoVideosHome = () => {
 
           <C.Text>VÍDEOS</C.Text> 
         
-        </C.SelfieContainer> <br />
+        </C.SelfieContainer> <br /><br />
     
-        <VideoListHome/>
+        <VideoList/>
 
      </div>
     </WatermarkWrapper>
