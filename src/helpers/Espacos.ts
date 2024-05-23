@@ -96,9 +96,9 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '36%', posY: '6%' },
   },
-  'Espaço Caá-Pueira': {
-    path: '/historical-figure/Espaço Caá-Pueira',
-    title: 'Espaço Caá-Pueira',
+  'Espaço Caá-Puera': {
+    path: '/historical-figure/Espaço Caá-Puera',
+    title: 'Espaço Caá-Puera',
     icon: capoeira,
     description: {
       pt: `A capoeira se desenvolveu no Brasil e suas raízes estão nas danças africanas e indígenas. É um estado de espírito que se expressa num diálogo corporal lúdico e prazeroso. É dança, é ginca, é esporte, é cultura, é terapia, é filosofia. É luta de libertação.
@@ -410,7 +410,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       ‘’Atalaia’’ significa “Posto de observação”
       
       O Memorial da Serra da Barriga tem três Atalaias, e a todas são dados os nomes dos filhos de Ganga-Zumba: Acaiuba, Toculo e Acaiene.
-       
+      
       
 
 
