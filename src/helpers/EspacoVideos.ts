@@ -17,7 +17,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'Espaço Acotirene',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre o Espaço Acotirene',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre o Espaço Acotirene.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -37,9 +37,9 @@ export const espacoVideos: EspacoVideosMap = {
     {
       url: 'https://www.youtube.com/embed/2Byj2R0m4n0',
       title: `Mãe Neide Oya D'Oxum`,
-      interpretacao: 'IMãe Neide',
+      interpretacao: 'Mãe Neide',
       texto:
-        'Entrevista com Mãe Neide na Serra da Barriga sobre ancestralidade',
+        'Entrevista com Mãe Neide na Serra da Barriga sobre ancestralidade.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -61,7 +61,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'Muxima de Palmares',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre Muxima de Palmares',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre Muxima de Palmares.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -71,7 +71,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'Atalaia de Acaiene',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre Atalaia de Acaiene',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre Atalaia de Acaiene.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -81,7 +81,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'OCAS INDÍGENAS',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre as Ocas      ',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre as Ocas .     ',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -91,7 +91,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'Batucajé      ',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre o espaço Barucajé',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre o espaço Barucajé.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -101,7 +101,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'Atalaia de Acaiuba',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre Atalaia de Acaiuba',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre Atalaia de Acaiuba.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -121,7 +121,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'ONJÓ DE FARINHA',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre Casa de Farinha',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre Casa de Farinha.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -131,7 +131,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'Kúuku Wáana',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga sobre o espaço Kúuku Wáana',
+        'Entrevista com Helcias Pereira na Serra da Barriga sobre o espaço Kúuku Wáana.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],
@@ -141,7 +141,7 @@ export const espacoVideos: EspacoVideosMap = {
       title: 'Atalaia de Toculo',
       interpretacao: 'Helcias Pereira',
       texto:
-        'Entrevista com Helcias Pereira na Serra da Barriga, sobre Atalaia de Toculo',
+        'Entrevista com Helcias Pereira na Serra da Barriga, sobre Atalaia de Toculo.',
       trilha: 'Trilha do Vídeo 1',
     },
   ],

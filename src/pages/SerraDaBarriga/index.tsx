@@ -17,7 +17,6 @@ import foto6 from '../../assets/images/serra fotos/Serra da Barriga (3).webp';
 import foto7 from '../../assets/images/serra fotos/Serra da Barriga.webp';
 import foto8 from '../../assets/images/serra fotos/Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642.webp';
 
-
 const SerraDaBarriga = () => {
   const images = [
     { src: foto1, description: 'Foto de Aprigio Vilanova ' },
@@ -27,7 +26,18 @@ const SerraDaBarriga = () => {
     { src: foto5, description: 'Foto de Aprigio Vilanova ' },
     { src: foto6, description: 'Serra da Barriga ' },
     { src: foto7, description: 'Serra da Barriga  ' },
-    {src: foto8, description: `Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642`}
+    { src: foto8, description: 'Mapa da Capitania de Pernambuco - atual Alagoas, com representação do Quilombo dos Palmares na direita. Obra do Holandês Caspar Barlaeus, 1642' }
+  ];
+
+  const videos = [
+    { src: "https://www.youtube.com/embed/sesPGr4BYkM", title: "Margareth Menezes Ministra da Cultura do Brasil" },
+    { src: "https://www.youtube.com/embed/kEU7XECoaJ4", title: "João Jorge Rodrigues Presidente da Fundação Cultural Palmares" },
+    { src: "https://www.youtube.com/embed/Iku2KVqKVb0", title: "Nelson Mendes Diretor" },
+    { src: "https://www.youtube.com/embed/H-0heADzD2Q", title: "Flávia Costa - Diretora do DPA" },
+    { src: "https://www.youtube.com/embed/VZqUnoEm758", title: "Valdice Gomes" },
+    { src: "https://www.youtube.com/embed/2Byj2R0m4n0", title: "Mãe Neide Oya D'Oxum" },
+    { src: "https://www.youtube.com/embed/Va6AlND_zCM", title: "Valdice Gomes" },
+    { src: "https://www.youtube.com/embed/-5SvbBB64Y0", title: "Mãe Neide Oya D'Oxum" },
   ];
 
   const [fullScreenImage, setFullScreenImage] = useState<{
@@ -79,6 +89,7 @@ const SerraDaBarriga = () => {
   };
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
   const handleLeftClick = () => {
     if (scrollContainerRef.current) {
@@ -91,6 +102,22 @@ const SerraDaBarriga = () => {
   const handleRightClick = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft += 100;
+      setLeftArrowActive(false);
+      setRightArrowActive(true);
+    }
+  };
+
+  const handleVideoLeftClick = () => {
+    if (videoContainerRef.current) {
+      videoContainerRef.current.scrollLeft -= 100;
+      setLeftArrowActive(true);
+      setRightArrowActive(false);
+    }
+  };
+
+  const handleVideoRightClick = () => {
+    if (videoContainerRef.current) {
+      videoContainerRef.current.scrollLeft += 100;
       setLeftArrowActive(false);
       setRightArrowActive(true);
     }
@@ -124,7 +151,7 @@ const SerraDaBarriga = () => {
 
         <h4>FOTOS</h4>
 
-        <div className="carrosel-container" ref={scrollContainerRef}>
+        <div className="carrosel-container"  ref={scrollContainerRef}>
           <div className="carrosel">
             {images.map((image, index) => (
               <img
@@ -144,17 +171,23 @@ const SerraDaBarriga = () => {
         </div>
 
         <h4>VÍDEOS</h4>
-        <iframe
-          src="https://www.youtube.com/embed/USLC-TsQdnI"
-          title="Memórias de luta na Serra da Barriga"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          className="video"
-        />
+
+        <div className="video-container" style={{background:'#C60D1C'}} ref={videoContainerRef}>
+          {videos.map((video, index) => (
+            <iframe
+              key={index}
+              src={video.src}
+              title={video.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="video"
+            />
+          ))}
+        </div>
 
         <div className="arrow-container">
-          <Arrow direction="left" onClick={handleLeftClick} isActive={false} />
-          <Arrow direction="right" onClick={handleRightClick} isActive={false} />
+          <Arrow direction="left" onClick={handleVideoLeftClick} isActive={leftArrowActive} />
+          <Arrow direction="right" onClick={handleVideoRightClick} isActive={rightArrowActive} />
         </div>
 
         <img className="footer" src={footer} alt="footer" />
