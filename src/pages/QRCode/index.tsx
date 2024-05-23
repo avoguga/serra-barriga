@@ -68,8 +68,6 @@ const QRCode: React.FC = () => {
         videoElement.autoplay = true;
         videoElement.muted = true;
         videoElement.setAttribute('playsinline', '');
-        videoElement.style.width = '100%';
-        videoElement.style.height = '100%';
         videoElement.style.objectFit = 'cover';
 
         if (webcamRef.current) {
@@ -202,19 +200,18 @@ const QRCode: React.FC = () => {
         <C.ScannerButton onClick={handleScanClick}>
           <C.ScannerImage src={scannerButton} alt="Botão para escanear" />
         </C.ScannerButton>
-        {isLoading && (
-          <div
-            style={{
-              textAlign: 'center',
-              fontSize: '18px',
-              color: '#FFFF',
-              marginTop: '50px',
-              marginBottom: '50px',
-            }}
-          >
-            Carregando a câmera, aguarde um momento...
-          </div>
-        )}
+        <div
+          style={{
+            textAlign: 'center',
+            fontSize: '18px',
+            color: '#FFFF',
+            marginTop: '50px',
+            marginBottom: '50px',
+          }}
+        >
+          {isLoading && <> Carregando a câmera, aguarde um momento...</>}
+        </div>
+
         {scanningMessage && (
           <div
             style={{
