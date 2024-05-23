@@ -83,7 +83,7 @@ const StyledIframe = styled.iframe`
 `;
 const PlayView = () => {
   const location = useLocation();
-  const { url, videoTitle, interpretacao, texto, trilha } = location.state || {};
+  const { url, title, interpretacao, texto, trilha } = location.state || {};
     console.log(location.state);
     
   return (
@@ -97,18 +97,18 @@ const PlayView = () => {
       <Content>
       <SpaceHeader/>
       <TitleText>
-          <p>Título: {videoTitle}</p>
+          <p>Título: {title}</p>
         </TitleText>
         <VideoContainer>
           <StyledIframe
             src={url}
-            title={videoTitle}
+            title={title}
         
           ></StyledIframe>
         </VideoContainer>
   
         <Rodape>
-          <p>Interpretação: {interpretacao}</p>
+          <p>Interpretação : {interpretacao}</p>
           <p>Texto: {texto}</p>
           <p>Trilha: {trilha}</p>
         </Rodape>

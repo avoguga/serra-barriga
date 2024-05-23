@@ -27,7 +27,8 @@ export const VideoDetails = styled.div`
   align-items: baseline;
   flex-direction: column;
   position: relative;
-  right: 55px;
+  width: 100%;
+  padding: 15px;
 
   p {
     font-family: 'FuturaPTBook', sans-serif;

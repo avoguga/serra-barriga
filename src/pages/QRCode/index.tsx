@@ -124,8 +124,6 @@ const QRCode: React.FC = () => {
             } else {
               alert('Imagem não reconhecida, por favor, tente novamente.');
             }
-          } else {
-            alert('Imagem não reconhecida, por favor, tente novamente.');
           }
 
           // Continue a predição no próximo frame e tal

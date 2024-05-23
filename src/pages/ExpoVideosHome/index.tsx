@@ -30,9 +30,10 @@ const ExpoVideosHome = () => {
       <div
         style={{
           backgroundColor: '#67781B',
-          height: '100vh',
+          height: '200vh',
           width: '100vw',
           display: 'flex',
+          justifyContent:'center',
           flexDirection: 'column',
           alignItems: 'center',
         }}
@@ -65,6 +66,7 @@ const ExpoVideosHome = () => {
           <C.Text>VÍDEOS</C.Text> 
         
         </C.SelfieContainer> <br />
+    
         <VideoListHome/>
 
      </div>
