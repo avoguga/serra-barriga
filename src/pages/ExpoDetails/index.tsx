@@ -77,7 +77,6 @@ const ExpoDetails = () => {
         <model-viewer
           src={modelo.src}
           alt={modelo.alt}
-          ar
           loading="eager"
           camera-controls
           auto-rotate

@@ -31,7 +31,7 @@ export type Modelo3D = {
   id: number;
   src: string;
   alt: string;
-  title:string;
+  title: string;
   description: string;
 };
 
@@ -39,7 +39,6 @@ const VirtualExpo = () => {
   const ExpoIcon = Icons['Expo'];
   const ArqIcon = Icons['Arqueologia'];
   const navigate = useNavigate();
-  
 
   const [isExpanded, setIsExpanded] = useState(false);
   const modelos: Modelo3D[] = [
@@ -189,7 +188,7 @@ const VirtualExpo = () => {
         />
         <C.BackButton
           onClick={() => {
-            navigate(-1) , {state: { background:'#753D00'}};
+            navigate(-1), { state: { background: '#753D00' } };
           }}
         >
           <img src={seta} alt="" />
@@ -221,22 +220,28 @@ const VirtualExpo = () => {
           </C.ReadMoreButton>
         </C.ExpoInfoContainer>
 
-        <C.SelfieContainer onClick={() => {
-              navigate(`/virtual-expo/expo-videos`);
-            }}>
+        <C.SelfieContainer
+          onClick={() => {
+            navigate(`/virtual-expo/expo-videos`);
+          }}
+        >
           <C.Icon src={Video} alt="video" />
-        
 
-          <C.Text>VÍDEOS</C.Text> 
-        
+          <C.Text>VÍDEOS</C.Text>
         </C.SelfieContainer>
 
         <C.ModelsContainer>
           {modelos.map((modelo) => (
-            <button key={modelo.id}      onClick={() => navigate(`/virtual-expo/expo-details/${modelo.id} `, {state: {modelo, background:'#EB7400'}})}>
-              {modelo.id === 1 || modelo.id === 2 ? ( 
+            <button
+              key={modelo.id}
+              onClick={() =>
+                navigate(`/virtual-expo/expo-details/${modelo.id} `, {
+                  state: { modelo, background: '#EB7400' },
+                })
+              }
+            >
+              {modelo.id === 1 || modelo.id === 2 ? (
                 <model-viewer
-                  ar
                   loading="eager"
                   camera-controls
                   auto-rotate
@@ -250,14 +255,12 @@ const VirtualExpo = () => {
                     width: '146px',
                     height: '146px',
                     backgroundColor: '#EB7400',
-               
 
                     borderRadius: '50%',
                   }}
                 ></model-viewer>
               ) : (
                 <model-viewer
-                  ar
                   loading="eager"
                   camera-controls
                   auto-rotate

@@ -220,14 +220,14 @@ const HomeExpo = () => {
             {isExpanded ? 'LER MENOS' : 'LER MAIS'}
           </C.ReadMoreButton>
         </C.ExpoInfoContainer>
-        <C.SelfieContainer onClick={() => {
-              navigate('/virtual-expo/expo-videos-home');
-            }}>
+        <C.SelfieContainer
+          onClick={() => {
+            navigate('/virtual-expo/expo-videos-home');
+          }}
+        >
           <C.Icon src={Video} alt="video" />
-        
 
-          <C.Text>VÍDEOS</C.Text> 
-        
+          <C.Text>VÍDEOS</C.Text>
         </C.SelfieContainer>
 
         <C.ModelsContainer>
@@ -242,7 +242,6 @@ const HomeExpo = () => {
             >
               {modelo.id === 1 || modelo.id === 2 ? (
                 <model-viewer
-                  ar
                   loading="eager"
                   camera-controls
                   auto-rotate
@@ -262,7 +261,6 @@ const HomeExpo = () => {
                 ></model-viewer>
               ) : (
                 <model-viewer
-                  ar
                   loading="eager"
                   camera-controls
                   auto-rotate
