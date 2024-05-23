@@ -12,7 +12,6 @@ import zumba1 from '../assets/EspacoAudios/Ganga Zumba/gangazumba.mp3';
 
 //Quilombo dos Palmares
 import quilombo1 from '../assets/EspacoAudios/Quilombo dos Palmares/espaço quilombo.mp3';
-import quilombo2 from '../assets/EspacoAudios/Quilombo dos Palmares/espaço quilombo.mp3';
 
 //Zumbi
 import zumbi1 from '../assets/EspacoAudios/Zumbi/zumbi.mp3';
@@ -91,7 +90,7 @@ export const espacoAudios: EspacoAudiosMap = {
   ],
   'Espaço Quilombo dos Palmares': [
     {
-      audio: [quilombo1, quilombo2],
+      audio: [quilombo1],
       title: 'Espaço Contemplativo Quilombo',
       interpretacao: 'Leci Brandão',
       texto: 'Patrícia Mourão',

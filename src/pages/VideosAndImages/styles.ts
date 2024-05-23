@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
   display: flex;
-  height: 100vh;
+  height: auto;
   background-color: #d46900;
   flex-direction: column;
   align-items: center;

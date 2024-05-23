@@ -8,17 +8,18 @@ import '@google/model-viewer';
 
 import Video from '../../assets/icons/i_video pagina.png';
 
-import { BackButton } from '../TakeHome';
+
 import { useNavigate } from 'react-router-dom';
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 
 
 import * as C from './styles';
-import VideoList from '../../components/VideoList';
+
+import VideoListHome from '../../components/VideoListHome';
 
 
 
-const ExpoVideos = () => {
+const ExpoVideosHome = () => {
   const ExpoIcon = Icons['Expo'];
 
   const navigate = useNavigate();
@@ -28,10 +29,11 @@ const ExpoVideos = () => {
     <WatermarkWrapper>
       <div
         style={{
-          backgroundColor: '#D66B00',
-          height: '100vh',
+          backgroundColor: 'rgb(214, 107, 0)',
+          height: '200vh',
           width: '100vw',
           display: 'flex',
+          justifyContent:'center',
           flexDirection: 'column',
           alignItems: 'center',
         }}
@@ -46,13 +48,13 @@ const ExpoVideos = () => {
             marginBottom: '60px',
           }}
         />
-        <BackButton
+        <C.BackButton
           onClick={() => {
             navigate(-1);
           }}
         >
           <img src={seta} alt="" />
-        </BackButton>
+        </C.BackButton>
         <C.ExpoContainer>
           <ExpoIcon />
           <h2>EXPOSIÇÃO VIRTUAL</h2>
@@ -64,11 +66,12 @@ const ExpoVideos = () => {
           <C.Text>VÍDEOS</C.Text> 
         
         </C.SelfieContainer> <br />
-        <VideoList/>
+    
+        <VideoListHome/>
 
      </div>
     </WatermarkWrapper>
   );
 };
 
-export default ExpoVideos;
+export default ExpoVideosHome;

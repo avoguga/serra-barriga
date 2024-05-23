@@ -34,6 +34,22 @@ export const SelfieContainer = styled.div`
   border-radius: 50px;
   margin-top: 10px;
 `;
+
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #753d00;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  position: fixed; // Alterado de absolute para fixed
+  top: 7%;
+  left: 5%;
+  z-index: 10;
+  cursor: pointer;
+`;
+
 export const Text = styled.p`
   font-family: 'FuturaPTDemi', sans-serif;
 
