@@ -181,54 +181,60 @@ margin-top:5px;
 
 
 `
-export const MapaButton =styled.button`
-  background: #20AA9A;
-  border-radius: 50px;
-  width: 80px;
-  height: 85px;
-  color: #ffff;
+const MapaButton = styled.button`
+  background: #2fa499;
+  border-radius: 50%;
+  width: 12vw;
+  height: 12vw;
+  max-width: 100px;
+  max-height: 100px;
+  color: #fff;
   display: flex;
-  justify-content: stretch;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  
-h3{
-  font-size: 15px; 
-  z-index: 2;
-  position:absolute;
-top: 9.2%;
+  position: relative;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 
-}
+  @media (max-width: 768px) {
+    width: 15vw;
+    height: 15vw;
+  }
 
-@media only screen and (width: 390px), (height: 844px) {
+  @media (max-width: 480px) {
+    width: 20vw;
+    height: 20vw;
+  }
 
-h3{
-  top: 8.0% ;
-}
+  img {
+    width: 40%;
+    height: 40%;
 
+    @media (max-width: 768px) {
+      width: 50%;
+      height: 50%;
+    }
 
-}
-@media only screen and (width: 360px), (height: 740px) {
-h3{
-  top: 11% ;
-} 
+    @media (max-width: 480px) {
+      width: 60%;
+      height: 60%;
+    }
+  }
 
+  h3 {
+    font-size: 1.5vw;
 
+    @media (max-width: 768px) {
+      font-size: 2vw;
+    }
 
-
-
-
-
-}
-@media only screen and (width: 360px), (height: 780px) {
-h3{
-  top: 11% ;
-}  
-}
-
-`
-
-
+    @media (max-width: 480px) {
+      font-size: 2.5vw;
+    }
+  }
+`;
 const isSamsungInternet = (): boolean => {
   return /SamsungBrowser/.test(navigator.userAgent);
 };
@@ -293,26 +299,14 @@ const Home = () => {
             padding:'5px'
           }}
           />
-        <MapaButton  onClick={() => {
-              navigate('/maps');
-            }}>
-
-
-        <img
-          src={mapa}
-          loading='lazy'
-          alt="icone de mapa"
-          style={{
-            width: '60px',
-            height: '60px',
-            
-            
-            
-            padding:'3px'
-          }}
-          />
-          <h3> MAPA</h3>
-          </MapaButton>
+<MapaButton
+              onClick={() => {
+                navigate('/maps');
+              }}
+            >
+              <img src={mapa} loading="lazy" alt="icone de mapa" />
+              <h3> MAPA</h3>
+            </MapaButton>
           </LogoContainer>
       
    

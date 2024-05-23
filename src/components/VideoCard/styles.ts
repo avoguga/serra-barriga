@@ -3,10 +3,14 @@ import styled from 'styled-components';
 export const VideoCardContainer = styled.div`
   width: 100%; // Ajuste para o tamanho desejado
   margin-bottom: 20px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const VideoThumbnail = styled.img`
-  width: 250px;
+  width: 240px;
   height: auto; // Mantém a proporção da imagem
   cursor: pointer;
   border-radius: 10px;

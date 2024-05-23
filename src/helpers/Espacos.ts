@@ -92,6 +92,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       `,
     },
     images: espacoImages['Espaço Aqualtune'],
+    videos: espacoVideos['Espaço Aqualtune'],
+
     mapPosition: { posX: '36%', posY: '6%' },
   },
   'Espaço Caá-Pueira': {
@@ -130,6 +132,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       en: 'From 1597 to 1694, the Zona da Mata region of the Captaincy of Pernambuco hosted within a 200km² radius dozens of settlements whose political, social, and military organization consolidated the legendary Quilombo dos Palmares ',
     },
     images: espacoImages['Espaço Quilombo dos Palmares'],
+    videos: espacoVideos['Espaço Quilombo dos Palmares'],
+
     mapPosition: { posX: '47%', posY: '64%' },
   },
   'Espaço Zumbi': {
@@ -157,6 +161,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       italic: `HOUSE OF THE SACRED`,
     },
     images: espacoImages['Espaço Onjó Cruzambe'],
+    videos: espacoVideos['Espaço Onjó Cruzambe'],
+
     mapPosition: { posX: '60.5%', posY: '74%' },
   },
   'Espaço Oxile das Ervas': {
@@ -191,6 +197,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       THE HEART OF PALMARES`,
     },
     images: espacoImages['Espaço Muxima de Palmares'],
+    videos: espacoVideos['Espaço Muxima de Palmares'],
+
     mapPosition: { posX: '57%', posY: '58%' },
   },
   'Espaço Atalaia Acaiene': {
@@ -218,6 +226,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       italic: `ACAIENE’S LOOKOUT`,
     },
     images: espacoImages['Espaço Atalaia Acaiene'],
+    videos: espacoVideos['Espaço Atalaia Acaiene'],
+
     mapPosition: { posX: '67%', posY: '32%' },
   },
   'Espaço Ocas indígenas': {
@@ -246,6 +256,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       italic: `INDIAN DWELLINGS`,
     },
     images: espacoImages['Espaço Ocas indígenas'],
+    videos: espacoVideos['Espaço Ocas indígenas'],
+
     mapPosition: { posX: '49%', posY: '36%' },
   },
   'Espaço Batucajé': {
@@ -266,6 +278,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       DANCING TO THE BEAT OF DRUMS`,
     },
     images: espacoImages['Espaço Batucajé'],
+    videos: espacoVideos['Espaço Batucajé'],
+
     mapPosition: { posX: '33%', posY: '26%' },
   },
   'Espaço Atalaia de Acaiuba': {
@@ -296,6 +310,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `ACAIUBA´S LOOKOUT`,
     },
     images: espacoImages['Espaço Atalaia de Acaiuba'],
+    videos: espacoVideos['Espaço Atalaia de Acaiuba'],
+
     mapPosition: { posX: '10%', posY: '38%' },
   },
   'Espaço Lagoa Encantada dos Negros': {
@@ -324,6 +340,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       SACRED IÔCO`,
     },
     images: espacoImages['Espaço Lagoa Encantada dos Negros'],
+    videos: espacoVideos['Espaço Lagoa Encantada dos Negros'],
+
     mapPosition: { posX: '22%', posY: '8%' },
   },
   'Espaço Onjó de Farinha': {
@@ -348,6 +366,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `MILL HOUSE`,
     },
     images: espacoImages['Espaço Onjó de Farinha'],
+    videos: espacoVideos['Espaço Onjó de Farinha'],
+
     mapPosition: { posX: '23%', posY: '45%' },
   },
   'Espaço Restaurante Kúuku-Waana': {
@@ -375,6 +395,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       FAMILY FEAST`,
     },
     images: espacoImages['Espaço Restaurante Kúuku-Waana'],
+    videos: espacoVideos['Espaço Restaurante Kúuku-Waana'],
+
     mapPosition: { posX: '16%', posY: '59%' },
   },
   'Espaço Atalaia de Toculo': {
@@ -408,6 +430,8 @@ The Memorial of Serra da Barriga has three Atalaias, and all are named after the
       italic: `TOCULO´S LOOKOUT`,
     },
     images: espacoImages['Espaço Atalaia de Toculo'],
+    videos: espacoVideos['Espaço Atalaia de Toculo'],
+
     mapPosition: { posX: '11%', posY: '75%' },
   },
 };
