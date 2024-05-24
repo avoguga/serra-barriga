@@ -1,15 +1,17 @@
 //Acotierne
-import acotirene1 from '../assets/EspacoSelfie/Acotirene/personagem ACOTIRENE para aplicativo Serra da Barriga - Selfie.webp';
+import acotirene1 from '../assets/Personagens Selfie Histórica webp/personagem ACOTIRENE para aplicativo Serra da Barriga - Selfie cortada - cintura pra cima.webp';
 
 //Aqualtune
+import aqualtune1 from '../assets/Personagens Selfie Histórica webp/aqualtune final  cortada - cintura pra cima.webp';
 
 //Caá-Pueira
-
 //Ganga Zumba
+import ganga from '../assets/Personagens Selfie Histórica webp/ganga zumba final cortado - cintura pra cima.webp';
 
 //Quilombo dos Palmares
 
 //Zumbi
+import zumbi from '../assets/Personagens Selfie Histórica webp/zumbi final cortado - cintura pra cima.webp';
 
 //Onjo de cruzambe
 
@@ -39,11 +41,11 @@ interface EspacoSelfieMap {
 
 export const espacoSelfie: EspacoSelfieMap = {
   'Espaço Acotirene': [acotirene1],
-  'Espaço Aqualtune': [],
+  'Espaço Aqualtune': [aqualtune1],
   'Espaço Caá-Pueira': [],
-  'Espaço Ganga Zumba': [],
+  'Espaço Ganga Zumba': [ganga],
   'Espaço Quilombo dos Palmares': [],
-  'Espaço Zumbi': [],
+  'Espaço Zumbi': [zumbi],
   'Espaço Onjó Cruzambe': [],
   'Espaço Oxile das Ervas': [],
   'Espaço Muxima de Palmares': [],

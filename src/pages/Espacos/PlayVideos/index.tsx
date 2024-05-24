@@ -81,7 +81,7 @@ const StyledIframe = styled.iframe`
 `;
 const PlayView = () => {
   const location = useLocation();
-  const { url, title, interpretacao, texto, trilha } = location.state || {};
+  const { url, title, interpretacao, texto,  } = location.state || {};
   console.log(location.state);
 
   return (
@@ -104,7 +104,7 @@ const PlayView = () => {
         <Rodape>
           <p>Interpretação : {interpretacao}</p>
           <p>Texto: {texto}</p>
-          <p>Trilha: {trilha}</p>
+          
         </Rodape>
       </Content>
     </View>

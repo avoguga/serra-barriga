@@ -4,13 +4,14 @@ import * as tmImage from '@teachablemachine/image';
 import logo from '../../assets/logo.png';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import * as C from './styles';
-import { BackButton } from '../TakeHome';
+
 import seta from '../../assets/seta voltar e abaixo - branco.svg';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import { getEspacoData } from '../../helpers/Espacos';
 import aaa from '../../assets/icons/mão com celular.png';
 import scannerButton from '../../assets/icons/i_botao escanear.png';
 import styled from 'styled-components';
+
 
 const InfoImage = styled.img`
   width: 90px;
@@ -173,9 +174,9 @@ const QRCode: React.FC = () => {
     <WatermarkWrapper watermarkImage={WatermarkImage} watermark={true}>
       <C.Container>
         <C.HeaderContainer>
-          <BackButton onClick={() => navigate('/')}>
+          <C.BackButton onClick={() => navigate('/')}>
             <img src={seta} alt="Seta voltar" />
-          </BackButton>
+          </C.BackButton>
           <img
             src={logo}
             alt="Logo"
@@ -221,7 +222,10 @@ const QRCode: React.FC = () => {
               marginTop: '50px',
             }}
           >
+           
+
             {scanningMessage}
+           
           </div>
         )}
       </C.Container>

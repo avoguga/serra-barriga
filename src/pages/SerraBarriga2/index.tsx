@@ -124,6 +124,13 @@ const Video = styled.iframe`
   background-color: var(--square-color);
   height: 170px;
   margin-bottom: 5px;
+  border: none;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  
+  &::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
 
   @media (min-width: 700px) {
     height: 510px;

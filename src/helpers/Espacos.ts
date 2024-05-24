@@ -93,6 +93,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     },
     images: espacoImages['Espaço Aqualtune'],
     videos: espacoVideos['Espaço Aqualtune'],
+    selfie: espacoSelfie['Espaço Aqualtune'],
 
     mapPosition: { posX: '36%', posY: '6%' },
   },
@@ -122,6 +123,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     },
     images: espacoImages['Espaço Ganga Zumba'],
     mapPosition: { posX: '59%', posY: '42%' },
+    selfie: espacoSelfie['Espaço Ganga Zumba'],
   },
   'Espaço Quilombo dos Palmares': {
     path: '/historical-figure/Espaço Quilombo dos Palmares',
@@ -146,6 +148,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       `,
     },
     images: espacoImages['Espaço Zumbi'],
+    selfie: espacoSelfie['Espaço Zumbi'],
+
     mapPosition: { posX: '11%', posY: '63%' },
   },
   'Espaço Onjó Cruzambe': {
