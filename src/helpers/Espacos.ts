@@ -372,7 +372,7 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
   },
   'Espaço Restaurante Kúuku-Waana': {
     path: '/historical-figure/Espaço Restaurante Kúuku-Waana',
-    title: 'Restaurante Kúuku-Waana',
+    title: ' Kúuku-Waana',
     subtitle: 'BANQUETE FAMILIAR',
     icon: restaurante,
     description: {
