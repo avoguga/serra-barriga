@@ -14,6 +14,7 @@ import ocas from '../assets/icons/tela-espaco/desenhos_OCAS INDÍGENAS.webp';
 import batucaje from '../assets/icons/tela-espaco/desenhos_BATUCAJÉ.webp';
 import acaiuba from '../assets/icons/tela-espaco/desenhos_ATALAIA DO ACAIUBA (1).webp';
 import toculo from '../assets/icons/tela-espaco/desenhos_ATALAIA DO TOCULO.webp';
+import personalidades from '../assets/icons/tela-espaco/WhatsApp Image 2024-05-20 at 15.04.53.jpeg';
 
 import lagoa from '../assets/icons/tela-espaco/desenhos_LAGOA ENCANTADA DOS NEGROS.webp';
 import restaurante from '../assets/icons/tela-espaco/desenhos_RESTAURANTE KÚUKU-WAANA.webp';
@@ -55,8 +56,8 @@ export interface EspacoData {
 
 // Mapeie as classes previstas para os dados de rota correspondentes
 export const espacos: Record<string, EspacoData> = {
-  'Espaço Acotirene': {
-    path: '/historical-figure/Espaço Acotirene',
+  'espaço-acotirene': {
+    path: '/historical-figure/espaço-acotirene',
     title: 'Espaço Acotirene',
     icon: acotierne,
     description: {
@@ -76,8 +77,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     selfie: espacoSelfie['Espaço Acotirene'],
     mapPosition: { posX: '72%', posY: '64%' },
   },
-  'Espaço Aqualtune': {
-    path: '/historical-figure/Espaço Aqualtune',
+  'espaço-aqualtune': {
+    path: '/historical-figure/espaço-aqualtune',
     title: 'Espaço Aqualtune',
     icon: aqualtune,
     description: {
@@ -97,8 +98,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '36%', posY: '6%' },
   },
-  'Espaço Caá-Puera': {
-    path: '/historical-figure/Espaço Caá-Puera',
+  'espaço-caa-puera': {
+    path: 'espaço-caa-puera',
     title: 'Espaço Caá-Puera',
     icon: capoeira,
     description: {
@@ -113,8 +114,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     images: espacoImages['Espaço Caá-Pueira'],
     mapPosition: { posX: '44%', posY: '26%' },
   },
-  'Espaço Ganga Zumba': {
-    path: '/historical-figure/Espaço Ganga Zumba',
+  'espaço-ganga-zumba': {
+    path: '/historical-figure/espaço-ganga-zumba',
     title: 'Espaço Ganga-Zumba',
     icon: zumba,
     description: {
@@ -125,8 +126,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     mapPosition: { posX: '59%', posY: '42%' },
     selfie: espacoSelfie['Espaço Ganga Zumba'],
   },
-  'Espaço Quilombo dos Palmares': {
-    path: '/historical-figure/Espaço Quilombo dos Palmares',
+  'espaço-quilombo-dos-palmares': {
+    path: '/historical-figure/espaço-quilombo-dos-palmares',
     title: 'Quilombo',
     icon: quilombo,
     description: {
@@ -138,8 +139,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '47%', posY: '64%' },
   },
-  'Espaço Zumbi': {
-    path: '/historical-figure/Espaço Zumbi',
+  'espaço-zumbi': {
+    path: '/historical-figure/espaço-zumbi',
     title: 'Espaço Zumbi',
     icon: zumbi,
     description: {
@@ -152,8 +153,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '11%', posY: '63%' },
   },
-  'Espaço Onjó Cruzambe': {
-    path: '/historical-figure/Espaço Onjó Cruzambe',
+  'espaço-onjo-cruzambe': {
+    path: '/historical-figure/espaço-onjo-cruzambe',
     title: 'Onjó Cruzambê',
     subtitle: 'Casa Do Campo Santa',
     icon: onjoCruzambe,
@@ -169,8 +170,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '60.5%', posY: '74%' },
   },
-  'Espaço Oxile das Ervas': {
-    path: '/historical-figure/Espaço Oxile das Ervas',
+  'espaço-oxile-das-ervas': {
+    path: '/historical-figure/espaço-oxile-das-ervas',
     title: 'Oxile das Ervas',
     subtitle: 'TERREIRO DAS ERVAS',
     icon: oxile,
@@ -185,8 +186,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     images: espacoImages['Espaço Oxile das Ervas'],
     mapPosition: { posX: '68%', posY: '72%' },
   },
-  'Espaço Muxima de Palmares': {
-    path: '/historical-figure/Espaço Muxima de Palmares',
+  'espaço-muxima-de-palmares': {
+    path: '/historical-figure/espaço-muxima-de-palmares',
     title: ' Muxima de Palmares',
     subtitle: 'CORAÇÃO DE PALMARES',
     icon: muxima,
@@ -205,8 +206,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '57%', posY: '58%' },
   },
-  'Espaço Atalaia Acaiene': {
-    path: '/historical-figure/Espaço Atalaia Acaiene',
+  'espaço-atalaia-acaiene': {
+    path: '/historical-figure/espaço-atalaia-acaiene',
     title: ' Atalaia Acaiene',
     subtitle: 'MIRANTE DE ACAIENE - FILHO DE GANGA-ZUMBA',
     icon: acaiene,
@@ -234,8 +235,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '67%', posY: '32%' },
   },
-  'Espaço Ocas indígenas': {
-    path: '/historical-figure/Espaço Ocas indígenas',
+  'espaço-ocas-indigenas': {
+    path: '/historical-figure/espaço-ocas-indigenas',
     title: 'Espaço Ocas indígenas',
     subtitle: '',
     icon: ocas,
@@ -264,8 +265,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '49%', posY: '36%' },
   },
-  'Espaço Batucajé': {
-    path: '/historical-figure/Espaço Batucajé',
+  'espaço-batucaje': {
+    path: '/historical-figure/espaço-batucaje',
     title: 'Batucajé',
     subtitle: 'DANÇA AO SOM DE TAMBORES',
     icon: batucaje,
@@ -286,8 +287,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '33%', posY: '26%' },
   },
-  'Espaço Atalaia de Acaiuba': {
-    path: '/historical-figure/Espaço Atalaia de Acaiuba',
+  'espaço-atalaia-de-acaiuba': {
+    path: '/historical-figure/espaço-atalaia-de-acaiuba',
     title: 'Atalaia de Acaiuba',
     subtitle: 'MIRANTE DE ACAIUBA - LÍDER PALMARINO ',
     icon: acaiuba,
@@ -318,8 +319,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '10%', posY: '38%' },
   },
-  'Lagoa Encantada dos Negros': {
-    path: '/historical-figure/Lagoa Encantada dos Negros',
+  'lagoa-encantada-dos-negros': {
+    path: '/historical-figure/lagoa-encantada-dos-negros',
     title: 'Lagoa Encantada dos Negros',
     subtitle: 'GAMELEIRA SAGRADA - IRÔCO',
     icon: lagoa,
@@ -348,8 +349,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '22%', posY: '8%' },
   },
-  'Espaço Onjó de Farinha': {
-    path: '/historical-figure/Espaço Onjó de Farinha',
+  'espaço-onjo-de-farinha': {
+    path: '/historical-figure/espaço-onjo-de-farinha',
     title: 'Onjó de Farinha',
     subtitle: 'CASA DE FARINHA',
     icon: onjoFarinha,
@@ -374,8 +375,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '23%', posY: '45%' },
   },
-  'Espaço Restaurante Kúuku-Waana': {
-    path: '/historical-figure/Espaço Restaurante Kúuku-Waana',
+  'espaço-restaurante-kuuku-waana': {
+    path: '/historical-figure/espaço-restaurante-kuuku-waana',
     title: ' Kúuku-Waana',
     subtitle: 'BANQUETE FAMILIAR',
     icon: restaurante,
@@ -403,8 +404,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '16%', posY: '59%' },
   },
-  'Espaço Atalaia de Toculo': {
-    path: '/historical-figure/Espaço Atalaia de Toculo',
+  'espaço-atalaia-de-toculo': {
+    path: '/historical-figure/espaço-atalaia-de-toculo',
     title: 'Atalaia de Toculo',
     subtitle: 'MIRANTE DE TOCULO, FILHO DE GANGA-ZUMBA ',
     icon: toculo,
@@ -437,6 +438,32 @@ The Memorial of Serra da Barriga has three Atalaias, and all are named after the
     videos: espacoVideos['Espaço Atalaia de Toculo'],
 
     mapPosition: { posX: '11%', posY: '75%' },
+  },
+
+  'espaço-personalidaes': {
+    path: '/takehome/personalities',
+    title: '',
+    subtitle: ' ',
+    icon: personalidades,
+    description: {
+      pt: `
+      
+      
+      
+
+
+
+      `,
+      en: `
+     
+
+
+      
+      
+      
+      `,
+      italic: ``,
+    },
   },
 };
 
