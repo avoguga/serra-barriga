@@ -1,13 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import styled from 'styled-components';
-import mapa from '../../assets/images/Mapa Memorial Serra da Barriga - novo-03 (1).webp';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
-import LocIcon from '../../assets/icons/localização mapa.svg';
 import BtnDownArrow from '../../components/ScrollButton';
 import logo from '../../assets/logo.png';
 import { TransformWrapper, TransformComponent, ReactZoomPanPinchRef } from 'react-zoom-pan-pinch';
+import LocIcon from '../../assets/icons/localização mapa.svg';
 
 import zoomIn from '../../assets/icons/botao +.svg';
 import zoomOut from '../../assets/icons/botao -.svg';
@@ -101,7 +100,6 @@ const MapaContainer = styled.div`
 
   img {
     color: #ffbf00;
-    
   }
 `;
 
@@ -109,7 +107,7 @@ const items = [
   'ENTRADA', 'espaco-oxile-das-ervas', 'espaco-onjo-cruzambe', 'espaco-acotirene', 'espaco-muxima-de-palmares',
   'espaco-quilombo-dos-palmares', 'espaco-atalaia-acaiene', 'espaco-ganga-zumba', 'espaco-aqualtune',
   'espaco-ocas-indigenas', 'espaco-caa-puera', 'espaco-batucaje', 'espaco-atalaia-de-acaiuba', 'espaco-onjo-de-farinha',
-  'lagoa-encantada-dos-negros', 'espaco-restaurante-kuuku-waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'espaco-atalaia-de-toculo', 'espaco-zumbi'
+  'lagoa-encantada-dos-negros', 'espaco-kuuku-waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'espaco-atalaia-de-toculo', 'espaco-zumbi'
 ];
 
 interface LocationInfo {
@@ -124,7 +122,7 @@ const locationMappings: { [key: string]: { x: number; y: number } } = {
   'espaco-ganga-zumba': { x: 355, y: 215 }, 'espaco-atalaia-acaiene': { x: 395, y: 175 }, 'espaco-ocas-indigenas': { x: 325, y: 187 },
   'espaco-caa-puera': { x: 280, y: 150 }, 'espaco-batucaje': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
   'BANHEIROS': { x: 175, y: 190 }, 'espaco-atalaia-de-acaiuba': { x: 120, y: 195 }, 'espaco-onjo-de-farinha': { x: 185, y: 225 },
-  'lagoa-encantada-dos-negros': { x: 210, y: 80 }, 'espaco-restaurante-kuuku-waana': { x: 173, y: 280 },
+  'lagoa-encantada-dos-negros': { x: 210, y: 80 }, 'espaco-kuuku-waana': { x: 173, y: 280 },
   'espaco-aqualtune': { x: 245, y: 75 }, 'espaco-atalaia-de-toculo': { x: 125, y: 340 }, 'espaco-zumbi': { x: 125, y: 295 },
 };
 
@@ -139,8 +137,17 @@ const formatTooltipName = (name: string) => {
 
 const Maps: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(null);
+  const [mapaImage, setMapaImage] = useState<string | null>(null);
   const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadImage = async () => {
+      const image = await import('../../assets/images/Mapa Memorial Serra da Barriga - novo-03 (1).webp');
+      setMapaImage(image.default);
+    };
+    loadImage();
+  }, []);
 
   const handleLocationClick = (locationInfo: LocationInfo) => {
     console.log('Location clicked:', locationInfo); // Log para depuração
@@ -221,7 +228,7 @@ const Maps: React.FC = () => {
         >
           <TransformComponent>
             <div style={{ position: 'relative', width: '105vh', height: '135vh', display: 'flex', justifyContent: 'baseline', alignItems: 'center', flexDirection: 'column' }}>
-              <img src={mapa} alt="mapa" loading='lazy' style={{ width: '100%', height: '100vh', marginRight: '35px' }} />
+              {mapaImage && <img src={mapaImage} alt="mapa" loading='lazy' style={{ width: '100%', height: '100vh', marginRight: '35px' }} />}
               {locationInfos.map((location) => (
                 <LocationButton
                   key={location.id}
