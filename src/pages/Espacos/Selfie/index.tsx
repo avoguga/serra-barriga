@@ -1,79 +1,169 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import WatermarkWrapper from '../../../components/WatermarkWrapper/WatermarkWrapper';
 import logo from '../../../assets/logo.png';
+import { Icons } from '../../../helpers/icons';
+import styled from 'styled-components';
+
 import FloatingButtonBar from '../../../components/FloatingContainer';
 import BtnDownArrow from '../../../components/ScrollButton';
-import { EspacoData, getEspacoData } from '../../../helpers/Espacos';
-import * as C from './styles';
-import Sidebar from '../Sidebar';
+import tiktok from '../../../assets/icons/logo-tiktok.svg';
 import SelfieDestiny from '../../../components/SelfieDestiny';
-import selfiee from '../../../assets/icons/i_selfie.png';
+import { espacoSelfie } from '../../../helpers/SelfieHistorica';
+import Sidebar from '../Sidebar';
+
+const Selfiee = Icons['Selfie'];
+
+export const Container = styled.div`
+  background-color: #8AA61E;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-family: 'FuturaPT', sans-serif;
+  }
+`;
+
+export const SelfieContainer = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  background: #586617 0% 0% no-repeat padding-box;
+  width: 235px;
+  height: 60px;
+  border-radius: 35px;
+  gap: 15px;
+
+  svg {
+    width: 55px;
+    height: 55px;
+    fill: #ffffff;
+    margin-left: 10px;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 0.89;
+    font-family: 'FuturaPTDemi', sans-serif;
+  }
+`;
+
+const ImageContainer = styled.div`
+  width: 300px;
+  height: 380px;
+  border: 3px solid #ffffff;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+
+const NavFotter = styled.nav`
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  bottom: 0;
+`;
 
 const SelfieView = () => {
-  const { figureName } = useParams<{ figureName: string }>();
-  const figureData: EspacoData | undefined = getEspacoData(figureName ?? '');
-
-  const [content, setContent] = useState<{ [key: string]: JSX.Element | null }>({});
-
-  useEffect(() => {
-    if (figureData?.selfie) {
-      const initialContent: { [key: string]: JSX.Element } = {};
-      figureData.selfie.forEach((imageUrl, index) => {
-        initialContent[index] = <img src={imageUrl} alt={figureName} width={290} height={370} />;
-      });
-      setContent(initialContent);
+  const initialContent: { [key: string]: JSX.Element } = {};
+  Object.keys(espacoSelfie).forEach((key) => {
+    const imageUrl = espacoSelfie[key]?.[0];
+    if (imageUrl) {
+      initialContent[key] = <img src={imageUrl} alt={key} width={290} height={370} />;
     }
-  }, [figureData, figureName]);
+  });
 
-  const handleClick = (index: string) => {
-    setContent((prevState) => {
-      const isSelfieDestiny = prevState[index]?.type === SelfieDestiny;
-      if (isSelfieDestiny) {
-        const imageUrl = figureData?.selfie?.[parseInt(index)];
-        return {
-          ...prevState,
-          [index]: <img src={imageUrl} alt={figureName} width={290} height={370} />,
-        };
-      } else {
-        return {
-          ...prevState,
-          [index]: <SelfieDestiny style={{ width: '290px', height: '370px' }} />,
-        };
-      }
-    });
-  };
+  const [content, setContent] = useState<{ [key: string]: JSX.Element }>(initialContent);
+  const [isInitial, setIsInitial] = useState(true);
+ 
 
-  if (!figureData) {
-    return <p>Espaço não encontrado.</p>;
-  }
+  const handleClick = (personagem: string) => {
+    setContent({ ...content, [personagem]: <SelfieDestiny  style={{ width: '290px', height: '370px' }}/> });
+    setIsInitial(false);
+    if (!isInitial) {
+      const resetContent: { [key: string]: JSX.Element } = {};
+      Object.keys(espacoSelfie).forEach((key) => {
+        const imageUrl = espacoSelfie[key]?.[0];
+        if (imageUrl) {
+          resetContent[key] = <img src={imageUrl} alt={key} width={290} height={370} />;
+        }
+      });
+      setContent(resetContent);
+      setIsInitial(true);
+    }
+    }
+  
+
+  
 
   return (
     <WatermarkWrapper>
-      <FloatingButtonBar backBgColor="#313A0A" />
+      <FloatingButtonBar backBgColor="#313A0A"  />
       <BtnDownArrow />
-      <C.Container style={{ backgroundColor: '#8AA61E', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'end', height: 'auto' }}>
-        <img src={logo} alt="logo serra da barriga" style={{ width: '200px', height: '70px', marginTop: '100px', marginBottom: '30px' }} />
-        <C.SelfieContainer>
-          <img src={selfiee} alt="" />
-          <h3>SELFIE HISTÓRICA</h3>
-        </C.SelfieContainer>
-        <C.Text style={{ width: '280px', textAlign: 'center', fontSize: '16px', fontWeight: 'normal', letterSpacing: '0.8px', color: 'rgba(255, 255, 255, 0.6)' }}>
-          Escolha um <span style={{ color: '#FFFFFF' }}> personagem da história e tire uma selfie </span> na serra da barriga
-        </C.Text>
-        <C.ImageContainer>
-          {figureData.selfie ? (
-            figureData.selfie.map((imageSrc, index) => (
-              <div key={index} onClick={() => handleClick(index.toString())} style={{ width: '290px', height: '370px' }}>
-                {content[index.toString()] || <img src={imageSrc} alt={`Imagem do espaço ${figureData.title}`} width="290" height="370" />}
-              </div>
-            ))
-          ) : (
-            <p>Nenhuma imagem disponível.</p>
-          )}
-        </C.ImageContainer>
+      <Container>
+        <img
+          src={tiktok}
+          alt=""
+          style={{
+            width: '200px',
+            height: '70px',
+            marginTop: '80px',
+          }}
+        />
+        <img
+          src={logo}
+          alt="logo serra da barriga"
+          style={{
+            width: '200px',
+            height: '70px',
+            marginTop: '20px',
+            marginBottom: '30px',
+          }}
+        />
+        <NavFotter>
         <Sidebar activeSection="SelfieView" />
-      </C.Container>
+      </NavFotter>
+        <SelfieContainer>
+          <Selfiee />
+          <h3>SELFIE HISTÓRICA</h3>
+        </SelfieContainer>
+        <br />
+        <br />
+        <p
+          style={{
+            width: '280px',
+            textAlign: 'center',
+            fontSize: '16px',
+            fontWeight: 'normal',
+            letterSpacing: '0.8px',
+            color: 'rgba(255, 255, 255, 1)',
+            fontFamily: 'FuturaPT',
+          }}
+        >
+          Escolha um{' '}
+          <span style={{ color: '#FFFFFF' }}>personagem da história e tire uma selfie</span> na
+          serra da barriga
+        </p>
+        <br />
+        {Object.keys(espacoSelfie).map((key) => (
+          <div key={key} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#8AA61E', flexDirection: 'column' }}>
+            <ImageContainer onClick={() => handleClick(key)}>{content[key]}  </ImageContainer>
+            <p style={{ color: '#FFF',fontSize:'19px' }}>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
+          </div>
+        ))} <br /><br />
+        
+
+       
+        
+
+      </Container>
     </WatermarkWrapper>
   );
 };
