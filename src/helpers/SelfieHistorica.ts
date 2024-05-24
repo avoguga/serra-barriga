@@ -5,13 +5,13 @@ import gangaZumba1 from '../assets/Personagens Selfie Histórica webp/ganga zumb
 import zumbi1 from '../assets/Personagens Selfie Histórica webp/zumbi final cortado - cintura pra cima.webp';
 
 interface EspacoSelfieMap {
-  [key: string]: string[];
+  [key: string]: string[] | undefined;
 }
 
 export const espacoSelfie: EspacoSelfieMap = {
   acotirene: [acotirene1],
   aqualtune: [aqualtune1],
   dandara: [dandara1],
-  gangaZumba: [gangaZumba1],
+  'ganga zumba': [gangaZumba1],
   zumbi: [zumbi1],
 };
