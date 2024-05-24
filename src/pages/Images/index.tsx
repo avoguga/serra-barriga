@@ -41,20 +41,35 @@ export const BackButton = styled.button`
 `;
 
 const Images = () => {
-  const [selectedImage, setSelectedImage] = useState<{ src: string; description: string }[]>([]);
+  const [selectedImage, setSelectedImage] = useState<
+    { src: string; description: string }[]
+  >([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    { src: oxiras1, description:`Apresentações artísticas em evento do VSS. 
-    Foto de Aprigio Vilanova.`  },
-    { src: oxiras2, description: 'Apresentações artísticas de orixás em evento do VSS. Foto de Aprigio Vilanova ' },
+    {
+      src: oxiras1,
+      description: `Apresentações artísticas em evento do VSS. 
+    Foto de Aprigio Vilanova.`,
+    },
+    {
+      src: oxiras2,
+      description:
+        'Apresentações artísticas de orixás em evento do VSS. Foto de Aprigio Vilanova ',
+    },
     { src: acaiene, description: 'ATALAIA DO ACAIENE' },
     { src: acotirene, description: 'ESPAÇO ACOTIRENE' },
-    { src: apresentacao, description: `Apresentações artísticas em evento do VSS. 
-     Foto de Aprigio Vilanova.` },
+    {
+      src: apresentacao,
+      description: `Apresentações artísticas em evento do VSS. 
+     Foto de Aprigio Vilanova.`,
+    },
     { src: foto01, description: ' ' },
     { src: foto02, description: 'Foto de Aprigio Vilanova  ' },
-    { src: lagoa, description: 'LAGOA ENCANTADA DOS NEGROS. Foto de Aprigio Vilanova ' },
+    {
+      src: lagoa,
+      description: 'LAGOA ENCANTADA DOS NEGROS. Foto de Aprigio Vilanova ',
+    },
     { src: muxima, description: 'MUXIMA DE PALMARES' },
     { src: serra1, description: 'Serra da Barriga ' },
     { src: serra2, description: 'Serra da Barriga ' },
@@ -66,7 +81,7 @@ const Images = () => {
     { src: onjo1, description: 'ONJÓ CRUZAMBÊ' },
     { src: onjo2, description: 'ONJÓ DE FARINHA' },
     { src: oxile, description: 'OXILE DAS ERVAS' },
-    { src: restaurante, description: 'RESTAURANTE KÚUKU-WAANA' },
+    { src: restaurante, description: 'KÚUKU-WAANA' },
   ];
 
   const openFullScreenImage = (index: number) => {
@@ -92,12 +107,21 @@ const Images = () => {
       >
         <div className="fotos">
           {images.map((image, index) => (
-            <div key={index} className="foto" onClick={() => openFullScreenImage(index)}>
+            <div
+              key={index}
+              className="foto"
+              onClick={() => openFullScreenImage(index)}
+            >
               <img
                 src={image.src}
                 alt={`Foto ${index + 1}`}
                 loading="lazy"
-                style={{ margin: '0px', width: '140px', height: '140px', objectFit: 'cover' }}
+                style={{
+                  margin: '0px',
+                  width: '140px',
+                  height: '140px',
+                  objectFit: 'cover',
+                }}
               />
             </div>
           ))}
@@ -109,7 +133,7 @@ const Images = () => {
             background="#D66B00"
             onClose={handleClose}
             initialIndex={currentIndex}
-          /> 
+          />
         )}
       </div>
     </WatermarkWrapper>
