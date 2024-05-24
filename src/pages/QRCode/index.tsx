@@ -42,8 +42,8 @@ const QRCode: React.FC = () => {
   const [model, setModel] = useState<TeachableMachineModel | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isScanning, setIsScanning] = useState(false);
-  const [scanningMessage, setScanningMessage] = useState('');
   const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
+  const [alertShown, setAlertShown] = useState(false);
 
   useEffect(() => {
     const loadModelAndCamera = async () => {
@@ -112,15 +112,21 @@ const QRCode: React.FC = () => {
 
           console.log('Predição:', highProbPrediction);
 
-          if (highProbPrediction.probability > 0.9) {
+          if (
+            highProbPrediction.probability > 0.9 ||
+            highProbPrediction.className === 'nada'
+          ) {
             const espacoData = getEspacoData(highProbPrediction.className);
             if (espacoData) {
               console.log('Navegando para:', espacoData.path);
               cancelAnimationFrame(animationFrameId); // Interrompe a predição
               navigate(espacoData.path);
               return;
-            } else {
+            } else if (!alertShown) {
               alert('Imagem não reconhecida, por favor, tente novamente.');
+              setIsScanning(false);
+              setAlertShown(true);
+              return;
             }
           }
 
@@ -128,6 +134,7 @@ const QRCode: React.FC = () => {
           animationFrameId = requestAnimationFrame(performPrediction);
         } catch (error) {
           console.error('Erro durante a predição:', error);
+          setIsScanning(false);
         }
       };
 
@@ -135,15 +142,13 @@ const QRCode: React.FC = () => {
     };
 
     if (isScanning) {
-      setScanningMessage('Escaneando, por favor, aguarde...');
       predict();
     }
 
     return () => {
       cancelAnimationFrame(animationFrameId); // Garante que a animação seja limpa se o componente for desmontado
-      setScanningMessage(''); // Limpa a mensagem de escaneamento ao parar
     };
-  }, [model, isLoading, isScanning, navigate]);
+  }, [model, isLoading, isScanning, navigate, alertShown]);
 
   const captureImage = async (
     videoElement: HTMLVideoElement
@@ -162,11 +167,7 @@ const QRCode: React.FC = () => {
 
   const handleScanClick = () => {
     setIsScanning(!isScanning);
-    if (!isScanning) {
-      setScanningMessage('Escaneando, por favor, aguarde...');
-    } else {
-      setScanningMessage('');
-    }
+    setAlertShown(false);
   };
 
   return (
@@ -191,8 +192,7 @@ const QRCode: React.FC = () => {
           <InfoImage src={aaa} alt="informação de como ler imagem" />
           <C.TextContainer>
             <p>
-              Aponte a câmera do celular para o símbolo da placa e tenha uma
-              experiência ampliada.
+              Aponte para o símbolo da placa e aperte o botão para escanear.
             </p>
           </C.TextContainer>
         </C.BottomContainer>
@@ -206,24 +206,33 @@ const QRCode: React.FC = () => {
             fontSize: '18px',
             color: '#FFFF',
             marginTop: '50px',
+          }}
+        >
+          <p
+            style={{
+              visibility: isLoading ? 'visible' : 'hidden',
+            }}
+          >
+            Carregando a câmera, aguarde um momento...
+          </p>
+        </div>
+
+        <div
+          style={{
+            textAlign: 'center',
+            fontSize: '18px',
+            color: '#FFFF',
             marginBottom: '50px',
           }}
         >
-          {isLoading && <> Carregando a câmera, aguarde um momento...</>}
-        </div>
-
-        {scanningMessage && (
-          <div
+          <p
             style={{
-              textAlign: 'center',
-              fontSize: '18px',
-              color: '#FFFF',
-              marginTop: '50px',
+              visibility: isScanning ? 'visible' : 'hidden',
             }}
           >
-            {scanningMessage}
-          </div>
-        )}
+            Escaneando, por favor, aguarde...
+          </p>
+        </div>
       </C.Container>
     </WatermarkWrapper>
   );
