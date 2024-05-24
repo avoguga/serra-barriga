@@ -22,7 +22,7 @@ const HistoricalFigurePage: React.FC = () => {
 
       try {
         setLoading(true);
-        const data = await getEspacoData(figureName);
+        const data = getEspacoData(figureName); // Note: getEspacoData is synchronous, no need for await
         if (!data) {
           setError('Dados não encontrados.');
           setLoading(false);
@@ -31,6 +31,7 @@ const HistoricalFigurePage: React.FC = () => {
         setFigureData(data);
         setError(null);
       } catch (e) {
+        console.error('Erro ao carregar dados:', e); // Log para depuração
         setError('Erro ao carregar dados.');
       } finally {
         setLoading(false);
