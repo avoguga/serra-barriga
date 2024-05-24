@@ -12,7 +12,6 @@ import aaa from '../../assets/icons/mão com celular.png';
 import scannerButton from '../../assets/icons/i_botao escanear.png';
 import styled from 'styled-components';
 
-
 const InfoImage = styled.img`
   width: 90px;
   height: 120px;
@@ -49,9 +48,9 @@ const QRCode: React.FC = () => {
   useEffect(() => {
     const loadModelAndCamera = async () => {
       const modelURL =
-        'https://teachablemachine.withgoogle.com/models/-srIggdvm/model.json';
+        'https://teachablemachine.withgoogle.com/models/Ks1T5_dnK/model.json';
       const metadataURL =
-        'https://teachablemachine.withgoogle.com/models/-srIggdvm/metadata.json';
+        'https://teachablemachine.withgoogle.com/models/Ks1T5_dnK/metadata.json';
       try {
         const loadedModel = (await tmImage.load(
           modelURL,
@@ -222,10 +221,7 @@ const QRCode: React.FC = () => {
               marginTop: '50px',
             }}
           >
-           
-
             {scanningMessage}
-           
           </div>
         )}
       </C.Container>
