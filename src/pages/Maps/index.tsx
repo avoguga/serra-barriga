@@ -5,7 +5,11 @@ import styled from 'styled-components';
 import WatermarkImage from '../../assets/marcadaguaverdeescuro.png';
 import BtnDownArrow from '../../components/ScrollButton';
 import logo from '../../assets/logo.png';
-import { TransformWrapper, TransformComponent, ReactZoomPanPinchRef } from 'react-zoom-pan-pinch';
+import {
+  TransformWrapper,
+  TransformComponent,
+  ReactZoomPanPinchRef,
+} from 'react-zoom-pan-pinch';
 import LocIcon from '../../assets/icons/localização mapa.svg';
 
 import zoomIn from '../../assets/icons/botao +.svg';
@@ -76,7 +80,7 @@ const Tooltip = styled.div<TooltipProps>`
   white-space: nowrap;
   z-index: 20;
   cursor: pointer; /* Adiciona o cursor pointer para indicar que é clicável */
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -86,7 +90,7 @@ const Tooltip = styled.div<TooltipProps>`
     border-width: 5px;
     border-style: solid;
     border-color: #ffffff;
-    z-index: -1; 
+    z-index: -1;
   }
 `;
 
@@ -104,10 +108,26 @@ const MapaContainer = styled.div`
 `;
 
 const items = [
-  'ENTRADA', 'espaco-oxile-das-ervas', 'espaco-onjo-cruzambe', 'espaco-acotirene', 'espaco-muxima-de-palmares',
-  'espaco-quilombo-dos-palmares', 'espaco-atalaia-acaiene', 'espaco-ganga-zumba', 'espaco-aqualtune',
-  'espaco-ocas-indigenas', 'espaco-caa-puera', 'espaco-batucaje', 'espaco-atalaia-de-acaiuba', 'espaco-onjo-de-farinha',
-  'lagoa-encantada-dos-negros', 'espaco-kuuku-waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'espaco-atalaia-de-toculo', 'espaco-zumbi'
+  'ENTRADA',
+  'espaco-oxile-das-ervas',
+  'espaco-onjo-cruzambe',
+  'espaco-acotirene',
+  'espaco-muxima-de-palmares',
+  'espaco-quilombo-dos-palmares',
+  'espaco-atalaia-acaiene',
+  'espaco-ganga-zumba',
+  'espaco-aqualtune',
+  'espaco-ocas-indigenas',
+  'espaco-caa-puera',
+  'espaco-batucaje',
+  'espaco-atalaia-de-acaiuba',
+  'espaco-onjo-de-farinha',
+  'lagoa-encantada-dos-negros',
+  'espaco-kuuku-waana',
+  'ESTÁTUA GANGA-ZUMBA E ZUMBI',
+  'BANHEIROS',
+  'espaco-atalaia-de-toculo',
+  'espaco-zumbi',
 ];
 
 interface LocationInfo {
@@ -117,13 +137,26 @@ interface LocationInfo {
 }
 
 const locationMappings: { [key: string]: { x: number; y: number } } = {
-  'ENTRADA': { x: 185, y: 342 }, 'espaco-onjo-cruzambe': { x: 360, y: 340 }, 'espaco-oxile-das-ervas': { x: 395, y: 330 },
-  'espaco-acotirene': { x: 415, y: 300 }, 'espaco-muxima-de-palmares': { x: 355, y: 275 }, 'espaco-quilombo-dos-palmares': { x: 295, y: 300 },
-  'espaco-ganga-zumba': { x: 355, y: 215 }, 'espaco-atalaia-acaiene': { x: 395, y: 175 }, 'espaco-ocas-indigenas': { x: 325, y: 187 },
-  'espaco-caa-puera': { x: 280, y: 150 }, 'espaco-batucaje': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
-  'BANHEIROS': { x: 175, y: 190 }, 'espaco-atalaia-de-acaiuba': { x: 120, y: 195 }, 'espaco-onjo-de-farinha': { x: 185, y: 225 },
-  'lagoa-encantada-dos-negros': { x: 210, y: 80 }, 'espaco-kuuku-waana': { x: 173, y: 280 },
-  'espaco-aqualtune': { x: 245, y: 75 }, 'espaco-atalaia-de-toculo': { x: 125, y: 340 }, 'espaco-zumbi': { x: 125, y: 295 },
+  ENTRADA: { x: 185, y: 342 },
+  'espaco-onjo-cruzambe': { x: 360, y: 340 },
+  'espaco-oxile-das-ervas': { x: 395, y: 330 },
+  'espaco-acotirene': { x: 415, y: 300 },
+  'espaco-muxima-de-palmares': { x: 355, y: 275 },
+  'espaco-quilombo-dos-palmares': { x: 295, y: 300 },
+  'espaco-ganga-zumba': { x: 355, y: 215 },
+  'espaco-atalaia-acaiene': { x: 395, y: 175 },
+  'espaco-ocas-indigenas': { x: 325, y: 187 },
+  'espaco-caa-puera': { x: 280, y: 150 },
+  'espaco-batucaje': { x: 230, y: 150 },
+  'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
+  BANHEIROS: { x: 175, y: 190 },
+  'espaco-atalaia-de-acaiuba': { x: 120, y: 195 },
+  'espaco-onjo-de-farinha': { x: 185, y: 225 },
+  'lagoa-encantada-dos-negros': { x: 210, y: 80 },
+  'espaco-kuuku-waana': { x: 173, y: 280 },
+  'espaco-aqualtune': { x: 245, y: 75 },
+  'espaco-atalaia-de-toculo': { x: 125, y: 340 },
+  'espaco-zumbi': { x: 125, y: 295 },
 };
 
 const locationInfos: LocationInfo[] = items.map((name, index) => {
@@ -136,14 +169,18 @@ const formatTooltipName = (name: string) => {
 };
 
 const Maps: React.FC = () => {
-  const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(
+    null
+  );
   const [mapaImage, setMapaImage] = useState<string | null>(null);
   const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const loadImage = async () => {
-      const image = await import('../../assets/images/Mapa Memorial Serra da Barriga - novo-03 (1).webp');
+      const image = await import(
+        '../../assets/images/Mapa Memorial Serra da Barriga - novo-03 (1).webp'
+      );
       setMapaImage(image.default);
     };
     loadImage();
@@ -152,11 +189,15 @@ const Maps: React.FC = () => {
   const handleLocationClick = (locationInfo: LocationInfo) => {
     console.log('Location clicked:', locationInfo); // Log para depuração
     if (selectedLocation?.id === locationInfo.id) {
-      setSelectedLocation(null); 
+      setSelectedLocation(null);
     } else {
       setSelectedLocation(locationInfo);
       if (transformComponentRef.current) {
-        transformComponentRef.current.zoomToElement(`#location-${locationInfo.id}`, 1.5, 2000);
+        transformComponentRef.current.zoomToElement(
+          `#location-${locationInfo.id}`,
+          1.5,
+          2000
+        );
       }
     }
   };
@@ -187,9 +228,9 @@ const Maps: React.FC = () => {
     }
   };
 
-  return ( 
+  return (
     <WatermarkWrapper watermarkImage={WatermarkImage}>
-      <FloatingButtonBar backBgColor='#313A0A'/>
+      <FloatingButtonBar backBgColor="#313A0A" />
       <div
         style={{
           backgroundColor: '#67781B',
@@ -197,20 +238,53 @@ const Maps: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          paddingTop: '80px', /* Ajuste o espaço superior */
+          paddingTop: '80px' /* Ajuste o espaço superior */,
         }}
       >
-        <img src={logo} alt="serra da barriga" loading='lazy' style={{ width: '180px', height: '66px', marginBottom: '25px' }} />
-      
+        <img
+          src={logo}
+          alt="serra da barriga"
+          loading="lazy"
+          style={{ width: '180px', height: '66px', marginBottom: '25px' }}
+        />
         <ButtonContainer>
           <MapaContainer>
-            <img src={LocIcon} alt="Localização" loading='lazy' style={{ width: '30px', height: '30px', marginRight: '-10px', marginTop: '2px' }} />
-            <h2 style={{ fontFamily: 'FuturaPTDemi', letterSpacing: '0px', color: '#FFFFFF', fontSize: '30px', margin: '0' }}>Mapa</h2>
+            <img
+              src={LocIcon}
+              alt="Localização"
+              loading="lazy"
+              style={{
+                width: '30px',
+                height: '30px',
+                marginRight: '-10px',
+                marginTop: '2px',
+              }}
+            />
+            <h2
+              style={{
+                fontFamily: 'FuturaPTDemi',
+                letterSpacing: '0px',
+                color: '#FFFFFF',
+                fontSize: '30px',
+                margin: '0',
+              }}
+            >
+              Mapa
+            </h2>
             <C.ZoomButton onClick={handleZoomIn}>
-              <img src={zoomIn} alt="Zoom In" style={{ width: '20px', height: '20px' }} />
+              <img
+                src={zoomIn}
+                alt="Zoom In"
+                style={{ width: '1.5rem', height: '1.5rem' }}
+              />
             </C.ZoomButton>
             <C.ZoomButton onClick={handleZoomOut}>
-              <img src={zoomOut} alt="Zoom Out"  loading='lazy' style={{ width: '20px', height: '20px' }} />
+              <img
+                src={zoomOut}
+                alt="Zoom Out"
+                loading="lazy"
+                style={{ width: '1.5rem', height: '1.5rem' }}
+              />
             </C.ZoomButton>
           </MapaContainer>
         </ButtonContainer>
@@ -227,8 +301,29 @@ const Maps: React.FC = () => {
           }}
         >
           <TransformComponent>
-            <div style={{ position: 'relative', width: '105vh', height: '135vh', display: 'flex', justifyContent: 'baseline', alignItems: 'center', flexDirection: 'column' }}>
-              {mapaImage && <img src={mapaImage} alt="mapa" loading='lazy' style={{ width: '100%', height: '100vh', marginRight: '35px' }} />}
+            <div
+              style={{
+                position: 'relative',
+                width: '105vh',
+                height: '135vh',
+                display: 'flex',
+                justifyContent: 'baseline',
+                alignItems: 'center',
+                flexDirection: 'column',
+              }}
+            >
+              {mapaImage && (
+                <img
+                  src={mapaImage}
+                  alt="mapa"
+                  loading="lazy"
+                  style={{
+                    width: '100%',
+                    height: '100vh',
+                    marginRight: '35px',
+                  }}
+                />
+              )}
               {locationInfos.map((location) => (
                 <LocationButton
                   key={location.id}
@@ -250,9 +345,22 @@ const Maps: React.FC = () => {
               )}
             </div>
           </TransformComponent>
-        </TransformWrapper> <br />
-        <div style={{ width: '50px', height: '150px', position: 'absolute', top: '92%' }}>
-          <img src={pinca} alt="Pinça" loading='lazy' style={{ width: '50px', height: '50px' }} />
+        </TransformWrapper>{' '}
+        <br />
+        <div
+          style={{
+            width: '50px',
+            height: '150px',
+            position: 'absolute',
+            top: '92%',
+          }}
+        >
+          <img
+            src={pinca}
+            alt="Pinça"
+            loading="lazy"
+            style={{ width: '50px', height: '50px' }}
+          />
         </div>
         <BtnDownArrow />
       </div>

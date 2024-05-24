@@ -93,6 +93,8 @@ export const MapaWrapper = styled.div`
 `;
 
 export const ZoomButton = styled.button`
+  width: 2rem;
+  height: 2rem;
   border: none;
   border-radius: 50%;
 
