@@ -108,7 +108,7 @@ const items = [
   'ENTRADA', 'Espaço Oxile das Ervas', 'Espaço Onjó Cruzambe', 'Espaço Acotirene', 'Espaço Muxima de Palmares',
   'Espaço Quilombo dos Palmares', 'Espaço Atalaia Acaiene', 'Espaço Ganga Zumba', 'Espaço Aqualtune',
   'Espaço Ocas indígenas', 'Espaço Caá-Puera', 'Espaço Batucajé', 'Espaço Atalaia de Acaiuba', 'Espaço Onjó de Farinha',
-  'Espaço Lagoa Encantada dos Negros', 'Espaço Restaurante Kúuku-Waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'Espaço Atalaia de Toculo', 'Espaço Zumbi'
+  'Lagoa Encantada dos Negros', 'Espaço Restaurante Kúuku-Waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'Espaço Atalaia de Toculo', 'Espaço Zumbi'
 ];
 
 interface LocationInfo {
@@ -123,7 +123,7 @@ const locationMappings: { [key: string]: { x: number; y: number } } = {
   'Espaço Ganga Zumba': { x: 355, y: 215 }, 'Espaço Atalaia Acaiene': { x: 395, y: 175 }, 'Espaço Ocas indígenas': { x: 325, y: 187 },
   'Espaço Caá-Puera': { x: 280, y: 150 }, 'Espaço Batucajé': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
   'BANHEIROS': { x: 175, y: 190 }, 'Espaço Atalaia de Acaiuba': { x: 120, y: 195 }, 'Espaço Onjó de Farinha': { x: 185, y: 225 },
-  'Espaço Lagoa Encantada dos Negros': { x: 210, y: 80 }, 'Espaço Restaurante Kúuku-Waana': { x: 173, y: 280 },
+  'Lagoa Encantada dos Negros': { x: 210, y: 80 }, 'Espaço Restaurante Kúuku-Waana': { x: 173, y: 280 },
   'Espaço Aqualtune': { x: 245, y: 75 },'Espaço Atalaia de Toculo': { x: 125, y: 340 },'Espaço Zumbi': { x: 125, y: 295 },
 };
 
