@@ -199,7 +199,7 @@ export const espacoAudios: EspacoAudiosMap = {
   'Espaço Restaurante Kúuku-Waana': [
     {
       audio: [],
-      title: 'Espaço Comtemplativo  Restaurante Kúuku-Waana',
+      title: 'Espaço Comtemplativo Kúuku-Waana',
       indisponivel: 'Sem audios disponíveis no momento.',
       interpretacao: 'Sem audios disponíveis no momento.',
       texto: 'Sem audios disponíveis no momento.',
