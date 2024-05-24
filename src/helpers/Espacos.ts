@@ -56,8 +56,8 @@ export interface EspacoData {
 
 // Mapeie as classes previstas para os dados de rota correspondentes
 export const espacos: Record<string, EspacoData> = {
-  'espaço-acotirene': {
-    path: '/historical-figure/espaço-acotirene',
+  'espaco-acotirene': {
+    path: '/historical-figure/espaco-acotirene',
     title: 'Espaço Acotirene',
     icon: acotierne,
     description: {
@@ -77,8 +77,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     selfie: espacoSelfie['Espaço Acotirene'],
     mapPosition: { posX: '72%', posY: '64%' },
   },
-  'espaço-aqualtune': {
-    path: '/historical-figure/espaço-aqualtune',
+  'espaco-aqualtune': {
+    path: '/historical-figure/espaco-aqualtune',
     title: 'Espaço Aqualtune',
     icon: aqualtune,
     description: {
@@ -98,8 +98,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '36%', posY: '6%' },
   },
-  'espaço-caa-puera': {
-    path: 'espaço-caa-puera',
+  'espaco-caa-puera': {
+    path: '/historical-figure/espaco-caa-puera',
     title: 'Espaço Caá-Puera',
     icon: capoeira,
     description: {
@@ -114,8 +114,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     images: espacoImages['Espaço Caá-Pueira'],
     mapPosition: { posX: '44%', posY: '26%' },
   },
-  'espaço-ganga-zumba': {
-    path: '/historical-figure/espaço-ganga-zumba',
+  'espaco-ganga-zumba': {
+    path: '/historical-figure/espaco-ganga-zumba',
     title: 'Espaço Ganga-Zumba',
     icon: zumba,
     description: {
@@ -126,8 +126,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     mapPosition: { posX: '59%', posY: '42%' },
     selfie: espacoSelfie['Espaço Ganga Zumba'],
   },
-  'espaço-quilombo-dos-palmares': {
-    path: '/historical-figure/espaço-quilombo-dos-palmares',
+  'espaco-quilombo-dos-palmares': {
+    path: '/historical-figure/espaco-quilombo-dos-palmares',
     title: 'Quilombo',
     icon: quilombo,
     description: {
@@ -139,8 +139,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '47%', posY: '64%' },
   },
-  'espaço-zumbi': {
-    path: '/historical-figure/espaço-zumbi',
+  'espaco-zumbi': {
+    path: '/historical-figure/espaco-zumbi',
     title: 'Espaço Zumbi',
     icon: zumbi,
     description: {
@@ -153,8 +153,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '11%', posY: '63%' },
   },
-  'espaço-onjo-cruzambe': {
-    path: '/historical-figure/espaço-onjo-cruzambe',
+  'espaco-onjo-cruzambe': {
+    path: '/historical-figure/espaco-onjo-cruzambe',
     title: 'Onjó Cruzambê',
     subtitle: 'Casa Do Campo Santa',
     icon: onjoCruzambe,
@@ -170,8 +170,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '60.5%', posY: '74%' },
   },
-  'espaço-oxile-das-ervas': {
-    path: '/historical-figure/espaço-oxile-das-ervas',
+  'espaco-oxile-das-ervas': {
+    path: '/historical-figure/espaco-oxile-das-ervas',
     title: 'Oxile das Ervas',
     subtitle: 'TERREIRO DAS ERVAS',
     icon: oxile,
@@ -186,8 +186,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     images: espacoImages['Espaço Oxile das Ervas'],
     mapPosition: { posX: '68%', posY: '72%' },
   },
-  'espaço-muxima-de-palmares': {
-    path: '/historical-figure/espaço-muxima-de-palmares',
+  'espaco-muxima-de-palmares': {
+    path: '/historical-figure/espaco-muxima-de-palmares',
     title: ' Muxima de Palmares',
     subtitle: 'CORAÇÃO DE PALMARES',
     icon: muxima,
@@ -206,8 +206,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '57%', posY: '58%' },
   },
-  'espaço-atalaia-acaiene': {
-    path: '/historical-figure/espaço-atalaia-acaiene',
+  'espaco-atalaia-acaiene': {
+    path: '/historical-figure/espaco-atalaia-acaiene',
     title: ' Atalaia Acaiene',
     subtitle: 'MIRANTE DE ACAIENE - FILHO DE GANGA-ZUMBA',
     icon: acaiene,
@@ -235,8 +235,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '67%', posY: '32%' },
   },
-  'espaço-ocas-indigenas': {
-    path: '/historical-figure/espaço-ocas-indigenas',
+  'espaco-ocas-indigenas': {
+    path: '/historical-figure/espaco-ocas-indigenas',
     title: 'Espaço Ocas indígenas',
     subtitle: '',
     icon: ocas,
@@ -265,8 +265,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '49%', posY: '36%' },
   },
-  'espaço-batucaje': {
-    path: '/historical-figure/espaço-batucaje',
+  'espaco-batucaje': {
+    path: '/historical-figure/espaco-batucaje',
     title: 'Batucajé',
     subtitle: 'DANÇA AO SOM DE TAMBORES',
     icon: batucaje,
@@ -287,8 +287,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
 
     mapPosition: { posX: '33%', posY: '26%' },
   },
-  'espaço-atalaia-de-acaiuba': {
-    path: '/historical-figure/espaço-atalaia-de-acaiuba',
+  'espaco-atalaia-de-acaiuba': {
+    path: '/historical-figure/espaco-atalaia-de-acaiuba',
     title: 'Atalaia de Acaiuba',
     subtitle: 'MIRANTE DE ACAIUBA - LÍDER PALMARINO ',
     icon: acaiuba,
@@ -349,8 +349,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '22%', posY: '8%' },
   },
-  'espaço-onjo-de-farinha': {
-    path: '/historical-figure/espaço-onjo-de-farinha',
+  'espaco-onjo-de-farinha': {
+    path: '/historical-figure/espaco-onjo-de-farinha',
     title: 'Onjó de Farinha',
     subtitle: 'CASA DE FARINHA',
     icon: onjoFarinha,
@@ -375,8 +375,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '23%', posY: '45%' },
   },
-  'espaço-restaurante-kuuku-waana': {
-    path: '/historical-figure/espaço-restaurante-kuuku-waana',
+  'espaco-restaurante-kuuku-waana': {
+    path: '/historical-figure/espaco-restaurante-kuuku-waana',
     title: ' Kúuku-Waana',
     subtitle: 'BANQUETE FAMILIAR',
     icon: restaurante,
@@ -404,8 +404,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '16%', posY: '59%' },
   },
-  'espaço-atalaia-de-toculo': {
-    path: '/historical-figure/espaço-atalaia-de-toculo',
+  'espaco-atalaia-de-toculo': {
+    path: '/historical-figure/espaco-atalaia-de-toculo',
     title: 'Atalaia de Toculo',
     subtitle: 'MIRANTE DE TOCULO, FILHO DE GANGA-ZUMBA ',
     icon: toculo,
@@ -440,7 +440,7 @@ The Memorial of Serra da Barriga has three Atalaias, and all are named after the
     mapPosition: { posX: '11%', posY: '75%' },
   },
 
-  'espaço-personalidaes': {
+  'espaco-personalidaes': {
     path: '/takehome/personalities',
     title: '',
     subtitle: ' ',
