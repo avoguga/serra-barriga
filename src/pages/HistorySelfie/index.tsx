@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import logo from '../../assets/logo.png';
 import { Icons } from '../../helpers/icons';
 import styled from 'styled-components';
-
 import FloatingButtonBar from '../../components/FloatingContainer';
 import BtnDownArrow from '../../components/ScrollButton';
 import tiktok from '../../assets/icons/logo-tiktok.svg';
-import SelfieDestiny from '../../components/SelfieDestiny';
 import { espacoSelfie } from '../../helpers/SelfieHistorica';
 
 const Selfiee = Icons['Selfie'];
@@ -52,7 +50,7 @@ export const SelfieContainer = styled.button`
   }
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.button`
   width: 300px;
   height: 380px;
   border: 3px solid #ffffff;
@@ -60,6 +58,12 @@ const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  img {
+    width: 290px;
+    height: 370px;
+  }
 `;
 
 const Footer = styled.div`
@@ -83,36 +87,31 @@ const HistorySelfie = () => {
   Object.keys(espacoSelfie).forEach((key) => {
     const imageUrl = espacoSelfie[key]?.[0];
     if (imageUrl) {
-      initialContent[key] = <img src={imageUrl} alt={key} width={290} height={370} />;
+      initialContent[key] = <img  src={imageUrl} alt={key} width={290} height={370} />;
     }
   });
 
-  const [content, setContent] = useState<{ [key: string]: JSX.Element }>(initialContent);
-  const [isInitial, setIsInitial] = useState(true);
- 
+  const tikTokLinks: { [key: string]: string } = {
+    acotirene: 'https://vm.tiktok.com/ZMMKKUEpv/',
+    aqualtune: 'https://vm.tiktok.com/ZMMKKf15q/',
+    dandara: 'https://vm.tiktok.com/ZMMKKCWg1/',
+    'Ganga Zumba': 'https://vm.tiktok.com/ZMMKK5A3u/',
+    zumbi: 'https://vm.tiktok.com/ZMMKK9wY3/',
+  };
 
   const handleClick = (personagem: string) => {
-    setContent({ ...content, [personagem]: <SelfieDestiny  style={{ width: '290px', height: '370px' }}/> });
-    setIsInitial(false);
-    if (!isInitial) {
-      const resetContent: { [key: string]: JSX.Element } = {};
-      Object.keys(espacoSelfie).forEach((key) => {
-        const imageUrl = espacoSelfie[key]?.[0];
-        if (imageUrl) {
-          resetContent[key] = <img src={imageUrl} alt={key} width={290} height={370} />;
-        }
-      });
-      setContent(resetContent);
-      setIsInitial(true);
+    const link = tikTokLinks[personagem];
+    console.log(`Clicked on ${personagem}, navigating to ${link}`); // Log para depuração
+    if (link) {
+      window.open(link, '_blank');
+    } else {
+      console.error(`No TikTok link found for ${personagem}`);
     }
-    }
-  
-
-  
+  };
 
   return (
     <WatermarkWrapper>
-      <FloatingButtonBar backBgColor="#313A0A"  />
+      <FloatingButtonBar backBgColor="#313A0A" />
       <BtnDownArrow />
       <Container>
         <img
@@ -158,12 +157,14 @@ const HistorySelfie = () => {
         <br />
         {Object.keys(espacoSelfie).map((key) => (
           <div key={key} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#8AA61E', flexDirection: 'column' }}>
-            <ImageContainer onClick={() => handleClick(key)}>{content[key]}  </ImageContainer>
-            <p style={{ color: '#FFF',fontSize:'19px' }}>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
+            <ImageContainer onClick={() => handleClick(key)}>{initialContent[key]}</ImageContainer>
+            <p style={{ color: '#FFF', fontSize: '19px' }}>{key}</p>
           </div>
-        ))} <br /><br />
+        ))}
+        <br />
+        <br />
         <Footer>
-          <h4 >Imagens meramente ilustrativas</h4>
+          <h4>Imagens meramente ilustrativas</h4>
         </Footer>
       </Container>
     </WatermarkWrapper>
