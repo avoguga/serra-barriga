@@ -18,6 +18,7 @@ import pinca from '../../assets/icons/pinça.svg';
 import * as C from './styles';
 import FloatingButtonBar from '../../components/FloatingContainer';
 import { getEspacoData } from '../../helpers/Espacos';
+import mapa from '../../assets/images/mapaserra.webp';
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -172,19 +173,8 @@ const Maps: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(
     null
   );
-  const [mapaImage, setMapaImage] = useState<string | null>(null);
   const transformComponentRef = useRef<ReactZoomPanPinchRef | null>(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const loadImage = async () => {
-      const image = await import(
-        '../../assets/images/Mapa Memorial Serra da Barriga - novo-03 (1).webp'
-      );
-      setMapaImage(image.default);
-    };
-    loadImage();
-  }, []);
 
   const handleLocationClick = (locationInfo: LocationInfo) => {
     console.log('Location clicked:', locationInfo); // Log para depuração
@@ -312,18 +302,12 @@ const Maps: React.FC = () => {
                 flexDirection: 'column',
               }}
             >
-              {mapaImage && (
-                <img
-                  src={mapaImage}
-                  alt="mapa"
-                  loading="lazy"
-                  style={{
-                    width: '100%',
-                    height: '100vh',
-                    marginRight: '35px',
-                  }}
-                />
-              )}
+              <img
+                src={mapa}
+                alt="mapa"
+                style={{ width: '100%', height: '100vh', marginRight: '35px' }}
+              />
+
               {locationInfos.map((location) => (
                 <LocationButton
                   key={location.id}

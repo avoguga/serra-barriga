@@ -58,11 +58,7 @@ const HistoricalFigurePage: React.FC = () => {
       <FloatingButtonBar backgroundColor="#586617" backBgColor="#313A0A" />
       <C.PersonalityContainer>
         <C.ContentHeader>
-          <C.PersonalityImage
-            src={figureData.icon}
-            alt={figureData.title}
-            loading="lazy"
-          />
+          <C.PersonalityImage src={figureData.icon} alt={figureData.title} />
           <C.PersonalityTitle>{figureData.title}</C.PersonalityTitle>
           <C.Subtitle>{figureData.subtitle}</C.Subtitle>
         </C.ContentHeader>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import loc from '../../../assets/icons/i_localização pagina.png';
-import maps from '../../../assets/images/Mapa Memorial Serra da Barriga - novo-03 (1).webp';
+import maps from '../../../assets/images/mapaserra.webp';
 import Sidebar from '../Sidebar';
 import LowArrow from '../../../components/LowArrowButton';
 import * as C from './styles';
@@ -39,7 +39,6 @@ const LocView: React.FC = () => {
         <p>{figureData.subtitle}</p>
         <C.InfoText>
           <img
-            loading="lazy"
             src={loc}
             alt="ícone de Localização"
             style={{ width: '35px', height: '35px' }}
@@ -49,11 +48,7 @@ const LocView: React.FC = () => {
         </C.InfoText>
         <C.ImageContent>
           <C.MapContainer>
-            <img
-              src={maps}
-              alt="Mapa do Memorial Serra da Barriga"
-              loading="lazy"
-            />
+            <img src={maps} alt="Mapa do Memorial Serra da Barriga" />
             {marker}
           </C.MapContainer>
         </C.ImageContent>
