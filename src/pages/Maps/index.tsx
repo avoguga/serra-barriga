@@ -105,10 +105,10 @@ const MapaContainer = styled.div`
 `;
 
 const items = [
-  'ENTRADA', 'Espaço Oxile das Ervas', 'Espaço Onjó Cruzambe', 'Espaço Acotirene', 'Espaço Muxima de Palmares',
-  'Espaço Quilombo dos Palmares', 'Espaço Atalaia Acaiene', 'Espaço Ganga Zumba', 'Espaço Aqualtune',
-  'Espaço Ocas indígenas', 'Espaço Caá-Puera', 'Espaço Batucajé', 'Espaço Atalaia de Acaiuba', 'Espaço Onjó de Farinha',
-  'Lagoa Encantada dos Negros', 'Espaço Restaurante Kúuku-Waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'Espaço Atalaia de Toculo', 'Espaço Zumbi'
+  'ENTRADA', 'espaço-oxile-das-ervas', 'espaço-onjo-cruzambe', 'espaço-acotirene', 'espaço-muxima-de-palmares',
+  'espaço-quilombo-dos-palmares', 'espaço-atalaia-acaiene', 'espaço-ganga-zumba', 'espaço-aqualtune',
+  'espaço-ocas-indigenas', 'espaço-caa-puera', 'espaço-batucaje', 'espaço-atalaia-de-acaiuba', 'espaço-onjo-de-farinha',
+  'lagoa-encantada-dos-negros', 'espaço-restaurante-kuuku-waana', 'ESTÁTUA GANGA-ZUMBA E ZUMBI', 'BANHEIROS', 'espaço-atalaia-de-toculo', 'espaço-zumbi'
 ];
 
 interface LocationInfo {
@@ -118,19 +118,23 @@ interface LocationInfo {
 }
 
 const locationMappings: { [key: string]: { x: number; y: number } } = {
-  'ENTRADA': { x: 185, y: 342 }, 'Espaço Onjó Cruzambe': { x: 360, y: 340 }, 'Espaço Oxile das Ervas': { x: 395, y: 330 },
-  'Espaço Acotirene': { x: 415, y: 300 }, 'Espaço Muxima de Palmares': { x: 355, y: 275 }, 'Espaço Quilombo dos Palmares': { x: 295, y: 300 },
-  'Espaço Ganga Zumba': { x: 355, y: 215 }, 'Espaço Atalaia Acaiene': { x: 395, y: 175 }, 'Espaço Ocas indígenas': { x: 325, y: 187 },
-  'Espaço Caá-Puera': { x: 280, y: 150 }, 'Espaço Batucajé': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
-  'BANHEIROS': { x: 175, y: 190 }, 'Espaço Atalaia de Acaiuba': { x: 120, y: 195 }, 'Espaço Onjó de Farinha': { x: 185, y: 225 },
-  'Lagoa Encantada dos Negros': { x: 210, y: 80 }, 'Espaço Restaurante Kúuku-Waana': { x: 173, y: 280 },
-  'Espaço Aqualtune': { x: 245, y: 75 },'Espaço Atalaia de Toculo': { x: 125, y: 340 },'Espaço Zumbi': { x: 125, y: 295 },
+  'ENTRADA': { x: 185, y: 342 }, 'espaço-onjo-cruzambe': { x: 360, y: 340 }, 'espaço-oxile-das-ervas': { x: 395, y: 330 },
+  'espaço-acotirene': { x: 415, y: 300 }, 'espaço-muxima-de-palmares': { x: 355, y: 275 }, 'espaço-quilombo-dos-palmares': { x: 295, y: 300 },
+  'espaço-ganga-zumba': { x: 355, y: 215 }, 'espaço-atalaia-acaiene': { x: 395, y: 175 }, 'espaço-ocas-indigenas': { x: 325, y: 187 },
+  'espaço-caa-puera': { x: 280, y: 150 }, 'espaço-batucaje': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
+  'BANHEIROS': { x: 175, y: 190 }, 'espaço-atalaia-de-acaiuba': { x: 120, y: 195 }, 'espaço-onjo-de-farinha': { x: 185, y: 225 },
+  'lagoa-encantada-dos-negros': { x: 210, y: 80 }, 'espaço-restaurante-kuuku-waana': { x: 173, y: 280 },
+  'espaço-aqualtune': { x: 245, y: 75 },'espaço-atalaia-de-toculo': { x: 125, y: 340 },'espaço-zumbi': { x: 125, y: 295 },
 };
 
 const locationInfos: LocationInfo[] = items.map((name, index) => {
   const coordinates = locationMappings[name] || { x: 0, y: 0 };
   return { id: index + 1, name, coordinates };
 });
+
+const formatTooltipName = (name:string) => {
+  return name.replace(/-/g, ' ');
+};
 
 const Maps: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState<LocationInfo | null>(null);
@@ -233,7 +237,7 @@ const Maps: React.FC = () => {
                   y={(selectedLocation.coordinates.y / 520) * 100 + '%'}
                   onClick={handleTooltipClick}
                 >
-                  {selectedLocation.name}
+                  {formatTooltipName(selectedLocation.name)}
                 </Tooltip>
               )}
             </div>

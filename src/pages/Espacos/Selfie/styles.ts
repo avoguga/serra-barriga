@@ -1,18 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: '#8AA61E';
-
-  display: 'flex';
-  flex-direction: 'column';
-  align-items: 'center';
-
-  p {
-    font-family: 'FuturaPT', sans-serif;
-  }
+  background-color: #8aa61e;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: auto;
 `;
 
-export const SelfieContainer = styled.button`
+export const SelfieContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: baseline;
@@ -21,8 +19,14 @@ export const SelfieContainer = styled.button`
   height: 60px;
   border-radius: 35px;
   gap: 15px;
+  margin-bottom: 10px;
 
-  p {
+  img {
+    width: 55px;
+    height: 55px;
+    margin-left: 10px;
+  }
+  h3 {
     text-align: center;
     font-size: 16px;
     font-weight: bold;
@@ -34,33 +38,28 @@ export const SelfieContainer = styled.button`
 `;
 
 export const Text = styled.p`
-  p {
-    font-family: 'FuturePT', sans-serif;
-  }
-  margin-top: 25px;
-  margin-bottom: 20px;
+  width: 280px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 0.8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'FuturaPT', sans-serif;
 `;
 
 export const ImageContainer = styled.div`
-  width: 280px;
+  width: 300px;
   height: 380px;
   border: 3px solid #ffffff;
   margin: 15px 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
 `;
-export const Footer = styled.div`
-  background: #313a0a;
-  color: #ffff;
-  width: 100vw;
-  height: 10.5vh;
+
+export const OptionsContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  h4 {
-    font-family: 'FuturaPT', sans-serif;
-  }
-  opacity: 0.89;
+  gap: 10px;
 `;

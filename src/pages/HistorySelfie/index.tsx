@@ -92,7 +92,7 @@ const HistorySelfie = () => {
  
 
   const handleClick = (personagem: string) => {
-    setContent({ ...content, [personagem]: <SelfieDestiny /> });
+    setContent({ ...content, [personagem]: <SelfieDestiny  style={{ width: '290px', height: '370px' }}/> });
     setIsInitial(false);
     if (!isInitial) {
       const resetContent: { [key: string]: JSX.Element } = {};
