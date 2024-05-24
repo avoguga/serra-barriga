@@ -52,7 +52,7 @@ interface EspacoAudiosMap {
 }
 
 export const espacoAudios: EspacoAudiosMap = {
-  'Espaço Acotirene': [
+  'espaco-acotirene': [
     {
       audio: [acotirene1],
       title: 'Espaço Contemplativo Acotirene',
@@ -61,16 +61,16 @@ export const espacoAudios: EspacoAudiosMap = {
       trilha: 'Trilha do Áudio 1',
     },
   ],
-  'Espaço Aqualtune': [
+  'espaco-aqualtune': [
     {
       audio: [aqualtune1],
       title: 'Espaço Contemplativo Aqualtune',
       interpretacao: 'Leila Pinheiro',
-      texto: 'Leila Pinheiro',
+      texto: '-',
       trilha: 'Trilha do Áudio 2',
     },
   ],
-  'Espaço Caá-Pueira': [
+  'espaco-caa-puera': [
     {
       audio: [capoeira1],
       title: 'Espaço Contemplativo Caá-pueira',
@@ -79,7 +79,7 @@ export const espacoAudios: EspacoAudiosMap = {
       trilha: 'Trilha do Áudio 3',
     },
   ],
-  'Espaço Ganga Zumba': [
+  'espaco-ganga-zumba': [
     {
       audio: [zumba1],
       title: 'Espaço Contemplativo Ganga-Zumba',
@@ -88,7 +88,7 @@ export const espacoAudios: EspacoAudiosMap = {
       trilha: 'Trilha do Áudio 3',
     },
   ],
-  'Espaço Quilombo dos Palmares': [
+  'espaco-quilombo-dos-palmares': [
     {
       audio: [quilombo1],
       title: 'Espaço Contemplativo Quilombo',
@@ -97,7 +97,7 @@ export const espacoAudios: EspacoAudiosMap = {
       trilha: 'Trilha do Áudio 3',
     },
   ],
-  'Espaço Zumbi': [
+  'espaco-zumbi': [
     {
       audio: [zumbi1],
       title: 'Espaço Contemplativo Zumbi',

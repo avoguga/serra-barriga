@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WatermarkWrapper from '../../../components/WatermarkWrapper/WatermarkWrapper';
 import logo from '../../../assets/logo.png';
-import { Icons } from '../../../helpers/icons';
+
 import styled from 'styled-components';
 
 import FloatingButtonBar from '../../../components/FloatingContainer';
@@ -11,7 +11,7 @@ import SelfieDestiny from '../../../components/SelfieDestiny';
 import { espacoSelfie } from '../../../helpers/SelfieHistorica';
 import Sidebar from '../Sidebar';
 
-const Selfiee = Icons['Selfie'];
+import selfiee from '../../../assets/icons/i_selfie.png'
 
 export const Container = styled.div`
   background-color: #8AA61E;
@@ -35,7 +35,7 @@ export const SelfieContainer = styled.button`
   border-radius: 35px;
   gap: 15px;
 
-  svg {
+  img {
     width: 55px;
     height: 55px;
     fill: #ffffff;
@@ -131,7 +131,7 @@ const SelfieView = () => {
         <Sidebar activeSection="SelfieView" />
       </NavFotter>
         <SelfieContainer>
-          <Selfiee />
+        <img src={selfiee} alt="" />
           <h3>SELFIE HISTÓRICA</h3>
         </SelfieContainer>
         <br />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WatermarkWrapper from '../../components/WatermarkWrapper/WatermarkWrapper';
 import logo from '../../assets/logo.png';
-import { Icons } from '../../helpers/icons';
+
 import styled from 'styled-components';
 
 import FloatingButtonBar from '../../components/FloatingContainer';
@@ -9,8 +9,9 @@ import BtnDownArrow from '../../components/ScrollButton';
 import tiktok from '../../assets/icons/logo-tiktok.svg';
 import SelfieDestiny from '../../components/SelfieDestiny';
 import { espacoSelfie } from '../../helpers/SelfieHistorica';
+import selfiee from '../../assets/icons/i_selfie.png'
 
-const Selfiee = Icons['Selfie'];
+
 
 export const Container = styled.div`
   background-color: #8AA61E;
@@ -34,10 +35,10 @@ export const SelfieContainer = styled.button`
   border-radius: 35px;
   gap: 15px;
 
-  svg {
+  img {
     width: 55px;
     height: 55px;
-    fill: #ffffff;
+  
     margin-left: 10px;
   }
 
@@ -135,7 +136,7 @@ const Selfie = () => {
           }}
         />
         <SelfieContainer>
-          <Selfiee />
+       <img src={selfiee} alt="" />
           <h3>SELFIE HISTÓRICA</h3>
         </SelfieContainer>
         <br />

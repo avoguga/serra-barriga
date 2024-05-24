@@ -101,6 +101,7 @@ const MapaContainer = styled.div`
 
   img {
     color: #ffbf00;
+    
   }
 `;
 
@@ -124,7 +125,7 @@ const locationMappings: { [key: string]: { x: number; y: number } } = {
   'espaco-caa-puera': { x: 280, y: 150 }, 'espaco-batucaje': { x: 230, y: 150 }, 'ESTÁTUA GANGA-ZUMBA E ZUMBI': { x: 255, y: 230 },
   'BANHEIROS': { x: 175, y: 190 }, 'espaco-atalaia-de-acaiuba': { x: 120, y: 195 }, 'espaco-onjo-de-farinha': { x: 185, y: 225 },
   'lagoa-encantada-dos-negros': { x: 210, y: 80 }, 'espaco-restaurante-kuuku-waana': { x: 173, y: 280 },
-  'espaco-aqualtune': { x: 245, y: 75 },'espaco-atalaia-de-toculo': { x: 125, y: 340 },'espaco-zumbi': { x: 125, y: 295 },
+  'espaco-aqualtune': { x: 245, y: 75 }, 'espaco-atalaia-de-toculo': { x: 125, y: 340 }, 'espaco-zumbi': { x: 125, y: 295 },
 };
 
 const locationInfos: LocationInfo[] = items.map((name, index) => {
@@ -132,7 +133,7 @@ const locationInfos: LocationInfo[] = items.map((name, index) => {
   return { id: index + 1, name, coordinates };
 });
 
-const formatTooltipName = (name:string) => {
+const formatTooltipName = (name: string) => {
   return name.replace(/-/g, ' ').replace(/espaco/g, 'espaço');
 };
 
@@ -192,17 +193,17 @@ const Maps: React.FC = () => {
           paddingTop: '80px', /* Ajuste o espaço superior */
         }}
       >
-        <img src={logo} alt="serra da barriga" style={{ width: '180px', height: '66px', marginBottom: '25px' }} />
+        <img src={logo} alt="serra da barriga" loading='lazy' style={{ width: '180px', height: '66px', marginBottom: '25px' }} />
       
         <ButtonContainer>
           <MapaContainer>
-            <img src={LocIcon} alt="Localização" style={{ width: '30px', height: '30px', marginRight: '-10px', marginTop: '2px' }} />
+            <img src={LocIcon} alt="Localização" loading='lazy' style={{ width: '30px', height: '30px', marginRight: '-10px', marginTop: '2px' }} />
             <h2 style={{ fontFamily: 'FuturaPTDemi', letterSpacing: '0px', color: '#FFFFFF', fontSize: '30px', margin: '0' }}>Mapa</h2>
             <C.ZoomButton onClick={handleZoomIn}>
               <img src={zoomIn} alt="Zoom In" style={{ width: '20px', height: '20px' }} />
             </C.ZoomButton>
             <C.ZoomButton onClick={handleZoomOut}>
-              <img src={zoomOut} alt="Zoom Out" style={{ width: '20px', height: '20px' }} />
+              <img src={zoomOut} alt="Zoom Out"  loading='lazy' style={{ width: '20px', height: '20px' }} />
             </C.ZoomButton>
           </MapaContainer>
         </ButtonContainer>
@@ -219,8 +220,8 @@ const Maps: React.FC = () => {
           }}
         >
           <TransformComponent>
-            <div style={{ position: 'relative', width: '105vh', height: '135vh', display: 'flex', justifyContent: 'baseline', alignItems: 'center', flexDirection:'column' }}>
-              <img src={mapa} alt="mapa" loading='lazy' style={{ width: '100%', height: '100vh', marginRight:'35px' }} />
+            <div style={{ position: 'relative', width: '105vh', height: '135vh', display: 'flex', justifyContent: 'baseline', alignItems: 'center', flexDirection: 'column' }}>
+              <img src={mapa} alt="mapa" loading='lazy' style={{ width: '100%', height: '100vh', marginRight: '35px' }} />
               {locationInfos.map((location) => (
                 <LocationButton
                   key={location.id}
@@ -243,9 +244,9 @@ const Maps: React.FC = () => {
             </div>
           </TransformComponent>
         </TransformWrapper> <br />
-              <div  style={{ width: '50px', height: '150px', position: 'absolute', top: '92%',  }}>
-              <img src={pinca} alt="Pinça" style={{ width: '50px', height: '50px' }} />
-              </div>
+        <div style={{ width: '50px', height: '150px', position: 'absolute', top: '92%' }}>
+          <img src={pinca} alt="Pinça" loading='lazy' style={{ width: '50px', height: '50px' }} />
+        </div>
         <BtnDownArrow />
       </div>
     </WatermarkWrapper>
