@@ -220,7 +220,7 @@ const Maps: React.FC = () => {
         >
           <TransformComponent>
             <div style={{ position: 'relative', width: '105vh', height: '135vh', display: 'flex', justifyContent: 'baseline', alignItems: 'center', flexDirection:'column' }}>
-              <img src={mapa} alt="mapa" style={{ width: '100%', height: '100vh', marginRight:'35px' }} />
+              <img src={mapa} alt="mapa" loading='lazy' style={{ width: '100%', height: '100vh', marginRight:'35px' }} />
               {locationInfos.map((location) => (
                 <LocationButton
                   key={location.id}
