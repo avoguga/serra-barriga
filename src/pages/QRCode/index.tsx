@@ -208,29 +208,22 @@ const QRCode: React.FC = () => {
             marginTop: '50px',
           }}
         >
-          <p
-            style={{
-              visibility: isLoading ? 'visible' : 'hidden',
-            }}
-          >
-            Carregando a câmera, aguarde um momento...
-          </p>
-        </div>
-
-        <div
-          style={{
-            textAlign: 'center',
-            fontSize: '18px',
-            color: '#FFFF',
-            marginBottom: '50px',
-          }}
-        >
-          <p
-            style={{
-              visibility: isScanning ? 'visible' : 'hidden',
-            }}
-          >
-            Escaneando, por favor, aguarde...
+          <p>
+            <span
+              style={{
+                visibility: isScanning ? 'visible' : 'hidden',
+              }}
+            >
+              Escaneando, por favor, aguarde...
+            </span>
+            <br />
+            <span
+              style={{
+                visibility: isLoading ? 'visible' : 'hidden',
+              }}
+            >
+              Carregando a câmera, aguarde um momento...
+            </span>
           </p>
         </div>
       </C.Container>
