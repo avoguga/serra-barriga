@@ -73,7 +73,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     },
     images: espacoImages['Espaço Acotirene'],
     videos: espacoVideos['Espaço Acotirene'],
-    audios: espacoAudios['Espaço Acotirene'],
+    audios: espacoAudios['espaco-acotirene'],
     selfie: espacoSelfie['Espaço Acotirene'],
     mapPosition: { posX: '72%', posY: '64%' },
   },
@@ -95,6 +95,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     images: espacoImages['Espaço Aqualtune'],
     videos: espacoVideos['Espaço Aqualtune'],
     selfie: espacoSelfie['Espaço Aqualtune'],
+    audios: espacoAudios['espaco-aqualtune'],
 
     mapPosition: { posX: '36%', posY: '6%' },
   },
@@ -112,6 +113,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       `,
     },
     images: espacoImages['Espaço Caá-Pueira'],
+    audios: espacoAudios['espaco-caa-puera'],
     mapPosition: { posX: '44%', posY: '26%' },
   },
   'espaco-ganga-zumba': {
@@ -123,6 +125,8 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
       en: 'Son of Princess Aqualtune, he reigned for decades, leading Palmares to its zenith and gaining recognition as a nation by the Portuguese crown. He signed a pact in 1678 with the governor of the Captaincy of Pernambuco. He was betrayed and assassinated in the mocambo of Cucaú.',
     },
     images: espacoImages['Espaço Ganga Zumba'],
+    audios: espacoAudios['espaco-ganga-zumba'],
+
     mapPosition: { posX: '59%', posY: '42%' },
     selfie: espacoSelfie['Espaço Ganga Zumba'],
   },
@@ -136,6 +140,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     },
     images: espacoImages['Espaço Quilombo dos Palmares'],
     videos: espacoVideos['Espaço Quilombo dos Palmares'],
+    audios: espacoAudios['espaco-quilombo-dos-palmares'],
 
     mapPosition: { posX: '47%', posY: '64%' },
   },
@@ -150,6 +155,7 @@ Na história do Quilombo dos Palmares estão presentes mitos e fatos reais. Essa
     },
     images: espacoImages['Espaço Zumbi'],
     selfie: espacoSelfie['Espaço Zumbi'],
+    audios: espacoAudios['espaco-zumbi'],
 
     mapPosition: { posX: '11%', posY: '63%' },
   },
