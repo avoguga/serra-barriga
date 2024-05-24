@@ -51,7 +51,7 @@ export const espacoSelfie: EspacoSelfieMap = {
   'Espaço Ocas indígenas': [],
   'Espaço Batucajé': [],
   'Espaço Atalaia de Acaiuba': [],
-  'Espaço Lagoa Encantada dos Negros': [],
+  ' Lagoa Encantada dos Negros': [],
   'Espaço Onjó de Farinha': [],
   'Espaço Restaurante Kúuku-Waana': [],
   'Espaço Atalaia de Toculo': [],

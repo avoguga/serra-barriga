@@ -314,8 +314,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
 
     mapPosition: { posX: '10%', posY: '38%' },
   },
-  'Espaço Lagoa Encantada dos Negros': {
-    path: '/historical-figure/Espaço Lagoa Encantada dos Negros',
+  'Lagoa Encantada dos Negros': {
+    path: '/historical-figure/Lagoa Encantada dos Negros',
     title: 'Lagoa Encantada dos Negros',
     subtitle: 'GAMELEIRA SAGRADA - IRÔCO',
     icon: lagoa,
@@ -339,8 +339,8 @@ O Memorial da Serra da Barriga tem três pontos de Atalaia; a todos os três é 
       italic: `MAGICAL POND OF THE PALMARINOS
       SACRED IÔCO`,
     },
-    images: espacoImages['Espaço Lagoa Encantada dos Negros'],
-    videos: espacoVideos['Espaço Lagoa Encantada dos Negros'],
+    images: espacoImages[' Lagoa Encantada dos Negros'],
+    videos: espacoVideos[' Lagoa Encantada dos Negros'],
 
     mapPosition: { posX: '22%', posY: '8%' },
   },

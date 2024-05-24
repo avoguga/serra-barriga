@@ -115,7 +115,7 @@ export const espacoImages: EspacoImagesMap = {
     { src: acaiuba1, description: 'SSem descrição no momento' },
     { src: acaiuba2, description: 'SSem descrição no momento ' },
   ],
-  'Espaço Lagoa Encantada dos Negros': [
+  ' Lagoa Encantada dos Negros': [
     { src: lagoa1, description: 'Foto de Aprigio Vilanova' },
     { src: lagoa2, description: 'Foto de Aprigio Vilanova' },
     { src: lagoa3, description: 'Foto de Aprigio Vilanova' },

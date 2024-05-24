@@ -105,7 +105,7 @@ export const espacoVideos: EspacoVideosMap = {
       trilha: 'Trilha do Vídeo 1',
     },
   ],
-  'Espaço Lagoa Encantada dos Negros': [
+  ' Lagoa Encantada dos Negros': [
     {
       url: 'https://www.youtube.com/embed/MAgR3SEC8xc',
       title: 'Helcias - Lagoa encantada do negro',
