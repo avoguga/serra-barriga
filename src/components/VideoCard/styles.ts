@@ -21,6 +21,7 @@ export const VideoTitle = styled.h3`
   font-size: 16px; // Ajuste para o tamanho desejado
   margin-top: 8px;
   text-align: center;
+  width: 240px;
 `;
 
 export const VideoDuration = styled.span`

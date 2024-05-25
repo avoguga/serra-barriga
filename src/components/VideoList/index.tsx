@@ -4,7 +4,7 @@ import VideoCard from '../VideoCard';
 import * as C from './styles';
 
 // Lista de vídeos com os links do YouTube
-const videos = [ 
+const videos = [
   {
     title: 'Margareth Menezes Ministra da Cultura do Brasil',
     duration: '1:53',
@@ -14,12 +14,21 @@ const videos = [
     text: 'Margareth Menezes fala sobre o Parque Memorial Quilombo dos Palmares',
   },
   {
+    title:
+      'Handemba Mutana dos Santos - Líder de Responsabilidade Social Corporativa no Brasil - Tiktok',
+    duration: '1:20',
+    thumbnail: 'https://img.youtube.com/vi/srR3ocr4EcY/hqdefault.jpg',
+    videoSrc: 'https://www.youtube.com/embed/srR3ocr4EcY',
+    interpretation: 'Handemba Mutana dos Santos',
+    text: 'Handemba Mutana dos Santos fala sobre o Parque Memorial Quilombo dos Palmares',
+  },
+  {
     title: 'João Jorge Rodrigues Presidente da Fundação Cultural Palmares',
     duration: '1:18',
     thumbnail: 'https://img.youtube.com/vi/kEU7XECoaJ4/hqdefault.jpg',
     videoSrc: 'https://www.youtube.com/embed/kEU7XECoaJ4',
     interpretation: 'João Jorge Rodrigues',
-    text:'João Jorge Rodrigues fala da importância do Parque Memorial Quilombo dos Palmares.',
+    text: 'João Jorge Rodrigues fala da importância do Parque Memorial Quilombo dos Palmares.',
   },
   {
     title: 'Nelson Mendes Diretor',
@@ -77,7 +86,7 @@ const videos = [
     thumbnail: 'https://img.youtube.com/vi/17Q_iR_bXvs/hqdefault.jpg',
     videoSrc: 'https://www.youtube.com/embed/17Q_iR_bXvs',
     interpretation: 'Helcias Pereira',
-    text:  'Entrevista com Helcias Pereira na Serra da Barriga sobre o Espaço Acotirene.',
+    text: 'Entrevista com Helcias Pereira na Serra da Barriga sobre o Espaço Acotirene.',
   },
   {
     title: 'Muxima de Palmares',
@@ -109,7 +118,7 @@ const videos = [
     thumbnail: 'https://img.youtube.com/vi/nmCsStmgM5c/hqdefault.jpg',
     videoSrc: 'https://www.youtube.com/embed/nmCsStmgM5c',
     interpretation: 'Helcias Pereira',
-    text:  'Entrevista com Helcias Pereira na Serra da Barriga sobre as Ocas .     ',
+    text: 'Entrevista com Helcias Pereira na Serra da Barriga sobre as Ocas .     ',
   },
   {
     title: 'Batucajé ',
@@ -199,7 +208,6 @@ const videos = [
     interpretation: 'Scott Allen',
     text: 'Entrevista com Scott Allen no Museu de História Natural de Alagoas sobre as prospecções arqueológicas no Quilombo dos Palmares.',
   },
-  
 ];
 
 const VideoList: React.FC = () => {
