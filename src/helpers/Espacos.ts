@@ -446,7 +446,7 @@ The Memorial of Serra da Barriga has three Atalaias, and all are named after the
     mapPosition: { posX: '11%', posY: '75%' },
   },
 
-  'espaco-personalidaes': {
+  personalidades: {
     path: '/takehome/personalities',
     title: '',
     subtitle: ' ',
