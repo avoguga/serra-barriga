@@ -1,4 +1,3 @@
-
 import WatermarkWrapper from '../../../components/WatermarkWrapper/WatermarkWrapper';
 import logo from '../../../assets/logo.png';
 import styled from 'styled-components';
@@ -10,7 +9,7 @@ import Sidebar from '../Sidebar';
 import selfiee from '../../../assets/icons/i_selfie.png';
 
 export const Container = styled.div`
-  background-color: #8AA61E;
+  background-color: #8aa61e;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -77,16 +76,18 @@ const SelfieView = () => {
   Object.keys(espacoSelfie).forEach((key) => {
     const imageUrl = espacoSelfie[key]?.[0];
     if (imageUrl) {
-      initialContent[key] = <img src={imageUrl} alt={key} width={290} height={370} />;
+      initialContent[key] = (
+        <img src={imageUrl} alt={key} width={290} height={370} />
+      );
     }
   });
 
   const tikTokLinks: { [key: string]: string } = {
-    acotirene: 'https://vm.tiktok.com/ZMMKKUEpv/',
-    aqualtune: 'https://vm.tiktok.com/ZMMKKf15q/',
-    dandara: 'https://vm.tiktok.com/ZMMKKCWg1/',
-    'Ganga Zumba': 'https://vm.tiktok.com/ZMMKK5A3u/',
-    zumbi: 'https://vm.tiktok.com/ZMMKK9wY3/',
+    acotirene: 'https://vm.tiktok.com/ZMBFG7E7f/',
+    aqualtune: 'https://vm.tiktok.com/ZMBFGojXq/',
+    dandara: 'https://vm.tiktok.com/ZMBFtNEQ3/',
+    'Ganga Zumba': 'https://vm.tiktok.com/ZMBFtFw3W/',
+    zumbi: 'https://vm.tiktok.com/ZMBFGsbDf/',
   };
 
   const handleClick = (personagem: string) => {
@@ -144,17 +145,31 @@ const SelfieView = () => {
           }}
         >
           Escolha um{' '}
-          <span style={{ color: '#FFFFFF' }}>personagem da história e tire uma selfie</span> na
-          serra da barriga
+          <span style={{ color: '#FFFFFF' }}>
+            personagem da história e tire uma selfie
+          </span>{' '}
+          na serra da barriga
         </p>
         <br />
         {Object.keys(espacoSelfie).map((key) => (
-          <div key={key} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#8AA61E', flexDirection: 'column' }}>
-            <ImageContainer onClick={() => handleClick(key)}>{initialContent[key]} </ImageContainer>
+          <div
+            key={key}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              background: '#8AA61E',
+              flexDirection: 'column',
+            }}
+          >
+            <ImageContainer onClick={() => handleClick(key)}>
+              {initialContent[key]}{' '}
+            </ImageContainer>
             <p style={{ color: '#FFF', fontSize: '19px' }}>{key}</p>
           </div>
         ))}
-        <br /><br />
+        <br />
+        <br />
       </Container>
     </WatermarkWrapper>
   );
